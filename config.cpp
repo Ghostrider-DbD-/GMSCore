@@ -1,0 +1,179 @@
+/*
+	Copyright 2020 by Ghostrider-GRG-
+*/
+
+#include "\GMSCore\Init\GMS_defines.hpp"
+// TOD: add handleDamage or hitpoint handler that removes any damage caused by player runovers
+class GMSCoreBuild {
+	version = 1;
+	build = 1;
+	buildDate = "9-25-21";
+};
+class CfgPatches {
+	class GMSCore {
+		units[] = {};
+		weapons[] = {};
+		requiredVersion = 0.1;
+		requiredAddons[] = {};
+	};
+};
+#include "CfgGMSCore.hpp"
+class CfgFunctions {
+	class GMS {
+		class Airdrops {
+			file = "GMSCore\Compiles\Airdrops";
+			class arrivedOnStation {};
+			class cleanUp {};
+			class dropParatroops {};
+			class dropPayload {};
+			class flyInCargoToLocation {};			
+			class hoverAndDropOff {};
+			class selectDropWaypoint {};
+			class setAircraftPayload {};							
+		};		
+		class Client {
+			file = "GMSCore\Compiles\Client";
+			class configureAlertMessages {};
+			class configureOnHuntMessages {};
+			class configureOnKilledMessages {};
+			class initializeClientFunctions {};
+			class huntedMessages {};
+			class textAlert {};
+			class titleTextAlert {};
+			class killedMessages {};
+		};
+		class Crates {
+			file = "GMSCore\Compiles\Crates";
+			class spawnCrate {}; // which can be any object, but is a crate by default.
+			class addItem {};
+			class addItemsFromArray {};  // weighted array either a single array, or array of arrays.
+			class spawnPayload {};
+			class visibleMarker {};
+		};
+		class GMS_Functions {
+			file = "GMSCore\Compiles\Functions";
+			class checkClassnamesArray {};		
+			class dynamicConfigs {};
+			class nearestTarget {};
+ 			class findRandomPosWithinArea {};	
+			class getDimensions {};			 				
+			class getNumberFromRange {};
+			class getIntegerFromRange {};
+			class getCfgType {};
+			class getModType {};
+			class groupCanSee {};			
+			class isClass {};
+			class isDrone {};
+			class mainThread {};
+			class monitorMarkers {};			
+			class nearestGMSAI {};
+			class nearestPlayers {};
+			class removeBlacklistedItems {};
+			//class setGroupHuntVehicles {};
+			class setOnRunoverHipointsDamage {};
+			class setOnRunoverNumberHitpointsDamaged {};
+			class substringsPresentInString {};
+		};		
+		class GMS_Groups {
+			file = "GMSCore\Compiles\Groups";
+			class addUnitEventHandlers {};
+			class alertNearbyGroups {};
+			class boostGroupAttributes {};
+			class createGroup {};	
+			class createUnmanedVehicleCrew {};
+			class despawnInfantryGroup {};
+			class groupCanSee {};					
+			class getGroupIntelligence {};
+			class getHunt {};
+			class getHuntDurationTimer {};			
+			class groupRemoveAllGear {};
+			class setGroupBehaviors {};
+			class setupGroupMoney {};	
+			class setHunt {};
+			class setHuntDurationTimer {};
+			class setMaxRelaodsGroup {};
+			class setupGroupSkills {};
+			class setupGroupGear {};
+			class setupGroupBehavior {};
+			class spawnInfantryGroup {};	
+			class updateGroupHitKilledTimer {};				
+		};		
+		class GMS_Initialization {
+			file = "GMSCore\init";
+			class Initialize {postInit = 1;};
+		};
+		class GMS_Objects {
+			file = "GMSCore\Compiles\Objects";
+			class addObjectToDeletionCue {};
+			class createObject {};	
+			class deleteObjectMethod {};							
+			class emptyObjectInventory {};	
+			class monitorObjectDeletionCue {};			
+			class removeAllEventHandlers {};
+			class removeAllMPEventHandlers {};	
+		};				
+		class GMS_Players {
+			file = "GMSCore\Compiles\Players";
+			class giveTakeCrypto {};  // Please see credits in the sqf.
+			class giveTakeRespect {};
+			class giveTakeTabs {};
+			class updatePlayerKills {};
+			class unitRunover {};
+		};
+		class GMS_Utilities {
+			file = "GMSCore\Compiles\Utilities";
+			class findWorld {};
+			class getLocationsForWaypoints {};
+			class getMapMarker {};
+			class log {};
+		};
+		class GMS_Units {
+			file = "GMSCore\Compiles\Units";
+			class addChainedMPKilled {};
+			class healSelf {};			
+			class removeNVG {};
+			class removeLauncher {};			
+			class throwSmoke {};
+			class unitCanSee {};
+			class unitHit {};
+			class unitKilled {};
+			class unitReloaded {};
+			class unitRemoveAllGear {};			
+		};
+		class GMS_Vehicles {
+			file = "GMSCore\Compiles\Vehicles";
+			class allowPlayerVehicleAccess {};
+			class createVehicle {};
+			class destroyVehicleAndCrew {};
+			class disableVehicleWeapons {};
+			class getOutVehicle {};
+			class initializePatrolVehicle {};
+			class loadVehicleCrew {};
+			class restrictPlayerVehicleAcess {};
+			class spawnPatrolAircraft {};
+			class spawnPatrolVehicle {};
+			class spawnUnmannedVehicle {}; // All manner of drones
+			class vehicleHandleDamage {};	
+			class vehicleHit {};
+			class vehicleKilled {};	
+		};		
+		class GMS_Waypoints {
+			// general functions for handling waypoints within a patrol area
+			file = "GMSCore\Compiles\Waypoints";
+			class addMonitoredAreaPatrol {};			
+			class isStuck {};
+			//class assignTargetAreaPatrol {};
+			class getWaypointLastCheckedTime {};
+			//class getWaypointPatrolAreaMarker {};  This variable is only set in one place and read in one place so not sure we need this complexity
+			class initializeWaypointsAreaPatrol {};
+			class initializeWaypointRoadsPatrol {};
+			class nextWaypointRoadPatrols {};
+			class monitorAreaPatrols {};			
+			class nextWaypointAreaPatrol {};
+			class setStuck {};
+			class setWaypointStuckValue {};
+			class setWaypointLastCheckedTime {};
+			//class setWaypointPatrolAreaMarker {};
+		};
+	};
+};

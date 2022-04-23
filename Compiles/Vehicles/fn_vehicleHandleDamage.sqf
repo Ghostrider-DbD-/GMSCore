@@ -13,10 +13,14 @@
 	Scope Global 
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
-if !(local (_this select 0)) exitWith {};
-params ["_vehicle", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
-if !(isPlayer _instigator) then 
+
+params ["_vehicle", "_selection", "_newDmg", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
+if (isPlayer _instigator) exitWith {};
+if (_selection isEqualTo "" || _selection isEqualTo "?") then 
 {
-	_vehicle setDamage 0;  
-	_vehicle setHitPointDamage [_hitPoint, 0];
+	_vehicle setDamage ((damage _vehicle) - _newDmg);
+	[format["GMS_fnc_vehicleHandleDamage: vehicle %1 | %2 | damage set to %3",_vehicle, typeOf _vehicle, damage _vehicle]] call GMS_fnc_log;
+} else {
+	_vehicle setHit [_hitPoint, (_vehicle getHit _selection) - _damage];
+	[format["GMS_fnc_vehicleHandleDamage: vehicle %1 | %2 | hitpoint damage set to %3",_vehicle, typeOf _vehicle, _vehicle getHit _selection]] call GMS_fnc_log;	
 };

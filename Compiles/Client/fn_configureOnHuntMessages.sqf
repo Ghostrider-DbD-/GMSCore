@@ -20,9 +20,9 @@ private _passedCfgs = [];
 {
 	switch (GMS_ModType) do 
 	{
-		case "epoch": {if ((_x in GMS_validHuntedMsgTypes) && !(_x isEqualTo "toast")) then {_passedCfgs pushBack _x}};
-		case "exile": {if ((_x in GMS_validHuntedMsgTypes) && !(_x isEqualTo "epochMst")) then {_passedCfgs pushBack _x}};
+		case "Epoch": {if ((_x in GMS_validHuntedMsgTypes) && !(_x isEqualTo "toast")) then {_passedCfgs pushBack _x}};
+		case "Exile": {if ((_x in GMS_validHuntedMsgTypes) && !(_x isEqualTo "epochMst")) then {_passedCfgs pushBack _x}};
 		default {if ((_x in GMS_validHuntedMsgTypes)  && !(_x isEqualTo "epochMst") && !(_x isEqualTo "toast")) then {_passedCfgs pushBack _x}};
 	};
 } forEach _config;
-GMS_huntedMsgTypes = _passedCfgs;
+_passedCfgs;

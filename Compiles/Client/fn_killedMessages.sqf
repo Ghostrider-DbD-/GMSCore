@@ -96,38 +96,38 @@ if (player isEqualTo _killer) then
 
 	switch (GMS_ModType) do 
 	{
-		case "epoch": {
+		case "Epoch": {
 			_moneyName = "Crypto";
-			_respectName = "Reputation";
+			_respectName = "Karma";
 			//_msg2 = _msg2 + format["<t color='#7CFC00' size='1.4' align='right'>Crypto <t color='#ffffff'>%1X<br/>",_money];
 		};
-		case "exile": {
+		case "Exile": {
 			_moneyName = "Tabs";
 			_respectName = "Respect";
 		};
 		default {
-			_moneyName = "";
-			_respectName = "";
+			_money = 0;
+			_respect = 0;
 		};
 	};
+	/*
+	private _money = 0;
+	private _respect = 25;
+	private _moneyName = "Tabs";
+	private _respectName = "Respect";
+	private _killStreak = 3;
+	*/
 	_msg1 = format["<t color='#7CFC00' size='1.4' align='right'>AI Killed</t><br/>"];
-	_msg2 = if (_money == 0) then 
+	if !(_money == 0) then 
 	{
-		""
-	} else {
-		format["<t color='#7CFC00' size='1.4' align='right'>+%1 %2</t><br/>",_money,_moneyName];
+		_msg1 = _msg1 + format["<t color='#7CFC00' size='1.4' align='right'>%2</t><t color='#ffffff' size='1.4'>+%1</t><br/>",_money,_moneyName];
 	};
-	_msg3 = if (_respect == 0) then 
+	if !(_respect == 0) then 
 	{
-		""
-	} else {
-		format["<t color='#7CFC00' size='1.4' align='right'>+%1 %2</t><br/>",_respect,_respectName];
+		_msg1 = _msg1 + format["<t color='#7CFC00' size='1.4' align='right'>%2</t><t color='#ffffff' size='1.4'>+%1</t><br/>",_respect,_respectName];
 	};
-	_msg4 = format["<t color='#7CFC00' size='1.4' align='right'>Killstreak</t>"];
-	_msg5 = format["<t color='#ffffff'>%1X</t><br/>",_killStreak];
+	_msg1 = _msg1 + format["<t color='#7CFC00' size='1.4' align='right'>Killstreak</t><t size='1.4' color='#ffffff'>%1X</t><br/>",_killStreak];
 
-	[parseText (_msg1 + _msg2 + _msg3 + _msg4 + _msg5),[0.0823437 * safezoneW + safezoneX,0.379 * safezoneH + safezoneY,0.0812109 * safezoneW,0.253 * safezoneH], nil, 7, 0.3, 0] spawn BIS_fnc_textTiles;
+	[parseText (_msg1),[0.0823437 * safezoneW + safezoneX,0.379 * safezoneH + safezoneY,0.0812109 * safezoneW,0.253 * safezoneH], nil, 7, 0.3, 0] spawn BIS_fnc_textTiles;
 };
 
-
-	

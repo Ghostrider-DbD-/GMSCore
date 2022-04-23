@@ -17,12 +17,13 @@ params[
 		["_blackListed",[]],  // areas to avoid within the patrol region
 		["_timeout",300]
 ];
-[format["InitializeWaypointRoadsPatrol: _leader %1 | group %2 | vehicle %3",_leader,group _leader, typeOf (vehicle _leader)]] call GMS_fnc_log;
+//[format["InitializeWaypointRoadsPatrol: _leader %1 | group %2 | vehicle %3",_leader,group _leader, typeOf (vehicle _leader)]] call GMS_fnc_log;
 private _group = group _leader;
-GMSCore_monitoredGroups pushBackUnique _group;
+private _vehicle = vehicle _leader;
+//GMSCore_monitoredGroups pushBackUnique _group;
 _group setVariable[GMS_waypointTimeoutInterval,_timeout];  // time in seconds before the waypoint is considered failed and the group will be redirected
 _group setVariable["GMS_blackListedAreas",_blacklisted];
 private _wp = [_group,0];
 _wp setWaypointStatements ["true","this call GMS_fnc_nextWaypointRoadPatrols;"]; 
-
+GMSCore_monitoredRoadPatrols pushBack [_group,_vehicle,objNull];
 _leader call GMS_fnc_nextWaypointRoadPatrols;

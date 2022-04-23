@@ -21,17 +21,10 @@ for "_i" from 1 to (count GMSCore_monitoredAreaPatrols) do
 	private _patrol = GMSCore_monitoredAreaPatrols deleteAt 0;
 	_patrol params["_group","_patrolArea","_deleteOnNullGroup"];
 	//diag_log format["_monitorAreaPatrols (23): _group %1 | _area %2 | _delete %3",_group,_patrolArea,_deleteOnNullGroup];
-	if (isNull _group) then   
+	if !(isNull _group) then   
 	{
-		// group is empty or delete so lets clean up anything associated with it.
-		[format["GMS_fnc_monitorAreaPatrols (27): group null, removing it from cue"]];
-		if (_deleteOnNullGroup) then 
-		{
-			[format["GMS_fnc_monitorAreaPatrols (29): deleted markers for a Null group"]] call GMS_fnc_log;
-			deleteMarker _patrolArea;
-		};
-	} else {
 		// We will not need to update waypoints for units manning static weapons
+		//_group enableSimulationGlobal true;
 		if !(_group getVariable["soldierType",""] isEqualTo "emplaced") then 
 		{
 			private _waypointExpires = _group getVariable[GMS_waypointTeminationTime,0];
@@ -51,7 +44,7 @@ for "_i" from 1 to (count GMSCore_monitoredAreaPatrols) do
 				if !([_patrolAreaCenter,_patrolAreaSize,getPos(leader _group)] call BIS_fnc_isInsideArea) then 
 				{
 					[format["GMS_fnc_monitorAreaPatrols (56) group %1 stuck",_group]] call GMS_fnc_log;
-					[_group,true] call GMS_fnc_setWaypointStuckValue;					
+					[_group,true] call GMS_fnc_setStuck;					
 					(leader _group) call GMS_fnc_nextWaypointAreaPatrol;
 				};
 			} else {

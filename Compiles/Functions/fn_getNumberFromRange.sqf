@@ -15,8 +15,10 @@
 */
 
 #include "\GMSCore\Init\GMS_defines.hpp"
-params["_data"];
-_value = objNull;
+params[["_data",[]]];
+
+private "_value";
+if (_data isEqualTo []) exitWith {[]};
 if ((typeName _data) isEqualTo "ARRAY") then
 {
 	if ((count _data) == 1) then
@@ -25,8 +27,7 @@ if ((typeName _data) isEqualTo "ARRAY") then
 	} else {
 		if ((count _data) == 2) then
 		{
-			_min = _data select 0;
-			_max = _data select 1;
+			_data params[["_min",0],["_max",1]];
 			if (_max > _min) then 
 			{
 				_value = _min + random(_max - _min);
@@ -35,6 +36,7 @@ if ((typeName _data) isEqualTo "ARRAY") then
 			};
 		} else {
 			diag_log format["[GMSAI] Error: Array %1 must have 1 or 2 scalar elements",_data];
+			_value = [];
 		};
 	};
 };
@@ -42,5 +44,5 @@ if (typeName _data isEqualTo "SCALAR") then
 {
 	_value = _data;
 };
-//diag_log format["_getIntegerFromRange: _this = %1 | _data = %2 | _value = %3",_this,_data,_value];
+
 _value

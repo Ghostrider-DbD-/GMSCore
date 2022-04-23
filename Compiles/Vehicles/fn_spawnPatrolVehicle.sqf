@@ -27,19 +27,24 @@ params[
 		["_className",""], // Clasname of vehicle to be spawned
 		["_spawnPos",[0,0,0]],  //  selfevident
 		["_dir",0],  //  selfevident
-		["_disable",0],  // this should be disabled turrets that we remove ammo from
-		["_removeFuel",false],  // when true fuel is removed from the vehicle
+		["_height",0],		
+		["_disable",0],  // damage value set to this value if less than this value when all crew are dead
+		["_removeFuel",0.2],  // fuel set to this value when all crew dead
 		["_releaseToPlayers",true],
 		["_deleteTimer",300],
-		["_height",0],
 		["_vehHitCode",[]],
 		["_vehKilledCode",[]]
 	];
 
-//diag_log format["GMS_fnc_spawnPatrolVehicle: count _vehHitCode = %1 | count _vehKilledCode = %2",count _vehHitCode, count _vehKilledCode];
+
 
 private _veh = [_className,_spawnPos,_dir,_height] call GMS_fnc_createVehicle;
-[_veh,_disable,_removeFuel,_releaseToPlayers,_deleteTimer] call GMS_fnc_initializePatrolVehicle;
-_veh setVariable[GMS_vehHitCode,_vehHitCode];
-_veh setVariable[GMS_vehKilledCode,_vehKilledCode];
+if !(isNull _veh) then 
+{
+	[_veh,_disable,_removeFuel,_releaseToPlayers,_deleteTimer] call GMS_fnc_initializePatrolVehicle;
+	_veh enableDynamicSimulation false;
+	_veh enableSimulationGlobal true;
+	_veh setVariable[GMS_vehHitCode,_vehHitCode];
+	_veh setVariable[GMS_vehKilledCode,_vehKilledCode];
+};
 _veh

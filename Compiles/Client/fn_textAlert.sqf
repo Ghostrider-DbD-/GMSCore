@@ -40,10 +40,10 @@ playSound _sound;
 			];	
 		};
 		case "epochMsg": {
-			if (GMS_modeType isEqualTo "epoch") then {[_msg,5] call Epoch_msg};
+			if (GMS_modeType isEqualTo "Epoch") then {[_msg,5] call Epoch_msg};
 		};
 		case "toast": {
-			if (GMS_modType isEqualTo "exile") then {["InfoTitleAndText", ["ALLERT", _msg]] call ExileClient_gui_toaster_addTemplateToast};
+			if (GMS_modType isEqualTo "Exile") then {["InfoTitleAndText", ["ALLERT", _msg]] call ExileClient_gui_toaster_addTemplateToast};
 		};
 		case "dynamic": {
 			_text = format[

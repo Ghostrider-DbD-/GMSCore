@@ -1,6 +1,6 @@
 
 
-
+#include "\GMSCore\Init\GMS_defines.hpp"
 switch (toLower worldName) do 
 {// These may need some adjustment - including a test for shore or water should help as well to avoid missions spawning on water.
 		case "altis":{GMS_mapCenter = [12000,10000,0]; GMS_mapRange = 25000;};
@@ -31,10 +31,17 @@ switch (toLower worldName) do
 		case "lingor":{GMS_mapCenter = [4400, 4400, 0];GMS_mapRange = 4400;};	
 		case "takistan":{GMS_mapCenter = [5500, 6500, 0];GMS_mapRange = 5000;};
 		case "lythium":{GMS_mapCenter = [10000,10000,0];GMS_mapRange = 8500;};
-		case "vt7": {GMS_mapCenter = [9000,9000,0]; _maxDistance = 9000};		
+		case "vt7": {GMS_mapCenter = [9000,9000,0]; GMS_mapRange = 9000};		
 		default {GMS_mapCenter = [6322,7801,0]; GMS_mapRange = 6000};
 };
 GMS_mapMarker = createMarkerLocal ["GMS_mapMarker",GMS_mapCenter];
 GMS_mapMarker setMarkerShapeLocal "RECTANGLE";
 GMS_mapMarker setMarkerSizeLocal [GMS_mapRange,GMS_mapRange];
-GMS_locationsForWaypoints =  ["NameVillage","NameCity","NameCityCapital","NameLocal","CivilDefense"];
+GMS_world = worldname;
+GMS_worldSize = worldSize;
+GMS_axis = GMS_worldSize / 2;
+GMS_mapCenter = [GMS_axis, GMS_axis, 0];
+GMS_mapRadius = sqrt 2 * GMS_axis;
+GMS_maxRangePatrols =  GMS_axis * 2 / 3;
+GMS_locationsForWaypoints =  ["NameVillage","NameCity","NameCityCapital","NameLocal"];
+GMS_patrolLocations = nearestLocations[GMS_mapCenter,GMS_locationsForWaypoints,GMS_mapRange];

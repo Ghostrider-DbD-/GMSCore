@@ -5,9 +5,9 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 // TOD: add handleDamage or hitpoint handler that removes any damage caused by player runovers
 class GMSCoreBuild {
-	version = 1;
-	build = 1;
-	buildDate = "9-25-21";
+	version = 0.22;
+	build = 22;
+	buildDate = "4-16-22";
 };
 class CfgPatches {
 	class GMSCore {
@@ -17,13 +17,14 @@ class CfgPatches {
 		requiredAddons[] = {};
 	};
 };
+
 #include "CfgGMSCore.hpp"
 class CfgFunctions {
 	class GMS {
 		class Airdrops {
 			file = "GMSCore\Compiles\Airdrops";
 			class arrivedOnStation {};
-			class cleanUp {};
+			class cleanUpHeli {};
 			class dropParatroops {};
 			class dropPayload {};
 			class flyInCargoToLocation {};			
@@ -52,7 +53,8 @@ class CfgFunctions {
 		};
 		class GMS_Functions {
 			file = "GMSCore\Compiles\Functions";
-			class checkClassnamesArray {};		
+			class checkClassnamesArray {};
+			class cleanUpJunk {};
 			class dynamicConfigs {};
 			class nearestTarget {};
  			class findRandomPosWithinArea {};	
@@ -61,7 +63,8 @@ class CfgFunctions {
 			class getIntegerFromRange {};
 			class getCfgType {};
 			class getModType {};
-			class groupCanSee {};			
+			class groupCanSee {};
+			class isBlacklisted {};			
 			class isClass {};
 			class isDrone {};
 			class mainThread {};
@@ -70,28 +73,36 @@ class CfgFunctions {
 			class nearestPlayers {};
 			class removeBlacklistedItems {};
 			//class setGroupHuntVehicles {};
+			class removeNullEntries {};
 			class setOnRunoverHipointsDamage {};
 			class setOnRunoverNumberHitpointsDamaged {};
 			class substringsPresentInString {};
 		};		
 		class GMS_Groups {
 			file = "GMSCore\Compiles\Groups";
+			class addToGraveyardGroup {};
 			class addUnitEventHandlers {};
 			class alertNearbyGroups {};
 			class boostGroupAttributes {};
 			class createGroup {};	
-			class createUnmanedVehicleCrew {};
 			class despawnInfantryGroup {};
-			class groupCanSee {};					
+			class getAreaMarker {};
+			class groupCanSee {};
+			class getGroupBlacklist {};				
 			class getGroupIntelligence {};
+			class getGroupVehicle {};
 			class getHunt {};
-			class getHuntDurationTimer {};			
+			class getHuntDurationTimer {};		
+			//class groupOutOfArea {};	
 			class groupRemoveAllGear {};
+			class initializegroup {};
 			class setGroupBehaviors {};
 			class setupGroupMoney {};	
+			class setGroupVehicle {};
 			class setHunt {};
 			class setHuntDurationTimer {};
 			class setMaxRelaodsGroup {};
+			class setGroupBlacklist {};
 			class setupGroupSkills {};
 			class setupGroupGear {};
 			class setupGroupBehavior {};
@@ -113,10 +124,12 @@ class CfgFunctions {
 			class removeAllMPEventHandlers {};	
 		};				
 		class GMS_Players {
-			file = "GMSCore\Compiles\Players";
+			file = "GMSCore\Compiles\Players";			
 			class giveTakeCrypto {};  // Please see credits in the sqf.
+			class getKarma {};	  // Please see the credits in the sqf.	
 			class giveTakeRespect {};
 			class giveTakeTabs {};
+			class setKarma {};
 			class updatePlayerKills {};
 			class unitRunover {};
 		};
@@ -142,15 +155,18 @@ class CfgFunctions {
 		};
 		class GMS_Vehicles {
 			file = "GMSCore\Compiles\Vehicles";
-			class allowPlayerVehicleAccess {};
+			//class allowPlayerVehicleAccess {};
 			class createVehicle {};
 			class destroyVehicleAndCrew {};
+			class disableVehicleSensors {};
 			class disableVehicleWeapons {};
 			class getOutVehicle {};
 			class initializePatrolVehicle {};
 			class loadVehicleCrew {};
+			class removeWeapAndMags {};
 			class restrictPlayerVehicleAcess {};
 			class spawnPatrolAircraft {};
+			class spawnPatrolUAV {};
 			class spawnPatrolVehicle {};
 			class spawnUnmannedVehicle {}; // All manner of drones
 			class vehicleHandleDamage {};	
@@ -169,6 +185,7 @@ class CfgFunctions {
 			class initializeWaypointRoadsPatrol {};
 			class nextWaypointRoadPatrols {};
 			class monitorAreaPatrols {};			
+			class monitorRoadPatrols {};
 			class nextWaypointAreaPatrol {};
 			class setStuck {};
 			class setWaypointStuckValue {};

@@ -3,7 +3,7 @@
 	GMS_fnc_checkClassnNmesArray
 
 	Purpose: to validate classnames used for AI gear or other puposes
-
+			 Handles simple arrays and weighted arrays formated as [className, weight, ... 
 	Parametsrs:
 		_classnames: an array of strings, each representing a possible className
 
@@ -17,7 +17,7 @@ private _return = [];
 //diag_log format["[GMS] _checkClassnamesArray: _classNames select 0 = %1 | _classNames = %2",_classNames select 0,_classNames];
 if !(_classNames isEqualTo []) then 
 {
-	private _mode = if (count _classNames >= 2) then {1} else {0}; // weighed
+	private _mode = if (count _classNames >= 2) then {1} else {0}; // weighted
 	if (_mode == 1) then 
 	{
 		if !(typeName (_classNames select 1) isEqualTo "SCALAR") then {_mode = 0};

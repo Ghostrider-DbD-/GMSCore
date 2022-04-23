@@ -1,5 +1,5 @@
 /*
-	GMS_ fnc_vehicleHit 
+	GMS_fnc_vehicleHit 
 	
 	Purpose: called when the GMS MPHit EH is fired for the vehicle to handle allerting crew to enemy activities. 
 
@@ -15,12 +15,16 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 if !(local (_this select 0)) exitWith {};
 params ["_veh", "_source", "_damage", "_instigator"];
-[format["GMS_fnc_vehicleHit: _vehicle %1 | _source %2 | _damage %3 | _instigator %4",_veh,_source,_damage,_instigator]] call GMS_fnc_log;
-private _vehHC = _veh getVariable[GMS_vehHitCode, []];
-//[format["GMS_fnc_vehicleHit: count _vehHC = %1",count _vehHC]] call GMS_fnc_log;
+private _group = _veh getVariable["GMS_group",grpNull];
+//[format["GMS_fnc_vehicleHit: _this = %1",_this]] call GMS_fnc_log;
+if ([_veh] call GMS_fnc_updateGroupHitKilledTimer) then // This only allows updates every 10 sec to reduce server load.
 {
-	_this call _x;
-} forEach _vehHC;
+	#define searchDistance _group getVariable [GMS_patrolAlertDistance,500] // Tied to the alertDistance for the group
+	#define bumpKnowsAbout _group getVariable [GMS_patrolIntelligence, 0.5]  // Tied to intelligence fot the group
+	[group _source, _searchDistance, _bumpKnowsAbout] call GMS_fnc_allertNearbyGroups;
+	[_group, _source] call GMS_fnc_huntPlayerGroup;
+	{_this call _x} forEach (_veh getVariable[GMS_vehHitCode, []]);
+};
 
 
 

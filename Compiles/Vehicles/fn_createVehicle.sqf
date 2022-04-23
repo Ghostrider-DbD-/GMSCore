@@ -25,22 +25,27 @@ params[
 private "_veh";
 if (_height > 0 && _vehType isKindOf "Air") then 
 {
+	_pos set[2,600];
 	_veh = createVehicle[_vehType, _pos, [], 0, "FLY"];
+	_veh engineOn true;
 } else {
 	_veh = createVehicle[_vehType, _pos, [], 0, "NONE"];
 };
 
 _veh allowDamage false;
-_veh setVectorUp surfaceNormal position _veh;
-_veh setDir _dir;
-
-if (GMS_modType isEqualTo "epoch") then
+if (typeName _dir isEqualTo "SCALAR") then 
 {
-	_veh call EPOCH_server_setVToken;
+	_veh setDir _dir;
+};
+if (typeName _dir isEqualTo "ARRAY") then 
+{
+	_veh setVectorUp surfaceNormal position _veh;
 };
 uiSleep 1;
 _veh allowDamage true;
 _veh enableRopeAttach true;
-_veh setVariable["GMS_vehicle",true];
+
+// This variable is not referenced elsewhere so was no longer set as of 11/28/21
+///_veh setVariable[GMS_vehicle,true];
 
 _veh

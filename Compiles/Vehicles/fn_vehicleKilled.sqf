@@ -16,15 +16,18 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 if !(local (_this select 0)) exitWith {};
 params["_veh","_killer","_instigator"];
-//[format["GMS_fnc_vehicleKilled: _veh %1 | _killer %2 | _instigator %3",_veh,_killer,_instigator]] call GMS_fnc_log;
-private _vehKC = _veh getVariable[GMS_vehKilledCode,[]];
-//[format["GMS_fnc_vehicleKilled: _killedCodeCount = %1",count _vehKC]] call GMS_fnc_log;
-private _deleteTimer = _veh getVariable["GMS_deleteEmptyVehicle",300];
-{_this call _x} forEach _vehKC;
+if ([_veh] call GMS_fnc_updateGroupHitKilledTimer) then // This only allows updates every 10 sec to reduce server load.
+{
+	private _group = _veh getVariable["GMS_group",grpNull];
+	#define searchDistance (_group) getVariable [GMS_patrolAlertDistance,500] // Tied to the alertDistance for the group
+	#define bumpKnowsAbout (_group) getVariable [GMS_patrolIntelligence,0.25] // Tied to intelligence fot the group
+	[position _veh,group _killer,searchDistance,bumpKnowsAbout] call GMS_fnc_allertNearbyGroups;
+};
+{_this call _x} forEach (_veh getVariable[GMS_vehKilledCode,[]]);
 [_veh] call GMS_fnc_removeAllLocalEventHandlers;
 [_veh] call GMS_fnc_removeAllMPEventHandlers;
-
-GMSCore_monitoredEmptyVehicles pushBack [_veh, diag_tickTime + _deleteTimer];
+if (GMS_modType isEqualTo "epoch") then {_this call EPOCH_server_save_killedVehicle };
+GMSCore_monitoredEmptyVehicles pushBack [_veh, diag_tickTime + (_veh getVariable["GMS_deleteEmptyVehicle",300])];
 
 
 

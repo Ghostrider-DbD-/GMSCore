@@ -47,6 +47,7 @@
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
 params[["_maximumPrice",1000],["_blackListedItems",[]],["_blacklistedCategories",[]],["_blacklistedClassnameRoots",[]]];
+if (GMSAI_debug > 1) then {[format["fn_dynamicConfigs: _blacklistedClassnameRoots = %1",_blacklistedClassnameRoots]] call GMS_fnc_log};
 _GMSCore_headgearList = [];
 _GMSCore_SkinList = [];
 _GMSCore_vests = [];
@@ -110,7 +111,7 @@ _baseClasses = [];
 _classnameList = [];
 _classNamesAdded = [];
 private "_classnameList";
-if (toLower(GMS_ModType) isEqualTo "epoch") then
+if (GMS_ModType isEqualTo "Epoch") then
 {
 	_classnameList = (missionConfigFile >> "CfgPricing" ) call BIS_fnc_getCfgSubClasses;
 	_generic = [configFile >> "CfgLootTable" >> "Generic","items",[]] call BIS_fnc_returnConfigEntry;
@@ -165,7 +166,7 @@ if (toLower(GMS_ModType) isEqualTo "epoch") then
 	} forEach (_generic + _genericAuto + _genericBed + _genericLarge + _toolsLoot + _medicalLoot);
 };
 
-if (toLower(GMS_modType) isEqualTo "exile") then
+if (GMS_modType isEqualTo "Exile") then
 {
 	_classnameList = (missionConfigFile >> "CfgExileArsenal" ) call BIS_fnc_getCfgSubClasses;
 };
@@ -174,11 +175,11 @@ private ["_price"];  // here for scope only
 	_itemClassName = _x;
 	if ([_itemClassName, _blacklistedClassnameRoots] call GMS_fnc_substringsPresentInString == 0) then
 	{
-		if (toLower(GMS_modType) isEqualTo "epoch") then
+		if (GMS_modType isEqualTo "Epoch") then
 		{
 			_price = getNumber(missionConfigFile >> "CfgPricing" >> _x >> "price");
 		};
-		if (toLower(GMS_modType)  isEqualTo "exile") then
+		if (GMS_modType isEqualTo "Exile") then
 		{
 			_price = getNumber(missionConfigFile >> "CfgExileArsenal" >> _x >> "price");
 		};
@@ -249,7 +250,7 @@ private ["_price"];  // here for scope only
 	};
 } forEach _classnameList;
 _equipment = _map + _watch + _compass + _toolKit;
-/*
+
 diag_log format["[GMSCore] fn_dynamicConfigs: _weapons = %1",_wpnAR + _wpnLMG + _wpnSMG + _wpnShotGun + _wpnSniper];
 diag_log format["[GMSCore] fn_dynamicConfigs: _wpnHandGun = %1",_wpnHandGun];
 diag_log format["[GMSCore] fn_dynamicConfigs: _wpnThrow = %1",_wpnThrow];
@@ -274,7 +275,7 @@ diag_log format["[GMSCore] fn_dynamicConfigs: _vests = %1",_vests];
 diag_log format["[GMSCore] fn_dynamicConfigs: _backpacks = %1",_backpacks];
 diag_log format["[GMSCore] fn_dynamicConfigs: _foodAndDrinks = %1",_foodAndDrinks];
 diag_log format["[GMSCore] fn_dynamicConfigs: _lootItems = %1",_lootItems];
-*/
+
 _return = [
 	_wpnAR,			// 0
 	_wpnLMG,		// 1

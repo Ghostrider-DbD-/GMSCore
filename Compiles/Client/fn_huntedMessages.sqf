@@ -19,19 +19,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
-params["_target","_type"];
-diag_log format["GMS_fnc_huntedMessages: player %1 | _target %2",player,_target];
-private "_msg";
-//if (_type isEqualTo "dynamic") then {_msg = "An enemy patrol was spoted nearby"};
-//if (_type isEqualTo "reinforce") then 
-//{
-	if (player isEqualTo _target) then 
-	{
-		_msg = format["There is the target: %1, lets pursue and eliminate",name player];
-	} else {
-		_msg = "An enemy patrol was spoted nearby";
-	};
-//};
+params["_msg"];
 
 {
 	switch (_x) do 
@@ -46,10 +34,10 @@ private "_msg";
 			hint _msg;
 		};
 		case "epochMsg": {
-			if (GMS_modType isEqualTo "epoch") then {[_msg,5] call EPOCH_msg};
+			if (GMS_modType isEqualTo "Epoch") then {[_msg,5] call EPOCH_msg};
 		};
 		case "toast": {
-			if (GMS_ModType isEqualTo "exile") then {["InfoTitleAndText", [_msg]] call ExileClient_gui_toaster_addTemplateToast};
+			if (GMS_ModType isEqualTo "Exile") then {["InfoTitleAndText", [_msg]] call ExileClient_gui_toaster_addTemplateToast};
 		};
 	};
 } forEach GMS_huntedMsgTypes;

@@ -12,5 +12,5 @@
 */
 
 #include "\GMSCore\Init\GMS_defines.hpp"
-diag_log format["giveTakeCrypto: _this = %1",_this];
+//diag_log format["giveTakeCrypto: _this = %1",_this];
 _this call EPOCH_server_effectCrypto;

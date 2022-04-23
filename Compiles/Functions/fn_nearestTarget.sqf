@@ -27,7 +27,7 @@ if (isNull _enemy || (_leader knowsAbout _enemy) < _minKnowsAbout) then
 		if ([_group,_x] call GMS_fnc_groupCanSee || (_leader knowsAbout _x) > _minKnowsAbout) exitWith {_enemy = _x};
 	} forEach _enemies; 
 };
-[format["GMS_fnc_nearestTarget: returning _enemy = %1",_enemy]] call GMS_fnc_log;
+//[format["GMS_fnc_nearestTarget: returning _enemy = %1",_enemy]] call GMS_fnc_log;
 _enemy 
 
 

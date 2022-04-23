@@ -17,30 +17,57 @@
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
 params[
+	["_className",""],
+	["_group",grpNull],		
 	["_pos",[0,0,0]],
 	["_dir",0],
-	["_group",grpNull],
-	["_className",""],
-	["_disable",0],  // a value greater than 0 will increase damage of the object to that level; set to 1.0 to disable turretes, 0.7 to neutralize vehciles
-	["_removeFuel",false],  // when true fuel is removed from the vehicle
+	["_height",0],	
+	["_disable",0],  // damage value set to this value if less than this value when all crew are dead
+	["_removeFuel",0.2],  // uel set to this value when all crew dead
 	["_releaseToPlayers",true],
 	["_deleteTimer",300],
-	["_height",0],
 	["_vehHitCode",[]],
 	["_vehKilledCode",[]]
 ];
 
-//diag_log format["GMS_fnc_spawnPatrolAircraft: _className = %1 | height = %2",_className,_height];
+if !(isClass(configFile >> "CfgVehicles" >> _className)) exitWith
+{
+	[format["GMS_fnc_spawnPatrolAircraft called with invalid classname %1",_className],"error"] call GMS_fnc_log;
+	objNull
+};
+if !(_className isKindOf "Air") exitWith 
+{
+	[format["GMS_fnc_spawnPatrolAircraft: class name %1 is not kindOf 'Air'",_className],"error"] call GMS_fnc_log;
+	objNull
+};
 
-private _aircraft = [_className,_pos,_dir,_disable,_removeFuel,_releaseToPlayers,_deleteTimer,_height] call GMS_fnc_spawnPatrolVehicle;
-_group setVariable[GMS_groupVehicle,_aircraft];
-_group setVariable[GMS_flyinHeight,_height];
-[_aircraft,(units _group)] call GMS_fnc_loadVehicleCrew;
-_group setVariable[GMS_vehHitCode,_vehHitCode];
-_group setVariable[GMS_vehKilledCode,_vehKilledCode];
+private _spawnPos = [_pos select 0, _pos select 1, 600];
+private _aircraft = createVehicle[_className,_spawnPos,[],0,"FLY"];
+if !(isNull _aircraft) then 
+{
+	[_aircraft,_disable,_removeFuel,_releaseToPlayers,_deleteTimer] call GMS_fnc_initializePatrolVehicle;
+	_group setVariable[GMS_flyinHeight,_height];
+	_group addVehicle _aircraft;
+	if (_aircraft isKindOf "Plane") then {
+		_group setVariable[GMS_flyinVariation,40];
+		_group setVariable[GMS_flyinHeight,100];
 
-//diag_log format["GMS_fnc_spawnPatrolAircraft: _aircraft = %1 | and iskindOf 'Air' %2",_aircraft,if (_aircraft isKindOf 'Air') then {true} else {false}];
-//diag_log format["GMS_fnc_spawnPatrolAircraft: crew _aircraft = %1",crew _aircraft];
-_aircraft engineOn true;
-_aircraft flyInHeight _height;
+	};
+	if (_aircraft isKindOf "Helicopter") then {
+		_group setVariable[GMS_flyinVariation,25];
+		_group setVariable[GMS_flyinHeight,50];	
+		[_group,_aircraft] call GMS_fnc_setGroupVehicle;		
+	};
+	{
+		_x moveInAny _aircraft;
+	} forEach (units _group);
+	//[format["gms_fnc_spawnPatrolAircraft: _vehHitCode = %1",_vehHitCode]] call GMS_fnc_log;
+	_aircraft setVariable[GMS_vehHitCode,_vehHitCode];
+	_aircraft setVariable[GMS_vehKilledCode,_vehKilledCode];
+	_aircraft setVariable["GMS_group",_group];
+	_aircraft enableDynamicSimulation false;
+	_aircraft enableSimulationGlobal true;
+	(currentPilot _aircraft)  doMove (_pos getPos[1000,random(359)]); 
+	_aircraft enableCoPilot true;
+};
 _aircraft

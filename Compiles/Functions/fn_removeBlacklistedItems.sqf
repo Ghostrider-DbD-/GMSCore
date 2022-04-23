@@ -3,7 +3,7 @@
 
 		Copyright 2020 by Ghostrider-GRG-
 */
-
+#include "\GMSCore\Init\GMS_defines.hpp"
 params["_items","_blacklist"];
 
 private _filtered = [];

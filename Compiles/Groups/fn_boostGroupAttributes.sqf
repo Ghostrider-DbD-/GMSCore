@@ -17,7 +17,6 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_group",["_overallSkillsIncrement",0.1],["_subskillIncrement",-.05]];
 
-
 {
 	private _unit = _x;
 	_unit setSkill ((skill _unit) + _overallSkillsIncrement);

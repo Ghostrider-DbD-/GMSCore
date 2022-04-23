@@ -13,7 +13,11 @@
 
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_group"];
-
-_group getVariable[GMS_target,objNull]
-
-// Should not be necessary to define a _return here, check on this.
+// if no target is assigned or the target is 'dead' return objNull
+private _hunted = _group getVariable[GMS_target,objNull];
+if !(alive _hunted) then 
+{
+	_hunted = objNull;
+	[_group, _hunted] call GMS_fnc_setHunt;
+};
+_hunted

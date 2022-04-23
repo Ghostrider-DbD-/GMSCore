@@ -40,24 +40,29 @@ params[
 		["_smokeShell",""],
 		["_aiHitCode",[]],
 		["_aiKilledCode",[]],
-		["_chanceGarison",0]
+		["_chanceGarison",0],
+		["_isDroneCrew",false]
 ];
-if (_pos isEqualTo [0,0,0]) exitWith {["Spwan Infantry Group: No Position Specified","error"] call GMS_fnc_log};
+//diag_log format["GMS_fnc_spawnInfantryGroup:  _side = %1", _side];
 if (_units == 0) exitWith {["Spawn Infantry: Number of units not defined or set to 0, no group spawned","error"], call GMS_fnc_log};
 
 private _group = [_side] call GMS_fnc_createGroup;
-_group setVariable[GMS_patrolAlertDistance,_alertDistance];
-_group setVariable[GMS_patrolIntelligence,_intelligence];
-_group setVariable[GMS_bodyCleanupTime,_bodycleanuptimer];
-_group setVariable[GMS_maxReloads,_maxReloads];
-_group setVariable[GMS_removeLauncher,_removeLaunchers];
-_group setVariable[GMS_removeNVG,_removeLaunchers];
-_group setVariable[GMS_maxHeals,_maxHeals];
-_group setVariable[GMS_minDamageForHeal,_minDamageToHeal];
-_group setVariable[GMS_smokeShell,_smokeShell];
-_group setVariable[GMS_aiHitCode,_aiHitCode]; 
-_group setVariable[GMS_aiKilledCode,_aiKilledCode];
-_group setVariable[GMS_garisonChance,_chanceGarison];
+if (_pos isEqualTo [0,0,0]) then {["Spwan Infantry Group: No Position Specified or position = [0,0,0]","warning"] call GMS_fnc_log; };
+[
+	_group,
+	_baseSkill,
+	_alertDistance, 	 // How far GMS will search from the group leader for enemies to alert to the kiillers location
+	_intelligence,  	// how much to bump knowsAbout after something happens
+	_bodycleanuptimer,  // How long to wait before deleting corpses for that group
+	_maxReloads, 			// How many times the units in the group can reload. If set to -1, infinite reloads are available.
+	_removeLaunchers,
+	_removeNVG,
+	_minDamageToHeal,
+	_maxHeals,
+	_smokeShell,
+	_aiHitCode,
+	_aiKilledCode	
+] call GMS_fnc_initializeGroup;
 _players = allPlayers select {_x distance _pos < _alertDistance};
 {_group reveal[_x,_intelligence]} forEach _players;
 
@@ -72,11 +77,12 @@ for "_i" from 1 to _units do
 	} else {
 		_rank = "PRIVATE";
 	};
+	private _unitType = if (_isDroneCrew) then {"B_UAV_AI"} else {GMS_unitTYpe};
 	GMS_unitType createUnit [_pos, _group, "_unit = this", _baseSkill, _currRank select 0];
+	//diag_log format["GMS_fnc_spawnInfantryGroup: side _unit = %1", side _unit];
 	_unit setVariable ["loadoutType", _currRank select 1];
 	if (GMS_modType isEqualTo "Epoch") then {_unit setVariable ["LAST_CHECK",28800,true]};
 	_unit enableAI "ALL";
-
 };
 _group call GMS_fnc_addUnitEventHandlers;
 

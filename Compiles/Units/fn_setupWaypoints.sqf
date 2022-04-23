@@ -77,10 +77,7 @@ if !(_soldierType isEqualTo "emplaced") then
 	//_wp setWaypointTimeout [0.1,0.1100,0.1200];	
 	_group setCurrentWaypoint _wp;	
 	_group setVariable["soldierType",_soldierType,true];
-	#ifdef blck_debugMode
-	_wp setWaypointStatements ["true","this call GMS_fnc_nextWaypointAreaPatrol; diag_log format['====Updating timestamp for group %1 and updating its WP',group this];"];
-	if (blck_debugLevel > 2) then {diag_log format["_fnc_setupWaypoints: configuring weapoints for group %2 with _soldierType = %1",_soldierType,_group];};
-	#else
+
 	_wp setWaypointStatements ["true","this call GMS_fnc_nextWaypointAreaPatrol;"];
 	#endif	
 };

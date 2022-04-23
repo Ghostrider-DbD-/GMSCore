@@ -15,14 +15,13 @@
 #define GMS_validAlertMsgTypes ["systemChat","hint","cutText","dynamic","toast","epochMsg"]
 
 /*
-	Defines for Drones 
+	Defines for Drones and Helicopters
 */
 #define GMS_flyinHeight "height"
-
+#define GMS_flyinVariation "flyinVar"
 /*
 	Defins for Main Thread 
 */
-#define loopTime 15
 #define timerIncrement15 15
 #define timerIncrement30 30
 #define timerIncrement60 60
@@ -30,12 +29,25 @@
 #define timerIncrement120 120
 
 /*
+	Defines for groups 
+*/
+
+#define GMS_stuckValue "GMS_stuck"
+
+/*
 	Defines for Vehicles
 */
+
+// No longer used
+//#define GMS_vehicle "GMS_vehicle"
+
 #define GMS_vehHitCode "vehHitCode"
 #define GMS_vehKilledCode "vehKilledCode"
 #define GMS_groupVehicle "grpVeh"
-
+#define GMS_disableVehicle "GMS_disable"
+#define GMS_removeFuel "GMS_removeFuel"
+#define GMS_allowAccess "GMS_allowAccess"
+#define GMS_deleteEmptyVehicle "GMS_deleteEmptyVehicle"
 /*
 	Defines for Units (genearal)
 */
@@ -69,6 +81,6 @@
 #define GMS_deleteDeadTimer "deleteDeadTimer"
 #define GMS_groupInHouse "inHouse"
 #define GMS_target "target"
-
+#define GMS_maxDistanceTarget "maxDistTarget"
 #define GMS_waypointTimeoutInterval "wpTimeout"
 #define GMS_waypointTeminationTime "killWP"

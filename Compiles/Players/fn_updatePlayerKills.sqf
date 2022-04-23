@@ -15,13 +15,13 @@
 params["_player","_newKills"];
 switch (GMS_modType) do 
 {
-	case "epoch": {
+	case "Epoch": {
 		#define toClient true 
 		#define isTotal false
 		//  params [ ["_playerObj",objNull], ["_statType",""], ["_adjust",0], ["_toClient",false], ["_isTotal",false]];
 		[_player,"AIKills",_newKills, toClient, isTotal] call EPOCH_server_updatePlayerStats;
 	};
-	case "exile": {
+	case "Exile": {
 		private _playerKills = _player getVariable ["ExileKills", 0];
 		_playerKills = _playerKills + _newKills;
 		_killer setVariable ["ExileKills", _playerKills];

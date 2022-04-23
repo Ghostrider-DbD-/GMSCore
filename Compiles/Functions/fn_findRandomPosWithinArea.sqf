@@ -16,14 +16,14 @@
 */
 
 #include "\GMSCore\Init\GMS_defines.hpp"
-params["_areaMarker","_noPositionsToFind",["_units",[]],["_separation",100],["_blackList",[]]];
-diag_log format["GMS_fnc_findRandomPosWithinArea:  _areaMarker %1 | _noPositionsToFind %2",_areaMarker,_noPositionsToFind];
+params["_areaMarker","_noPositionsToFind",["_units",[]],["_separation",10],["_blackList",["water"]]];
+//diag_log format["GMS_fnc_findRandomPosWithinArea:  _areaMarker %1 | _noPositionsToFind %2 | _separation %3",_areaMarker,_noPositionsToFind,_separation];
 private _spawnPos = [0,0];
 private _posnFound = [];
 private _center = markerPos _areaMarker;
 private _size = markerSize _areaMarker;
 if ((typeName _size) isEqualTo "ARRAY") then {_size = (_size select 0) max (_size select 1)};
-diag_log format["GMS_fnc_findRandomPosWithinArea: _size = %1",_size];
+//diag_log format["GMS_fnc_findRandomPosWithinArea: _size = %1",_size];
 private _localBlacklist = +_blackList;
 {_localBlacklist pushBack [getPos _x, _separation]} forEach _units;
 for "_i" from 1 to _noPositionsToFind do
@@ -35,5 +35,5 @@ for "_i" from 1 to _noPositionsToFind do
 		_localBlackList pushBack [_spawnPos,_separation];
 	};
 };
-diag_log format["_findRandomPosWithinArea: _posnFound = %1",_posnFound];
+//diag_log format["_findRandomPosWithinArea: _posnFound = %1",_posnFound];
 _posnFound

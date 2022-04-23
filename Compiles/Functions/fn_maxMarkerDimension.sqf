@@ -14,8 +14,7 @@
 params["_marker",""];
 if (_marker isEqualTo "") exitWith {["maxMarkerDimension: no marker parameter specified",'error'] call GMS_fnc_log};
 private _size = getMarkerSize _marker;
-private _max = (size select 0) max (size select 1);
-_max 
+// Returns the max value of the two dimensions
+(size select 0) max (size select 1);
 
-// TODO: not sure we could not just omit Max here. 
 

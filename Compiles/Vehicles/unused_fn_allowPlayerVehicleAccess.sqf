@@ -15,14 +15,15 @@
 
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_veh"];
-private _accessAllowed = _veh getVariable ["GMS_allowAccess",true];
+private _accessAllowed = _veh getVariable [GMS_allowAccess,true];
+[format["GMS_fnc_allowPlayerAccess: _veh = %1 | _accessAllowed = %2",_veh,_accessAllowed]] call GMS_fnc_log;
 if (_accessAllowed) then 
 {
 	_veh enableRopeAttach true;
 	_veh enableCoPilot true;
-	if (_veh getVariable["GMS_removeFuel",true]) then 
-	{
-		_veh setFuel 0;
-	};
-	_veh lock 1;
+	private _setFuelTo = _veh getVariable[GMS_removeFuel,0.2];
+	private _setDamageTo = _veh getVariable[GMS_disableVehicle,0.5];
+	_veh setFuel _setFuelTo;
+	if ((damage _veh) < _setDamageTo) then {_veh setDamage _setDamageTo};
+	_veh lock 0;
 };

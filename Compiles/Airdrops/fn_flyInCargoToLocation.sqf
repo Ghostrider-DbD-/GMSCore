@@ -57,7 +57,7 @@ _aircraft setVariable["dropCargoIndex",_wp3 select 1];
 _positionDespawn = (_airdropPos) getPos[1000,_dir];
 /////////////////////////////////////
 _wp4 = _group addWaypoint[_positionDespawn,0,3,"despanPosn"];
-_wp4 setWaypointStatements["true","this call GMS_fnc_cleanup;"];
+_wp4 setWaypointStatements["true","this call GMS_fnc_cleanupheli;"];
 _wp4 setWaypointSpeed "NORMAL";
 _aircraft setVariable["finalWPIndex",_wp4 select 1];
 _m = format["flyInCargoToLocation: currentWaypoint on script end =  %1",currentWaypoint _group];

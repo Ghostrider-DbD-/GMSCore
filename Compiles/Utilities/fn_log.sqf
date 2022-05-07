@@ -15,7 +15,7 @@
 
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_msg",["_type",""]];
-if !(typeName _type isEqualTo "STRING") then 
+if !(_type isEqualType "") then 
 {
 	[format["Invalid _type %1 passed to GMS_fnc_log",_type]] call GMS_fnc_log;
 	_type = "";
@@ -23,7 +23,7 @@ if !(typeName _type isEqualTo "STRING") then
 //diag_log format["GMS_fnc_log: _this = %1",_this];
 private _log = "";
 #define basemsg "[GMSCore]%1 %2"
-switch (tolower _type) do 
+switch (toLowerANSI _type) do 
 {
 	case "warning": {_log = format[basemsg," <WARNING> ",_msg]};
 	case "error": {_log = format[basemsg," <ERROR> ",_msg]};

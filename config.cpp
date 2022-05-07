@@ -5,9 +5,9 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 // TOD: add handleDamage or hitpoint handler that removes any damage caused by player runovers
 class GMSCoreBuild {
-	version = 0.22;
-	build = 22;
-	buildDate = "4-16-22";
+	version = 0.25;
+	build = 25;
+	buildDate = "5-07-22";
 };
 class CfgPatches {
 	class GMSCore {
@@ -53,8 +53,11 @@ class CfgFunctions {
 		};
 		class GMS_Functions {
 			file = "GMSCore\Compiles\Functions";
+			class addToDeletionCue {};
 			class checkClassnamesArray {};
+			class checkClassNamePrices {};
 			class cleanUpJunk {};
+			class deleteObjectsMethod {};
 			class dynamicConfigs {};
 			class nearestTarget {};
  			class findRandomPosWithinArea {};	
@@ -68,7 +71,8 @@ class CfgFunctions {
 			class isClass {};
 			class isDrone {};
 			class mainThread {};
-			class monitorMarkers {};			
+			class monitorMarkers {};
+			class monitorObjectDeletionCue {};			
 			class nearestGMSAI {};
 			class nearestPlayers {};
 			class removeBlacklistedItems {};
@@ -115,11 +119,11 @@ class CfgFunctions {
 		};
 		class GMS_Objects {
 			file = "GMSCore\Compiles\Objects";
-			class addObjectToDeletionCue {};
+			//class addObjectToDeletionCue {};
 			class createObject {};	
-			class deleteObjectMethod {};							
+			//class deleteObjectMethod {};							
 			class emptyObjectInventory {};	
-			class monitorObjectDeletionCue {};			
+			//class monitorObjectDeletionCue {};			
 			class removeAllEventHandlers {};
 			class removeAllMPEventHandlers {};	
 		};				

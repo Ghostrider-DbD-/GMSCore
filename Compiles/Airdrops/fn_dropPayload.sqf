@@ -53,8 +53,8 @@ if (typeName _payload isEqualTo "GROUP") then
 
 	if (_mapMarker) then 
 	{
-		_marker = createMarker[format["payload%1",_payload],getPos _payload];
-		_marker setMarkerPos (getPos _payload);
+		_marker = createMarker[format["payload%1",_payload],getPosATL _payload];
+		_marker setMarkerPos (getPosATL _payload);
 		_marker setMarkerType "hd_dot";
 		_marker setMarkerColor "COLORBLACK";
 		_marker setMarkerText "Supplies";

@@ -14,9 +14,8 @@
 
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_player","_amtRespect"];
-//diag_log format["giveTakeRespect: _this = %1",_this];
+//diag_log format["giveTakeRespect: _player = %1 | _amtRespect %2",_player,_amtRespect];
 private _respect = _player getVariable ["ExileScore", 0];
-_respect = _respect + (_amtRespect);
-_player setVariable ["ExileScore", _respect];
+_player setVariable ["ExileScore", _respect + _amtRespect];
 format["setAccountScore:%1:%2", _respect,getPlayerUID _player] call ExileServer_system_database_query_fireAndForget;
 _player call ExileServer_object_player_sendStatsUpdate;

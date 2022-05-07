@@ -16,7 +16,7 @@
 
 params ["_vehicle", "_selection", "_newDmg", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
 if (isPlayer _instigator) exitWith {};
-if (_selection isEqualTo "" || _selection isEqualTo "?") then 
+if (_selection isEqualTo "" || {_selection isEqualTo "?"}) then 
 {
 	_vehicle setDamage ((damage _vehicle) - _newDmg);
 	[format["GMS_fnc_vehicleHandleDamage: vehicle %1 | %2 | damage set to %3",_vehicle, typeOf _vehicle, damage _vehicle]] call GMS_fnc_log;

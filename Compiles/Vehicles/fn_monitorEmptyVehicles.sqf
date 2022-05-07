@@ -23,7 +23,7 @@ for "_i" from 1 to (count GMSCore_monitoredEmptyVehicles) do
 	{
 		if (local _veh) then 
 		{
-			private _playersNear = [getPos _veh, 300] call GMS_fnc_playersNear;
+			private _playersNear = [getPosATL _veh, 300] call GMS_fnc_playersNear;
 			if (_playersNear isEqualTo []) then 
 			{
 				[_veh] call GMS_fnc_destroyVehicleAndCrew;

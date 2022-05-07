@@ -16,4 +16,4 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 #define veh _this select 0
 // TODO: redirect to the correct function
-if ((isServer) || local (veh)) then {[veh] call blck_fnc_checkForEmptyVehicle};
+if ((isServer) || {local (veh)}) then {[veh] call blck_fnc_checkForEmptyVehicle};

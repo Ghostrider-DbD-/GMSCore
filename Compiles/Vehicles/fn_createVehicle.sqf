@@ -23,7 +23,7 @@ params[
 ];
 
 private "_veh";
-if (_height > 0 && _vehType isKindOf "Air") then 
+if (_height > 0 && {_vehType isKindOf "Air"}) then 
 {
 	_pos set[2,600];
 	_veh = createVehicle[_vehType, _pos, [], 0, "FLY"];
@@ -33,11 +33,11 @@ if (_height > 0 && _vehType isKindOf "Air") then
 };
 
 _veh allowDamage false;
-if (typeName _dir isEqualTo "SCALAR") then 
+if (_dir isEqualType 0) then 
 {
 	_veh setDir _dir;
 };
-if (typeName _dir isEqualTo "ARRAY") then 
+if (_dir isEqualType []) then 
 {
 	_veh setVectorUp surfaceNormal position _veh;
 };

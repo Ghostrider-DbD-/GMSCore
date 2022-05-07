@@ -23,7 +23,7 @@
 params[
 	["_group",grpNull],  // group for which to configure / initialize waypoints
 	["_blackListed",[]],  // areas to avoid within the patrol region
-	["_patrolAreaMarker",""],  // a marker defining the patrol area center, size and shape
+	["_patrolAreaMarker",""],  // a markeror array defining the patrol area center, size and shape
 	["_timeout",300],
 	["_garrisonChance",0],  // chance that an infantry group will garison an building of type house - ignored for vehicles.
 	["_type",GMS_infrantryPatrol],  // "infantry","vehicle","air","submersible"

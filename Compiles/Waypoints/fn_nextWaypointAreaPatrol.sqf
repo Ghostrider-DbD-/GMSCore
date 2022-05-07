@@ -34,8 +34,18 @@ private _maxDistanceTarget = _group getVariable[GMS_maxDistanceTarget,50];
 //diag_log format["_nextWaypointAreaPatrol: _maxDistanceTarget = %1",_maxDistanceTarget];
 private _blacklisted = _group getVariable "GMS_blackListedAreas";
 private _huntTimer = [_group] call GMS_fnc_getHuntDurationTimer;
-private _patrolAreaCenter = markerPos _patrolAreaMarker;
-private _patrolAreaSize = markerSize _patrolAreaMarker;
+private _patrolAreaCenter = [];
+private _patrolAreaSize = [];
+if (_patrolAreaMarker isEqualType "") then 
+{
+	_patrolAreaCenter = markerPos _patrolAreaMarker;
+	_patrolAreaSize = markerSize _patrolAreaMarker;
+};
+if (_patrolAreaMarker isEqualType []) then 
+{
+	_patrolAreaCenter = _patrolAreaMarker select 0;
+	_patrolareaSize = _patrolAreaMarker select 1;
+};
 
 private _target = [_group] call GMS_fnc_getHunt;  // This can be set by the hunting logic or here for nearest player about which teh AI knows something
 //diag_log format["_nextWaypointAreaPatrol: _target = %1",_target];
@@ -49,7 +59,7 @@ if !(isNull _target) then
 	if !(alive _target) then {_target = objNull};
 };
 
-if (isNull _target || !(alive _target)) then
+if (isNull _target || {!(alive _target)}) then
 {
 	private _retest = true;
 	_target =  [_group,_maxDistanceTarget,2] call GMS_fnc_nearestTarget;
@@ -62,7 +72,7 @@ if (isNull _target || !(alive _target)) then
 //diag_log format["GMS_fnc_nextWaypointAreaPatrol:(58} _group %3 | _target = %1 | _vehicle %2 | nearestEnemy = %3",_target,typeOf vehicle _leader, _leader findNearestEnemy (position _leader),_group];
  private _stuck = [_group] call GMS_fnc_isStuck;
 
-if (_stuck && (isNull _target)) exitWith 
+if (_stuck && {(isNull _target)}) exitWith 
 {
 	private _newPos = _leader getPos[50,(getDir _leader) - 180];
 	private _wp = [_group,0];
@@ -74,7 +84,7 @@ if (_stuck && (isNull _target)) exitWith
 	{_x forceSpeed -1} forEach (units _group);	
 };
 
-if !(isNull _target && !_stuck) exitWith
+if !(isNull _target && {!_stuck}) exitWith
 {
 	// Enemies nearby, set group to combat mode and engage them
 	
@@ -106,7 +116,7 @@ if (isNull _target) then
 {
 	// Normal execution for next waypoint 
 	private "_maxDim";
-	if (typeName _patrolAreaSize isEqualTo "ARRAY") then 
+	if (_patrolAreaSize isEqualType []) then 
 	{
 		if (count _patrolAreaSize == 1) then {_maxDim = _patrolAreaSize select 0};
 		if (count _patrolAreaSize == 2) then {_maxDim = selectMax _patrolAreaSize};
@@ -144,7 +154,7 @@ if (isNull _target) then
 	} else {
 		_group setSpeedMode "LIMITED";
 	};
-	if 	(_garison && _patrolType isEqualTo GMS_infrantryPatrol) then 
+	if 	(_garison && {_patrolType isEqualTo GMS_infrantryPatrol}) then 
 	{
 		private _house = nearestBuilding _nextPos;
 		if !(isNull _house) then 

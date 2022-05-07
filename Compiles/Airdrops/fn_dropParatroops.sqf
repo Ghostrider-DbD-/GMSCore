@@ -21,14 +21,16 @@ diag_log format["GMS_fnc_dropParatroops: _group = %1 | _pos = %2 | _aircraft = %
 
 if !(isNull _aircraft) then 
 {
-	(boundingBoxReal _aircraft) params["_b1","_b2"];
+	//(boundingBoxReal _aircraft) params["_b1","_b2"];
 	private _length = abs((_b2 select 1) - (_b1 select 1));
 	{
-		private _spawnPos = (getPosATL _aircraft) getPos[_length + _forEachIndex + 5, (getDir _aircraft) + 180 ];
-		private _chute = createVehicle ["Steerable_Parachute_F", [_spawnPos select 0, _spawnPos select 1, (getPosATL _aircraft) select 2], [], 0, "FLY"];
+		private _spawnPos = (getPosATL _aircraft) getPos[_length/4 + _forEachIndex, (getDir _aircraft) + 180 ];
+		private _chute = createVehicle ["Steerable_Parachute_F", _spawnPos, [], 0, "FLY"];
 		_x assignAsDriver _chute;
 		_x moveInDriver _chute;
-		uiSleep 2;
+		//_x moveInCargo _aircraft;
+		//_x action["Eject",vehicle _x];
+		uiSleep 3;
 		//diag_log format["GMS_fnc_dropParatroops: _unit %1 spawned into chute at pose %2 and alive = %3",_x, getPosATL _x, alive _x];		
 	} forEach (units _group);
 } else {

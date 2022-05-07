@@ -69,7 +69,7 @@ if !(_soldierType isEqualTo "emplaced") then
 	#endif
 } else {  // Waypoints for any mobile groups: infantry, land vehicles, aircraft and drones.
 	_wp setWaypointType "MOVE";
-	_wp setWPPos (getPos leader _group);
+	_wp setWPPos (getPosATL leader _group);
 	_wp setWaypointCompletionRadius 100;
 	_wp setWaypointBehaviour "COMBAT";
 	_wp setWaypointCombatMode "RED";

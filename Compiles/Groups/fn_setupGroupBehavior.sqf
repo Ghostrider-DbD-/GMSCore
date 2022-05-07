@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_setGroupBehavior
+	GMS_fnc_setupGroupBehavior
 
 	Prupose: setup behavior parameters for a group.
 

@@ -15,7 +15,7 @@ if !(local (_this select 0)) exitWith {};
 params["_unit","_killer","_instigator"];
 //[format["GMS_fnc_unitKilled: _unit = %1 | _killer = %2 | _instigator %3",_unit,_killer,_instigator]] call GMS_fnc_log;
 private _cleanupTimer = (group _unit) getVariable[GMS_bodyCleanupTime,600];
-[_unit,_cleanupTimer] call GMS_fnc_addObjectsToDeletionCue;
+[_unit,diag_tickTime + _cleanupTimer] call GMS_fnc_addToDeletionCue;
 [_unit] call GMS_fnc_removeAllEventHandlers;
 [_unit] call GMS_fnc_removeAllMPEventHandlers;
 _unit disableAI "ALL";

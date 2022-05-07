@@ -16,7 +16,7 @@ GMS_modType = "default";
 if (!isNull (configFile >> "CfgPatches" >> "exile_server")) then {GMS_modType = "Exile"};
 if (!isnull (configFile >> "CfgPatches" >> "a3_epoch_server")) then {GMS_modType = "Epoch"}; 
 diag_log format["GMS_fnc_initialize: GMS_modType = %1",GMS_modType];
-switch (toLower GMS_modType) do 
+switch (toLowerANSI GMS_modType) do 
 {
 	case "Exile": 
 	{

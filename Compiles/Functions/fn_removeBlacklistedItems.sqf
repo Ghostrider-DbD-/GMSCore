@@ -1,46 +1,62 @@
 /*
 	    GMS_fnc_removeBlacklistedItems 
 
+		Purpose: provide a generic tool for removing items in a black list from array.
+			The array may be a list of strings, strings and weights, are subarrays where the first element is a string.
+
+		Parameters:
+			_items: the array to be checked.
+			_blacklist: the list of blacklisted classnames 
+
+		Returns:
+			_items after cleaning to remove blacklisted classnames 
+			
 		Copyright 2020 by Ghostrider-GRG-
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
-params["_items","_blacklist"];
-
-private _filtered = [];
-if !(_items isEqualTo [] || _blacklist isEqualTo []) then 
+params[["_items",[]],["_blacklist",[]]];
+if (_blacklist isEqualTo []) exitWith {};
+private _count = count _items;
+for "_i" from 1 to count _items do 
 {
-	private _mode = if (count _items >= 2) then {1} else {0};; // weighed
-
-	if (_mode == 1) then 
+	if (_i > count _items) exitwith {};
+	private _i1 = _items deleteAt 0;
+	private _blacklisted = false;
+	if (_i1 isEqualType "") then 
 	{
-		if !(typeName (_items select 1) isEqualTo "SCALAR") then {_mode = 0;};
-	};
-	if (_mode == 1) then  // case of weighted array
-	{
-		while {!(_items isEqualTo [])} do 
+		if (_i1 in _blacklist) then {_blacklisted = true};
+		if (_blacklisted) then 
 		{
-			private _cn = _items deleteAt 0;
-			private _wt = _items deleteAt 0;
-			if !(_cn in _blacklist) then 
+			[format["GMS_fnc_removeBlacklistedItems: removing blacklisted item %1 from list",_i1]] call GMS_fnc_log;
+			if ((_items select 0) isEqualType 0) then 
 			{
-				_filtered append [_cn,_wt];
-				//diag_log format["[GMS] _removeBlackLlistedItems: keeping weighted Classname _cn = %1 | _wt = %2 | _filtered updated to %3",_cn,_wt,_filtered];				
+				// assume this is a normal weighted array 
+				_items deleteAt 0;
+			};
+		} else {
+			if ((_items select 0) isEqualType 0) then 
+			{
+				// assume this is a normal weighted array 
+				private _i2 = _items deleteAt 0;
+				_items append [_i1,_i2];
+			};
+			if ((_items select 0) isEqualType "") then 
+			{
+				_items pushBack _i1;
+			};		
+		};
+	} else {
+		if (_i1 isEqualType []) then 
+		{
+			if ((_i1 select 1) in _blacklist) then {_blacklisted = true};
+			if (_blacklisted) then 
+			{
+				[format["GMS_fnc_removeBlacklistedItems: removing blacklisted item %1 from list",_i1]] call GMS_fnc_log;
 			} else {
-				diag_log format["[GMS] _removeBlackLlistedItems: removing blacklisted weighted Classname _cn = %1 | _wt = %2",_cn,_wt];			
-			};
-		};
-	} else {  // case of not a weighted array.
-		while {!(_items isEqualTo [])} do 
-		{
-			private _cn = _items deleteAt 0;
-			if ([_cn] call GMS_fnc_isClass) then
-			{
-				_filtered pushBack _cn;
+				_items pushBack _i1;
 			};
 		};
 	};
-} else {
-	_filtered = _items;
 };
+_items;
 
-_filtered

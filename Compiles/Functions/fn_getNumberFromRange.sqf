@@ -19,7 +19,7 @@ params[["_data",[]]];
 
 private "_value";
 if (_data isEqualTo []) exitWith {[]};
-if ((typeName _data) isEqualTo "ARRAY") then
+if ((_data) isEqualType []) then
 {
 	if ((count _data) == 1) then
 	{
@@ -40,7 +40,7 @@ if ((typeName _data) isEqualTo "ARRAY") then
 		};
 	};
 };
-if (typeName _data isEqualTo "SCALAR") then
+if (_data isEqualType 0) then
 {
 	_value = _data;
 };

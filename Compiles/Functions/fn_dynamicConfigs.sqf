@@ -127,7 +127,7 @@ if (GMS_ModType isEqualTo "Epoch") then
 		//diag_log format["[GMSCore] fn_dynamicConfigs: _itemClassName = %2 |  _x = %1",_x, _itemClassName];
 		if ([_itemClassName, _blacklistedClassnameRoots] call GMS_fnc_substringsPresentInString == 0) then
 		{
-			if ( (getNumber(missionConfigFile >> "CfgPricing" >> _itemClassName >> "price")) < _maximumPrice  && !(_itemClassName in _blackListedItems) && !(_itemClassName in _classNamesAdded)) then
+			if ( (getNumber(missionConfigFile >> "CfgPricing" >> _itemClassName >> "price")) < _maximumPrice  && {(_itemClassName in _blackListedItems) && {!(_itemClassName in _classNamesAdded)}}) then
 			{
 				_foodAndDrinks pushBack _itemClassName;
 				_classNamesAdded pushBack _itemClassName;
@@ -141,7 +141,7 @@ if (GMS_ModType isEqualTo "Epoch") then
 		{
 			if ([_itemClassName, _blacklistedClassnameRoots] call GMS_fnc_substringsPresentInString == 0) then
 			{
-				if ( (getNumber(missionConfigFile >> "CfgPricing" >> _itemClassName >> "price")) < _maximumPrice  && !(_itemClassName in _blackListedItems) && !(_itemClassName in _classNamesAdded)) then
+				if ( (getNumber(missionConfigFile >> "CfgPricing" >> _itemClassName >> "price")) < _maximumPrice  && {!(_itemClassName in _blackListedItems) && {!(_itemClassName in _classNamesAdded)}}) then
 				{
 					_lootItems pushBack _itemClassName;
 					_classNamesAdded pushBack _itemClassName;

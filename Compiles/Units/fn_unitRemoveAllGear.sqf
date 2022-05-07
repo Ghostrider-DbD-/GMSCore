@@ -12,7 +12,7 @@
 
 #include "\GMSCore\Init\GMS_defines.hpp"
 private "_unit";
-if (typeName _this isEqualTo "ARRAY") then 
+if (_this isEqualType []) then 
 {
 	_unit = _this select 0;
 } else {

@@ -15,3 +15,4 @@
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
 GRGCore_monitoredObjects pushBack _this;
+//[format["GMS_fnc_addObjectToDeletionCue: _this %1 | GRGCore_monitoredObjects %2",_this,GRGCore_monitoredObjects]] call GMS_fnc_log;

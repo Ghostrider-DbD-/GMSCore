@@ -6,51 +6,64 @@
 			 Handles simple arrays and weighted arrays formated as [className, weight, ... 
 	Parametsrs:
 		_classnames: an array of strings, each representing a possible className
+		_removed: if true then invalid classnames are removed.
 
 	Returns: the array with invalid classnames removed and logged.
 
 	Copyright 2020 by Ghostrider-GRG-
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
-params["_classNames"];
-private _return = [];
-//diag_log format["[GMS] _checkClassnamesArray: _classNames select 0 = %1 | _classNames = %2",_classNames select 0,_classNames];
-if !(_classNames isEqualTo []) then 
+params[["_classnames",[]],["_remove",false]];
+private _cfg = "CfgVehicles";
+//[format["GMS_fnc_checkClassNamePrices: _remove = %1 | typeName _classnames = %2",_remove,typeName _classnames]] call GMS_fnc_log;
+//[format["GMS_fnc_checkClassNamePrices:_classnames = %1",_classnames]] call GMS_fnc_log;
+private _count = count _classnames;
+switch (GMS_modType) do 
 {
-	private _mode = if (count _classNames >= 2) then {1} else {0}; // weighted
-	if (_mode == 1) then 
-	{
-		if !(typeName (_classNames select 1) isEqualTo "SCALAR") then {_mode = 0};
-	};
-	if (_mode == 1) then  // case of weighted array
-	{
-		while {!(_classNames isEqualTo [])} do 
-		{
-			private _cn = _classnames deleteAt 0; 
-			private _wt = _classnames deleteAt 0;
-			if([_cn] call GMS_fnc_isClass) then 
-			{
-				//diag_log format["[GMS] validated classname %1 and adding it with its weight to _return which now = %2",_cn,_return];				
-				_return append [_cn,_wt];
-			} else {
-				[format["Removing invalid classname %1 from configurations",_cn,"warning"]] call GMS_fnc_log;
-			};
-		};
-	} else {  //  Case of normal array
-
-		{
-			if ([_x] call GMS_fnc_isClass) then 
-			{
-				//diag_log format["[GMS] validated classname %1 and adding it to _return which now = %2",_x,_return];
-				_return pushBack _x;
-			} else {
-				[format["Removing invalid classname %1 from configurations",_x],"warning"] call GMS_fnc_log;
-			};
-		} forEach _classNames;
-
-	};
-} else {
-		_return = _classNames;
+	case "Epoch": {_cfg = "CfgPricing"};
+	case "Exile": {_cfg = "CfgExileArsenal"};
 };
+for "_i" from 1 to count _classnames do 
+{
+	if (_i > count _classnames) exitWith {};
+	private _cn = _classnames deleteAt 0;
 
-_return
+	// If this is a weighted array lets grab the weight for that classname as well.
+
+	private _invalid = true;
+	if (_cn isEqualType "") then 
+	{
+		private _cn2 = "";
+		private _isWeighted = false;
+		if !(_classNames isEqualTo []) then {_cn2 = _classnames select 0};
+		if (_cn2 isEqualType 0) then 
+		{
+			_cn2 = _classnames deleteAt 0;
+			_isWeighted = true;
+		};
+		if (isClass(configFile >> "CfgVehicles" >> _cn)) then {_invalid = false};
+		if (isClass(configFile >> "CfgWeapons" >> _cn)) then {_invalid = false};
+		if (isClass(configFile >> "CfgMagazines" >> _cn)) then {_invalid = false};
+		if (_invalid)  then {[format["Invalid Classname Found: %1",_cn]] call GMS_fnc_log};
+		if (!(_invalid) || {!(_remove)}) then 
+		{
+			if !(_isWeighted) then {_classNames pushBack _cn} else {_classNames append [_cn,_cn2]};
+		};
+	};
+	if (_cn isEqualType []) then // probably a subarray with the first element a classname 
+	{
+		if (count _cn > 1) then 
+		{
+			_isWeighted = true;
+		};
+		if (isClass(configFile >> "CfgVehicles" >> _cn select 0)) then {_invalid = false};
+		if (isClass(configFile >> "CfgWeapons" >> _cn select 0)) then {_invalid = false};
+		if (isClass(configFile >> "CfgMagazines" >> _cn select 0)) then {_invalid = false};		
+		if (_invalid)  then {[format["Invalid Classname Found: %1",_cn]] call GMS_fnc_log};		
+		if (!(_invalid) || {!(_remove)}) then 
+		{
+			_classNames pushBack _cn;
+		};		
+	};
+};
+_classNames

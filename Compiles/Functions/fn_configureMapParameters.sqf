@@ -11,7 +11,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
-switch (toLower worldName) do 
+switch (toLowerANSI worldName) do 
 {
 		case "altis":{
 			GMS_mapCenter = [6322,7801,0]; 

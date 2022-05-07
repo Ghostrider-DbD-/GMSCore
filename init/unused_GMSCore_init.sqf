@@ -6,7 +6,6 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
-call compileFinal preprocessFileLineNumbers "\GMSCore\configs\GMS_configs.sqf";
 GMS_modType = 0;
 if (isClass (configFile >> "CfgPatches" >> "exile_server")) then {GMS_modType = "Exile"};
 if (isClass(configFile >> "CfgPatches" >> "A3_epoch_server")) then {GMS_modType = "Epoch"};
@@ -23,7 +22,7 @@ if ((GMS_modType) isEqualTo "Exile") then
 	GMS_Side = EAST;
 	GMS_unitType = "O_Soldier_lite_F";	
 };
-if (toLower GMS_modType isEqualTo "default") then 
+if (toLowerANSI GMS_modType isEqualTo "default") then 
 {
 	["Configuring GMSCore for Default Mode"] call GMS_fnc_log;	
 	GMS_Side = EAST;

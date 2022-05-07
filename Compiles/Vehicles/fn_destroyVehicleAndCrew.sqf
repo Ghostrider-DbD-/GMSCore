@@ -13,6 +13,6 @@
 params["_group"];
 
 {
-	if (!((vehicle _x) isEqualTo _x) && (local (vehicle _x))) then (deleteVehicle (vehicle _x));
+	if (!((vehicle _x) isEqualTo _x) && {(local (vehicle _x))}) then (deleteVehicle (vehicle _x));
 	deleteVehicle _x;
 } forEach (units _group);

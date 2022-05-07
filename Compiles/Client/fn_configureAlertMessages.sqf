@@ -20,9 +20,9 @@ private _passedCfgs = [];
 {
 	switch (GMS_ModType) do 
 	{
-		case "Epoch": {if ((_x in GMS_validAlertMsgTypes) && !(_x isEqualTo "toast")) then {_passedCfgs pushBack _x}};
-		case "Exile": {if ((_x in GMS_validAlertMsgTypes) && !(_x isEqualTo "epochMst")) then {_passedCfgs pushBack _x}};
-		default {if ((_x in GMS_validAlertMsgTypes)  && !(_x isEqualTo "epochMst") && !(_x isEqualTo "toast")) then {_passedCfgs pushBack _x}};
+		case "Epoch": {if ((_x in GMS_validAlertMsgTypes) && {!(_x isEqualTo "toast")}) then {_passedCfgs pushBack _x}};
+		case "Exile": {if ((_x in GMS_validAlertMsgTypes) && {!(_x isEqualTo "epochMst")}) then {_passedCfgs pushBack _x}};
+		default {if ((_x in GMS_validAlertMsgTypes)  && {!(_x isEqualTo "epochMst") && {!(_x isEqualTo "toast")}}) then {_passedCfgs pushBack _x}};
 	};
 } forEach _config;
 GMS_alertMsgTypes = _passedCfgs;

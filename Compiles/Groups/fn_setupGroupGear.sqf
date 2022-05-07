@@ -15,8 +15,9 @@
 */
 
 #include "\GMSCore\Init\GMS_defines.hpp"
-params["_group","_gear",["_launchersPerGroup",1],["_useNVG",false],["_addWeaponAttachments",true]];
-
+params[["_group",grpNull],["_gear",[]],["_launchersPerGroup",1],["_useNVG",false],["_addWeaponAttachments",true]];
+[format["GMS_fnc_setupGroupGear: count _gear = %1",count _gear]] call GMS_fnc_log;
+if (isNull _group || {_gear isEqualTo [] || {!(count _gear == 13)}}) exitWith {};
 #define GMS_primary 0
 #define GMS_secondary 1
 #define GMS_throwable 2

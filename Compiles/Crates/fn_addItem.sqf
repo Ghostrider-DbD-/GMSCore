@@ -25,8 +25,8 @@
 	private _errorCode = 0;
 	// check to be sure the _itemclassName is a valid classname 
 	//diag_log format["_fn_addItem:: -- >> _container = %3 | itemInfo = %1 | typeName itemInfo %2",_itemInfo,typeName _itemInfo,_container];
-	if (typeName _itemInfo isEqualTo "STRING") then {_itemClassName = _itemInfo; _quant = 1};  // case where only the item descriptor was provided
-	if (typeName _itemInfo isEqualTo "ARRAY") then {
+	if (_itemInfo isEqualType "") then {_itemClassName = _itemInfo; _quant = 1};  // case where only the item descriptor was provided
+	if (_itemInfo isEqualType []) then {
 		
 		if (count _itemInfo isEqualTo 2) then {_itemClassName = _itemInfo select 0; _quant = _itemInfo select 1;}; // case where item descriptor and quantity were provided
 		if (count _itemInfo isEqualto 3) then {
@@ -38,20 +38,20 @@
 	try {
 		private _isLoaded = false;
 
-		if (!isClass(configFile >> "CfgWeapons" >> _itemClassName) && !isClass(configFile >> "CfgMagazines" >> _itemClassName) && !isClass(ConfigFile >> "CfgVehicles")) then {throw 1};
-		if !((typeName _itemClassName) isEqualTo "STRING") then {throw 2};
+		if (!isClass(configFile >> "CfgWeapons" >> _itemClassName) && {!isClass(configFile >> "CfgMagazines" >> _itemClassName) && {!isClass(ConfigFile >> "CfgVehicles")}}) then {throw 1};
+		if !((_itemClassName) isEqualType "") then {throw 2};
 		if (_itemClassName isEqualTo "") then {throw 3};
 		
-		if (_itemClassName isKindOf ["Rifle", configFile >> "CfgWeapons"] || _itemClassName isKindOf ["Pistol", configFile >> "CfgWeapons"] || _itemClassName isKindOf ["Launcher", configFile >> "CfgWeapons"]) then
+		if (_itemClassName isKindOf ["Rifle", configFile >> "CfgWeapons"] || {_itemClassName isKindOf ["Pistol", configFile >> "CfgWeapons"] || {_itemClassName isKindOf ["Launcher", configFile >> "CfgWeapons"]}}) then
 		{
 			_container addWeaponCargoGlobal [_itemClassName,_quant]; 
 			_isLoaded = true;
 			_count = -1;
-			if (typeName _addAmmo isEqualTo "SCALAR") then
+			if (_addAmmo isEqualType 0) then
 			{
 				_count = _addAmmo;
 			};
-			if (typeName _addAmmo isEqualto "ARRAY") then
+			if (_addAmmo isEqualType []) then
 			{
 				_count = (_addAmmo select 0) + (round(random((_addAmmo select 1) - (_addAmmo select 0))));
 			};

@@ -38,7 +38,7 @@ if !(_isASL) then
 };
 _obj setPosATL _pos;
 
-if ((typeName _orientation) isEqualTo "SCALAR") then {_obj setDir _orientation};
-if ((typeName _orientation) isEqualTo "ARRAY") then {_obj setVectorDirAndUp _pos};
+if ((_orientation) isEqualType 0) then {_obj setDir _orientation};
+if ((_orientation) isEqualType []) then {_obj setVectorDirAndUp _pos};
 
 _obj

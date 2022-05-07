@@ -15,7 +15,9 @@
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_anchorPos","_enemyGroup",["_searchDistance",300],["_knowsAboutBump",1]];
-// [position, types, radius, 2Dmode]
+private _nearAI = _anchorPos nearEntities[GMS_unitType],_searchDistance;
 {
 	_x reveal [_x, (_x knowsAbout _enemyGroup) + _knowsAboutBump];
-} forEach nearestObjects[_anchorPos, [GMS_unitType],_searchDistance]; ;
+} forEach _nearAI;
+
+//} forEach nearestObjects[_anchorPos, [GMS_unitType],_searchDistance]; ;

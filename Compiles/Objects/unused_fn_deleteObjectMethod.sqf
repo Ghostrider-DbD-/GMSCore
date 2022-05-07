@@ -17,7 +17,7 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_objectParameters"];
 
-if (typeName _objectParameters isEqualTo "ARRAY") then 
+if (_objectParameters isEqualType "") then 
 {
 	{[_x] call GMS_fnc_deleteObjectMethod} forEach _objectParameters;  //  One itteration of recursion should be ok (fingers crossed).
 } else {

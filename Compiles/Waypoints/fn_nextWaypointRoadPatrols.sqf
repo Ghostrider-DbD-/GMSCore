@@ -34,7 +34,7 @@ if (_stuck) exitWith
 };
 
 private _target = [_group] call GMS_fnc_getHunt;
-if (isNull _target|| !alive _target) then 
+if (isNull _target|| {!alive _target}) then 
 {
 	#define searchDist 300 
 	#define minKnowsAbout 2
@@ -86,7 +86,7 @@ if (isNull _target) then
 			};
 			_road = _roads select 0;
 			private _index = 0;
-			while {((getPosATL _road) distance _leader) < 50 && _index < count _roads} do {
+			while {((getPosATL _road) distance _leader) < 50 && {_index < count _roads}} do {
 				_index = _index + 1;
 				_road = _roads select _index;
 			};
@@ -112,10 +112,10 @@ if (isNull _target) then
 		private _currPos = waypointPosition _wp;
 		private _furthestPos = getPos _r;
 		{
-			if (_currPos distance (getPos _x) > (_currPos distance _furthestPos)) then 
+			if (_currPos distance (getPosATL _x) > (_currPos distance _furthestPos)) then 
 			{
 				_r = _x;
-				_furthestPos = getPos _r;
+				_furthestPos = getPosATL _r;
 			};
 		} forEach _roads;
 				

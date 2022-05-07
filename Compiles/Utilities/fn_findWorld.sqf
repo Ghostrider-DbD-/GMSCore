@@ -1,7 +1,7 @@
 
 
 #include "\GMSCore\Init\GMS_defines.hpp"
-switch (toLower worldName) do 
+switch (toLowerANSI worldName) do 
 {// These may need some adjustment - including a test for shore or water should help as well to avoid missions spawning on water.
 		case "altis":{GMS_mapCenter = [12000,10000,0]; GMS_mapRange = 25000;};
 		case "stratis":{GMS_mapCenter = [3900,4500,0]; GMS_mapRange = 4500;}; 

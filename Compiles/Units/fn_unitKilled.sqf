@@ -54,9 +54,12 @@ if !(isNull _veh) then
 			private _setFuelTo = _veh getVariable[GMS_removeFuel,0.2];
 			//private _setDamageTo = _veh getVariable[GMS_disableVehicle,0.5];
 			_veh setFuel _setFuelTo;
-			if ((damage _veh) < 0.2) then {_veh setDamage 0.2};  //  TODO: come back to this - see notes in _initializePatrolVehicle
+			private _disable = _veh getVariable[GMS_disableVehicle,0.5];
+			if ( (damage _veh) < _damage) then {_veh setDamage _damage};  
 			_veh lock 0;
 			if (GMS_modType isEqualTo "Exile") then (_veh setVariable ["ExileIsPersistent", false]);
+		} else {
+			_veh setDamage (random (0.15) + 0.8);
 		};
 	};
 };

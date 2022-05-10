@@ -21,7 +21,7 @@ diag_log format["GMS_fnc_dropParatroops: _group = %1 | _pos = %2 | _aircraft = %
 
 if !(isNull _aircraft) then 
 {
-	//(boundingBoxReal _aircraft) params["_b1","_b2"];
+	(boundingBoxReal _aircraft) params["_b1","_b2"];
 	private _length = abs((_b2 select 1) - (_b1 select 1));
 	{
 		private _spawnPos = (getPosATL _aircraft) getPos[_length/4 + _forEachIndex, (getDir _aircraft) + 180 ];

@@ -126,6 +126,7 @@ class CfgFunctions {
 			//class monitorObjectDeletionCue {};			
 			class removeAllEventHandlers {};
 			class removeAllMPEventHandlers {};	
+			class setMoney {};
 		};				
 		class GMS_Players {
 			file = "GMSCore\Compiles\Players";			

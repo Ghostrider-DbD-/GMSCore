@@ -19,9 +19,10 @@ params[
 	["_vehType",""],
 	["_pos",[0,0,0]],
 	["_dir",random(360)],
-	["_height",0]
+	["_height",0],
+	["_protect",true]
 ];
-
+//[format["GMS_fnc_createVehicle: _vehType %1 | _pos %2 | _dir %3 | _height %4",_vehType,_pos,_dir,_height]] call GMS_fnc_log;
 private "_veh";
 if (_height > 0 && {_vehType isKindOf "Air"}) then 
 {
@@ -31,6 +32,8 @@ if (_height > 0 && {_vehType isKindOf "Air"}) then
 } else {
 	_veh = createVehicle[_vehType, _pos, [], 0, "NONE"];
 };
+
+if (_protect && {GMS_modType isEqualTo "Epoch"}) then {_veh call EPOCH_server_setVToken};
 
 _veh allowDamage false;
 if (_dir isEqualType 0) then 

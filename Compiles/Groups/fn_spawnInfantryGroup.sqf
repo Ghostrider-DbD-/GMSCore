@@ -85,6 +85,6 @@ for "_i" from 1 to _units do
 	_unit enableAI "ALL";
 };
 _group call GMS_fnc_addUnitEventHandlers;
-
+//[format["GMS_fnc_spawnInfantryGroup: _group = %1",_group]] call GMS_fnc_log;
 _group
 

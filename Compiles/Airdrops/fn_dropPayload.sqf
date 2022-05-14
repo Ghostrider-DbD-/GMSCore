@@ -41,11 +41,12 @@ if (typeName _payload isEqualTo "GROUP") then
 	};	
 	private _dimensions = [_payload] call GMS_fnc_getDimensions;
 	private _releaseHeight = (_dimensions select 2) + 3;
-	while {(getPosATL _payload) select 2 > _releaseHeight} do {_time = diag_tickTime;waitUntil {(diag_tickTime - _time) > 2}};
+	while {(getPosATL _payload) select 2 > 0.6} do {uiSleep 1;};
 	detach _payload;
 	deleteVehicle _chute;
+	_payload setVelocity[0,0,-0.5];
 	_pos = getPosATL _payload;
-	_payload setPosATL[_pos select 0,_pos select 1,1];
+	_payload setPosATL [_pos select 0, _pos select 1, 0.6];
 
 	//uiSleep 1;
 	if (_allowDamage) then {_payload allowDamage true};

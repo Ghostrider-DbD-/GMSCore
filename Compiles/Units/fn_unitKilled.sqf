@@ -59,7 +59,8 @@ if !(isNull _veh) then
 			_veh lock 0;
 			if (GMS_modType isEqualTo "Exile") then (_veh setVariable ["ExileIsPersistent", false]);
 		} else {
-			_veh setDamage (random (0.15) + 0.8);
+			_veh setDamage 1;
+			[format["GMS_fnc_unitKilled: damage for veh (typeOf) %1 set to %2",typeOf _veh, damage _veh]] call GMS_fnc_log;
 		};
 	};
 };

@@ -19,7 +19,7 @@ params["_objectParameters"];
 
 if (_objectParameters isEqualType []) then 
 {
-	{[_x] call GMS_fnc_deleteObjectMethod} forEach _objectParameters;  //  One itteration of recursion should be ok (fingers crossed).
+	{[_x] call GMS_fnc_deleteObjectsMethod} forEach _objectParameters;  //  One itteration of recursion should be ok (fingers crossed).
 } else {
 	if (typeName _objectParameters isEqualTo "OBJECT") then 
 	{

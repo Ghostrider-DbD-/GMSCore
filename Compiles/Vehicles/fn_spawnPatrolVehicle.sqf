@@ -35,9 +35,7 @@ params[
 		["_vehHitCode",[]],
 		["_vehKilledCode",[]]
 	];
-
-
-
+//[format["GMS_fnc_spawnPatrolVehicle: _className %1 | _spawnPos %2 | _dir %3 | _height %4 | _disable %5 | _removeFuel %6 _releaseToPlayers %7 | _deleteTimer %8",_className,_spawnPos,_dir,_height,_disable,_removeFuel,_releaseToPlayers,_deleteTimer]] call GMS_fnc_log;
 private _veh = [_className,_spawnPos,_dir,_height] call GMS_fnc_createVehicle;
 if !(isNull _veh) then 
 {

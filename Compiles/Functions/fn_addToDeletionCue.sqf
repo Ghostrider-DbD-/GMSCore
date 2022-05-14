@@ -1,5 +1,5 @@
 /*
-    GMS_fnc_addObjectsToDeletionCue  
+    GMS_fnc_addToDeletionCue  
 
     Purpuse: Adds any kind of object or array of objects to the cue for deletion. 
     

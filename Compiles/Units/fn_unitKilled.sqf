@@ -45,22 +45,24 @@ if !(isNull _veh) then
 	//[format["GMS_fnc_unitKilled: vehicle crew = %1 || alive vehicle crew = %2",crew _veh, _alive]] call GMS_fnc_log;
 	if (_alive == 0) then 
 	{
-		private _accessAllowed = _veh getVariable [GMS_allowAccess,true];
-		//[format["GMS_fnc_unitKilled: _veh = %1 | _accessAllowed = %2",_veh,_accessAllowed]] call GMS_fnc_log;
-		if (_accessAllowed) then 
+		if _veh isKindOf "StaticWeapon") then 
 		{
-			_veh enableRopeAttach true;
-			_veh enableCoPilot true;
-			private _setFuelTo = _veh getVariable[GMS_removeFuel,0.2];
-			//private _setDamageTo = _veh getVariable[GMS_disableVehicle,0.5];
-			_veh setFuel _setFuelTo;
-			private _disable = _veh getVariable[GMS_disableVehicle,0.5];
-			if ( (damage _veh) < _damage) then {_veh setDamage _damage};  
-			_veh lock 0;
-			if (GMS_modType isEqualTo "Exile") then (_veh setVariable ["ExileIsPersistent", false]);
+			_veh setDamage 1.0;
 		} else {
-			_veh setDamage 1;
-			[format["GMS_fnc_unitKilled: damage for veh (typeOf) %1 set to %2",typeOf _veh, damage _veh]] call GMS_fnc_log;
+			private _accessAllowed = _veh getVariable [GMS_allowAccess,true];
+			[format["GMS_fnc_unitKilled: _veh = %1 | _accessAllowed = %2",_veh,_accessAllowed]] call GMS_fnc_log;
+			if (_accessAllowed) then 
+			{
+				_veh enableRopeAttach true;
+				_veh enableCoPilot true;
+				private _setFuelTo = _veh getVariable[GMS_removeFuel,0.2];
+				//private _setDamageTo = _veh getVariable[GMS_disableVehicle,0.5];
+				_veh setFuel _setFuelTo;
+				private _disable = _veh getVariable[GMS_disableVehicle,0.5];
+				if ( (damage _veh) < _damage) then {_veh setDamage _damage};  
+				_veh lock 0;
+				if (GMS_modType isEqualTo "Exile") then (_veh setVariable ["ExileIsPersistent", false]);
+			};
 		};
 	};
 };

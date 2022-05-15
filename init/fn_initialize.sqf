@@ -18,13 +18,13 @@ if (!isnull (configFile >> "CfgPatches" >> "a3_epoch_server")) then {GMS_modType
 diag_log format["GMS_fnc_initialize: GMS_modType = %1",GMS_modType];
 switch (toLowerANSI GMS_modType) do 
 {
-	case "Exile": 
+	case "exile": 
 	{
 		GMS_Side = EAST;
 		GMS_playerSide = WEST;
 		GMS_unitType = "O_Soldier_lite_F";
 	};
-	case "Epoch": 
+	case "epoch": 
 	{
 		GMS_Side = RESISTANCE;
 		GMS_playerUnitTypes = ["Epoch_Male_F","Epoch_Female_F"];

@@ -31,7 +31,7 @@ _veh setVariable[GMS_removeFuel,_removeFuel];
 _veh setVariable[GMS_allowAccess,_releaseToPlayers];
 _veh setVariable[GMS_deleteEmptyVehicle,_deleteTimer];
 [_veh] call GMS_fnc_emptyObjectInventory;
-if (GMS_modType isEqualTo "epoch") then 
+if (toLowerANSI(GMS_modType) isEqualTo "epoch") then 
 {
 	_veh call EPOCH_server_setVToken;
 };

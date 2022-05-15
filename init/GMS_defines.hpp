@@ -47,7 +47,7 @@
 #define GMS_disableVehicle "GMS_disable"
 #define GMS_removeFuel "GMS_removeFuel"
 #define GMS_allowAccess "GMS_allowAccess"
-#define GMS_deleteEmptyVehicle "GMS_deleteEmptyVehicle"
+#define GMS_deleteEmptyVehicle "GMS_deleteEmptyVeh"
 /*
 	Defines for Units (genearal)
 */

@@ -29,7 +29,7 @@ while {diag_tickTime - _start < (_time)} do  // loop for 5 min accounting for th
 		_light setPosATL (getPosATL _crate);
 		_light attachTo [_crate,[0,0,(0.55)]];
 	};
-	uiSleep 120;
+	uiSleep 180;
 	detach _smoke;
 	deleteVehicle _smoke;
 	if(sunOrMoon < 0.2) then

@@ -50,7 +50,7 @@ if !(isNull _veh) then
 			_veh setDamage 1.0;
 		} else {
 			private _accessAllowed = _veh getVariable [GMS_allowAccess,true];
-			[format["GMS_fnc_unitKilled: _veh = %1 | _accessAllowed = %2",_veh,_accessAllowed]] call GMS_fnc_log;
+			//[format["GMS_fnc_unitKilled: _veh = %1 | _accessAllowed = %2",_veh,_accessAllowed]] call GMS_fnc_log;
 			if (_accessAllowed) then 
 			{
 				_veh enableRopeAttach true;

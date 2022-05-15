@@ -48,12 +48,12 @@ if !(isNull _target) then
 {
 	// If the target is in a blacklisted location discontinue the hunt
 	if ([_target, [_group] call GMS_fnc_getGroupBlacklist] call GMS_fnc_isBlacklisted) exitWith {_target = objNull};	
-	[format["nextWaypointRoadPatrol: case of target = %1 distance %2",_target, _leader distance _target]] call GMS_fnc_log;
+	//[format["nextWaypointRoadPatrol: case of target = %1 distance %2",_target, _leader distance _target]] call GMS_fnc_log;
 	private _newPos = (position _target) getPos [
 		(selectMax [(_leader distance _target)/2,1]),// keep the AI at least 1 m from the target
 		(_leader getRelDir (position _target)) + (random(25) * selectRandom[-1,1])
 		];
-	[format["GMS_fnc_nextWaypointRoadPatrols: _group %1 | _wp %2 | _newPos %3 | _target %4",_group,_wp,_newPos,_target]] call GMS_fnc_log;
+	//[format["GMS_fnc_nextWaypointRoadPatrols: _group %1 | _wp %2 | _newPos %3 | _target %4",_group,_wp,_newPos,_target]] call GMS_fnc_log;
 	_wp setWPPos _newPos;
 	_group setVariable[GMS_target,_target];
 	_group reveal[_target,1];

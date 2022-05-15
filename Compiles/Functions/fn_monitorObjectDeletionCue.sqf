@@ -20,7 +20,7 @@ for "_i" from 1 to count GRGCore_monitoredObjects do
     _o params["_objectParameters","_delAt"];
     if (diag_tickTime > _delAt) then 
     {
-        [format["GMS_fnc_monitorObjectDeletionCue: deleting object %1",_o]] call GMS_fnc_log;        
+        //[format["GMS_fnc_monitorObjectDeletionCue: deleting object %1",_o]] call GMS_fnc_log;        
         [_objectParameters] call GMS_fnc_deleteObjectsMethod;
     } else {
         GRGCore_monitoredObjects pushBack _o;

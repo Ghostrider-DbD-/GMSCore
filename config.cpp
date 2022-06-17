@@ -5,9 +5,9 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 // TOD: add handleDamage or hitpoint handler that removes any damage caused by player runovers
 class GMSCoreBuild {
-	version = 1.00;
-	build = 27;
-	buildDate = "5-15-22";
+	version = 1.01;
+	build = 28;
+	buildDate = "6-17-22";
 };
 class CfgPatches {
 	class GMSCore {

@@ -19,7 +19,7 @@ if (isNull _obj) exitWith {};
 
 private _toAdd = ([_money] call GMS_fnc_getIntegerFromRange);
 
-[format["_setMoney: _toAdd %3 | _obj %1 |  _money %2",_obj,_money,_toAdd]] call GMS_fnc_log;
+//[format["_setMoney: _toAdd %3 | _obj %1 |  _money %2",_obj,_money,_toAdd]] call GMS_fnc_log;
 
 if (_toAdd > 0) then 
 {

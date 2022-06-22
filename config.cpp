@@ -59,7 +59,6 @@ class CfgFunctions {
 			class cleanUpJunk {};
 			class deleteObjectsMethod {};
 			class dynamicConfigs {};
-			class nearestTarget {};
  			class findRandomPosWithinArea {};	
 			class getDimensions {};			 				
 			class getNumberFromRange {};
@@ -75,6 +74,7 @@ class CfgFunctions {
 			class monitorObjectDeletionCue {};			
 			class nearestGMSAI {};
 			class nearestPlayers {};
+			class nearestTarget {};			
 			class removeBlacklistedItems {};
 			//class setGroupHuntVehicles {};
 			class removeNullEntries {};

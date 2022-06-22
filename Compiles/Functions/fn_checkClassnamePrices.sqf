@@ -22,50 +22,54 @@ switch (GMS_modType) do
 {
 	case "Epoch": {_cfg = "CfgPricing"};
 	case "Exile": {_cfg = "CfgExileArsenal"};
+	default {_cfg = ""};
 };
-for "_i" from 1 to count _classnames do 
+if !(_cfg isEqualTo "") then 
 {
-	if (_i > count _classnames) exitWith {};
-	private _cn = _classnames deleteAt 0;
-
-	// If this is a weighted array lets grab the weight for that classname as well.
-
-	private _invalid = false;
-	if (_cn isEqualType "") then 
+	for "_i" from 1 to count _classnames do 
 	{
-		private _cn2 = "";
-		private _isWeighted = false;
-		if !(_classNames isEqualTo []) then {_cn2 = _classnames select 0};
-		if (_cn2 isEqualType 0) then 
+		if (_i > count _classnames) exitWith {};
+		private _cn = _classnames deleteAt 0;
+
+		// If this is a weighted array lets grab the weight for that classname as well.
+
+		private _invalid = false;
+		if (_cn isEqualType "") then 
 		{
-			_cn2 = _classnames deleteAt 0;
-			_isWeighted = true;
-		};		
-		if !(isClass(missionConfigFile >> _cfg >> _cn)) then 
-		{
-			_invalid = true;
-			[format["There is no pricing in %1 for classname %2",GMS_modType,_cn],'warning'] call GMS_fnc_log;			
-		};
-		if (!(_invalid) || {!(_remove)}) then 
-		{
-			if (_isWeighted) then 
+			private _cn2 = "";
+			private _isWeighted = false;
+			if !(_classNames isEqualTo []) then {_cn2 = _classnames select 0};
+			if (_cn2 isEqualType 0) then 
 			{
-				_classnames append [_cn,_cn2];
-			} else {
-				_classnames pushBack _cn;
+				_cn2 = _classnames deleteAt 0;
+				_isWeighted = true;
+			};		
+			if !(isClass(missionConfigFile >> _cfg >> _cn)) then 
+			{
+				_invalid = true;
+				[format["There is no pricing in %1 for classname %2",GMS_modType,_cn],'warning'] call GMS_fnc_log;			
+			};
+			if (!(_invalid) || {!(_remove)}) then 
+			{
+				if (_isWeighted) then 
+				{
+					_classnames append [_cn,_cn2];
+				} else {
+					_classnames pushBack _cn;
+				};
 			};
 		};
-	};
-	if (_cn isEqualType []) then // weighted 
-	{
-		if !(isClass(missionConfigFile >> _cfg >> (_cn select 0))) then 
+		if (_cn isEqualType []) then // weighted 
 		{
-			_invalid = true;
-			[format["There is no pricing in %1 for classname %2",GMS_modType,(_cn select 0)],'warning'] call GMS_fnc_log;			
-		};
-		if (!(_invalid) || {!(_remove)}) then 
-		{
-			_classnames pushBack _cn;
+			if !(isClass(missionConfigFile >> _cfg >> (_cn select 0))) then 
+			{
+				_invalid = true;
+				[format["There is no pricing in %1 for classname %2",GMS_modType,(_cn select 0)],'warning'] call GMS_fnc_log;			
+			};
+			if (!(_invalid) || {!(_remove)}) then 
+			{
+				_classnames pushBack _cn;
+			};
 		};
 	};
 };

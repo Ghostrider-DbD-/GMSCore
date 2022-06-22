@@ -54,12 +54,13 @@ if !(isNull _veh) then
 			_veh enableRopeAttach true;
 			_veh enableCoPilot true;
 			private _setFuelTo = _veh getVariable[GMS_removeFuel,0.2];
-			//private _setDamageTo = _veh getVariable[GMS_disableVehicle,0.5];
 			_veh setFuel _setFuelTo;
 			private _disable = _veh getVariable[GMS_disableVehicle,0.5];
 			if ( (damage _veh) < _damage) then {_veh setDamage _damage};  
 			_veh lock 0;
 			if (GMS_modType isEqualTo "Exile") then (_veh setVariable ["ExileIsPersistent", false]);
+			private _deleteEmptyVeh = _veh getVariable["GMS_deleteEmptyVehicle",300];
+			GMSCore_monitoredEmptyVehicles pushBack [_veh, diag_tickTime + _deleteEmptyVeh];			
 		};
 	};
 };

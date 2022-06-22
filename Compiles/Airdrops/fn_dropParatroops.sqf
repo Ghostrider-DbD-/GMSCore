@@ -15,7 +15,7 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 params[["_group",grpNull],["_pos",[0,0,0]],["_aircraft",objNull]];
 
-diag_log format["GMS_fnc_dropParatroops: _group = %1 | _pos = %2 | _aircraft = %3 | typeOf _aircraft = %4",_group,_pos,_aircraft,typeOf _aircraft];
+//diag_log format["GMS_fnc_dropParatroops: _group = %1 | _pos = %2 | _aircraft = %3 | typeOf _aircraft = %4",_group,_pos,_aircraft,typeOf _aircraft];
 
 // drop the group of paratroops as close as possible to the desired location 
 
@@ -34,17 +34,18 @@ if !(isNull _aircraft) then
 		//diag_log format["GMS_fnc_dropParatroops: _unit %1 spawned into chute at pose %2 and alive = %3",_x, getPosATL _x, alive _x];		
 	} forEach (units _group);
 } else {
-	#define spawnHeight 100
+	#define spawnHeight 50
 	private _spawnPos = [_pos select 0, _pos select 1, spawnHeight];
+	private _offset = 1;
 	{
 		private _spawnPos =_spawnPos getPos[_forEachIndex + 3, random(360)];
 		private _chute = createVehicle ["Steerable_parachute_F", _pos, [], 0, "FLY"];
 		_x assignAsDriver _chute;
 		_x moveInDriver _chute;		
 		uiSleep 2;
-		_offset = _offset + 3;
+		_offset = _offset + 2;
 	} forEach (units _group);
 };
 
-[format["GMS_fnc_dropParatroops: all units of group %1 touched down with %2 out of %3 alive",_group, {alive _x} count (units _group), count (units _group)]] call GMS_fnc_log;
+//[format["GMS_fnc_dropParatroops: all units of group %1 touched down with %2 out of %3 alive",_group, {alive _x} count (units _group), count (units _group)]] call GMS_fnc_log;
 

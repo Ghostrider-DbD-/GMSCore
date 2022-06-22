@@ -22,7 +22,7 @@ while {diag_tickTime - _start < (_time)} do  // loop for 5 min accounting for th
 {
 	_smoke = _smokeShell createVehicle getPosATL _crate;
 	_smoke setPosATL (getPosATL _crate);
-	_smoke attachTo [_crate,[0,0,(0.5)]]; // put the smoke a fixed distance above the top of any object to make it as visible as possible
+	_smoke attachTo [_crate,[0,0,(0.75)]]; // put the smoke a fixed distance above the top of any object to make it as visible as possible
 	if(sunOrMoon < 0.2) then
 	{
 		_light = _lightSource createVehicle getPosATL _crate;

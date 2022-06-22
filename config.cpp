@@ -119,11 +119,8 @@ class CfgFunctions {
 		};
 		class GMS_Objects {
 			file = "GMSCore\Compiles\Objects";
-			//class addObjectToDeletionCue {};
-			class createObject {};	
-			//class deleteObjectMethod {};							
-			class emptyObjectInventory {};	
-			//class monitorObjectDeletionCue {};			
+			class createObject {};							
+			class emptyObjectInventory {};			
 			class removeAllEventHandlers {};
 			class removeAllMPEventHandlers {};	
 			class setMoney {};

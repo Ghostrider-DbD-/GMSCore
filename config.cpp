@@ -2,7 +2,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+
 // TOD: add handleDamage or hitpoint handler that removes any damage caused by player runovers
 class GMSCoreBuild {
 	version = 1.01;

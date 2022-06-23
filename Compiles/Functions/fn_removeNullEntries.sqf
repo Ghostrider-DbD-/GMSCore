@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_protectObject
+	GMSCore_fnc_protectObject
 
 	Purpose: removes null groups or objects from an array
 

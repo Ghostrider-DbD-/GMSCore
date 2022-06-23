@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_monitorMarkers 
+	GMSCore_fnc_monitorMarkers 
 
 	Purpose: monitor the cue of markers that are scheduled for deletion and delete them at the proper time. 
 

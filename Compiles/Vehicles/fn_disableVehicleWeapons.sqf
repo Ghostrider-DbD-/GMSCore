@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_disableVehicleWeapons
+	GMSCore_fnc_disableVehicleWeapons
 
 	Purpose: provides a way to disable turrets or remove their ammo
 

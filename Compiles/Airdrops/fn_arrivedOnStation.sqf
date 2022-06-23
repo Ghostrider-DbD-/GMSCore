@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_arrivedOnStation 
+	GMSCore_fnc_arrivedOnStation 
 	Purpose: setup aircraft to drop payload at drop position  
 	Parameters: those handed down by the waypoint manager of arma (leader _group) 
 	Returns: None 

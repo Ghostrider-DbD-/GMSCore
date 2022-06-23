@@ -1,5 +1,5 @@
 /*
-    GMS_fnc_addToDeletionCue  
+    GMSCore_fnc_addToDeletionCue  
 
     Purpuse: Adds any kind of object or array of objects to the cue for deletion. 
     
@@ -15,4 +15,4 @@
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
 GRGCore_monitoredObjects pushBack _this;
-//[format["GMS_fnc_addObjectToDeletionCue: _this %1 | GRGCore_monitoredObjects %2",_this,GRGCore_monitoredObjects]] call GMS_fnc_log;
+//[format["GMSCore_fnc_addObjectToDeletionCue: _this %1 | GRGCore_monitoredObjects %2",_this,GRGCore_monitoredObjects]] call GMSCore_fnc_log;

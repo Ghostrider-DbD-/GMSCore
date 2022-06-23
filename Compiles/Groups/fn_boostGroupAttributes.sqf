@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_boostAtributes 
+	GMSCore_fnc_boostAtributes 
 
 	Purpose: gives a small increase in skills to group units.
 		employed optionally when group is down to 1 unit.

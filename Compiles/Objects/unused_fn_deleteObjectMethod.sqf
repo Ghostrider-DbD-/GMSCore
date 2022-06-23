@@ -1,6 +1,6 @@
 // 
 /*
-	GMS_fnc_deleteObjectMethod
+	GMSCore_fnc_deleteObjectMethod
 
 	Purpose: Delete objects in the deletion cue based on type. 
 	
@@ -19,7 +19,7 @@ params["_objectParameters"];
 
 if (_objectParameters isEqualType "") then 
 {
-	{[_x] call GMS_fnc_deleteObjectMethod} forEach _objectParameters;  //  One itteration of recursion should be ok (fingers crossed).
+	{[_x] call GMSCore_fnc_deleteObjectMethod} forEach _objectParameters;  //  One itteration of recursion should be ok (fingers crossed).
 } else {
 	if (typeName _objectParameters isEqualTo "OBJECT") then 
 	{
@@ -27,7 +27,7 @@ if (_objectParameters isEqualType "") then
 	} else {
 		if (typeName _objectParameters isEqualTo "GROUP") then 
 		{
-			[_objectParameters] call GMS_fnc_despawnInfantryGroup;
+			[_objectParameters] call GMSCore_fnc_despawnInfantryGroup;
 		};
 	};
 };

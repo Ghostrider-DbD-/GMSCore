@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_updateGroupHitKilledTimer
+	GMSCore_fnc_updateGroupHitKilledTimer
 
 	Purpose: spawn a group of N infantry units as a specified position.
 
@@ -19,6 +19,6 @@ if (diag_tickTime  < _processHitKill) then
 {
 	_return = false;
 } else {
-	_obj setVariable ["lastHitKill",diag_tickTime + GMS_hitKillEventUpdateInterval];
+	_obj setVariable ["lastHitKill",diag_tickTime + GMSCore_hitKillEventUpdateInterval];
 };
 _return

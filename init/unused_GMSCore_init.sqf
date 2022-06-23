@@ -6,29 +6,29 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
-GMS_modType = 0;
-if (isClass (configFile >> "CfgPatches" >> "exile_server")) then {GMS_modType = "Exile"};
-if (isClass(configFile >> "CfgPatches" >> "A3_epoch_server")) then {GMS_modType = "Epoch"};
-if (GMS_modType == 0) then {GMS_modType = "default"};
+GMSCore_modType = 0;
+if (isClass (configFile >> "CfgPatches" >> "exile_server")) then {GMSCore_modType = "Exile"};
+if (isClass(configFile >> "CfgPatches" >> "A3_epoch_server")) then {GMSCore_modType = "Epoch"};
+if (GMSCore_modType == 0) then {GMSCore_modType = "default"};
 
-if ((GMS_modType) isEqualto "Epoch") then {
-	["Configuring GMSCore for Epoch"] call GMS_fnc_log;
-	GMS_Side = RESISTANCE;
-	GMS_unitType = "I_Soldier_M_F";	
+if ((GMSCore_modType) isEqualto "Epoch") then {
+	["Configuring GMSCore for Epoch"] call GMSCore_fnc_log;
+	GMSCore_Side = RESISTANCE;
+	GMSCore_unitType = "I_Soldier_M_F";	
 };
-if ((GMS_modType) isEqualTo "Exile") then
+if ((GMSCore_modType) isEqualTo "Exile") then
 {
-	["Configuring GMSCore for Exile"] call GMS_fnc_log;	
-	GMS_Side = EAST;
-	GMS_unitType = "O_Soldier_lite_F";	
+	["Configuring GMSCore for Exile"] call GMSCore_fnc_log;	
+	GMSCore_Side = EAST;
+	GMSCore_unitType = "O_Soldier_lite_F";	
 };
-if (toLowerANSI GMS_modType isEqualTo "default") then 
+if (toLowerANSI GMSCore_modType isEqualTo "default") then 
 {
-	["Configuring GMSCore for Default Mode"] call GMS_fnc_log;	
-	GMS_Side = EAST;
-	GMS_unitType = "O_Soldier_lite_F";
+	["Configuring GMSCore for Default Mode"] call GMSCore_fnc_log;	
+	GMSCore_Side = EAST;
+	GMSCore_unitType = "O_Soldier_lite_F";
 };
-GMS_center = createCenter GMS_Side;
+GMSCore_center = createCenter GMSCore_Side;
 GMSCore_Initialized = true;
 GMS_formation = "WEDGE";
 GRGCore_monitoredMarkers = [];
@@ -36,22 +36,22 @@ GRGCore_monitoredObjects = [];
 GMSCore_monitoredGroups = [];
 GMSCore_monitoredAreaPatrols = [];
 
-if (GMS_modType isEqualTo "Epoch") then
+if (GMSCore_modType isEqualTo "Epoch") then
 {
 	GMS_soldierType = "I_Soldier_EPOCH";
 };
-if (GMS_modType isEqualTo "Exile" || GMS_modType isEqualTo "default") then
+if (GMSCore_modType isEqualTo "Exile" || GMSCore_modType isEqualTo "default") then
 {
 	GMS_soldierType = "i_g_soldier_unarmed_f";
 };
-if (GMS_modType isEqualTo "default") then 
+if (GMSCore_modType isEqualTo "default") then 
 {
 	GMS_soldierType = "i_g_soldier_unarmed_f";
 };
 
-[] spawn GMS_fnc_mainThread;  //  Start the scheduler that does all the work.
+[] spawn GMSCore_fnc_mainThread;  //  Start the scheduler that does all the work.
 private _ver =  getNumber(configFile >> "GMSCoreBuild" >> "version");
 private _build = getNumber(configFile >> "GMSCoreBuild" >> "build");
 private _buildDate = getText(configFile >> "GMSCoreBuild" >> "buildDate");
-[format["GMSCore Build %1 Build Date %2 Initialized at %3 with GMS_modType = %4",_build,_buildDate,diag_tickTime,GMS_modType]] call GMS_fnc_log;
+[format["GMSCore Build %1 Build Date %2 Initialized at %3 with GMSCore_modType = %4",_build,_buildDate,diag_tickTime,GMSCore_modType]] call GMSCore_fnc_log;
 

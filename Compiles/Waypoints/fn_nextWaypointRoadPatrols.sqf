@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_nextWaypointRoadPatrols
+	GMSCore_fnc_nextWaypointRoadPatrols
 
 	Purpose: direct a group to engage nearby enemies or, otherwise, to follow roads.
 
@@ -20,7 +20,7 @@ _group setVariable[GMS_waypointTeminationTime,diag_tickTime + _timeout];
 private _wp = [_group, 0];
 private _currWPpos = waypointPosition _wp;
 
-private _stuck = [_group] call GMS_fnc_isStuck;
+private _stuck = [_group] call GMSCore_fnc_isStuck;
 
 if (_stuck) exitWith 
 {
@@ -28,36 +28,36 @@ if (_stuck) exitWith
 	private _wp = [_group,0];
 	_wp setWaypointType "MOVE";
 	_wp setWaypointCompletionRadius 0;
-	[_group,"disengage"] call GMS_fnc_setGroupBehaviors; 
+	[_group,"disengage"] call GMSCore_fnc_setGroupBehaviors; 
 	_group setCurrentWaypoint [_group,0]; 
-	[_group,false] call GMS_fnc_setStuck;
+	[_group,false] call GMSCore_fnc_setStuck;
 };
 
-private _target = [_group] call GMS_fnc_getHunt;
+private _target = [_group] call GMSCore_fnc_getHunt;
 if (isNull _target|| {!alive _target}) then 
 {
 	#define searchDist 300 
 	#define minKnowsAbout 2
-	_target = [_group, searchDist, minKnowsAbout] call GMS_fnc_nearestTarget;
+	_target = [_group, searchDist, minKnowsAbout] call GMSCore_fnc_nearestTarget;
 	// If the target is in a blacklisted location discontinue the hunt
-	if ([_target, [_group] call GMS_fnc_getGroupBlacklist] call GMS_fnc_isBlacklisted) exitWith {_target = objNull};
+	if ([_target, [_group] call GMSCore_fnc_getGroupBlacklist] call GMSCore_fnc_isBlacklisted) exitWith {_target = objNull};
 };
-//[format["nextWaypointRoadPatrols: _leader %1 | vehicle %1 | current position %3 | current direction %4 | current speed %5",_leader, typeOf (vehicle _leader),getPosATL _leader, getDir _leader,speed _leader]] call GMS_fnc_log;
-[_group] call GMS_fnc_setHunt;
+//[format["nextWaypointRoadPatrols: _leader %1 | vehicle %1 | current position %3 | current direction %4 | current speed %5",_leader, typeOf (vehicle _leader),getPosATL _leader, getDir _leader,speed _leader]] call GMSCore_fnc_log;
+[_group] call GMSCore_fnc_setHunt;
 if !(isNull _target) then 
 {
 	// If the target is in a blacklisted location discontinue the hunt
-	if ([_target, [_group] call GMS_fnc_getGroupBlacklist] call GMS_fnc_isBlacklisted) exitWith {_target = objNull};	
-	//[format["nextWaypointRoadPatrol: case of target = %1 distance %2",_target, _leader distance _target]] call GMS_fnc_log;
+	if ([_target, [_group] call GMSCore_fnc_getGroupBlacklist] call GMSCore_fnc_isBlacklisted) exitWith {_target = objNull};	
+	//[format["nextWaypointRoadPatrol: case of target = %1 distance %2",_target, _leader distance _target]] call GMSCore_fnc_log;
 	private _newPos = (position _target) getPos [
 		(selectMax [(_leader distance _target)/2,1]),// keep the AI at least 1 m from the target
 		(_leader getRelDir (position _target)) + (random(25) * selectRandom[-1,1])
 		];
-	//[format["GMS_fnc_nextWaypointRoadPatrols: _group %1 | _wp %2 | _newPos %3 | _target %4",_group,_wp,_newPos,_target]] call GMS_fnc_log;
+	//[format["GMSCore_fnc_nextWaypointRoadPatrols: _group %1 | _wp %2 | _newPos %3 | _target %4",_group,_wp,_newPos,_target]] call GMSCore_fnc_log;
 	_wp setWPPos _newPos;
 	_group setVariable[GMS_target,_target];
 	_group reveal[_target,1];
-	[_group,"combat"] call GMS_fnc_setGroupBehaviors;
+	[_group,"combat"] call GMSCore_fnc_setGroupBehaviors;
 	_wp setWaypointType "SAD";
 	_wp setWaypointTimeout [45,60,75];	
 	_group setCurrentWaypoint _wp;
@@ -67,7 +67,7 @@ if !(isNull _target) then
 
 if (isNull _target) then
 {
-	[_group,"disengage"] call GMS_fnc_setGroupBehaviors; 
+	[_group,"disengage"] call GMSCore_fnc_setGroupBehaviors; 
 	if !(isOnRoad (getPosATL (vehicle _leader))) then 
 	{
 		private _road = [(getPosATL _leader) getPos[100,getDir _leader],1000] call BIS_fnc_nearestRoad;
@@ -94,7 +94,7 @@ if (isNull _target) then
 		_wp setWaypointPosition [(getPosATL _road),0]; //_group addWaypoint [_group,0,0,"movetoRoad"];
 		_wp setWaypointType "MOVE";
 		_wp setWaypointCompletionRadius 0;
-		[_group] call GMS_fnc_setGroupBehaviors; 
+		[_group] call GMSCore_fnc_setGroupBehaviors; 
 		_group setCurrentWaypoint [_group,0]; 
 	}
 	else

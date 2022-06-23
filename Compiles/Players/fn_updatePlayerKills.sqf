@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_updatePlayerKills 
+	GMSCore_fnc_updatePlayerKills 
 
 	Purpose: provides a mechanism to update the logs of player kills of AI or other players 
 
@@ -13,7 +13,7 @@
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_player","_newKills"];
-switch (GMS_modType) do 
+switch (GMSCore_modType) do 
 {
 	case "Epoch": {
 		#define toClient true 

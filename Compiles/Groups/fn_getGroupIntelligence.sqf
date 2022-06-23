@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_getGroupIntilligence 
+	GMSCore_fnc_getGroupIntilligence 
 
 	Purpose: get the value used for 'intelligence', which is the amount knowsAbout would be increased if the unit was engaged in any way. 
 

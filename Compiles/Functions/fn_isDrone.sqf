@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_isDone
+	GMSCore_fnc_isDone
 
 	Purpose: check if an object is a UAV using the isUAV flag in CfgVehicles for that class name 
 

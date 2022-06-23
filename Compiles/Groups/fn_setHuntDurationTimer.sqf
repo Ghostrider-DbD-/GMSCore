@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_setHuntDurationTimer
+	GMSCore_fnc_setHuntDurationTimer
 
 	Purpose: update the hunting timers
 
@@ -12,6 +12,6 @@
 */
 
 #include "\GMSCore\Init\GMS_defines.hpp"
-params["_group",["_maxTime",GMS_maxHuntDuration]];
+params["_group",["_maxTime",GMSCore_maxHuntDuration]];
 _group setVariable[GMS_huntOverAt,diag_tickTime + _maxTime];
 

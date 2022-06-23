@@ -20,7 +20,7 @@ class CfgPatches {
 
 #include "CfgGMSCore.hpp"
 class CfgFunctions {
-	class GMS {
+	class GMSCore {
 		class Airdrops {
 			file = "GMSCore\Compiles\Airdrops";
 			class arrivedOnStation {};

@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_getGroupBlacklist 
+	GMSCore_fnc_getGroupBlacklist 
 
 	Purpose: Set the list of blacklisted areas 
 
@@ -14,7 +14,7 @@
 params[["_group",grpNull]];
 if (isNull _group) exitWith 
 {
-	["GMS_fnc_getGroupBlacklist called with null group"] call GMS_fnc_log;
+	["GMSCore_fnc_getGroupBlacklist called with null group"] call GMSCore_fnc_log;
 	[]
 };
 _group setVariable["GMS_blacklist",[]];

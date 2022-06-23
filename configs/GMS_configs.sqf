@@ -1,3 +1,3 @@
 
 
-GMS_debug = 1;
+GMSCore_debug = 1;

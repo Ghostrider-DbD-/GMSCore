@@ -1,5 +1,5 @@
 /*
-	    GMS_fnc_removeBlacklistedItems 
+	    GMSCore_fnc_removeBlacklistedItems 
 
 		Purpose: provide a generic tool for removing items in a black list from array.
 			The array may be a list of strings, strings and weights, are subarrays where the first element is a string.
@@ -27,7 +27,7 @@ for "_i" from 1 to count _items do
 		if (_i1 in _blacklist) then {_blacklisted = true};
 		if (_blacklisted) then 
 		{
-			[format["GMS_fnc_removeBlacklistedItems: removing blacklisted item %1 from list",_i1]] call GMS_fnc_log;
+			[format["GMSCore_fnc_removeBlacklistedItems: removing blacklisted item %1 from list",_i1]] call GMSCore_fnc_log;
 			if ((_items select 0) isEqualType 0) then 
 			{
 				// assume this is a normal weighted array 
@@ -51,7 +51,7 @@ for "_i" from 1 to count _items do
 			if ((_i1 select 1) in _blacklist) then {_blacklisted = true};
 			if (_blacklisted) then 
 			{
-				[format["GMS_fnc_removeBlacklistedItems: removing blacklisted item %1 from list",_i1]] call GMS_fnc_log;
+				[format["GMSCore_fnc_removeBlacklistedItems: removing blacklisted item %1 from list",_i1]] call GMSCore_fnc_log;
 			} else {
 				_items pushBack _i1;
 			};

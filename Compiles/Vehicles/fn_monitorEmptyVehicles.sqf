@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_monitorEmptyVehicles
+	GMSCore_fnc_monitorEmptyVehicles
 
 	Purpose: deletes empty vehicles after a proscribed period if they are not local
 
@@ -23,10 +23,10 @@ for "_i" from 1 to (count GMSCore_monitoredEmptyVehicles) do
 	{
 		if (local _veh) then 
 		{
-			private _playersNear = [getPosATL _veh, 300] call GMS_fnc_playersNear;
+			private _playersNear = [getPosATL _veh, 300] call GMSCore_fnc_playersNear;
 			if (_playersNear isEqualTo []) then 
 			{
-				[_veh] call GMS_fnc_destroyVehicleAndCrew;
+				[_veh] call GMSCore_fnc_destroyVehicleAndCrew;
 			} else {
 				GMSCore_monitoredEmptyVehicles pushBack _vehData;
 			};

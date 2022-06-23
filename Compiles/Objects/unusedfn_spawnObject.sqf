@@ -1,6 +1,6 @@
 /*
 
-	GMS_fnc_emptyObjectInventory
+	GMSCore_fnc_emptyObjectInventory
 	
 	Purpose: remove all items from a unitAddons
 
@@ -13,7 +13,7 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_className","_location",["_direction",0],["_useVector",false],["_special","NONE"]];
 private _obj = createVehicle[_className,_location,[],0,_special];
-[_obj] call GMS_fnc_clearObjectInventory;
+[_obj] call GMSCore_fnc_clearObjectInventory;
 if (_useVector) then 
 {
 	_obj setVectorDir _direction;

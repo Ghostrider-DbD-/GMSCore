@@ -1,6 +1,6 @@
 
 /*
-	GMS_fnc_removeLauncher
+	GMSCore_fnc_removeLauncher
 
 	Purpose: remove launcher and rounds from a unit including any on the ground nearObjectsReady
 

@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_spawnPatrolAircraft
+	GMSCore_fnc_spawnPatrolAircraft
 
 	Purpose: spawn and initialize an aircraft or UAV to be used for AI patrols 
 			This is a special case because additional stuff needs to be done to be sure 
@@ -32,12 +32,12 @@ params[
 
 if !(isClass(configFile >> "CfgVehicles" >> _className)) exitWith
 {
-	[format["GMS_fnc_spawnPatrolAircraft called with invalid classname %1",_className],"error"] call GMS_fnc_log;
+	[format["GMSCore_fnc_spawnPatrolAircraft called with invalid classname %1",_className],"error"] call GMSCore_fnc_log;
 	objNull
 };
 if !(_className isKindOf "Air") exitWith 
 {
-	[format["GMS_fnc_spawnPatrolAircraft: class name %1 is not kindOf 'Air'",_className],"error"] call GMS_fnc_log;
+	[format["GMSCore_fnc_spawnPatrolAircraft: class name %1 is not kindOf 'Air'",_className],"error"] call GMSCore_fnc_log;
 	objNull
 };
 
@@ -45,7 +45,7 @@ private _spawnPos = [_pos select 0, _pos select 1, 600];
 private _aircraft = createVehicle[_className,_spawnPos,[],0,"FLY"];
 if !(isNull _aircraft) then 
 {
-	[_aircraft,_disable,_removeFuel,_releaseToPlayers,_deleteTimer] call GMS_fnc_initializePatrolVehicle;
+	[_aircraft,_disable,_removeFuel,_releaseToPlayers,_deleteTimer] call GMSCore_fnc_initializePatrolVehicle;
 	_group setVariable[GMS_flyinHeight,_height];
 	_group addVehicle _aircraft;
 	if (_aircraft isKindOf "Plane") then {
@@ -56,12 +56,12 @@ if !(isNull _aircraft) then
 	if (_aircraft isKindOf "Helicopter") then {
 		_group setVariable[GMS_flyinVariation,25];
 		_group setVariable[GMS_flyinHeight,50];	
-		[_group,_aircraft] call GMS_fnc_setGroupVehicle;		
+		[_group,_aircraft] call GMSCore_fnc_setGroupVehicle;		
 	};
 	{
 		_x moveInAny _aircraft;
 	} forEach (units _group);
-	//[format["gms_fnc_spawnPatrolAircraft: _vehHitCode = %1",_vehHitCode]] call GMS_fnc_log;
+	//[format["GMSCore_fnc_spawnPatrolAircraft: _vehHitCode = %1",_vehHitCode]] call GMSCore_fnc_log;
 	_aircraft setVariable[GMS_vehHitCode,_vehHitCode];
 	_aircraft setVariable[GMS_vehKilledCode,_vehKilledCode];
 	_aircraft setVariable["GMS_group",_group];

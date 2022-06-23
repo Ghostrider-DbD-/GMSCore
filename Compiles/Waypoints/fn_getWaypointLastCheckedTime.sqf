@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_getWaypointLastCheckedTime 
+	GMSCore_fnc_getWaypointLastCheckedTime 
 
 	Purpose: a simple get to determine the last time the groups waypoint was updated 
 		If no timestamp is set then it is set to diag_tickTime (pehaps will cause minor delays in the first unstuck functions but there you are)
@@ -16,7 +16,7 @@ params["_group"];
 private _time = _group getVariable["GMS_lastChecked",0];
 if (_time isEqualTo 0) then 
 {
-	[_group] call GMS_fnc_setWaypointLastCheckedTime;
+	[_group] call GMSCore_fnc_setWaypointLastCheckedTime;
 	_time = _group getVariable["GMS_lastChecked",0];
 };
 _time

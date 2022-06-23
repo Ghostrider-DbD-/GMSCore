@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_visibleMarker 
+	GMSCore_fnc_visibleMarker 
 
 	Purpose: spawn a temporary visible marker above an object 
 

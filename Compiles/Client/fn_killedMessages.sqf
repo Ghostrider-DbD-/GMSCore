@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_killedMessages 
+	GMSCore_fnc_killedMessages 
 
 	Purpose:
 		To be run on players machine 
@@ -22,7 +22,7 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 if !(hasInterface) exitWith {};
 params["_unit","_killer","_money","_respect","_killStreak"];
-diag_log format["GMS_fnc_killedMessages: _this = %1",_this];
+diag_log format["GMSCore_fnc_killedMessages: _this = %1",_this];
 if !(player isEqualTo _killer) then 
 {
 	{
@@ -61,7 +61,7 @@ if !(player isEqualTo _killer) then
 				];
 			};
 			case "toast": {
-				if (GMS_modType isEqualTo "exile") then 
+				if (GMSCore_modType isEqualTo "exile") then 
 				{
 					["InfoTitleAndText", [name _unit, 
 						format["Killed by %2 with a %3 from %4 meters %5X Killstreak",
@@ -75,7 +75,7 @@ if !(player isEqualTo _killer) then
 				};
 			};
 			case "epochMsg": {
-				if (GMS_modType isEqualTo "epoch") then 
+				if (GMSCore_modType isEqualTo "epoch") then 
 				{
 					[format["%1 killed %2 with %3 at %4 meters %5X KILLSTREAK",
 					name _killer,
@@ -87,14 +87,14 @@ if !(player isEqualTo _killer) then
 				};
 			};
 		};
-	} forEach GMS_killedMsgTypes;
+	} forEach GMSCore_killedMsgTypes;
 };
 if (player isEqualTo _killer) then 
 {
 	//private 
 	private["_moneyName","_respectName","_msg1","_msg2","_msg3","_msg4","_msg5"];
 
-	switch (GMS_ModType) do 
+	switch (GMSCore_modType) do 
 	{
 		case "Epoch": {
 			_moneyName = "Crypto";

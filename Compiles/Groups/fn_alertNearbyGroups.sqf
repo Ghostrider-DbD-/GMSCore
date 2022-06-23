@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_allertNearbyGroups
+	GMSCore_fnc_allertNearbyGroups
 
 	Purpose: increases all units ofthe group nearest to a target other than the targets group.
 
@@ -15,9 +15,9 @@
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_anchorPos","_enemyGroup",["_searchDistance",300],["_knowsAboutBump",1]];
-private _nearAI = _anchorPos nearEntities[GMS_unitType],_searchDistance;
+private _nearAI = _anchorPos nearEntities[GMSCore_unitType],_searchDistance;
 {
 	_x reveal [_x, (_x knowsAbout _enemyGroup) + _knowsAboutBump];
 } forEach _nearAI;
 
-//} forEach nearestObjects[_anchorPos, [GMS_unitType],_searchDistance]; ;
+//} forEach nearestObjects[_anchorPos, [GMSCore_unitType],_searchDistance]; ;

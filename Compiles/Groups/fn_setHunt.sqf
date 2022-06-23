@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_setHunt
+	GMSCore_fnc_setHunt
 
 	Purpose: store hunt parameters for a group
 

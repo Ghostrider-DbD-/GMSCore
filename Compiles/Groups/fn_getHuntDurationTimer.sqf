@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_getHuntDurationTimer
+	GMSCore_fnc_getHuntDurationTimer
 
 	Purpose: get the hunting timers
 

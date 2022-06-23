@@ -1,6 +1,6 @@
 /*
 
-	GMS_fnc_log
+	GMSCore_fnc_log
 
 	Purpose: to write a message to the server log
 
@@ -17,10 +17,10 @@
 params["_msg",["_type",""]];
 if !(_type isEqualType "") then 
 {
-	[format["Invalid _type %1 passed to GMS_fnc_log",_type]] call GMS_fnc_log;
+	[format["Invalid _type %1 passed to GMSCore_fnc_log",_type]] call GMSCore_fnc_log;
 	_type = "";
 };
-//diag_log format["GMS_fnc_log: _this = %1",_this];
+//diag_log format["GMSCore_fnc_log: _this = %1",_this];
 private _log = "";
 #define basemsg "[GMSCore]%1 %2"
 switch (toLowerANSI _type) do 

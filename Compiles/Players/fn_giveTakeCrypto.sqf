@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_giveTakeCrypto
+	GMSCore_fnc_giveTakeCrypto
 
 	Purpose: update crypto on player.
 

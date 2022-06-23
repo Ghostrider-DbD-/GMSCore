@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_depsanwInfantryGroup
+	GMSCore_fnc_depsanwInfantryGroup
 
 	Prupose: delete a group and all its units
 

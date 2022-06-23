@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_giveTakeRespect 
+	GMSCore_fnc_giveTakeRespect 
 
 	Purpose: change players respect both on the player and database. 
 

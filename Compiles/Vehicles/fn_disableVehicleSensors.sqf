@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_disableSensors 
+	GMSCore_fnc_disableSensors 
 
 	Parameters: 
 	_veh - vehicle on which to disable one or more sensors 

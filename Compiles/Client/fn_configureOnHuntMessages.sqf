@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_configureOnHunttMessages 
+	GMSCore_fnc_configureOnHunttMessages 
 
 	Purpose:
 		Updates the list of types of messages to be shown to players when units spawn to hunt the player.
@@ -18,7 +18,7 @@
 params[["_config",[]]];
 private _passedCfgs = [];
 {
-	switch (GMS_ModType) do 
+	switch (GMSCore_modType) do 
 	{
 		case "Epoch": {if ((_x in GMS_validHuntedMsgTypes) && !(_x isEqualTo "toast")) then {_passedCfgs pushBack _x}};
 		case "Exile": {if ((_x in GMS_validHuntedMsgTypes) && !(_x isEqualTo "epochMst")) then {_passedCfgs pushBack _x}};

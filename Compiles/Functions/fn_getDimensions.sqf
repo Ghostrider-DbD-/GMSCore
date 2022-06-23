@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_getDimensions
+	GMSCore_fnc_getDimensions
 
 	Purpose: returns width, length and height based on boundingBoxReal
 	

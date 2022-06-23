@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_removeAllEventHandlers 
+	GMSCore_fnc_removeAllEventHandlers 
 
 	Purpose: generic function to remove all types of EH from an object. 
 

@@ -1,6 +1,6 @@
 class CfgGMSCore {
-    GMS_debug = 1;
-    GMS_maxHuntDuration = 300;
-    GMS_huntNearestPlayer = false;
-    GMS_hitKillEventUpdateInterval = 15;  // seconds
+    GMSCore_debug = 1;
+    GMSCore_maxHuntDuration = 300;
+    GMSCore_huntNearestPlayer = false;
+    GMSCore_hitKillEventUpdateInterval = 15;  // seconds
 };

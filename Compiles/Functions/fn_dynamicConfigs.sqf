@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_dynamicConfigs
+	GMSCore_fnc_dynamicConfigs
 
 	purpose: generate a list of weapons, uniforms and other items from CfgPrices or its equivalent and pass back an array of these items broken itno categories.
 
@@ -47,7 +47,7 @@
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
 params[["_maximumPrice",1000],["_blackListedItems",[]],["_blacklistedCategories",[]],["_blacklistedClassnameRoots",[]]];
-if (GMSAI_debug > 1) then {[format["fn_dynamicConfigs: _blacklistedClassnameRoots = %1",_blacklistedClassnameRoots]] call GMS_fnc_log};
+if (GMSAI_debug > 1) then {[format["fn_dynamicConfigs: _blacklistedClassnameRoots = %1",_blacklistedClassnameRoots]] call GMSCore_fnc_log};
 _GMSCore_headgearList = [];
 _GMSCore_SkinList = [];
 _GMSCore_vests = [];
@@ -111,7 +111,7 @@ _baseClasses = [];
 _classnameList = [];
 _classNamesAdded = [];
 private "_classnameList";
-if (GMS_ModType isEqualTo "Epoch") then
+if (GMSCore_modType isEqualTo "Epoch") then
 {
 	_classnameList = (missionConfigFile >> "CfgPricing" ) call BIS_fnc_getCfgSubClasses;
 	_generic = [configFile >> "CfgLootTable" >> "Generic","items",[]] call BIS_fnc_returnConfigEntry;
@@ -125,7 +125,7 @@ if (GMS_ModType isEqualTo "Epoch") then
 	{
 		(_x select 0) params["_itemClassName","_itemCfgTyep"];
 		//diag_log format["[GMSCore] fn_dynamicConfigs: _itemClassName = %2 |  _x = %1",_x, _itemClassName];
-		if ([_itemClassName, _blacklistedClassnameRoots] call GMS_fnc_substringsPresentInString == 0) then
+		if ([_itemClassName, _blacklistedClassnameRoots] call GMSCore_fnc_substringsPresentInString == 0) then
 		{
 			if ( (getNumber(missionConfigFile >> "CfgPricing" >> _itemClassName >> "price")) < _maximumPrice  && {(_itemClassName in _blackListedItems) && {!(_itemClassName in _classNamesAdded)}}) then
 			{
@@ -139,7 +139,7 @@ if (GMS_ModType isEqualTo "Epoch") then
 		//diag_log format["[GMSCore] fn_dynamicConfigs: _itemClassName = %2 |  _x = %1",_x, _itemClassName];		
 		if (_itemCfg isEqualTo "magazine") then
 		{
-			if ([_itemClassName, _blacklistedClassnameRoots] call GMS_fnc_substringsPresentInString == 0) then
+			if ([_itemClassName, _blacklistedClassnameRoots] call GMSCore_fnc_substringsPresentInString == 0) then
 			{
 				if ( (getNumber(missionConfigFile >> "CfgPricing" >> _itemClassName >> "price")) < _maximumPrice  && {!(_itemClassName in _blackListedItems) && {!(_itemClassName in _classNamesAdded)}}) then
 				{
@@ -153,7 +153,7 @@ if (GMS_ModType isEqualTo "Epoch") then
 			_itemsList = [configFile >> "CfgLootTable" >> _itemClassName, "items",[]] call BIS_fnc_returnConfigEntry;
 			//diag_log format["GMSCore] fn_dynamicConfigs: for _itemClassName %1 | _itemsList was %2",_itemClassName,_itemsList];
 			{
-				if ([_itemClassName, _blacklistedClassnameRoots] call GMS_fnc_substringsPresentInString == 0) then
+				if ([_itemClassName, _blacklistedClassnameRoots] call GMSCore_fnc_substringsPresentInString == 0) then
 				{
 					if ( (getNumber(missionConfigFile >> "CfgPricing" >> _itemClassName >> "price")) < _maximumPrice  && !(_itemClassName in _blackListedItems) && !(_itemClassName in _classNamesAdded)) then
 					{
@@ -166,26 +166,26 @@ if (GMS_ModType isEqualTo "Epoch") then
 	} forEach (_generic + _genericAuto + _genericBed + _genericLarge + _toolsLoot + _medicalLoot);
 };
 
-if (GMS_modType isEqualTo "Exile") then
+if (GMSCore_modType isEqualTo "Exile") then
 {
 	_classnameList = (missionConfigFile >> "CfgExileArsenal" ) call BIS_fnc_getCfgSubClasses;
 };
 private ["_price"];  // here for scope only
 {
 	_itemClassName = _x;
-	if ([_itemClassName, _blacklistedClassnameRoots] call GMS_fnc_substringsPresentInString == 0) then
+	if ([_itemClassName, _blacklistedClassnameRoots] call GMSCore_fnc_substringsPresentInString == 0) then
 	{
-		if (GMS_modType isEqualTo "Epoch") then
+		if (GMSCore_modType isEqualTo "Epoch") then
 		{
 			_price = getNumber(missionConfigFile >> "CfgPricing" >> _x >> "price");
 		};
-		if (GMS_modType isEqualTo "Exile") then
+		if (GMSCore_modType isEqualTo "Exile") then
 		{
 			_price = getNumber(missionConfigFile >> "CfgExileArsenal" >> _x >> "price");
 		};
-		if !([_itemClassName] call GMS_fnc_isClass) then 
+		if !([_itemClassName] call GMSCore_fnc_isClass) then 
 		{
-			[format["Invalid classname used: %1",_itemClassName],"warning"] call GMS_fnc_log;
+			[format["Invalid classname used: %1",_itemClassName],"warning"] call GMSCore_fnc_log;
 			_price = _maximumPrice + 100;
 		};
 		if (_price < _maximumPrice) then

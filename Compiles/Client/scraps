@@ -40,4 +40,4 @@ private "_labelColor";
 			[_text,_xcoord,_ycoord,_screentime,0.5] spawn BIS_fnc_dynamicText;
 		};
 	};
-} forEach GMS_alertMsgTypes;
+} forEach GMSCore_alertMsgTypes;

@@ -1,6 +1,6 @@
 /*
 
-	GMS_fnc_checkClassNamePrices
+	GMSCore_fnc_checkClassNamePrices
 
 	Purpose: to check whether there is pricing for each classname in a weighted array and flag or remove those that don't.
 			 Handles simple arrays and weighted arrays formated as [className, weight, ... 
@@ -15,10 +15,10 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 params[["_classnames",[]],["_remove",true]];
 private "_cfg";
-//[format["GMS_fnc_checkClassNamePrices: _remove = %1 | typeName _classnames = %2",_remove,typeName _classnames]] call GMS_fnc_log;
-//[format["GMS_fnc_checkClassNamePrices:_classnames = %1",_classnames]] call GMS_fnc_log;
+//[format["GMSCore_fnc_checkClassNamePrices: _remove = %1 | typeName _classnames = %2",_remove,typeName _classnames]] call GMSCore_fnc_log;
+//[format["GMSCore_fnc_checkClassNamePrices:_classnames = %1",_classnames]] call GMSCore_fnc_log;
 private _count = count _classnames;
-switch (GMS_modType) do 
+switch (GMSCore_modType) do 
 {
 	case "Epoch": {_cfg = "CfgPricing"};
 	case "Exile": {_cfg = "CfgExileArsenal"};
@@ -47,7 +47,7 @@ if !(_cfg isEqualTo "") then
 			if !(isClass(missionConfigFile >> _cfg >> _cn)) then 
 			{
 				_invalid = true;
-				[format["There is no pricing in %1 for classname %2",GMS_modType,_cn],'warning'] call GMS_fnc_log;			
+				[format["There is no pricing in %1 for classname %2",GMSCore_modType,_cn],'warning'] call GMSCore_fnc_log;			
 			};
 			if (!(_invalid) || {!(_remove)}) then 
 			{
@@ -64,7 +64,7 @@ if !(_cfg isEqualTo "") then
 			if !(isClass(missionConfigFile >> _cfg >> (_cn select 0))) then 
 			{
 				_invalid = true;
-				[format["There is no pricing in %1 for classname %2",GMS_modType,(_cn select 0)],'warning'] call GMS_fnc_log;			
+				[format["There is no pricing in %1 for classname %2",GMSCore_modType,(_cn select 0)],'warning'] call GMSCore_fnc_log;			
 			};
 			if (!(_invalid) || {!(_remove)}) then 
 			{
@@ -73,5 +73,5 @@ if !(_cfg isEqualTo "") then
 		};
 	};
 };
-//[format["GMS_fnc_checkClassNamePrices:_classnames after cleanup = %1",_classnames]] call GMS_fnc_log;
+//[format["GMSCore_fnc_checkClassNamePrices:_classnames after cleanup = %1",_classnames]] call GMSCore_fnc_log;
 _classnames

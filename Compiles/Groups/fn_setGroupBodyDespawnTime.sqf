@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_setupGroupGear
+	GMSCore_fnc_setupGroupGear
 	Purpose: to add gear to units of a group.
 	Parameters
 		_group: the group to be processed

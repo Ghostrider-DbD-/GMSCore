@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_vehicleHandleDamage 
+	GMSCore_fnc_vehicleHandleDamage 
 
 	Purpose: handle situations where the vehicle sustains damage because of friednly fire or collisions with the environment 
 

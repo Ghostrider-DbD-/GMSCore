@@ -1,6 +1,6 @@
 /*
 
-	GMS_fnc_canSee
+	GMSCore_fnc_canSee
 
 	Purpose: returns true if one unit in group can see one unit in an array from another Side
 
@@ -18,6 +18,6 @@ params[["_group",grpNull],["_unit",objNull]];
 private _seen = false;
 {
 	_aiUnit = _x;
-	if ([_x,_unit] call GMS_fnc_unitCanSee) exitWith {_seen = true};
+	if ([_x,_unit] call GMSCore_fnc_unitCanSee) exitWith {_seen = true};
 } forEach (units _group);
 _seen

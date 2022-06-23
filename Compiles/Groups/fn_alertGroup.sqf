@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_alertGroup
+	GMSCore_fnc_alertGroup
 
 	Purpose: increases all units of a group of a target.
 

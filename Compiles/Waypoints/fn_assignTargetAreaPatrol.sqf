@@ -1,6 +1,6 @@
 
 /*
-	GMS_fnc_assignTargetAreaPatrol 
+	GMSCore_fnc_assignTargetAreaPatrol 
 
 	Pupose: to set the patrol area marker for a group 
 
@@ -22,4 +22,4 @@
 params["_group","_target"];
 _group setVariable["GMS_target",_target];
 _group setVariable["GMS_targetGroup",group _target];
-(leader _group) call GMS_fnc_nextWaypointAreaPatrol;
+(leader _group) call GMSCore_fnc_nextWaypointAreaPatrol;

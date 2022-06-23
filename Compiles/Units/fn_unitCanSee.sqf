@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_unitCanSee 
+	GMSCore_fnc_unitCanSee 
 
 	Purpose: determine if a unit has a clear line of sight to an object or 'can see it'
 

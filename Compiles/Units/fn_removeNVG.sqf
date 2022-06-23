@@ -1,5 +1,5 @@
 /*
-    GMS_fnc_removeNVG
+    GMSCore_fnc_removeNVG
 
     Prupose: remove NVG from unitAddons
 

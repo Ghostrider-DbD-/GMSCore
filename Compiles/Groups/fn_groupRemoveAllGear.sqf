@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_groupRemoveAllGear
+	GMSCore_fnc_groupRemoveAllGear
 
 	Purpose: remove all gear from all units in a group. 
 
@@ -14,5 +14,5 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_group"];
 {
-	[_x] call GMS_fnc_unitRemoveAllGear;
+	[_x] call GMSCore_fnc_unitRemoveAllGear;
 }forEach (units _group);

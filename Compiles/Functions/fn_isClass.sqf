@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_isClass
+	GMSCore_fnc_isClass
 
 	Purpose: determine if a string is a valid className
 	Parameters: 
@@ -16,6 +16,6 @@ params["_item"];
 private _result = false;
 if ((typeName _item) isEqualTo "STRING") then
 {
-  	_result = if ([_item] call GMS_fnc_getCfgType isEqualTo "") then {false} else {true};
+  	_result = if ([_item] call GMSCore_fnc_getCfgType isEqualTo "") then {false} else {true};
 };
 _result

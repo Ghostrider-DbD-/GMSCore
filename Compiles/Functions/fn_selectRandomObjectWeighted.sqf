@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_selectRandomObject
+	GMSCore_fnc_selectRandomObject
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_choices",["_blacklists",[]];

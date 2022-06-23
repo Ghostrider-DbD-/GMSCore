@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_dropPayload 
+	GMSCore_fnc_dropPayload 
 
 	Purpose: drop a payload of either an object or group of AI at current location of the aircraft 
 	Parameters: _aircraft, the aircraft from which the payload will be dropped 
@@ -13,12 +13,12 @@
 private["_marker","_smoke"];
 params["_aircraft"];
 private _payload = _aircraft getVariable "payload";
-if (isNil "_payload") exitWith {[format["No Payload Defined for Aircraft %1",_aircraft],"warning"] call GMS_fnc_log;};
-if (isNull _payload) exitWith {[format["Payload for aircraft %1 is a nullObject",_aircraft],"warning"] call GMS_fnc_log;};
+if (isNil "_payload") exitWith {[format["No Payload Defined for Aircraft %1",_aircraft],"warning"] call GMSCore_fnc_log;};
+if (isNull _payload) exitWith {[format["Payload for aircraft %1 is a nullObject",_aircraft],"warning"] call GMSCore_fnc_log;};
 _aircraft setVariable["payload",nil];
 if (typeName _payload isEqualTo "GROUP") then 
 {
-	[_payload,getPosATL _aircraftt, _aircraft] call GMS_fnc_dropParatroops;
+	[_payload,getPosATL _aircraftt, _aircraft] call GMSCore_fnc_dropParatroops;
 } else {
 	// Drop a crate as close as possible to the requested location
 	private _allowDamage = _aircraft getVariable "allowdamage";
@@ -39,7 +39,7 @@ if (typeName _payload isEqualTo "GROUP") then
 		//diag_log "payload delivered";
 		_aircraft setVariable["PayloadDelivered",true];
 	};	
-	private _dimensions = [_payload] call GMS_fnc_getDimensions;
+	private _dimensions = [_payload] call GMSCore_fnc_getDimensions;
 	private _releaseHeight = (_dimensions select 2) + 3;
 	while {(getPosATL _payload) select 2 > 0.6} do {uiSleep 1;};
 	detach _payload;
@@ -50,7 +50,7 @@ if (typeName _payload isEqualTo "GROUP") then
 
 	//uiSleep 1;
 	if (_allowDamage) then {_payload allowDamage true};
-	if (_visibleMarker) then {[_payload,300] call GMS_fnc_visibleMarker};
+	if (_visibleMarker) then {[_payload,300] call GMSCore_fnc_visibleMarker};
 
 	if (_mapMarker) then 
 	{

@@ -1,6 +1,6 @@
 /*
 
-	GMS_fnc_unitReloaded 
+	GMSCore_fnc_unitReloaded 
 
 	Purpose: called when the "Reloaded" event handler fires for the unit.  
 
@@ -23,11 +23,11 @@ private _maxReloads = (group _unit) getVariable[GMS_maxReloads,-1];
 if (_maxReloads isEqualTo -1) exitWith 
 {
 	(_unit) addMagazine (_newMagazine);
-	//[format["_unitReloaded:: one magazine of type %1 added to inventory of unit %2",newMagazine,unit]] call GMS_fnc_log;
+	//[format["_unitReloaded:: one magazine of type %1 added to inventory of unit %2",newMagazine,unit]] call GMSCore_fnc_log;
 };
 
 private _reloads = (_unit) getVariable ["GMS_reloads",0];
 if (_reloads >= _maxReloads) exitWith {};
 (_unit) addMagazine (newMagazine);
 (_unit) setVariable["GMS_reloads",_reloads + 1];
-//[format["_unitReloaded:: one magazine of type %1 added to inventory of unit %2",newMagazine,unit]] call GMS_fnc_log;
+//[format["_unitReloaded:: one magazine of type %1 added to inventory of unit %2",newMagazine,unit]] call GMSCore_fnc_log;

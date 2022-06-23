@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_huntedMessages 
+	GMSCore_fnc_huntedMessages 
 
 	Purpose:
 		To be run on players machine 
@@ -34,10 +34,10 @@ params["_msg"];
 			hint _msg;
 		};
 		case "epochMsg": {
-			if (GMS_modType isEqualTo "Epoch") then {[_msg,5] call EPOCH_msg};
+			if (GMSCore_modType isEqualTo "Epoch") then {[_msg,5] call EPOCH_msg};
 		};
 		case "toast": {
-			if (GMS_ModType isEqualTo "Exile") then {["InfoTitleAndText", [_msg]] call ExileClient_gui_toaster_addTemplateToast};
+			if (GMSCore_modType isEqualTo "Exile") then {["InfoTitleAndText", [_msg]] call ExileClient_gui_toaster_addTemplateToast};
 		};
 	};
-} forEach GMS_huntedMsgTypes;
+} forEach GMSCore_huntedMsgTypes;

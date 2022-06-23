@@ -1,5 +1,5 @@
 /*
-    GMS_fnc_getCfgType
+    GMSCore_fnc_getCfgType
 
     Purpose: determine which Cfg file to use for lookups
 

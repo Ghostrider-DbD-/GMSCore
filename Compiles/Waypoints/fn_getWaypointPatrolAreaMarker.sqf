@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_getWaypointPatrolAreaMarker 
+	GMSCore_fnc_getWaypointPatrolAreaMarker 
 
 	Purpose: a simple get function to return the name of the marker use to define the groups patrol area 
 

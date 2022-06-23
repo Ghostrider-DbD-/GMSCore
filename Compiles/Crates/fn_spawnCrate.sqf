@@ -1,5 +1,5 @@
 /*
-    GMS_fnc_spawnCrate 
+    GMSCore_fnc_spawnCrate 
 
     Purpose: spawn an object, normally a container of some sort, at a location or at [0,0,0] if none specified.
 
@@ -15,5 +15,5 @@
 
 params["_className",["_location",[0,0,0]]];
 private _crate = _className createVehicle _location;
-_crate call GMS_fnc_emptyObjectInventory;
+_crate call GMSCore_fnc_emptyObjectInventory;
 _crate

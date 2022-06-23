@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_healSelf 
+	GMSCore_fnc_healSelf 
 
 	Purpose: causes the unit to heal itself, removing all damage in the process 
 
@@ -8,7 +8,7 @@
 
 	Returns: None
 
-	Notes: variables on the group are set in GMS_fnc_spawnInfantryGroup and are passed to that function as parameters.
+	Notes: variables on the group are set in GMSCore_fnc_spawnInfantryGroup and are passed to that function as parameters.
 	
 	Copyright 2020 by Ghostrider-GRG-
 */
@@ -22,7 +22,7 @@ if ((damage _unit) < (_group getVariable[GMS_minDamageForHeal,0.4]) ) exitWith {
 private _maxHeals = _group getVariable [GMS_maxHeals,1];
 private _healsDone = _unit getVariable ["GMS_healsDone",0];
 if (_healsDone >= _maxHeals) exitWith {};
-[_unit,_source] call GMS_fnc_throwSmoke;
+[_unit,_source] call GMSCore_fnc_throwSmoke;
 _unit setVariable["GMS_healsDone",_healsDone + 1];
 _unit addItem "FAK";
 _unit action ["HealSoldierSelf", _unit];

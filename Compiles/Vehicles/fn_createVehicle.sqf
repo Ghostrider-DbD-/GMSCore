@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_createVehicle 
+	GMSCore_fnc_createVehicle 
 
 	Purpose: generic function for creating vehicles including aircraft and UAV
 
@@ -22,7 +22,7 @@ params[
 	["_height",0],
 	["_protect",true]
 ];
-//[format["GMS_fnc_createVehicle: _vehType %1 | _pos %2 | _dir %3 | _height %4",_vehType,_pos,_dir,_height]] call GMS_fnc_log;
+//[format["GMSCore_fnc_createVehicle: _vehType %1 | _pos %2 | _dir %3 | _height %4",_vehType,_pos,_dir,_height]] call GMSCore_fnc_log;
 private "_veh";
 if (_height > 0 && {_vehType isKindOf "Air"}) then 
 {
@@ -33,7 +33,7 @@ if (_height > 0 && {_vehType isKindOf "Air"}) then
 	_veh = createVehicle[_vehType, _pos, [], 0, "NONE"];
 };
 
-if (_protect && {GMS_modType isEqualTo "Epoch"}) then {_veh call EPOCH_server_setVToken};
+if (_protect && {GMSCore_modType isEqualTo "Epoch"}) then {_veh call EPOCH_server_setVToken};
 
 _veh allowDamage false;
 if (_dir isEqualType 0) then 

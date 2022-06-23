@@ -1,6 +1,6 @@
 // 
 /*
-	GMS_fnc_deleteObjectsMethod
+	GMSCore_fnc_deleteObjectsMethod
 
 	Purpose: Delete objects in the deletion cue based on type. 
 	
@@ -16,24 +16,24 @@
 
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_objectParameters"];
-//[format["GMS_fnc_deleteObjectsMethod: typeName _objectParameters = %1 | _objectParameters = %2",typeName _objectParameters,_objectParameters]] call GMS_fnc_log;
+//[format["GMSCore_fnc_deleteObjectsMethod: typeName _objectParameters = %1 | _objectParameters = %2",typeName _objectParameters,_objectParameters]] call GMSCore_fnc_log;
 if (_objectParameters isEqualType []) then 
 {
-	{[_x] call GMS_fnc_deleteObjectsMethod} forEach _objectParameters;  //  One itteration of recursion should be ok (fingers crossed).
+	{[_x] call GMSCore_fnc_deleteObjectsMethod} forEach _objectParameters;  //  One itteration of recursion should be ok (fingers crossed).
 } else {
 	if (typeName _objectParameters isEqualTo "OBJECT") then 
 	{
-		//[format["GMS_fnc_deleteObjectsMethod: deleting object %1 | typeOf %2 | at %3",_objectParameters,typeOf _objectParameters,diag_tickTime]] call GMS_fnc_log;
+		//[format["GMSCore_fnc_deleteObjectsMethod: deleting object %1 | typeOf %2 | at %3",_objectParameters,typeOf _objectParameters,diag_tickTime]] call GMSCore_fnc_log;
 		deleteVehicle _objectParameters;
 	} else {
 		if (typeName _objectParameters isEqualTo "GROUP") then 
 		{
-			//[format["GMS_fnc_deleteObjectsMethod: deleting group %1 at %2",_objectParameters,diag_tickTime]] call GMS_fnc_log;
-			[_objectParameters] call GMS_fnc_despawnInfantryGroup;
+			//[format["GMSCore_fnc_deleteObjectsMethod: deleting group %1 at %2",_objectParameters,diag_tickTime]] call GMSCore_fnc_log;
+			[_objectParameters] call GMSCore_fnc_despawnInfantryGroup;
 		} else {
 			if (_objectParameters isEqualType "") then 
 			{
-				//[format["GMS_fnc_deleteObjectsMethod: deleting marker %1 at %2",_objectParameters,diag_tickTime]] call GMS_fnc_log;
+				//[format["GMSCore_fnc_deleteObjectsMethod: deleting marker %1 at %2",_objectParameters,diag_tickTime]] call GMSCore_fnc_log;
 				deleteMarker _objectParameters;
 			};
 		};

@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_getIntegerFromRange
+	GMSCore_fnc_getIntegerFromRange
 
 	Purpose: to find a random integer within a specified removeMagazineGlobal
 	Parameters: 
@@ -16,4 +16,4 @@
 
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_data"];
-round([_data] call GMS_fnc_getNumberFromRange);
+round([_data] call GMSCore_fnc_getNumberFromRange);

@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_dropParatroops 
+	GMSCore_fnc_dropParatroops 
 	Purpose: drops a group of AI defined in _group at location _pos from the optional aircraft defined in _aircraft
 			Where _aircraft is null, AI are dripped in from a point in space with some spacing between them. 
 
@@ -15,7 +15,7 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 params[["_group",grpNull],["_pos",[0,0,0]],["_aircraft",objNull]];
 
-//diag_log format["GMS_fnc_dropParatroops: _group = %1 | _pos = %2 | _aircraft = %3 | typeOf _aircraft = %4",_group,_pos,_aircraft,typeOf _aircraft];
+//diag_log format["GMSCore_fnc_dropParatroops: _group = %1 | _pos = %2 | _aircraft = %3 | typeOf _aircraft = %4",_group,_pos,_aircraft,typeOf _aircraft];
 
 // drop the group of paratroops as close as possible to the desired location 
 
@@ -31,7 +31,7 @@ if !(isNull _aircraft) then
 		//_x moveInCargo _aircraft;
 		//_x action["Eject",vehicle _x];
 		uiSleep 3;
-		//diag_log format["GMS_fnc_dropParatroops: _unit %1 spawned into chute at pose %2 and alive = %3",_x, getPosATL _x, alive _x];		
+		//diag_log format["GMSCore_fnc_dropParatroops: _unit %1 spawned into chute at pose %2 and alive = %3",_x, getPosATL _x, alive _x];		
 	} forEach (units _group);
 } else {
 	#define spawnHeight 50
@@ -47,5 +47,5 @@ if !(isNull _aircraft) then
 	} forEach (units _group);
 };
 
-//[format["GMS_fnc_dropParatroops: all units of group %1 touched down with %2 out of %3 alive",_group, {alive _x} count (units _group), count (units _group)]] call GMS_fnc_log;
+//[format["GMSCore_fnc_dropParatroops: all units of group %1 touched down with %2 out of %3 alive",_group, {alive _x} count (units _group), count (units _group)]] call GMSCore_fnc_log;
 

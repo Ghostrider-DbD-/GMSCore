@@ -7,42 +7,55 @@
 */
 
 #include "GMS_defines.hpp"
+GMSCore_modType = "default";
+if (!isNull (configFile >> "CfgPatches" >> "exile_server")) then {GMSCore_modType = "Exile"};
+if (!isnull (configFile >> "CfgPatches" >> "a3_epoch_server")) then {GMSCore_modType = "Epoch"}; 
+[format["GMSCore_modType = %1",GMSCore_modType]] call GMSCore_fnc_log;
+// This block waits for the mod to start but is disabled for now
+if ((toLowerANSI GMSCore_modType) isEqualto "epoch") then {
+	["Waiting until EpochMod is ready..."] call GMSCore_fnc_log;
+	waitUntil {!isnil "EPOCH_SERVER_READY"};
+	["EpochMod is ready...loading GMSCore"] call GMSCore_fnc_log;
+};
+if ((toLowerANSI GMSCore_modType) isEqualTo "exile") then
+{
+	["Waiting until ExileMod is ready ..."] call GMSCore_fnc_log;
+	waitUntil {!isNil "PublicServerIsLoaded"};
+	["Exilemod is ready...loading GMSCore"] call GMSCore_fnc_log;	
+};
 
-GMS_debug = getNumber(configFile >> "CfgGMSCore" >> "GMS_debug");
-GMS_maxHuntDuration = getNumber(configFile >> "CfgGMSCore" >> "GMS_maxHuntDuration");;
-GMS_huntNearestPlayer = if (getNumber(configFile >> "CfgGMSCore" >> "GMS_huntNearestPlayer") == 1) then {true} else {false};;
-GMS_hitKillEventUpdateInterval = getNumber(configFile >> "CfgGMSCore" >> "GMS_hitKillEventUpdateInterval");
-GMS_modType = "default";
-if (!isNull (configFile >> "CfgPatches" >> "exile_server")) then {GMS_modType = "Exile"};
-if (!isnull (configFile >> "CfgPatches" >> "a3_epoch_server")) then {GMS_modType = "Epoch"}; 
-diag_log format["GMS_fnc_initialize: GMS_modType = %1",GMS_modType];
-switch (toLowerANSI GMS_modType) do 
+GMSCore_debug = getNumber(configFile >> "CfgGMSCore" >> "GMSCore_debug");
+GMSCore_maxHuntDuration = getNumber(configFile >> "CfgGMSCore" >> "GMSCore_maxHuntDuration");;
+GMSCore_huntNearestPlayer = if (getNumber(configFile >> "CfgGMSCore" >> "GMSCore_huntNearestPlayer") == 1) then {true} else {false};;
+GMSCore_hitKillEventUpdateInterval = getNumber(configFile >> "CfgGMSCore" >> "GMSCore_hitKillEventUpdateInterval");
+
+switch (toLowerANSI GMSCore_modType) do 
 {
 	case "exile": 
 	{
-		GMS_Side = EAST;
-		GMS_playerSide = WEST;
-		GMS_unitType = "O_Soldier_lite_F";
+		GMSCore_Side = EAST;
+		GMSCore_playerSide = WEST;
+		GMSCore_unitType = "O_Soldier_lite_F";
 	};
 	case "epoch": 
 	{
-		GMS_Side = RESISTANCE;
+		GMSCore_Side = RESISTANCE;
 		GMS_playerUnitTypes = ["Epoch_Male_F","Epoch_Female_F"];
-		GMS_playerSide = WEST;		
-		GMS_unitType = "I_Soldier_M_F";			
+		GMSCore_playerSide = WEST;		
+		GMSCore_unitType = "I_Soldier_M_F";			
 	};
 	default {
-		GMS_Side = EAST;
-		GMS_unitType = "O_Soldier_lite_F";
-		GMS_playerSide = WEST;		
+		GMSCore_Side = EAST;
+		GMSCore_unitType = "O_Soldier_lite_F";
+		GMSCore_playerSide = WEST;		
 	};
 };
-diag_log format["GMS_fnc_initialize: GMS_Side = %1",GMS_Side];
-GMS_center = createCenter GMS_Side;
-if (isNil "GMS_graveyardGroup") then 
+[format["GMSCore_Side = %1",GMSCore_Side]] call GMSCore_fnc_log;
+GMSCore_center = createCenter GMSCore_Side;
+if (isNil "GMSCore_graveyardGroup") then 
 {
-	GMS_graveyardGroup = createGroup[GMS_Side,false];  // used to store dead units until they are Deleted 
-	GMS_graveyardGroup setGroupId ["GMS_graveyard"];
+	GMSCore_graveyardGroup = createGroup[GMSCore_Side,false];  // used to store dead units until they are Deleted 
+	GMSCore_graveyardGroup setGroupId ["GMS_graveyard"];
 };
 
 GMS_formation = "WEDGE";
@@ -57,7 +70,7 @@ GMSCore_onRunoverHitpointDamage = [0.3-0.6];
 GMSCore_onRunoverNoHitPointsDamaged = [1,4];
 
 // set default group composition 
-GMS_infantryGroup = 
+GMSCore_infantryGroup = 
 [
 	["CAPTAIN","assault"],
 	["LIEUTENANT","assault"],
@@ -66,7 +79,7 @@ GMS_infantryGroup =
 	["PRIVATE","assault"]
 ];
 
-GMS_killedMsgTypes = [
+GMSCore_killedMsgTypes = [
 	//"toast",
 	//"epochMsg",
 	//"hint",
@@ -74,10 +87,10 @@ GMS_killedMsgTypes = [
 	"dynamic",
 	"systemChat"
 ];
-[GMS_killedMsgTypes] call GMS_fnc_configureOnKilledMessages;
-diag_log format["GMSCore: Initilize - GMS_killedMsgTypes = %1",GMS_killedMsgTypes];
+[GMSCore_killedMsgTypes] call GMSCore_fnc_configureOnKilledMessages;
+[format["GMSCore_killedMsgTypes = %1",GMSCore_killedMsgTypes]] call GMSCore_fnc_log;
 
-GMS_huntedMsgTypes = [
+GMSCore_huntedMsgTypes = [
 	//"toast",
 	//"epochMsg",
 	//"hint",
@@ -85,10 +98,10 @@ GMS_huntedMsgTypes = [
 	//"dynamic",
 	"systemChat"
 ];
-[GMS_huntedMsgTypes] call GMS_fnc_configureOnHuntMessages;
-diag_log format["GMSCore: Initilize - GMS_huntedMsgTypes = %1",GMS_huntedMsgTypes];
+[GMSCore_huntedMsgTypes] call GMSCore_fnc_configureOnHuntMessages;
+[format["GMSCore_huntedMsgTypes = %1",GMSCore_huntedMsgTypes]] call GMSCore_fnc_log;
 
-GMS_alertMsgTypes = [
+GMSCore_alertMsgTypes = [
 	//"toast",
 	//"epochMsg",
 	//"hint",
@@ -96,27 +109,27 @@ GMS_alertMsgTypes = [
 	//"dynamic",
 	"systemChat"
 ];
-[GMS_alertMsgTypes] call GMS_fnc_configureAlertMessages; 
-diag_log format["GMSCore: Initilize - GMS_alertMstTypes = %1",GMS_alertMsgTypes];
+[GMSCore_alertMsgTypes] call GMSCore_fnc_configureAlertMessages; 
+[format["GMS_alertMsgTypes = %1",GMSCore_alertMsgTypes]] call GMSCore_fnc_log;
 
-GMS_vehicleGroup = GMS_infantryGroup;
-GMS_aircraftGroup = GMS_infantryGroup; 
+//GMSCore_vehicleGroup = GMSCore_infantryGroup;
+//GMSCore_aircraftGroup = GMSCore_infantryGroup; 
 
 private _ver =  getNumber(configFile >> "GMSCoreBuild" >> "version");
 private _build = getNumber(configFile >> "GMSCoreBuild" >> "build");
 private _buildDate = getText(configFile >> "GMSCoreBuild" >> "buildDate");
 
-publicVariable "GMS_fnc_textAlert";
-publicVariable "GMS_fnc_titleTextAlert";
-publicVariable "GMS_fnc_huntedMessages";
-publicVariable "GMS_fnc_killedMessages";
-publicVariable "GMS_ModType";
-publicVariable "GMS_killedMsgTypes";
-publicVariable "GMS_alertMsgTypes";
-publicVariable "GMS_huntedMsgTypes";
+publicVariable "GMSCore_fnc_textAlert";
+publicVariable "GMSCore_fnc_titleTextAlert";
+publicVariable "GMSCore_fnc_huntedMessages";
+publicVariable "GMSCore_fnc_killedMessages";
+publicVariable "GMSCore_modType";
+publicVariable "GMSCore_killedMsgTypes";
+publicVariable "GMSCore_alertMsgTypes";
+publicVariable "GMSCore_huntedMsgTypes";
 
-[] call GMS_fnc_findWorld;
-[] spawn GMS_fnc_mainThread;  //  Start the scheduler that does all the work.
+[] call GMSCore_fnc_findWorld;
+[] spawn GMSCore_fnc_mainThread;  //  Start the scheduler that does all the work.
 
-[format["GMSCore Build %1 Build Date %2 Initialized at %3 with GMS_modType = %4",_build,_buildDate,diag_tickTime,GMS_modType]] call GMS_fnc_log;
+[format["Build %1 Build Date %2 Initialized at %3 with GMSCore_modType = %4",_build,_buildDate,diag_tickTime,GMSCore_modType]] call GMSCore_fnc_log;
 GMSCore_Initialized = true;

@@ -1,5 +1,5 @@
 /*
-    GMS_fnc_removeAllMPEventHandlers 
+    GMSCore_fnc_removeAllMPEventHandlers 
 
     Purpose: generic function to remove all MP Event handlers from an object 
 

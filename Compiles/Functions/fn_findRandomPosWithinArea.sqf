@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_findRandomPosWithinArea
+	GMSCore_fnc_findRandomPosWithinArea
 
 	Purpose: Returns N positions within an area with spacing from nearby units/players and each other.
 
@@ -17,7 +17,7 @@
 
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_areaMarker","_noPositionsToFind",["_units",[]],["_separation",10],["_blackList",["water"]]];
-//diag_log format["GMS_fnc_findRandomPosWithinArea:  _areaMarker %1 | _noPositionsToFind %2 | _separation %3",_areaMarker,_noPositionsToFind,_separation];
+//diag_log format["GMSCore_fnc_findRandomPosWithinArea:  _areaMarker %1 | _noPositionsToFind %2 | _separation %3",_areaMarker,_noPositionsToFind,_separation];
 private _spawnPos = [0,0];
 private _posnFound = [];
 private _center = [];
@@ -33,7 +33,7 @@ if (_areaMarker isEqualType []) then
 	_size = _patrolAreaMarker select 1;
 };
 if (( _size) isEqualType []) then {_size = (_size select 0) max (_size select 1)};
-//diag_log format["GMS_fnc_findRandomPosWithinArea: _size = %1",_size];
+//diag_log format["GMSCore_fnc_findRandomPosWithinArea: _size = %1",_size];
 private _localBlacklist = +_blackList;
 {_localBlacklist pushBack [getPosATL _x, _separation]} forEach _units;
 for "_i" from 1 to _noPositionsToFind do

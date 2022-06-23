@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_spawnInfantryGroup
+	GMSCore_fnc_spawnInfantryGroup
 
 	Purpose: spawn a group of N infantry units as a specified position.
 
@@ -27,7 +27,7 @@
 params[
 		["_pos",[0,0,0]],  // center of the area in which to spawn units
 		["_units",0],  // Number of units to spawn
-		["_side",GMS_side],
+		["_side",GMSCore_Side],
 		["_baseSkill",0.7],
 		["_alertDistance",500], 	 // How far GMS will search from the group leader for enemies to alert to the kiillers location
 		["_intelligence",0.5],  	// how much to bump knowsAbout after something happens
@@ -43,11 +43,11 @@ params[
 		["_chanceGarison",0],
 		["_isDroneCrew",false]
 ];
-//diag_log format["GMS_fnc_spawnInfantryGroup:  _side = %1", _side];
-if (_units == 0) exitWith {["Spawn Infantry: Number of units not defined or set to 0, no group spawned","error"], call GMS_fnc_log};
+//diag_log format["GMSCore_fnc_spawnInfantryGroup:  _side = %1", _side];
+if (_units == 0) exitWith {["Spawn Infantry: Number of units not defined or set to 0, no group spawned","error"], call GMSCore_fnc_log};
 
-private _group = [_side] call GMS_fnc_createGroup;
-if (_pos isEqualTo [0,0,0]) then {["Spwan Infantry Group: No Position Specified or position = [0,0,0]","warning"] call GMS_fnc_log; };
+private _group = [_side] call GMSCore_fnc_createGroup;
+if (_pos isEqualTo [0,0,0]) then {["Spwan Infantry Group: No Position Specified or position = [0,0,0]","warning"] call GMSCore_fnc_log; };
 [
 	_group,
 	_baseSkill,
@@ -62,11 +62,11 @@ if (_pos isEqualTo [0,0,0]) then {["Spwan Infantry Group: No Position Specified 
 	_smokeShell,
 	_aiHitCode,
 	_aiKilledCode	
-] call GMS_fnc_initializeGroup;
+] call GMSCore_fnc_initializeGroup;
 _players = allPlayers select {_x distance _pos < _alertDistance};
 {_group reveal[_x,_intelligence]} forEach _players;
 
-private _ranks = +GMS_infantryGroup;
+private _ranks = +GMSCore_infantryGroup;
 private _currRank = [];
 for "_i" from 1 to _units do
 {
@@ -77,14 +77,14 @@ for "_i" from 1 to _units do
 	} else {
 		_rank = "PRIVATE";
 	};
-	private _unitType = if (_isDroneCrew) then {"B_UAV_AI"} else {GMS_unitTYpe};
-	GMS_unitType createUnit [_pos, _group, "_unit = this", _baseSkill, _currRank select 0];
-	//diag_log format["GMS_fnc_spawnInfantryGroup: side _unit = %1", side _unit];
+	private _unitType = if (_isDroneCrew) then {"B_UAV_AI"} else {GMSCore_unitType};
+	GMSCore_unitType createUnit [_pos, _group, "_unit = this", _baseSkill, _currRank select 0];
+	//diag_log format["GMSCore_fnc_spawnInfantryGroup: side _unit = %1", side _unit];
 	_unit setVariable ["loadoutType", _currRank select 1];
-	if (GMS_modType isEqualTo "Epoch") then {_unit setVariable ["LAST_CHECK",28800,true]};
+	if (GMSCore_modType isEqualTo "Epoch") then {_unit setVariable ["LAST_CHECK",28800,true]};
 	_unit enableAI "ALL";
 };
-_group call GMS_fnc_addUnitEventHandlers;
-//[format["GMS_fnc_spawnInfantryGroup: _group = %1",_group]] call GMS_fnc_log;
+_group call GMSCore_fnc_addUnitEventHandlers;
+//[format["GMSCore_fnc_spawnInfantryGroup: _group = %1",_group]] call GMSCore_fnc_log;
 _group
 

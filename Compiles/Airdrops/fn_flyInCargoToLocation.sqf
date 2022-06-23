@@ -1,5 +1,5 @@
 /*
-    GMS_fnc_flyInCargoToLocation 
+    GMSCore_fnc_flyInCargoToLocation 
     Purpose: 
         Spawns a transport heli , routes it to a location, the heli drops cargo specificed by an array, leaves and despawns.
     
@@ -48,16 +48,16 @@ _deliverPayloadLocation = _airdropPos;
 _wp1Distance = (_aircraft distance _airdropPos) - 125;
 _wp1 = _group addWaypoint [position _aircraft getPos[_wp1Distance, _aircraft getRelDir (_airdropPos)],1,1,"targetappoach"];
 _wp1 setWaypointPosition [position _aircraft getPos[_wp1Distance, _aircraft getRelDir (_airdropPos)],0];
-_wp1 setWaypointStatements["true","this call GMS_fnc_selectDropWaypoint;"];
+_wp1 setWaypointStatements["true","this call GMSCore_fnc_selectDropWaypoint;"];
 _aircraft setVariable["wp1Index",_wp select 1];
 _wp3 = _group addWaypoint [_adjustedDropPos, 0, 3, "prepareDropoff"];
-_wp3 setWaypointStatements["true","this call GMS_fnc_hoverAndDropoff;"];
+_wp3 setWaypointStatements["true","this call GMSCore_fnc_hoverAndDropoff;"];
 _wp3 setWaypointSpeed "LIMITED";
 _aircraft setVariable["dropCargoIndex",_wp3 select 1];
 _positionDespawn = (_airdropPos) getPos[1000,_dir];
 /////////////////////////////////////
 _wp4 = _group addWaypoint[_positionDespawn,0,3,"despanPosn"];
-_wp4 setWaypointStatements["true","this call GMS_fnc_cleanupheli;"];
+_wp4 setWaypointStatements["true","this call GMSCore_fnc_cleanupheli;"];
 _wp4 setWaypointSpeed "NORMAL";
 _aircraft setVariable["finalWPIndex",_wp4 select 1];
 _m = format["flyInCargoToLocation: currentWaypoint on script end =  %1",currentWaypoint _group];

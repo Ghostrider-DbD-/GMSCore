@@ -1,6 +1,6 @@
 
 /*
-	GMS_fnc_monitorAreaPatrols 
+	GMSCore_fnc_monitorAreaPatrols 
 
 	Purpose: Checks for groups that have not reached their waypoints within a proscribed period
 	and redirects them.
@@ -14,7 +14,7 @@
 
 // TODO: Test functionality of this
 #include "\GMSCore\Init\GMS_defines.hpp"
-//[format["GMS_fnc_monitorAreaPatrols called at %1 with %2 groups to monitor",diag_tickTime,count GMSCore_monitoredAreaPatrols]] call GMS_fnc_log;
+//[format["GMSCore_fnc_monitorAreaPatrols called at %1 with %2 groups to monitor",diag_tickTime,count GMSCore_monitoredAreaPatrols]] call GMSCore_fnc_log;
 private _count = count GMSCore_monitoredAreaPatrols;
 for "_i" from 1 to (_count) do 
 {
@@ -54,14 +54,14 @@ for "_i" from 1 to (_count) do
 				// handle stuck 
 				if !([_patrolAreaCenter,_patrolAreaSize,getPos(leader _group)] call BIS_fnc_isInsideArea) then 
 				{
-					[format["GMS_fnc_monitorAreaPatrols (56) group %1 stuck",_group]] call GMS_fnc_log;
-					[_group,true] call GMS_fnc_setStuck;					
-					(leader _group) call GMS_fnc_nextWaypointAreaPatrol;
+					[format["GMSCore_fnc_monitorAreaPatrols (56) group %1 stuck",_group]] call GMSCore_fnc_log;
+					[_group,true] call GMSCore_fnc_setStuck;					
+					(leader _group) call GMSCore_fnc_nextWaypointAreaPatrol;
 				};
 			//} else {
 				// Nothing to do here, let the group try to complete the waypoint
-				//[format["GMS_fnc_monitorAreaPatrols (62) group %1 last checked timestamp updated",_group]] call GMS_fnc_log;
-				//[_group] call GMS_fnc_setWaypointLastCheckedTime;
+				//[format["GMSCore_fnc_monitorAreaPatrols (62) group %1 last checked timestamp updated",_group]] call GMSCore_fnc_log;
+				//[_group] call GMSCore_fnc_setWaypointLastCheckedTime;
 			};
 		};
 		GMSCore_monitoredAreaPatrols pushBack _patrol;

@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_initializeWaypointsAreaPatrol 
+	GMSCore_fnc_initializeWaypointsAreaPatrol 
 	
 	Purpose: Can be used to configure a patrol area for any kind of group (infantry, land, air sea)
 
@@ -41,21 +41,21 @@ _group setVariable["GMS_deleteMarker",_deleteMarker];
 GMSCore_monitoredAreaPatrols pushBack [_group,_patrolAreaMarker,_deleteMarker];
 
 private _wp = [_group,0];
-_wp setWaypointStatements ["true","this call GMS_fnc_nextWaypointAreaPatrol;"];	
-//[_group,_patrolAreaMarker,_deleteMarker] call GMS_fnc_addMonitoredAreaPatrol;  //  Add the group to the list of groups that are checked for 'stuck' conditions and for cleanup of markers when the group is deleted
+_wp setWaypointStatements ["true","this call GMSCore_fnc_nextWaypointAreaPatrol;"];	
+//[_group,_patrolAreaMarker,_deleteMarker] call GMSCore_fnc_addMonitoredAreaPatrol;  //  Add the group to the list of groups that are checked for 'stuck' conditions and for cleanup of markers when the group is deleted
 
-[_group] call GMS_fnc_setGroupBehaviors;
+[_group] call GMSCore_fnc_setGroupBehaviors;
 if !(_type isEqualTo GMS_infrantryPatrol) then 
 {
 	// be sure group leader is the driver so the vehicle continues to move about until he is dead 
-	private _veh = [_group] call GMS_fnc_getGroupVehicle;
+	private _veh = [_group] call GMSCore_fnc_getGroupVehicle;
 	_group selectLeader (driver(_veh));
 } else {
 	_group selectLeader ((units _group) select 0);
 };
 
 private _veh = vehicle (leader _group);
-//diag_log format["GMS_fnc_initializeWaypointsAreaPatrol: _veh = %1",typeOf _veh];
+//diag_log format["GMSCore_fnc_initializeWaypointsAreaPatrol: _veh = %1",typeOf _veh];
 private _objType = _veh call BIS_fnc_objectType;
 private _cat = _objType select 0;
 private _sub = _objType select 1;
@@ -136,7 +136,7 @@ switch (_cat) do
 		_group setVariable[GMS_maxDistanceTarget,50];		
 	 };
 };
-//[format["GMS_fnc_initializeWaypointsAreaPatrol Completed for group %1",_group]] call GMS_fnc_log;
+//[format["GMSCore_fnc_initializeWaypointsAreaPatrol Completed for group %1",_group]] call GMSCore_fnc_log;
 
-//[format["GMS_fnc_initializeWaypointsAreaPatrol: calling GMS_fnc_nextWaypointAreaPatrol for _group %1 | _patrolAreaMarker %2 | _type %3",_group,_patrolAreaMarker,_type]] call GMS_fnc_log;
-(leader _group) call GMS_fnc_nextWaypointAreaPatrol;
+//[format["GMSCore_fnc_initializeWaypointsAreaPatrol: calling GMSCore_fnc_nextWaypointAreaPatrol for _group %1 | _patrolAreaMarker %2 | _type %3",_group,_patrolAreaMarker,_type]] call GMSCore_fnc_log;
+(leader _group) call GMSCore_fnc_nextWaypointAreaPatrol;

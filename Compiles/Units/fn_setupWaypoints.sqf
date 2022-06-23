@@ -78,6 +78,6 @@ if !(_soldierType isEqualTo "emplaced") then
 	_group setCurrentWaypoint _wp;	
 	_group setVariable["soldierType",_soldierType,true];
 
-	_wp setWaypointStatements ["true","this call GMS_fnc_nextWaypointAreaPatrol;"];
+	_wp setWaypointStatements ["true","this call GMSCore_fnc_nextWaypointAreaPatrol;"];
 	#endif	
 };

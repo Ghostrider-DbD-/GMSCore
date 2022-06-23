@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_setWaypointPatrolAreaMarker 
+	GMSCore_fnc_setWaypointPatrolAreaMarker 
 
 	Purpose: Set a variable on the group with the name of the marker defining that groups patrol area 
 

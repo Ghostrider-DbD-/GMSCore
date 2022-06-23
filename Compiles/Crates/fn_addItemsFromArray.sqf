@@ -1,5 +1,5 @@
 /**
-    GMS_fnc_addItemsFromArray
+    GMSCore_fnc_addItemsFromArray
 
 	Purpose: Adds N items randomly selected from a weighted array to a container.
 
@@ -25,7 +25,7 @@ for "_i" from 1 to (count _loadout) step 2 do
 	{
 		private _item = selectRandomWeighted _itemList;
 		//diag_log format["item selected = %1",_item];
-		[_container, _item,_addAmmo] call GMS_fnc_addItem;
+		[_container, _item,_addAmmo] call GMSCore_fnc_addItem;
 	};
 };
 //diag_log format["addItemsFromArray:  crate inventory = %1",[_container] call BIS_fnc_invString];

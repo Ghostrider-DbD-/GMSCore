@@ -1,5 +1,5 @@
 	/*
-		GMS_fnc_addItem 
+		GMSCore_fnc_addItem 
 		Purpose: Add an item of any type to an object. 
 			// Ensures that the right calls are made for the object type 
 

@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_throwSmoke 
+	GMSCore_fnc_throwSmoke 
 
 	Purpose: force a unit to throw a smoke grenade 
 

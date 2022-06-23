@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_textAlert
+	GMSCore_fnc_textAlert
 
 	Purpose:
 		Display an alert with title and optional sound 
@@ -43,7 +43,7 @@ playSound _sound;
 			if (GMS_modeType isEqualTo "Epoch") then {[_msg,5] call Epoch_msg};
 		};
 		case "toast": {
-			if (GMS_modType isEqualTo "Exile") then {["InfoTitleAndText", ["ALLERT", _msg]] call ExileClient_gui_toaster_addTemplateToast};
+			if (GMSCore_modType isEqualTo "Exile") then {["InfoTitleAndText", ["ALLERT", _msg]] call ExileClient_gui_toaster_addTemplateToast};
 		};
 		case "dynamic": {
 			_text = format[
@@ -57,4 +57,4 @@ playSound _sound;
 			[_text,_xcoord,_ycoord,_screentime,0.5] spawn BIS_fnc_dynamicText;
 		};
 	};
-} forEach GMS_alertMsgTypes;
+} forEach GMSCore_alertMsgTypes;

@@ -1,5 +1,5 @@
 /*
-    GMS_fnc_monitorObjectDeletionCue 
+    GMSCore_fnc_monitorObjectDeletionCue 
 
     Purpose: check objects in the cue for deletion and delete at the proper time. 
 
@@ -18,8 +18,8 @@ for "_i" from 1 to (count GRGCore_monitoredObjects) do
     if (diag_tickTime > _deleteTime) then 
     {
        
-        //[format["GMS_fnc_monitorObjectDeletionCue: deleting object %1",_o]] call GMS_fnc_log;        
-        [_objectParameters] call GMS_fnc_deleteObjectMethod;
+        //[format["GMSCore_fnc_monitorObjectDeletionCue: deleting object %1",_o]] call GMSCore_fnc_log;        
+        [_objectParameters] call GMSCore_fnc_deleteObjectMethod;
     } else {
         GRGCore_monitoredObjects pushBack _o;
     };

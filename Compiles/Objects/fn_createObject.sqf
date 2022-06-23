@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_createObject
+	GMSCore_fnc_createObject
 
 	Purpose: Add an object or array of objects to the cue for deletion 
 
@@ -29,7 +29,7 @@ if (_isSimple) then
 	_obj = createSimpleObject[_className,[0,0,0]];
 } else {
 	_obj = createVehicle[_className,[0,0,0],0,_special];
-	[_obj] call GMS_fnc_clearObjectInventory;	
+	[_obj] call GMSCore_fnc_clearObjectInventory;	
 	_obj enableSimulation _simulation;
 };
 if !(_isASL) then 

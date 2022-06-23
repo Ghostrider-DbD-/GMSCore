@@ -1,6 +1,6 @@
 /*
 
-	GMS_fnc_checkClassnNmesArray
+	GMSCore_fnc_checkClassnNmesArray
 
 	Purpose: to validate classnames used for AI gear or other puposes
 			 Handles simple arrays and weighted arrays formated as [className, weight, ... 
@@ -15,10 +15,10 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 params[["_classnames",[]],["_remove",false]];
 private _cfg = "CfgVehicles";
-//[format["GMS_fnc_checkClassNamePrices: _remove = %1 | typeName _classnames = %2",_remove,typeName _classnames]] call GMS_fnc_log;
-//[format["GMS_fnc_checkClassNamePrices:_classnames = %1",_classnames]] call GMS_fnc_log;
+//[format["GMSCore_fnc_checkClassNamePrices: _remove = %1 | typeName _classnames = %2",_remove,typeName _classnames]] call GMSCore_fnc_log;
+//[format["GMSCore_fnc_checkClassNamePrices:_classnames = %1",_classnames]] call GMSCore_fnc_log;
 private _count = count _classnames;
-switch (GMS_modType) do 
+switch (GMSCore_modType) do 
 {
 	case "Epoch": {_cfg = "CfgPricing"};
 	case "Exile": {_cfg = "CfgExileArsenal"};
@@ -44,7 +44,7 @@ for "_i" from 1 to count _classnames do
 		if (isClass(configFile >> "CfgVehicles" >> _cn)) then {_invalid = false};
 		if (isClass(configFile >> "CfgWeapons" >> _cn)) then {_invalid = false};
 		if (isClass(configFile >> "CfgMagazines" >> _cn)) then {_invalid = false};
-		if (_invalid)  then {[format["Invalid Classname Found: %1",_cn]] call GMS_fnc_log};
+		if (_invalid)  then {[format["Invalid Classname Found: %1",_cn]] call GMSCore_fnc_log};
 		if (!(_invalid) || {!(_remove)}) then 
 		{
 			if !(_isWeighted) then {_classNames pushBack _cn} else {_classNames append [_cn,_cn2]};
@@ -59,7 +59,7 @@ for "_i" from 1 to count _classnames do
 		if (isClass(configFile >> "CfgVehicles" >> _cn select 0)) then {_invalid = false};
 		if (isClass(configFile >> "CfgWeapons" >> _cn select 0)) then {_invalid = false};
 		if (isClass(configFile >> "CfgMagazines" >> _cn select 0)) then {_invalid = false};		
-		if (_invalid)  then {[format["Invalid Classname Found: %1",_cn]] call GMS_fnc_log};		
+		if (_invalid)  then {[format["Invalid Classname Found: %1",_cn]] call GMSCore_fnc_log};		
 		if (!(_invalid) || {!(_remove)}) then 
 		{
 			_classNames pushBack _cn;

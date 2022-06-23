@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_restrictPlayerAccess 
+	GMSCore_fnc_restrictPlayerAccess 
 
 	Purpose: Configure a vehicle to deny players access
 	

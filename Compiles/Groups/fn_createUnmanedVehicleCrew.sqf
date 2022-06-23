@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_createUnmanedVehicleCrew 
+	GMSCore_fnc_createUnmanedVehicleCrew 
 
 	Purpose: Add a crew to an unmaned vehicle and properly configure it for GMSCore by adding event handlers and anything else that is required 
 
@@ -14,5 +14,5 @@
 [format["_createUnmanedVehicleCrew: _this = %1 | typeName _this = %2",_this, typeName _this]];
 private _veh = _this;  // just for ease of decyphering the code 
 private _group = createVehicleCrew _veh;
-_group call GMS_fnc_addUnitEventHandlers;
+_group call GMSCore_fnc_addUnitEventHandlers;
 _group

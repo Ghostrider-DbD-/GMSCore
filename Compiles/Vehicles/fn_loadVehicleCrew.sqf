@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_loadVehicleCrew 
+	GMSCore_fnc_loadVehicleCrew 
 
 	Purpose: provides a way to load a group containing units into a vehicle for AI vehicle patrols 
 
@@ -20,4 +20,4 @@ params["_vehicle","_group"];
 
 {_x moveInAny _vehicle} forEach (units _group);
 _group addVehicle _vehicle;
-[_group,_vehicle] call GMS_fnc_setGroupVehicle;
+[_group,_vehicle] call GMSCore_fnc_setGroupVehicle;

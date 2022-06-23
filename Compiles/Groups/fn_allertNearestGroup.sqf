@@ -14,7 +14,7 @@
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
 params ["_unit","_killer","_alertDistance","_alertDefaultValue"]; 			
-private _ng = group(nearestObject[getPosATL _unit,GMS_unitType]);
+private _ng = group(nearestObject[getPosATL _unit,GMSCore_unitType]);
 if ((side _ng) isEqualTo GMSAI_side) then 
 {
 	_x reveal["_target",_alertValue];

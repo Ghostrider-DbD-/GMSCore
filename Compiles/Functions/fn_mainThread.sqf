@@ -1,5 +1,5 @@
 /*
-   GMS_fnc_mainThread 
+   GMSCore_fnc_mainThread 
 
    Purpose: Scheduler for everything that runs on the module.
 
@@ -28,10 +28,10 @@ while {true} do
    */
    if (diag_tickTime > _timer60) then 
    {
-       [] call GMS_fnc_monitorAreaPatrols;
-       [] call GMS_fnc_monitorMarkers;
-       [] call GMS_fnc_monitorObjectDeletionCue;
-       [] call GMS_fnc_cleanUpJunk;
+       [] call GMSCore_fnc_monitorAreaPatrols;
+       [] call GMSCore_fnc_monitorMarkers;
+       [] call GMSCore_fnc_monitorObjectDeletionCue;
+       [] call GMSCore_fnc_cleanUpJunk;
        _timer60 = diag_tickTime + timerIncrement60;
    };
    uisleep loopTime;

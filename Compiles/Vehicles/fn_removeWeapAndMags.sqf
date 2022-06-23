@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_removeWeapAndMags
+	GMSCore_fnc_removeWeapAndMags
 
 	Purpose: removes specified weapons and magazines from turrets
 
@@ -22,7 +22,7 @@ params["_veh","_weaps","_mags"];
 	{
 		_veh removeWeaponGlobal _x;
 	} else {
-		[format["GMS_fnc_removeWeapAndMags: invalid weapon name provided: %1",_x],"warning"] call GMS_fnc_log;
+		[format["GMSCore_fnc_removeWeapAndMags: invalid weapon name provided: %1",_x],"warning"] call GMSCore_fnc_log;
 	};
 } foreach _weaps;
 
@@ -33,7 +33,7 @@ params["_veh","_weaps","_mags"];
 		{
 			_veh removeMagazinesTurret [_x,_tur];
 		} else {
-			[format["GMS_fnc_removeWeapAndMags: invalid magazine name provided: %1",_x],"warning"] call GMS_fnc_log;
+			[format["GMSCore_fnc_removeWeapAndMags: invalid magazine name provided: %1",_x],"warning"] call GMSCore_fnc_log;
 		};
 	} foreach _mags;
 } forEach (allTurrets [_veh, false]);

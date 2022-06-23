@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_setWaypointLastCheckedTime 
+	GMSCore_fnc_setWaypointLastCheckedTime 
 
 	Purpose: updates the timestamp on a group 
 

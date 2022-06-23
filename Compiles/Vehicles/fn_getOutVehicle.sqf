@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_getOutVehicle 
+	GMSCore_fnc_getOutVehicle 
 
 	Purpose: fired locally when the "GetOut" EH fires for the object/vehicle. 
 		This will allow us to track empty vehicles in real time on clients or HC. 

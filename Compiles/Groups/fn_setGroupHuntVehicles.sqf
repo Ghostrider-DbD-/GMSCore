@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_setGroupHuntVehicles 
+	GMSCore_fnc_setGroupHuntVehicles 
 
 	Purpose: set the huntVehicle variable for a group 
 	Parameters

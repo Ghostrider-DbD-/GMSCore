@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_destroyVehicleAndCrew 
+	GMSCore_fnc_destroyVehicleAndCrew 
 
 	Parameters: _vehicle with crew to be destroyed
 

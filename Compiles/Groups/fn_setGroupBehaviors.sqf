@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_setGroupBehaviors 
+	GMSCore_fnc_setGroupBehaviors 
 
 	Purpose: Set group Behavior and Combat Mode 
 
@@ -23,7 +23,7 @@ switch(_mode) do
 			_group setCombatMode "BLUE";
 			_group setBehaviour "CARELESS";
 			{_x forceSpeed -1} forEach (units _group);
-			[_group,objNull] call GMS_fnc_setHunt;
+			[_group,objNull] call GMSCore_fnc_setHunt;
 	};
 	case "combat": {
 		_group setCombatMode "RED";

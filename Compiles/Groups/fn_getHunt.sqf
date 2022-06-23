@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_getHunt
+	GMSCore_fnc_getHunt
 
 	Purpose: store hunt parameters for a group
 
@@ -18,6 +18,6 @@ private _hunted = _group getVariable[GMS_target,objNull];
 if !(alive _hunted) then 
 {
 	_hunted = objNull;
-	[_group, _hunted] call GMS_fnc_setHunt;
+	[_group, _hunted] call GMSCore_fnc_setHunt;
 };
 _hunted

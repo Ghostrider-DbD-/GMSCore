@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_spawnUnmannedVehicle 
+	GMSCore_fnc_spawnUnmannedVehicle 
 
 	Purpose: spawn and initialize a drone to be used for AI patrols 
 
@@ -11,7 +11,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 
-	Notes: Be sure to select drones from the same faction as GMS_side
+	Notes: Be sure to select drones from the same faction as GMSCore_Side
 */
 #include "\GMSCore\Init\GMS_defines.hpp"
 params[
@@ -43,20 +43,20 @@ params[
 private "_group";
 if !(isClass(configFile >> "CfgVehicles" >> _className)) exitWith
 {
-	[format["GMS_fnc_spawnPatrolUAV called with invalid classname %1",_className],"error"] call GMS_fnc_log;
+	[format["GMSCore_fnc_spawnPatrolUAV called with invalid classname %1",_className],"error"] call GMSCore_fnc_log;
 	objNull
 };
-if !([_className] call GMS_fnc_isDrone) exitWith 
+if !([_className] call GMSCore_fnc_isDrone) exitWith 
 {
-	[format["GMS_fnc_spawnPatrolUAV: class name %1 is not a drone",_className],"error"] call GMS_fnc_log;
+	[format["GMSCore_fnc_spawnPatrolUAV: class name %1 is not a drone",_className],"error"] call GMSCore_fnc_log;
 	objNull
 };
 if !(_className isKindOf "Car") exitWith 
 {
-	[format["GMS_fnc_spawnPatrolUAV: class name %1 is not kindOf 'Car'",_className],"error"] call GMS_fnc_log;
+	[format["GMSCore_fnc_spawnPatrolUAV: class name %1 is not kindOf 'Car'",_className],"error"] call GMSCore_fnc_log;
 	objNull
 };
-//[format["GMS_fnc_spawnUnmannedVehicle: spawning UGV %1 at pos %2",_className,_pos]] call GMS_fnc_log;
+//[format["GMSCore_fnc_spawnUnmannedVehicle: spawning UGV %1 at pos %2",_className,_pos]] call GMSCore_fnc_log;
 private _unmanned = [
 	_className,	
 	_pos,
@@ -68,13 +68,13 @@ private _unmanned = [
 	_deleteTimer,
 	_vehHitCode,
 	_vehKilledCode
-] call GMS_fnc_spawnPatrolVehicle;
-//[format["GMS_fnc_spawnUnmannedVehicle: GMS_fnc_spawnPatrolVehicle returned _unmanned = %1",_unmanned]] call GMS_fnc_log;
+] call GMSCore_fnc_spawnPatrolVehicle;
+//[format["GMSCore_fnc_spawnUnmannedVehicle: GMSCore_fnc_spawnPatrolVehicle returned _unmanned = %1",_unmanned]] call GMSCore_fnc_log;
 private "_group"; 
 if !(isNull _unmanned) then 
 {
 	_group = createVehicleCrew _unmanned;
-	//[format["GMS_fnc_spawnUnmannedVehicle: _group %1 created for unmanned vehicle",_group]] call GMS_fnc_log;
+	//[format["GMSCore_fnc_spawnUnmannedVehicle: _group %1 created for unmanned vehicle",_group]] call GMSCore_fnc_log;
 	[
 		_group,
 		_baseSkill,
@@ -89,14 +89,14 @@ if !(isNull _unmanned) then
 		"",
 		_aiHitCode,
 		_aiKilledCode		
-	] call GMS_fnc_initializeGroup;
-	[_group,_skills] call GMS_fnc_setupGroupSkills;  // confusing because some group characteristics are set in GMS but leave for now: TODO: reconcile this
+	] call GMSCore_fnc_initializeGroup;
+	[_group,_skills] call GMSCore_fnc_setupGroupSkills;  // confusing because some group characteristics are set in GMS but leave for now: TODO: reconcile this
 	_group setVariable[GMS_vehHitCode,_vehHitCode];
 	_group setVariable[GMS_vehKilledCode,_vehKilledCode];
-	_group call GMS_fnc_addUnitEventHandlers;
-	[_group,_unmanned] call GMS_fnc_setGroupVehicle;
+	_group call GMSCore_fnc_addUnitEventHandlers;
+	[_group,_unmanned] call GMSCore_fnc_setGroupVehicle;
 	_group addVehicle _unmanned;
-	[_unmanned,_disable,_removeFuel,_releaseToPlayers,_deleteTimer] call GMS_fnc_initializePatrolVehicle;
+	[_unmanned,_disable,_removeFuel,_releaseToPlayers,_deleteTimer] call GMSCore_fnc_initializePatrolVehicle;
 	_unmanned setVariable["GMS_group",_group];
 };
 [_group,_unmanned]

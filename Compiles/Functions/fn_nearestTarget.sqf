@@ -1,6 +1,6 @@
 /*
 
-	GMS_fnc_nearestTarget
+	GMSCore_fnc_nearestTarget
 
 	Purpose: returns true if one unit in group can see one unit in an array from another Side
 
@@ -24,10 +24,10 @@ if (isNull _enemy || {(_leader knowsAbout _enemy) < _minKnowsAbout}) then
 {
 	_enemies = allPlayers select{(_x distance _leader) < _searchRange};
 	{
-		if ([_group,_x] call GMS_fnc_groupCanSee || {(_leader knowsAbout _x) > _minKnowsAbout}) exitWith {_enemy = _x};
+		if ([_group,_x] call GMSCore_fnc_groupCanSee || {(_leader knowsAbout _x) > _minKnowsAbout}) exitWith {_enemy = _x};
 	} forEach _enemies; 
 };
-//[format["GMS_fnc_nearestTarget: returning _enemy = %1",_enemy]] call GMS_fnc_log;
+//[format["GMSCore_fnc_nearestTarget: returning _enemy = %1",_enemy]] call GMSCore_fnc_log;
 _enemy 
 
 

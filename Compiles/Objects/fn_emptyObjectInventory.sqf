@@ -1,6 +1,6 @@
 /*
 
-	GMS_fnc_emptyObjectInventory
+	GMSCore_fnc_emptyObjectInventory
 	
 	Purpose: remove all items from a unitAddons
 

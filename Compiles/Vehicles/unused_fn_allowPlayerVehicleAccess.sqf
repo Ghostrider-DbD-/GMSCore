@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_allowPlayerAccess 
+	GMSCore_fnc_allowPlayerAccess 
 
 	Purpose: Configure a vehicle to allow players access
 	
@@ -16,7 +16,7 @@
 #include "\GMSCore\Init\GMS_defines.hpp"
 params["_veh"];
 private _accessAllowed = _veh getVariable [GMS_allowAccess,true];
-[format["GMS_fnc_allowPlayerAccess: _veh = %1 | _accessAllowed = %2",_veh,_accessAllowed]] call GMS_fnc_log;
+[format["GMSCore_fnc_allowPlayerAccess: _veh = %1 | _accessAllowed = %2",_veh,_accessAllowed]] call GMSCore_fnc_log;
 if (_accessAllowed) then 
 {
 	_veh enableRopeAttach true;

@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_configureOnKilledMessages
+	GMSCore_fnc_configureOnKilledMessages
 
 	Purpose:
 		Updates the list of types of messages to be shown to players when units are killed by a player.
@@ -18,7 +18,7 @@
 params[["_config",[]]];
 private _passedCfgs = [];
 {
-	switch (GMS_ModType) do 
+	switch (GMSCore_modType) do 
 	{
 		case "Epoch": {if ((_x in GMS_validUnitKilledMsgTypes) && !(_x isEqualTo "toast")) then {_passedCfgs pushBack _x}};
 		case "Exile": {if ((_x in GMS_validUnitKilledMsgTypes) && !(_x isEqualTo "epochMsg")) then {_passedCfgs pushBack _x}};

@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_getNumberFromRange
+	GMSCore_fnc_getNumberFromRange
 
 	Purpose: find a random number within a range of N1 and N2.
 	Parameters: _data 

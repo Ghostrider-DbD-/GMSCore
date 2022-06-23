@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_groupCanSee 
+	GMSCore_fnc_groupCanSee 
 
 	Purpose: test if one or more units of a group can see an object 
 

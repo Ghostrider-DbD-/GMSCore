@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_setupGroupGear
+	GMSCore_fnc_setupGroupGear
 
 	Purpose: to add gear to units of a group.
 
@@ -16,7 +16,7 @@
 
 #include "\GMSCore\Init\GMS_defines.hpp"
 params[["_group",grpNull],["_gear",[]],["_launchersPerGroup",1],["_useNVG",false],["_addWeaponAttachments",true]];
-//[format["GMS_fnc_setupGroupGear: count _gear = %1",count _gear]] call GMS_fnc_log;
+//[format["GMSCore_fnc_setupGroupGear: count _gear = %1",count _gear]] call GMSCore_fnc_log;
 if (isNull _group || {_gear isEqualTo [] || {!(count _gear == 13)}}) exitWith {};
 #define GMS_primary 0
 #define GMS_secondary 1
@@ -50,7 +50,7 @@ private _lanchersAdded = 0;
 
 {
 	private _unit = _x;
-	[_unit] call GMS_fnc_unitRemoveAllGear;	
+	[_unit] call GMSCore_fnc_unitRemoveAllGear;	
 	if (random(1) < _chanceHeadgear && !(_headgear isEqualTo [])) then {_unit addHeadgear (selectRandom _headgear)};
 	if (random(1) < _chanceUniform && !(_uniforms isEqualTo [])) then {_unit forceAddUniform (selectRandom (_uniforms))};
 	if ( (random(1) < _chanceVest)  isEqualTo [] && !(_vests isEqualTo [])) then {_unit addVest (selectRandom _vests)};	

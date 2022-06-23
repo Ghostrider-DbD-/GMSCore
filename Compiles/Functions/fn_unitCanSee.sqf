@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_unitCanSee 
+	GMSCore_fnc_unitCanSee 
 	Purpose: test if a unit can see an object or player meaning there are no interfering objects.
 
 	Parameters: 

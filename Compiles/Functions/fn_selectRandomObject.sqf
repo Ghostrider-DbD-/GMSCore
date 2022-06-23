@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_selectRandomObject
+	GMSCore_fnc_selectRandomObject
 */
 
 params["_choices",["_blacklists",[]];
@@ -8,7 +8,7 @@ private "_choice";
 if (count (_choices select 0) == 2) then 
 {
 	// Use a separate function here so we dont have to test for _weighted with every itteration with blacklisted items.
-	_choice = _this call GMS_fnc_selectRandomObjectWeighted;
+	_choice = _this call GMSCore_fnc_selectRandomObjectWeighted;
 	_choice
 } else {
 	if (_blacklists isEqualTo []) then 

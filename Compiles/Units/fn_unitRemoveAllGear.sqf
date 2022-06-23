@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_unitRemoveAllGear
+	GMSCore_fnc_unitRemoveAllGear
 
 	Purpose: strip all gear from a unit.
 

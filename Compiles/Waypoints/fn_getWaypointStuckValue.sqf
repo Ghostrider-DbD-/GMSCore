@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_getWaypointStuckValue 
+	GMSCore_fnc_getWaypointStuckValue 
 
 	Purpose: set "_stuckVal" for the group. 
 

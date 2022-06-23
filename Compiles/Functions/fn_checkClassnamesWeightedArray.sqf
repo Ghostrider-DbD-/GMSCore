@@ -1,6 +1,6 @@
 /*
 
-	GMS_fnc_checkClassnamesWeightedArray
+	GMSCore_fnc_checkClassnamesWeightedArray
 
 	Purpose: to validate classnames in a weighted array
 	Notes: Array format is assumed to be "classname",weight,"classname2",weight2 ...
@@ -20,7 +20,7 @@ private _return = [];
 {
 	private _element = _x;
 	_element params["_item","_weight"];
-	if ([_item] call GMS_fnc_isClass) then 
+	if ([_item] call GMSCore_fnc_isClass) then 
 	{
 		_return pushBack [_item,_weight];
 	} else {

@@ -1,5 +1,5 @@
 /*
-	GMS_fnc_giveTakeTabs 
+	GMSCore_fnc_giveTakeTabs 
 
 	Purpose: change amount of tabs for a player 
 

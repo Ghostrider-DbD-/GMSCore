@@ -10,7 +10,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_className","_location",["_direction",0],["_useVector",false],["_special","NONE"]];
 private _obj = createVehicle[_className,_location,[],0,_special];
 [_obj] call GMSCore_fnc_clearObjectInventory;

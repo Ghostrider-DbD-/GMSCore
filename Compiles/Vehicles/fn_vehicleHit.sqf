@@ -12,7 +12,7 @@
 	Notes: TODO: check the parameters here to be sure they are correct.	
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 if !(local (_this select 0)) exitWith {};
 params ["_veh", "_source", "_damage", "_instigator"];
 private _group = _veh getVariable["GMS_group",grpNull];

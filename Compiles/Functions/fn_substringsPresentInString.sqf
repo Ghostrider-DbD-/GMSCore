@@ -14,7 +14,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 		
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[["_string",""],["_substrings",[]]];  // returns the number of substrings present in a string.
 //[format["GMSCore_fnc_subsringsPresentInString: typename _string = %1 | _string = %2 | typename _substrings = %3 | _substrings = %4",typename _string, _string, typeName _substrings, _substrings]] call GMSCore_fnc_log;
 if (_substrings isEqualTo []) exitWith {0};

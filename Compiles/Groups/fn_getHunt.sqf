@@ -11,7 +11,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_group"];
 // if no target is assigned or the target is 'dead' return objNull
 private _hunted = _group getVariable[GMS_target,objNull];

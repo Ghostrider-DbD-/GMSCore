@@ -1,5 +1,5 @@
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 if (GMSCore_monitoredRoadPatrols isEqualTo []) exitWith {};
 for "_i" from 1 to (count GMSCore_monitoredRoadPatrols) do 
 {

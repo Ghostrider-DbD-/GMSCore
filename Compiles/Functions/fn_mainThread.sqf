@@ -10,7 +10,7 @@
    Copyright 2020 by Ghostrider-GRG- 
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 
 //private _timer15 = diag_tickTime;
 //private _timer30 = diag_tickTime;

@@ -10,7 +10,7 @@
     Copyright 2020 Ghostrider-GRG-
 
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[["_position",[0,0,0]],["_list",[]]];
 //[format["GMSCore_fnc_isBlacklisted called with position = %1 | _list = %2",_position, _list]] call GMSCore_fnc_log;
 private _return = false;

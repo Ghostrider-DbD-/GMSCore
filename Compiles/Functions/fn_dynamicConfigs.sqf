@@ -45,7 +45,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[["_maximumPrice",1000],["_blackListedItems",[]],["_blacklistedCategories",[]],["_blacklistedClassnameRoots",[]]];
 if (GMSAI_debug > 1) then {[format["fn_dynamicConfigs: _blacklistedClassnameRoots = %1",_blacklistedClassnameRoots]] call GMSCore_fnc_log};
 _GMSCore_headgearList = [];

@@ -13,7 +13,7 @@
 */
 
 // TODO: Test functionality of this
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 //[format["GMSCore_fnc_monitorAreaPatrols called at %1 with %2 groups to monitor",diag_tickTime,count GMSCore_monitoredAreaPatrols]] call GMSCore_fnc_log;
 private _count = count GMSCore_monitoredAreaPatrols;
 for "_i" from 1 to (_count) do 

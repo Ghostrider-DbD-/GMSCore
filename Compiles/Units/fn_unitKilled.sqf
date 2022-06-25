@@ -10,7 +10,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 if !(local (_this select 0)) exitWith {};
 params["_unit","_killer","_instigator"];
 //[format["GMSCore_fnc_unitKilled: _unit = %1 | _killer = %2 | _instigator %3",_unit,_killer,_instigator]] call GMSCore_fnc_log;

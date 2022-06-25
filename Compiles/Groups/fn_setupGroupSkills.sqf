@@ -11,7 +11,7 @@
 
 	Copyright 2020 Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_group","_skills"];
 
 _skills params["_accuracy","_aimingSpeed","_shake","_spotDistance","_spotTime","_courage","_reloadSpeed","_commanding","_general"];

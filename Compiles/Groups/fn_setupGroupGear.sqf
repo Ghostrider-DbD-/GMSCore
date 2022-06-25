@@ -14,7 +14,7 @@
 	Copyright 2020 Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[["_group",grpNull],["_gear",[]],["_launchersPerGroup",1],["_useNVG",false],["_addWeaponAttachments",true]];
 //[format["GMSCore_fnc_setupGroupGear: count _gear = %1",count _gear]] call GMSCore_fnc_log;
 if (isNull _group || {_gear isEqualTo [] || {!(count _gear == 13)}}) exitWith {};

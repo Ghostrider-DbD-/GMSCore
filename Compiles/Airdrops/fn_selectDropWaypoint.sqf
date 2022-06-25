@@ -1,7 +1,7 @@
 /*
 	fn_selectDropWaypoint = {
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 
 private _aircraft = vehicle _this;
 _aircraft setSpeedMode "LIMITED";	

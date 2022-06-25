@@ -6,7 +6,7 @@
 	Copyright 2020
 */
 
-#include "GMS_defines.hpp"
+#include "GMSCore_defines.hpp"
 GMSCore_modType = "default";
 if (!isNull (configFile >> "CfgPatches" >> "exile_server")) then {GMSCore_modType = "Exile"};
 if (!isnull (configFile >> "CfgPatches" >> "a3_epoch_server")) then {GMSCore_modType = "Epoch"}; 
@@ -23,7 +23,7 @@ if ((toLowerANSI GMSCore_modType) isEqualTo "exile") then
 	waitUntil {!isNil "PublicServerIsLoaded"};
 	["Exilemod is ready...loading GMSCore"] call GMSCore_fnc_log;	
 };
-
+publicVariable "GMSCore_modType";
 GMSCore_debug = getNumber(configFile >> "CfgGMSCore" >> "GMSCore_debug");
 GMSCore_maxHuntDuration = getNumber(configFile >> "CfgGMSCore" >> "GMSCore_maxHuntDuration");;
 GMSCore_huntNearestPlayer = if (getNumber(configFile >> "CfgGMSCore" >> "GMSCore_huntNearestPlayer") == 1) then {true} else {false};;

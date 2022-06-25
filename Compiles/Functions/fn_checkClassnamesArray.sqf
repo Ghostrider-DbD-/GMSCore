@@ -12,7 +12,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[["_classnames",[]],["_remove",false]];
 private _cfg = "CfgVehicles";
 //[format["GMSCore_fnc_checkClassNamePrices: _remove = %1 | typeName _classnames = %2",_remove,typeName _classnames]] call GMSCore_fnc_log;

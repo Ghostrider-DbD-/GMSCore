@@ -1,5 +1,5 @@
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[["_group",grpNull]];
 private _vehicle = objNull;
 if !(isNull _group) then {_vehicle = _group getVariable[GMS_groupVehicle,objNull]};

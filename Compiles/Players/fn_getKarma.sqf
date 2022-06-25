@@ -1,7 +1,7 @@
 /*
 
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_player"];
 private _idx = EPOCH_communityStats find "Karma";
 private _cStats = _player getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];

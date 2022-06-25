@@ -12,7 +12,7 @@
 
 	Scope Global 
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 
 params ["_vehicle", "_selection", "_newDmg", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
 if (isPlayer _instigator) exitWith {};

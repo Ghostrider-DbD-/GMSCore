@@ -11,7 +11,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_object","_deletionDelay"];
 //[format["GMSCore_fnc_addObjectToDeletionCue: _object = %1 | _deletionDelay = %2",_object,_deletionDelay]] call GMSCore_fnc_log;
 GRGCore_monitoredObjects pushBack [_object,diag_tickTime + _deletionDelay];

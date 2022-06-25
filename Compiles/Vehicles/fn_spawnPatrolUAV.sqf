@@ -15,7 +15,7 @@
 
 	Notes: TODO: 
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[
 	["_className",""],	
 	["_group",grpNull],

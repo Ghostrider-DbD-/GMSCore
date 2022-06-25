@@ -10,7 +10,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_unit","_object"];
 private _veh = vehicle _unit;
 private _int = lineIntersects[eyePos _unit, _object, aimPos _veh];

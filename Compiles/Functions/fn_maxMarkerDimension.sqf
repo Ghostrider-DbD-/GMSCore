@@ -10,7 +10,7 @@
    Copyright 2020 by Ghostrider-GRG- 
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_marker",""];
 if (_marker isEqualTo "") exitWith {["maxMarkerDimension: no marker parameter specified",'error'] call GMSCore_fnc_log};
 private _size = getMarkerSize _marker;

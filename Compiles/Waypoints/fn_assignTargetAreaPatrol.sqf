@@ -17,7 +17,7 @@
 	3-28-0:  Not used at present
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 
 params["_group","_target"];
 _group setVariable["GMS_target",_target];

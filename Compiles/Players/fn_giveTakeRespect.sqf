@@ -12,7 +12,7 @@
 	CREDITS: Adapted from scripts by the ExileMod Development team 
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_player","_amtRespect"];
 //diag_log format["giveTakeRespect: _player = %1 | _amtRespect %2",_player,_amtRespect];
 private _respect = _player getVariable ["ExileScore", 0];

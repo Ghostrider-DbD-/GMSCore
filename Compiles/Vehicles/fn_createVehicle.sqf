@@ -14,7 +14,7 @@
 
 	Notes: 	Used by SpawnPatrolVehicle 
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[
 	["_vehType",""],
 	["_pos",[0,0,0]],

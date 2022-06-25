@@ -12,7 +12,7 @@
 	Notes:
 	TODO: not sure what I was thinking when I added _disable. Is this turrets or a way to add damage at spawn.	
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[
 	["_veh",objNull],
 	["_disable",0],  // damage value set to this value if less than this value when all crew are dead

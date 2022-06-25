@@ -1,5 +1,5 @@
 
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params ["_group"];
 _group getVariable["GMS_patroArealMarker",""];

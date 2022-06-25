@@ -11,7 +11,7 @@
 	Copyright 2020 by Ghostrider-GRG- 
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_group"];
 private _timeStamp =_group getVariable["GMS_timeStamp",diag_tickTime];
 private _interval = _group getVariable[GMS_waypointTimeoutInterval,300];

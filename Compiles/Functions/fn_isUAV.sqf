@@ -10,7 +10,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 // _this is the object in question.
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 private _isUAV = false;
 if (isNumber(configFile >> "CfgVehicles" >> typeOf _this >> "isUAV")) then 
 {

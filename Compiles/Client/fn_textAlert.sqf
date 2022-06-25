@@ -15,7 +15,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[["_msg",""],["_sound",""]];
 private "_labelColor";
 playSound _sound;

@@ -19,8 +19,8 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
-if !(hasInterface) exitWith {};
+#include "\GMSCore\Init\GMSCore_defines.hpp"
+
 params["_unit","_killer","_money","_respect","_killStreak"];
 diag_log format["GMSCore_fnc_killedMessages: _this = %1",_this];
 if !(player isEqualTo _killer) then 

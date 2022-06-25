@@ -15,7 +15,7 @@
 
 	Notes: TODO: Needs some more rigorous testing
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_vehicle","_group"];
 
 {_x moveInAny _vehicle} forEach (units _group);

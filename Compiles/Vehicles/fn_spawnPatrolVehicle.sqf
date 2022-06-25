@@ -22,7 +22,7 @@
 		having a specific check that the owner is not an HC or is a player would also help here.
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[
 		["_className",""], // Clasname of vehicle to be spawned
 		["_spawnPos",[0,0,0]],  //  selfevident

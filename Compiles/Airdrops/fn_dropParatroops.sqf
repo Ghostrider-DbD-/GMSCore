@@ -12,7 +12,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[["_group",grpNull],["_pos",[0,0,0]],["_aircraft",objNull]];
 
 //diag_log format["GMSCore_fnc_dropParatroops: _group = %1 | _pos = %2 | _aircraft = %3 | typeOf _aircraft = %4",_group,_pos,_aircraft,typeOf _aircraft];

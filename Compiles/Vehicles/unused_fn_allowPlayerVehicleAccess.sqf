@@ -13,7 +13,7 @@
 	TODO: This code should be broadcast ?
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_veh"];
 private _accessAllowed = _veh getVariable [GMS_allowAccess,true];
 [format["GMSCore_fnc_allowPlayerAccess: _veh = %1 | _accessAllowed = %2",_veh,_accessAllowed]] call GMSCore_fnc_log;

@@ -14,6 +14,6 @@
 	copyright 2020 by Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_data"];
 round([_data] call GMSCore_fnc_getNumberFromRange);

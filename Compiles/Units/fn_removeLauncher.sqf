@@ -11,7 +11,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-	
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 private _unit = _this;
 private _lancher = _unit getVariable["GMS_launcher",""];
 if !(_lancher isEqualTo "") then

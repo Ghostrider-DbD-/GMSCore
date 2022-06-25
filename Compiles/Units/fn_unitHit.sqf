@@ -13,7 +13,7 @@
 	
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 if !(local (_this select 0)) exitWith {};
 params ["_unit", "_source", "_damage", "_instigator"];
 //[format["GMSCore_fnc_unitHit: _this = %1",_this]] call GMSCore_fnc_log;

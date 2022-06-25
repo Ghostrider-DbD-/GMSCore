@@ -14,7 +14,7 @@
 
 	Notes: 
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 
 params["_veh","_weaps","_mags"];
 {

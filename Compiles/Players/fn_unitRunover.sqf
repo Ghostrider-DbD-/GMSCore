@@ -12,7 +12,7 @@
 	Notes: 
 
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_unit","_killer","_instigator",["_methods",[1]]];
 
 {

@@ -12,7 +12,7 @@
 
 	TODO: think about this a bit more, I dont think it is quite right
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 
 params["_container","_loadout",["_addAmmo" /* a number > 0 forces addition of that number of magazines randomly selected from all possible ones for that weapon*/,0]];
 //diag_log format["_addItemsfromArray: _container = %1 | _loadout = %2",_container,_loadout];

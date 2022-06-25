@@ -15,7 +15,7 @@
 	TODO: broadcast the code to all clients.
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 if !(local (_this select 0)) exitWith {};
 params ["_unit", "_weapon", "_muzzle", "_newMagazine", "_oldMagazine"];
 

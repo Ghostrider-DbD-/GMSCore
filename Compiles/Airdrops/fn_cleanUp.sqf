@@ -6,7 +6,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 
 _heli = vehicle _this;
 [group _this] call GMSCore_fnc_despawnInfantryGroup;

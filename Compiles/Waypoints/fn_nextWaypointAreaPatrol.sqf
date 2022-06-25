@@ -7,7 +7,7 @@
 	Returns: None 
 	Copyright 2020 by Ghostrider-GRG- 	
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 private _leader = _this;
 if (_leader isEqualType []) then {_leader = _leader select 0};
 //[format["GMSCore_fnc_nextWaypointAreaPatrol: _leader = %1",_leader]] call GMSCore_fnc_log;

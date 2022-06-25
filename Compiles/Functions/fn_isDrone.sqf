@@ -11,7 +11,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 // _this is the object in question.
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_className"];
 if!(isClass(configFile >> "CfgVehicles" >> _className)) exitWith {false};
 private _vehicleclass = getText(configFile >> "CfgVehicles" >> _className >> "vehicleclass");

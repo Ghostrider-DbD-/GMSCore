@@ -10,7 +10,7 @@
     Copyright 2020 by Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 for "_i" from 1 to (count GRGCore_monitoredObjects) do
 {
     _o = GRGCore_monitoredObjects deleteAt 0;

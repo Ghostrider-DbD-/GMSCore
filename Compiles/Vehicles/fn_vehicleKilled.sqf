@@ -13,7 +13,7 @@
 	TODO: check the parameters here.
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 if !(local (_this select 0)) exitWith {};
 params["_veh","_killer","_instigator"];
 //[format["GMSCore_fnc_vehicleKilled: _veh %1 | typeOf _veh %2 | name _instigator %3",_veh,typeOf _veh, name _instigator]] call GMSCore_fnc_log;

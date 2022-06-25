@@ -15,7 +15,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_areaMarker","_noPositionsToFind",["_units",[]],["_separation",10],["_blackList",["water"]]];
 //diag_log format["GMSCore_fnc_findRandomPosWithinArea:  _areaMarker %1 | _noPositionsToFind %2 | _separation %3",_areaMarker,_noPositionsToFind,_separation];
 private _spawnPos = [0,0];

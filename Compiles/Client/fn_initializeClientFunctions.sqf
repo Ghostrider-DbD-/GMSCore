@@ -15,7 +15,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
 format["%1 joining the server: variables and functions being broadcast",_name] remoteExec["diag_log",_owner];
 {

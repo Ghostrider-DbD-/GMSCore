@@ -10,7 +10,7 @@
 
 	Copyright 2020 Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 
 params["_group","_hunt"];
 _group setVariable [GMS_huntVehicles, _hunt];

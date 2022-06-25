@@ -16,6 +16,6 @@
 	TODO: see why the default is false.
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_group","_stuck"];
 _group setVariable["GMS_antiStuck",_stuck];

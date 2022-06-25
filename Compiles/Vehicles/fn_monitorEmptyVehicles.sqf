@@ -11,7 +11,7 @@
 
 	Notes: 
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 
 
 for "_i" from 1 to (count GMSCore_monitoredEmptyVehicles) do 

@@ -23,7 +23,7 @@
 
 	Copyright 2020 Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[
 		["_pos",[0,0,0]],  // center of the area in which to spawn units
 		["_units",0],  // Number of units to spawn

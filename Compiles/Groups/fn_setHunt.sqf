@@ -11,6 +11,6 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_group",["_player",objNull]];
 _group setVariable[GMS_target,_player];

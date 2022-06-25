@@ -19,7 +19,7 @@
 		If the group monitor determines tha ta group is 'stuck' meaning has not rotated waypoints within some proscribed period, the group will be disengaged and returned to the center of the patrol area.		
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[
 	["_group",grpNull],  // group for which to configure / initialize waypoints
 	["_blackListed",[]],  // areas to avoid within the patrol region

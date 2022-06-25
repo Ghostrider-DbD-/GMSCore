@@ -10,7 +10,7 @@
     Copyright 2020 by Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 private _count = count GRGCore_monitoredObjects;
 //[format["GMSCore_fnc_monitorObjectDeletionCue: _count %1  |  GRGCore_monitoredObjects %2",_count, GRGCore_monitoredObjects]] call GMSCore_fnc_log;
 for "_i" from 1 to count GRGCore_monitoredObjects do

@@ -11,7 +11,7 @@
 
 	CREDITS: Adapted from scripts by the ExileMod Development team 	
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_player","_amtTabs"];
 //diag_log format["giveTakeTabs: _this = %1",_this];
 private _tabs = _player getVariable ["ExileMoney", 0];

@@ -13,6 +13,6 @@
 
     Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 GRGCore_monitoredObjects pushBack _this;
 //[format["GMSCore_fnc_addObjectToDeletionCue: _this %1 | GRGCore_monitoredObjects %2",_this,GRGCore_monitoredObjects]] call GMSCore_fnc_log;

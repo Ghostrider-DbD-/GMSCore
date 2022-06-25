@@ -14,7 +14,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_objectParameters"];
 //[format["GMSCore_fnc_deleteObjectsMethod: typeName _objectParameters = %1 | _objectParameters = %2",typeName _objectParameters,_objectParameters]] call GMSCore_fnc_log;
 if (_objectParameters isEqualType []) then 

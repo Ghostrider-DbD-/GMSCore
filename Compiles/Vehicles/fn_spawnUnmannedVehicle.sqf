@@ -13,7 +13,7 @@
 
 	Notes: Be sure to select drones from the same faction as GMSCore_Side
 */
-#include "\GMSCore\Init\GMS_defines.hpp"
+#include "\GMSCore\Init\GMSCore_defines.hpp"
 params[
 	["_className",""],
 	//["_group",grpNull],	

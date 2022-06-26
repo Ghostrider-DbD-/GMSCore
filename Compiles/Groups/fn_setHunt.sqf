@@ -4,7 +4,8 @@
 	Purpose: store hunt parameters for a group
 
 	Parameters: 
-		_GMSGroup: the AI group that will hunt
+		_group: the AI group that will hunt
+		_player: the player to hunt
 
 	Returns: None 
 	

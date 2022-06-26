@@ -13,9 +13,10 @@ if (_leader isEqualType []) then {_leader = _leader select 0};
 //[format["GMSCore_fnc_nextWaypointAreaPatrol: _leader = %1",_leader]] call GMSCore_fnc_log;
 if !(typeOf _leader isEqualTo GMSCore_unitType) exitWith 
 {
-	[format["GMSCore_fnc_nextWaypointAreaPatrol: _leader %1 passed with typeOf = %2",_leader,typeOf _leader]] call GMSCore_fnc_log;
+	//[format["GMSCore_fnc_nextWaypointAreaPatrol: _leader %1 passed with typeOf = %2",_leader,typeOf _leader]] call GMSCore_fnc_log;
 };
 private _group = group _leader;
+if (_group isEqualTo GMSCore_graveyardGroup) exitWith {};
 private _veh = vehicle _leader;
 private _GMSgroup = _group getVariable["GMS_group",false];
 private _timeout = _group getVariable[GMS_waypointTimeoutInterval,300];
@@ -24,7 +25,7 @@ private _wp = [_group,0];
 private _patrolType = _group getVariable["GMS_areaPatrolType",GMS_infrantryPatrol];
 [_group] call GMSCore_fnc_setWaypointLastCheckedTime;
 private _patrolAreaMarker = _group getVariable["GMS_patroArealMarker",""];
-[format["GMSCore_fnc_nextWaypointAreaPatrol: _group %1 | _GMSgroup = %5 | typeOf _veh %2 | _patrolType %3 | _patrolAreaMarker %4 ",_group, typeOf _veh, _patrolType, _patrolAreaMarker, _GMSgroup]] call GMSCore_fnc_log;
+//[format["GMSCore_fnc_nextWaypointAreaPatrol: _group %1 | _GMSgroup = %5 | typeOf _veh %2 | _patrolType %3 | _patrolAreaMarker %4 ",_group, typeOf _veh, _patrolType, _patrolAreaMarker, _GMSgroup]] call GMSCore_fnc_log;
 if (_patrolAreaMarker isEqualTo "") exitWith 
 {
 	[format["No Marker Defined for Patrol Area for group %1",_group],"error"] call GMSCore_fnc_log;

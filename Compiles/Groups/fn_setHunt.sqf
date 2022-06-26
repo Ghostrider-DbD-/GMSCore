@@ -12,5 +12,5 @@
 */
 
 #include "\GMSCore\Init\GMSCore_defines.hpp"
-params["_group",["_player",objNull]];
+params[["_group",grpNull],["_player",objNull]];
 _group setVariable[GMS_target,_player];

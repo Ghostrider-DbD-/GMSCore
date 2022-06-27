@@ -45,10 +45,10 @@ class CfgFunctions {
 		};
 		class Crates {
 			file = "GMSCore\Compiles\Crates";
-			class spawnCrate {}; // which can be any object, but is a crate by default.
 			class addItem {};
 			class addItemsFromArray {};  // weighted array either a single array, or array of arrays.
-			class spawnPayload {};
+			class spawnCrate {}; // which can be any object, but is a crate by default.			
+			//class spawnPayload {};
 			class visibleMarker {};
 		};
 		class GMS_Functions {

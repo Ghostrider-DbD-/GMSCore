@@ -22,7 +22,7 @@ params["_airdropPos","_aircraftClassName","_payload",["_allowDamage",false],["_v
 
 _labels = ["_airdropPos","_aircraftClassName","_payload","_allowDamage","_visibleMarker","_mapMarker","_mapMarkerDeleteTime","_spawnDistance"];
 {
-	//diag_log format["Value 3: _this select %1 = %2",_forEachIndex, _this select _forEachIndex, _labels select _forEachIndex];
+	diag_log format["Value 3: _this select %1 = %2",_forEachIndex, _this select _forEachIndex, _labels select _forEachIndex];
 }forEach _this;
 
 private _spawnPos = (_airdropPos) getPos[_spawnDistance,random(359)];

@@ -5,9 +5,9 @@
 
 // TOD: add handleDamage or hitpoint handler that removes any damage caused by player runovers
 class GMSCoreBuild {
-	version = 1.02;
-	build = 30;
-	buildDate = "6-22-22";
+	version = 1.03;
+	build = 31;
+	buildDate = "1-15-23";
 };
 class CfgPatches {
 	class GMSCore {

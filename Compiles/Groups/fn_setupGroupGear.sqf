@@ -91,9 +91,9 @@ private _lanchersAdded = 0;
 		_unit addMagazines [selectRandom _ammoChoices, 2];
 
 		{		
-			private _optics = getArray (configfile >> "CfgWeapons" >> _weap >> "WeaponSlotsInfo" >> "CowsSlot" >> "compatibleItems");
-			private _pointers = getArray (configFile >> "CfgWeapons" >> _weap >> "WeaponSlotsInfo" >> "PointerSlot" >> "compatibleItems");
-			private _muzzles = getArray (configFile >> "CfgWeapons" >> _weap >> "WeaponSlotsInfo" >> "MuzzleSlot" >> "compatibleItems");
+			private _optics = compatibleItems [_weap,"CowsSlot"];
+			private _pointers = compatibleItems [_weap, "PointerSlot"];
+			private _muzzles = compatibleItems [_weap, "MuzzleSlot"];	
 			if (random 1 < _chanceSecondaryWeaponMuzzle) then {_unit addSecondaryWeaponItem  (selectRandom _muzzles)};
 			if (random 1 < _chanceSecondaryWeaponOptic) then {_unit addSecondaryWeaponItem  (selectRandom _optics)};
 			if (random 1 < _chanceSeconaryWeaponPointer) then {_unit addSecondaryWeaponItem  (selectRandom _pointers)};			

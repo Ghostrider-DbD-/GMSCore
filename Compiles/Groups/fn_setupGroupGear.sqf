@@ -56,34 +56,24 @@ private _lanchersAdded = 0;
 	if ((random(1) < _chanceVest) && !(_vests isEqualTo [])) then {_unit addVest (selectRandom _vests)};	
 	if (random(1) < _chanceBackpack && !(_backpacks isEqualTo [])) then {_unit addBackpack selectRandom _backpacks};
 
-	//[format["Line 59: running code to add primary weapon and attachments at %1",diag_tickTime]] call GMSCore_fnc_log;
 	if ((random(1) < _chancePrimary) && !(_weapons isEqualTo [])) then
 	{
 		private _weap = selectRandom _weapons;  
-		//[format["_weap = %1",_weap]] call GMSCore_fnc_log;		
 		_unit addWeaponGlobal  _weap; 
 		private _ammoChoices = getArray (configFile >> "CfgWeapons" >> _weap >> "magazines");
-		//[format["_ammoChoices = %1",_ammoChoices]] call GMSCore_fnc_log;
-		//private _underbarrel = getArray (configFile >> "CfgWeapons" >> _weap >> "WeaponSlotsInfo" >> "UnderBarrelSlot" >> "compatibleItems");
-		//[format["_underbarrel = %1",_underbarrel]] call GMSCore_fnc_log;
 		_unit addMagazines [selectRandom _ammoChoices, 3];
-		private _optics = compatibleItems [_weap,"CowsSlot"];
-		//[[format["_cowsSlot = %1",_optics]]] call GMSCore_fnc_log;
-		private _pointers = compatibleItems [_weap, "PointerSlot"];
-		//[[format["_pointers = %1",_pointers]]] call GMSCore_fnc_log;			
-		private _muzzles = compatibleItems [_weap, "MuzzleSlot"];	
-		//[[format["_muzzles = %1",_muzzles]]] call GMSCore_fnc_log;	
+        private _optics = [_weap, 201] call BIS_fnc_compatibleItems;
+        private _muzzles = [_weap, 101] call BIS_fnc_compatibleItems;
+        private _pointers = [_weap, 301] call BIS_fnc_compatibleItems;
+        private _underbarrel = [_weap, 302] call   BIS_fnc_compatibleItems;
 		
-		//[format["_chancePrimaryMuzzle = %1",_chancePrimaryMuzzle]] call GMSCore_fnc_log;
+
 		if (random 1 < _chancePrimaryMuzzle ) then {_unit addPrimaryWeaponItem (selectRandom _muzzles); };
-		//[format["_chancePrimaryOptic = %1",_chancePrimaryOptic]] call GMSCore_fnc_log;
 		if (random 1 < _chancePrimaryOptic) then {_unit addPrimaryWeaponItem (selectRandom _optics)};
-		//[format["_chancePrimaryPointer = %1",_chancePrimaryPointer]] call GMSCore_fnc_log;		
 		if (random 1 < _chancePrimaryPointer) then {_unit addPrimaryWeaponItem (selectRandom _pointers)};
 		if ((count(getArray (configFile >> "cfgWeapons" >> _weap >> "muzzles"))) > 1) then {_unit addMagazine "1Rnd_HE_Grenade_shell"};
 	};
 
-	//[format["Line 85: running code to add secondary weapon and attachments at %1",diag_tickTime]] call GMSCore_fnc_log;
 	if (random(1) < _chanceSecondaryWeapon && !(_secondaryWeapons isEqualTo [])) then
 	{
 		private _weap = selectRandom _secondaryWeapons;
@@ -99,8 +89,7 @@ private _lanchersAdded = 0;
 			if (random 1 < _chanceSeconaryWeaponPointer) then {_unit addSecondaryWeaponItem  (selectRandom _pointers)};			
 		};
 	};
-
-	//[format["Line 102: running code to add ramaining items at %1",diag_tickTime]] call GMSCore_fnc_log;	
+	
 	if (random(1) < _chanceThrowables && !(_throwables isEqualTo [])) then {_unit addItem selectRandom (_throwables)};
 	if (random(1) < _chanceBinoculars && !(_binoculars isEqualTo [])) then {_unit addWeapon (selectRandom _binoculars)};
 	if (random(1) < _chanceFood) then 

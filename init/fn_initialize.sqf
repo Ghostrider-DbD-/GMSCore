@@ -13,9 +13,9 @@ if (!isnull (configFile >> "CfgPatches" >> "a3_epoch_server")) then {GMSCore_mod
 [format["GMSCore_modType = %1",GMSCore_modType]] call GMSCore_fnc_log;
 // This block waits for the mod to start but is disabled for now
 if ((toLowerANSI GMSCore_modType) isEqualto "epoch") then {
-	["Waiting until EpochMod is ready..."] call GMSCore_fnc_log;
-	waitUntil {!isnil "EPOCH_SERVER_READY"};
-	["EpochMod is ready...loading GMSCore"] call GMSCore_fnc_log;
+	//["Waiting until EpochMod is ready..."] call GMSCore_fnc_log;
+	//waitUntil {!isnil "EPOCH_SERVER_READY"};
+	//["EpochMod is ready...loading GMSCore"] call GMSCore_fnc_log;
 };
 if ((toLowerANSI GMSCore_modType) isEqualTo "exile") then
 {

@@ -23,7 +23,7 @@ GMS_Core Install Instructions//
 	Restart your server and proceed to install anyother GRG scripts which depend on GMSCore 
 	
 	If you run into any issues check your client/server RPT for errors.
-
+ 
 	
 //Optional additional script links from GhostriderGaming [GRG];
 

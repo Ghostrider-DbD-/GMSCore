@@ -1,0 +1,37 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+All credit for this script goes to Ghostrider [GRG] - I (Nicho) have only added install instructions. Visit Ghostriders github at: https://github.com/Ghostrider-DbD-
+Install instructions created by Nicho1494.
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+GMS_Core Install Instructions//
+
+//Step 1;
+
+	Download GMSCore - Master and unextract the file to your documents.
+	
+//Step 2;
+
+	Open the file "CfgGMSCore.hpp" and adjust the "hunt player" options to your prefrence (Remember to save any changes!).
+	
+//Step 3;
+
+	Rename the "GMSCore-master" file to "GMSCore" and PBO it.
+	
+//Step 4;
+
+	Add the "GMSCore.pbo" file to your server addons (@Exileserver\addons or @Epochhive\addons)
+
+	Restart your server and proceed to install anyother GRG scripts which depend on GMSCore 
+	
+	If you run into any issues check your client/server RPT for errors.
+ 
+	
+//Optional additional script links from GhostriderGaming [GRG];
+
+	GMS_AI: https://github.com/Ghostrider-DbD-/GMSAI
+
+	GMS_RC: https://github.com/Ghostrider-DbD-/GMS_RC
+
+	Repair/Rearm/Refule: https://github.com/Ghostrider-DbD-/Rearm-Repair-Refuel-
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////

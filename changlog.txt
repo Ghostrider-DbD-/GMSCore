@@ -1,0 +1,9 @@
+
+1.04 09/15/2023
+Added a variable specifying a radius within which nearby players are notified of any kill by other players. 
+Debugged onUnitKilled messaging.
+ 
+
+1.03 09/14/2023
+Reworked Kill Messaging to accept an array with the types of messages to spawn for the killer an all other players.
+

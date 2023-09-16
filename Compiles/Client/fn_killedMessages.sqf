@@ -22,6 +22,8 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 #include "\GMSCore\Init\GMSCore_defines.hpp"
+// [_instigator, _reward, _experience, name _unit, _unit distance _instigator, getText(configFile >> "CfgWeapons" >> currentWeapon _instigator >> "displayName"), _killstreak, GMSAI_killMessageToAl
+params["_killer","_money","_respect", "_unitName", "_distance", "_weapon", "_killStreak","_messageTypes"];
 
 params[["_killer",objNull],["_money",0],["_respect",0],["_unitName",""],["_distance",0],["_weapon",""],["_killStreak",0],["_messageTypesPlayers",[]],["_messageTypesKiller",[]],["_maxMessagingRadius",10000]];
 

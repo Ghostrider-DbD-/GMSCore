@@ -79,6 +79,7 @@ GMSCore_infantryGroup =
 	["PRIVATE","assault"]
 ];
 
+/*
 GMSCore_killedMsgTypes = [
 	//"toast",
 	//"epochMsg",
@@ -89,6 +90,7 @@ GMSCore_killedMsgTypes = [
 ];
 [GMSCore_killedMsgTypes] call GMSCore_fnc_configureOnKilledMessages;
 [format["GMSCore_killedMsgTypes = %1",GMSCore_killedMsgTypes]] call GMSCore_fnc_log;
+*/
 
 GMSCore_huntedMsgTypes = [
 	//"toast",

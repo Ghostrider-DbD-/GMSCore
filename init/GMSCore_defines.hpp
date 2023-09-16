@@ -15,6 +15,12 @@
 #define GMS_validAlertMsgTypes ["systemChat","hint","cutText","dynamic","toast","epochMsg"]
 
 /*
+	Defines for all assets (units, groups, vehicles) 
+*/
+
+#define GMS_Asset "GMS_asset"
+
+/*
 	Defines for Drones and Helicopters
 */
 #define GMS_flyinHeight "height"

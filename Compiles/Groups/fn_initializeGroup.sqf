@@ -29,3 +29,4 @@ _group setVariable[GMS_smokeShell,""];
 _group setVariable[GMS_aiHitCode,_aiHitCode]; 
 _group setVariable[GMS_aiKilledCode,_aiKilledCode];
 _group setVariable[GMS_garisonChance,0];
+_group setVariable[GMS_Asset,true];

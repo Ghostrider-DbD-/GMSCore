@@ -39,4 +39,4 @@ if (toLowerANSI(GMSCore_modType) isEqualTo "epoch") then
 _veh lock 2;
 _veh enableRopeAttach false;
 _veh enableCoPilot false;
-
+_veh setVariable [GMS_Asset,true];

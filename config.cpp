@@ -5,9 +5,9 @@
 
 // TOD: add handleDamage or hitpoint handler that removes any damage caused by player runovers
 class GMSCoreBuild {
-	version = 1.02;
-	build = 30;
-	buildDate = "6-22-22";
+	version = 1.05;
+	build = 33;
+	buildDate = "9-15-23";
 };
 class CfgPatches {
 	class GMSCore {
@@ -134,6 +134,11 @@ class CfgFunctions {
 			class setKarma {};
 			class updatePlayerKills {};
 			class unitRunover {};
+		};
+		class GMS_safezoneManagement {
+			file = "GMSCore\Compiles\safezoneManagement";
+			class addSafeZone {};
+			class cleanupSafeZones {};
 		};
 		class GMS_Utilities {
 			file = "GMSCore\Compiles\Utilities";

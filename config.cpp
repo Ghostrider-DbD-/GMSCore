@@ -2,12 +2,10 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 
-
-// TOD: add handleDamage or hitpoint handler that removes any damage caused by player runovers
 class GMSCoreBuild {
-	version = 1.04;
-	build = 32;
-	buildDate = "9-14-23";
+	version = 1.05;
+	build = 33;
+	buildDate = "9-15-23";
 };
 class CfgPatches {
 	class GMSCore {

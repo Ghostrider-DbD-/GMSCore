@@ -34,7 +34,7 @@ while {true} do
        [] call GMSCore_fnc_monitorMarkers;
        [] call GMSCore_fnc_monitorObjectDeletionCue;
        [] call GMSCore_fnc_cleanUpJunk;
-       [] call GMSCore_fnc_cleanupSafeZones;       
+       //[] call GMSCore_fnc_cleanupSafeZones;       
        _timer60 = diag_tickTime + timerIncrement60;
    };
    uisleep loopTime;

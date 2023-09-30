@@ -14,7 +14,8 @@
 #include "\GMSCore\Init\GMSCore_defines.hpp"
 
 private ["_start","_maxHeight","_smokeShell","_light","_lightSource"];
-params["_crate",["_time",60]]; 
+params[["_crate",objNull],["_time",60]]; 
+if (isNull _crate) exitWith {["GMSCore_fnc_visibleMarker called without referencing a crate object","warning"] call GMSCore_fnc_log};
 _start = diag_tickTime;
 _smokeShell = selectRandom ["SmokeShellOrange","SmokeShellBlue","SmokeShellPurple","SmokeShellRed","SmokeShellGreen","SmokeShellYellow"];
 _lightSource = selectRandom ["Chemlight_green","Chemlight_red","Chemlight_yellow","Chemlight_blue"];

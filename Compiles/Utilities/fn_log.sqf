@@ -20,8 +20,7 @@ if !(_type isEqualType "") then
 	[format["Invalid _type %1 passed to GMSCore_fnc_log",_type]] call GMSCore_fnc_log;
 	_type = "";
 };
-//diag_log format["GMSCore_fnc_log: _this = %1",_this];
-private _log = "";
+private "_log"; 
 #define basemsg "[GMSCore]%1 %2"
 switch (toLowerANSI _type) do 
 {

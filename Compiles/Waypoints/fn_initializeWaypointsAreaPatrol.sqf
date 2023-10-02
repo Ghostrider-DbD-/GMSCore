@@ -29,7 +29,10 @@ params[
 	["_type",GMS_infrantryPatrol],  // "infantry","vehicle","air","submersible", "turret"
 	["_deletemarker",false]
 ];  
-
+if ((isNull _group) || _patrolAreaMarker isEqualTo ""  ) exitWith {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: invalad parameters passed for _group = %1 AND/OR _patrolAreaMarker = %3",_group,_patrolAreaMarker],"error"] call GMSCore_fnc_log};
+if (_patrolAreaMarker isEqualTo []) exitWith {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: Empty array passed for _patrolAreaMarker"]] call GMSCore_fnc_log};
+if (_patrolAreaMarker isEqualType [] && (count _patrolAreaMarker >= 2) && (_patrolAreaMarker select 1) isEqualTo []) exitWith {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: No size specified for patrol area | _patrolAreaMarker = %1",_patrolAreaMarker]] call GMSCore_fnc_log};
+[format["initializeWaypointAreaPatrol: _group = %1 | _patrolAreaMarker = %2 | _timeout = %3 | _garrisonChance = %4 | _type = %5",_group,_patrolAreaMarker,_timeout,_garrisonChance,_type]] call GMSCore_fnc_log;
 GMSCore_monitoredGroups pushBackUnique _group;
 _group setVariable[GMS_waypointTimeoutInterval,_timeout];  // time in seconds before the waypoint is considered failed and the group will be redirected
 _group setVariable["GMS_patroArealMarker",_patrolAreaMarker];
@@ -137,10 +140,10 @@ switch (_cat) do
 //[format["GMSCore_fnc_initializeWaypointsAreaPatrol Completed for group %1",_group]] call GMSCore_fnc_log;
 
 //[format["GMSCore_fnc_initializeWaypointsAreaPatrol: calling GMSCore_fnc_nextWaypointAreaPatrol for _group %1 | _patrolAreaMarker %2 | _type %3",_group,_patrolAreaMarker,_type]] call GMSCore_fnc_log;
-if !(_patrolAreaMarker isEqualTo []) then {
-	GMSCore_monitoredAreaPatrols pushBack [_group,_patrolAreaMarker,_deleteMarker];
-	_wp setWaypointStatements ["true","this call GMSCore_fnc_nextWaypointAreaPatrol;"];		
-	(leader _group) call GMSCore_fnc_nextWaypointAreaPatrol;
-} else {
-	_wp setWaypointStatements ["",""];
-};	
+//if !(_patrolAreaMarker isEqualTo []) then {
+GMSCore_monitoredAreaPatrols pushBack [_group,_patrolAreaMarker,_deleteMarker];
+_wp setWaypointStatements ["true","this call GMSCore_fnc_nextWaypointAreaPatrol;"];		
+(leader _group) call GMSCore_fnc_nextWaypointAreaPatrol;
+//} else {
+//_wp setWaypointStatements ["",""];
+//};	

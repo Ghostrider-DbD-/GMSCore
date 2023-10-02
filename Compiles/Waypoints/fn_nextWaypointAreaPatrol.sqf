@@ -90,7 +90,7 @@ if !(isNull _target && {!_stuck}) exitWith
 {
 	// Enemies nearby, set group to combat mode and engage them
 	
-	//[format["GMSCore_fnc_nextWaypointAreaPatrol (65) : enemies nearby condition : _group = %1",_group]] call GMSCore_fnc_log;
+	[format["GMSCore_fnc_nextWaypointAreaPatrol (65) : enemies nearby condition : _group = %1",_group]] call GMSCore_fnc_log;
 	private _nextPos = (position _target) getPos [
 			(selectMax [(_leader distance _target)/2,1]),// keep the AI at least 1 m from the target
 			(_leader getRelDir (position _target))

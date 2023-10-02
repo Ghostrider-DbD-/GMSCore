@@ -37,7 +37,7 @@ for "_i" from 1 to (_count) do
 			_patrolAreaCenter = _patrolAreaMarker select 0;
 			_patrolareaSize = _patrolAreaMarker select 1;
 		};	
-		diag_log format["_monitorAreaPatrols (23): _group %1 | _area %2 | _delete %3",_group,_patrolArea,_deleteOnNullGroup];
+		[format["_monitorAreaPatrols (23): _group %1 | _area %2 | _delete %3",_group,_patrolArea,_deleteOnNullGroup]] call GMSCore_fnc_log;
 
 		// We will not need to update waypoints for units manning static weapons
 		//_group enableSimulationGlobal true;
@@ -51,7 +51,7 @@ for "_i" from 1 to (_count) do
 			*/
 
 			// handle stuck 
-			[format["_monitorAreaPatrols: _group %1 | _patrolAreaMarker %2",_group,_patrolAreaMarker]] call GMSCore_fnc_log;
+			//[format["_monitorAreaPatrols: _group %1 | _patrolAreaMarker %2",_group,_patrolAreaMarker]] call GMSCore_fnc_log;
 			if !([_patrolAreaCenter,_patrolAreaSize,getPos(leader _group)] call BIS_fnc_isInsideArea) then 
 			{
 				[format["GMSCore_fnc_monitorAreaPatrols (56) group %1 stuck",_group]] call GMSCore_fnc_log;
@@ -61,7 +61,7 @@ for "_i" from 1 to (_count) do
 		};
 		if !(_patrolareaSize isEqualTo []) then {GMSCore_monitoredAreaPatrols pushBack _patrol};
 	} else {
-		if (!(_deleteOnNullGroup) && !(_patrolareaSize isEqualTo [])) then {GMSCore_monitoredAreaPatrols pushBack _patrol};
+		if (!(_deleteOnNullGroup) && !(_patrolArea isEqualTo [])) then {GMSCore_monitoredAreaPatrols pushBack _patrol};
 	};
 
 };

@@ -32,7 +32,7 @@ params[
 if ((isNull _group) || _patrolAreaMarker isEqualTo ""  ) exitWith {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: invalad parameters passed for _group = %1 AND/OR _patrolAreaMarker = %3",_group,_patrolAreaMarker],"error"] call GMSCore_fnc_log};
 if (_patrolAreaMarker isEqualTo []) exitWith {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: Empty array passed for _patrolAreaMarker"]] call GMSCore_fnc_log};
 if (_patrolAreaMarker isEqualType [] && (count _patrolAreaMarker >= 2) && (_patrolAreaMarker select 1) isEqualTo []) exitWith {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: No size specified for patrol area | _patrolAreaMarker = %1",_patrolAreaMarker]] call GMSCore_fnc_log};
-[format["initializeWaypointAreaPatrol: _group = %1 | _patrolAreaMarker = %2 | _timeout = %3 | _garrisonChance = %4 | _type = %5",_group,_patrolAreaMarker,_timeout,_garrisonChance,_type]] call GMSCore_fnc_log;
+//[format["initializeWaypointAreaPatrol: _group = %1 | _patrolAreaMarker = %2 | _timeout = %3 | _garrisonChance = %4 | _type = %5",_group,_patrolAreaMarker,_timeout,_garrisonChance,_type]] call GMSCore_fnc_log;
 GMSCore_monitoredGroups pushBackUnique _group;
 _group setVariable[GMS_waypointTimeoutInterval,_timeout];  // time in seconds before the waypoint is considered failed and the group will be redirected
 _group setVariable["GMS_patroArealMarker",_patrolAreaMarker];

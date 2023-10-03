@@ -20,52 +20,50 @@ for "_i" from 1 to (_count) do
 {
 	if (_i > _count) exitWith {};
 	private _patrol = GMSCore_monitoredAreaPatrols deleteAt 0;
+	//diag_log format["_monitorAreaPatrols: _patrol = %1",_patrol];
 	_patrol params["_group","_patrolArea","_deleteOnNullGroup"];
-	//diag_log format["_monitorAreaPatrols (23): _group %1 | _area %2 | _delete %3",_group,_patrolArea,_deleteOnNullGroup];
-	if !(isNull _group) then   
+	if !(isNull _group) then 
 	{
+		private _patrolAreaMarker = _group getVariable "GMS_patroArealMarker";
+		private _patrolAreaCenter = [];
+		private _patrolAreaSize = [];
+		if (_patrolAreaMarker isEqualType "") then 
+		{
+			_patrolAreaCenter = markerPos _patrolAreaMarker;
+			_patrolAreaSize = markerSize _patrolAreaMarker;
+		};
+		if (_patrolAreaMarker isEqualType []) then 
+		{
+			_patrolAreaCenter = _patrolAreaMarker select 0;
+			_patrolareaSize = _patrolAreaMarker select 1;
+		};	
+		//[format["_monitorAreaPatrols (23): _group %1 | _area %2 | _delete %3",_group,_patrolArea,_deleteOnNullGroup]] call GMSCore_fnc_log;
+
 		// We will not need to update waypoints for units manning static weapons
 		//_group enableSimulationGlobal true;
-		if !(_group getVariable["soldierType",""] isEqualTo "emplaced") then 
+		private _waypointExpires = _group getVariable[GMS_waypointTeminationTime,0];
+		if (_waypointExpires == 0) then {_group setVariable [GMS_waypointTeminationTime,0]};
+
+		if (diag_tickTime > _waypointExpires) then 
 		{
-			private _waypointExpires = _group getVariable[GMS_waypointTeminationTime,0];
-			if (_waypointExpires == 0) then {_group setVariable [GMS_waypointTeminationTime,0]};
+			/*
+				We may want to add some checks for combat.
+			*/
 
-			if (diag_tickTime > _waypointExpires) then 
+			// handle stuck 
+			//[format["_monitorAreaPatrols: _group %1 | _patrolAreaMarker %2",_group,_patrolAreaMarker]] call GMSCore_fnc_log;
+			if !([_patrolAreaCenter,_patrolAreaSize,getPos(leader _group)] call BIS_fnc_isInsideArea) then 
 			{
-				/*
-					We may want to add some checks for combat.
-				*/
-	
-				private _patrolAreaMarker = _group getVariable "GMS_patroArealMarker";
-				private _patrolAreaCenter = [];
-				private _patrolAreaSize = [];
-				if (_patrolAreaMarker isEqualType "") then 
-				{
-					_patrolAreaCenter = markerPos _patrolAreaMarker;
-					_patrolAreaSize = markerSize _patrolAreaMarker;
-				};
-				if (_patrolAreaMarker isEqualType []) then 
-				{
-					_patrolAreaCenter = _patrolAreaMarker select 0;
-					_patrolareaSize = _patrolAreaMarker select 1;
-				};
-
-				// handle stuck 
-				if !([_patrolAreaCenter,_patrolAreaSize,getPos(leader _group)] call BIS_fnc_isInsideArea) then 
-				{
-					[format["GMSCore_fnc_monitorAreaPatrols (56) group %1 stuck",_group]] call GMSCore_fnc_log;
-					[_group,true] call GMSCore_fnc_setStuck;					
-					(leader _group) call GMSCore_fnc_nextWaypointAreaPatrol;
-				};
-			//} else {
-				// Nothing to do here, let the group try to complete the waypoint
-				//[format["GMSCore_fnc_monitorAreaPatrols (62) group %1 last checked timestamp updated",_group]] call GMSCore_fnc_log;
-				//[_group] call GMSCore_fnc_setWaypointLastCheckedTime;
+				[format["GMSCore_fnc_monitorAreaPatrols (56) group %1 stuck",_group]] call GMSCore_fnc_log;
+				[_group,true] call GMSCore_fnc_setStuck;					
+				(leader _group) call GMSCore_fnc_nextWaypointAreaPatrol;
 			};
 		};
-		GMSCore_monitoredAreaPatrols pushBack _patrol;
+		if !(_patrolareaSize isEqualTo []) then {GMSCore_monitoredAreaPatrols pushBack _patrol};
+	} else {
+		if (!(_deleteOnNullGroup) && !(_patrolArea isEqualTo [])) then {GMSCore_monitoredAreaPatrols pushBack _patrol};
 	};
+
 };
 
 

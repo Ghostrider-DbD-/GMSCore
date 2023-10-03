@@ -1,4 +1,12 @@
 
+1.052 Build 345
+Fixed an issue with kill messages. 
+Added a check for a valide patrol marker/region in _initializeWaypointsAreaPatrol. 
+Added a check for the case where no value is passed for _crate to _fnc_visibleMarker.
+Added a chemlight on objects to which smoke is attached. 
+Added a check for turrets in the group spawning logic so groups manning statics do not try to leave their turrets. 
+Multiple coding changes to better support GMS. 
+
 1.04 09/15/2023
 Added a variable specifying a radius within which nearby players are notified of any kill by other players. 
 Debugged onUnitKilled messaging.

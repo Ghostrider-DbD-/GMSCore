@@ -43,11 +43,12 @@ params[
 		["_chanceGarison",0],
 		["_isDroneCrew",false]
 ];
-//diag_log format["GMSCore_fnc_spawnInfantryGroup:  _side = %1", _side];
+if (_pos isEqualTo [0,0,0]) then {["Spwan Infantry Group: No Position Specified or position = [0,0,0]","warning"] call GMSCore_fnc_log; };
+//diag_log format["GMSCore_fnc_spawnInfantryGroup: _pos = %2 | _side = %1", _side,_pos];
 if (_units == 0) exitWith {["Spawn Infantry: Number of units not defined or set to 0, no group spawned","error"], call GMSCore_fnc_log};
 
 private _group = [_side] call GMSCore_fnc_createGroup;
-if (_pos isEqualTo [0,0,0]) then {["Spwan Infantry Group: No Position Specified or position = [0,0,0]","warning"] call GMSCore_fnc_log; };
+[_group,(leader _group)] call GMSCore_fnc_setGroupVehicle;
 [
 	_group,
 	_baseSkill,

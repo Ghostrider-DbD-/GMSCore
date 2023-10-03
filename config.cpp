@@ -3,9 +3,9 @@
 */
 
 class GMSCoreBuild {
-	version = 1.05;
-	build = 33;
-	buildDate = "9-15-23";
+	version = 1.054;
+	build = 37;
+	buildDate = "10-02-23";
 };
 class CfgPatches {
 	class GMSCore {
@@ -183,9 +183,7 @@ class CfgFunctions {
 			file = "GMSCore\Compiles\Waypoints";
 			class addMonitoredAreaPatrol {};			
 			class isStuck {};
-			//class assignTargetAreaPatrol {};
 			class getWaypointLastCheckedTime {};
-			//class getWaypointPatrolAreaMarker {};  This variable is only set in one place and read in one place so not sure we need this complexity
 			class initializeWaypointsAreaPatrol {};
 			class initializeWaypointRoadsPatrol {};
 			class nextWaypointRoadPatrols {};
@@ -193,9 +191,8 @@ class CfgFunctions {
 			class monitorRoadPatrols {};
 			class nextWaypointAreaPatrol {};
 			class setStuck {};
-			class setWaypointStuckValue {};
 			class setWaypointLastCheckedTime {};
-			//class setWaypointPatrolAreaMarker {};
+			class setWaypointStuckValue {};
 		};
 	};
 };

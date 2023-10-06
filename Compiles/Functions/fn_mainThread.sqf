@@ -31,7 +31,8 @@ while {true} do
    if (diag_tickTime > _timer60) then 
    {
        [] call GMSCore_fnc_monitorAreaPatrols;
-       [] call GMSCore_fnc_monitorMarkers;
+       [] call GMSCore_fnc_monitorMapMarkers;
+       [] call GMSCore_fnc_monitorVisibleMarkers;
        [] call GMSCore_fnc_monitorObjectDeletionCue;
        [] call GMSCore_fnc_cleanUpJunk;
        //[] call GMSCore_fnc_cleanupSafeZones;       

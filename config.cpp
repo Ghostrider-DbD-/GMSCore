@@ -3,9 +3,9 @@
 */
 
 class GMSCoreBuild {
-	version = 1.054;
-	build = 37;
-	buildDate = "10-02-23";
+	version = 1.055;
+	build = 38;
+	buildDate = "10-05-23";
 };
 class CfgPatches {
 	class GMSCore {
@@ -45,6 +45,7 @@ class CfgFunctions {
 			file = "GMSCore\Compiles\Crates";
 			class addItem {};
 			class addItemsFromArray {};  // weighted array either a single array, or array of arrays.
+			class monitorVisibleMarkers {};
 			class spawnCrate {}; // which can be any object, but is a crate by default.			
 			//class spawnPayload {};
 			class visibleMarker {};
@@ -68,7 +69,7 @@ class CfgFunctions {
 			class isClass {};
 			class isDrone {};
 			class mainThread {};
-			class monitorMarkers {};
+			class monitorMapMarkers {};
 			class monitorObjectDeletionCue {};			
 			class nearestGMSAI {};
 			class nearestPlayers {};

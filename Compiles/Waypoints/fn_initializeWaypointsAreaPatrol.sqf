@@ -30,10 +30,14 @@ params[
 	["_deletemarker",false]
 ];  
 
-
 if ((isNull _group) || _patrolAreaMarker isEqualTo ""  ) exitWith {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: invalad parameters passed for _group = %1 AND/OR _patrolAreaMarker = %3",_group,_patrolAreaMarker],"error"] call GMSCore_fnc_log};
-if (_patrolAreaMarker isEqualTo []) exitWith {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: Empty array passed for _patrolAreaMarker"]] call GMSCore_fnc_log};
-if (_patrolAreaMarker isEqualType [] && (count _patrolAreaMarker >= 2) && (_patrolAreaMarker select 1) isEqualTo []) exitWith {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: No size specified for patrol area | _patrolAreaMarker = %1",_patrolAreaMarker]] call GMSCore_fnc_log};
+if (_patrolAreaMarker isEqualTo []) exitWith {
+	[format["GMSCore_fnc_initializeWaypointsAreaPatrol: Empty array passed for _patrolAreaMarker"]] call GMSCore_fnc_log;
+};
+if (
+	_patrolAreaMarker isEqualTypeParams [] ||
+	_patrolAreaMarker isEqualTypeParams [0,[]]
+) exitWith {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: No size specified for patrol area | _patrolAreaMarker = %1",_patrolAreaMarker]] call GMSCore_fnc_log};
 //[format["initializeWaypointAreaPatrol: _group = %1 | _patrolAreaMarker = %2 | _timeout = %3 | _garrisonChance = %4 | _type = %5",_group,_patrolAreaMarker,_timeout,_garrisonChance,_type]] call GMSCore_fnc_log;
 try {
 	if (isNull _group) throw 1;

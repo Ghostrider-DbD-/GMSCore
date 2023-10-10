@@ -65,6 +65,7 @@ GMSCore_monitoredGroups = [];
 GMSCore_monitoredAreaPatrols = [];
 GMSCore_monitoredRoadPatrols = [];
 GMSCore_monitoredEmptyVehicles = []; 
+GMSCore_monitoredVisibleMarkers = [];  //  List of objects to which visible markers are attached: variables used are "GMSCoreVMStart" [float], "GMSCoreVMEnd" [float], "GMSCoreMarkers [smoke,chemlight], "GMSCoreMarkerTypes [_smokeShell,_chemLight]
 GMSCore_safeZoneList = [];
 GMSCore_onRunoverHitpointDamage = [0.3-0.6];
 GMSCore_onRunoverNoHitPointsDamaged = [1,4];

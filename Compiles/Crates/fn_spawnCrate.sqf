@@ -13,7 +13,12 @@
 */
 #include "\GMSCore\Init\GMSCore_defines.hpp"
 
-params["_className",["_location",[0,0,0]]];
-private _crate = _className createVehicle _location;
+params["_className",["_location",[0,0,0]],["_dir",0]];
+//diag_log format["GMSCore_fnc_spawnCrate:  _this = %1",_this];
+//["2S6M_Tunguska", getMarkerPos "marker1", ["marker2", "marker3"], 0, "NONE"];
+private _crate = createVehicle[_className,_location,[],3,"NONE"];
+//diag_log format["GMSCore_fnc_spawnCrate: _crate = %1",_crate];
+_crate setPosATL _location;
+_crate setDir _dir;
 _crate call GMSCore_fnc_emptyObjectInventory;
 _crate

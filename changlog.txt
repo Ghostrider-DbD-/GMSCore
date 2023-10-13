@@ -1,6 +1,13 @@
 
+1.057 
+Fixed issues with adding tabs or crypto to units and objects.
+Added more support for GMS_RC 
+
 1.052 Build 345
+Fixed an issue with kill messages. 
+Added a check for a valide patrol marker/region in _initializeWaypointsAreaPatrol. 
 Added a check for the case where no value is passed for _crate to _fnc_visibleMarker.
+Added a chemlight on objects to which smoke is attached. 
 Added a check for turrets in the group spawning logic so groups manning statics do not try to leave their turrets. 
 Multiple coding changes to better support GMS. 
 

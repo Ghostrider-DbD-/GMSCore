@@ -31,9 +31,9 @@ _crate setVariable["GMSCoreVMEnd",_start + _time];
 _crate setVariable["GMSCoreMarkerTypes",[_smokeShell,_lightSource]];
 private _smoke = _smokeShell createVehicle getPosATL _crate;
 _smoke setPosATL (getPosATL _crate);
-_smoke attachTo [_crate,[0,0,(0.75)]]; // put the smoke a fixed distance above the top of any object to make it as visible as possible
+_smoke attachTo [_crate,[0,0,(0.85)]]; // put the smoke a fixed distance above the top of any object to make it as visible as possible
 private _light = _lightSource createVehicle getPosATL _crate;
 _light setPosATL (getPosATL _crate);
-_light attachTo [_crate,[0,0,(0.55)]];
+_light attachTo [_crate,[0,0,(0.90)]];
 _crate setVariable["GMSCoreMarkers",[_smoke,_light]];
 GMSCore_monitoredVisibleMarkers pushBack _crate;

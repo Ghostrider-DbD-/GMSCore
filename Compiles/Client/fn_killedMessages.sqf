@@ -41,7 +41,7 @@ if (player isEqualTo _killer) then
 		switch (_x) do 
 		{
 			case "systemChat": {
-				systemChat format["%1 killed %2 with %3 at %4 meters with %5 for %6X KILLSTREAK",
+				systemChat format["%1 killed %2 with %3 at %4 meters for a %5X KILLSTREAK",
 				name _killer,
 				_unitName,
 				_weapon,				

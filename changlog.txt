@@ -1,4 +1,8 @@
 
+1.057 
+Fixed issues with adding tabs or crypto to units and objects.
+Added more support for GMS_RC 
+
 1.052 Build 345
 Fixed an issue with kill messages. 
 Added a check for a valide patrol marker/region in _initializeWaypointsAreaPatrol. 

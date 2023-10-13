@@ -3,9 +3,9 @@
 */
 
 class GMSCoreBuild {
-	version = 1.055;
-	build = 38;
-	buildDate = "10-05-23";
+	version = 1.057;
+	build = 39;
+	buildDate = "10-12-23";
 };
 class CfgPatches {
 	class GMSCore {
@@ -77,6 +77,7 @@ class CfgFunctions {
 			class removeBlacklistedItems {};
 			//class setGroupHuntVehicles {};
 			class removeNullEntries {};
+			class setMoney {};
 			class setOnRunoverHipointsDamage {};
 			class setOnRunoverNumberHitpointsDamaged {};
 			class substringsPresentInString {};
@@ -194,6 +195,7 @@ class CfgFunctions {
 			class setStuck {};
 			class setWaypointLastCheckedTime {};
 			class setWaypointStuckValue {};
+			class updateWaypointConfigs {};
 		};
 	};
 };

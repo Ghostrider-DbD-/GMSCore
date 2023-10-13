@@ -15,7 +15,8 @@
 params[
 		"_leader",
 		["_blackListed",[]],  // areas to avoid within the patrol region
-		["_timeout",300]
+		["_timeout",300],
+		["_deleteOnNullGroup",true]
 ];
 //[format["InitializeWaypointRoadsPatrol: _leader %1 | group %2 | vehicle %3",_leader,group _leader, typeOf (vehicle _leader)]] call GMSCore_fnc_log;
 private _group = group _leader;
@@ -25,5 +26,5 @@ _group setVariable[GMS_waypointTimeoutInterval,_timeout];  // time in seconds be
 _group setVariable["GMS_blackListedAreas",_blacklisted];
 private _wp = [_group,0];
 _wp setWaypointStatements ["true","this call GMSCore_fnc_nextWaypointRoadPatrols;"]; 
-GMSCore_monitoredRoadPatrols pushBack [_group,_vehicle,objNull];
+GMSCore_monitoredRoadPatrols pushBack [_group,_vehicle,_deleteOnNullGroup];
 _leader call GMSCore_fnc_nextWaypointRoadPatrols;

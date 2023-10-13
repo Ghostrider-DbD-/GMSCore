@@ -17,15 +17,15 @@
 #include "\GMSCore\Init\GMSCore_defines.hpp"
 params[["_data",[]]];
 
-private "_value";
+private _value = 0;  // so the function returns something valid a calling function can check to establish that it ran correctly
 if (_data isEqualTo []) exitWith {[]};
-if ((_data) isEqualType []) then
+if (_data isEqualType []) then
 {
-	if ((count _data) == 1) then
+	if (_data isEqualTypeArray [0]) then
 	{
 		_value = _data select 0;
 	} else {
-		if ((count _data) == 2) then
+		if (_data isEqualTypeArray [0,0]) then
 		{
 			_data params[["_min",0],["_max",1]];
 			if (_max > _min) then 
@@ -39,10 +39,10 @@ if ((_data) isEqualType []) then
 			_value = [];
 		};
 	};
+} else {
+	if (_data isEqualType 0) then
+	{
+		_value = _data;
+	};
 };
-if (_data isEqualType 0) then
-{
-	_value = _data;
-};
-
 _value

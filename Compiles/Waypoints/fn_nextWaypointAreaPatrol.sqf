@@ -77,6 +77,7 @@ if (isNull _target || {!(alive _target)}) then
 if (_stuck && {(isNull _target)}) exitWith 
 {
 	private _newPos = _leader getPos[50,(getDir _leader) - 180];
+	diag_log format["_nextWaypointAreaPatrol: _leader %1 | _currPos %2 | _newPos %3 | _distance = %4",_leader, getPosATL _leader,_newPos, (getPosATL _leader) distance _newPos];
 	private _wp = [_group,0];
 	_wp setWaypointType "MOVE";
 	_wp setWaypointCompletionRadius 0;
@@ -110,7 +111,7 @@ if !(isNull _target && {!_stuck}) exitWith
 	_group setSpeedMode "NORMAL";
 	_group setCurrentWaypoint _wp;	
 	{_x forceSpeed -1} forEach (units _group);	
-	//diag_log format["_nextWaypointAreaPatrol (83): waypoint for group %1 updated to SAD waypoint at %2",_group,_nextPos];
+	diag_log format["_nextWaypointAreaPatrol (83): waypoint for group %1 updated to SAD waypoint at %2",_group,_nextPos];
 // Patrol waypoints	
 };
 

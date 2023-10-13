@@ -73,7 +73,8 @@ class CfgFunctions {
 			class monitorObjectDeletionCue {};			
 			class nearestGMSAI {};
 			class nearestPlayers {};
-			class nearestTarget {};			
+			class nearestTarget {};	
+			class objectHeight {};		
 			class removeBlacklistedItems {};
 			//class setGroupHuntVehicles {};
 			class removeNullEntries {};

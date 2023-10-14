@@ -19,7 +19,7 @@ private _veh = vehicle (leader _group);
 private _objType = _veh call BIS_fnc_objectType;
 private _cat = _objType select 0;
 private _sub = _objType select 1;
-diag_log format["GMSCore_fnc_initializeWaypointsAreaPatrol: _veh = %1 | _objType %2 | _cat %3 | _sub %4",typeOf _veh, _objType, _cat, _sub];
+//diag_log format["GMSCore_fnc_updateWaypointConfigs: _veh = %1 | _objType %2 | _cat %3 | _sub %4",typeOf _veh, _objType, _cat, _sub];
 private _wp = [_group,0];
 
 //diag_log format["_objType = %1",_objType];

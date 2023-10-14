@@ -31,13 +31,13 @@ params[
 ];  
 private _veh = vehicle (leader _group);
 private _driver = driver _veh;
-diag_log format["_initializeWaypointsAreaPatrol(34): _group %1 | typeOf _veh %2 | _driver %3 | _patrolAreaMarker %4",_group,typeOf _veh,_driver,_patrolAreaMarker];
+//diag_log format["_initializeWaypointsAreaPatrol(34): _group %1 | typeOf _veh %2 | _driver %3 | _patrolAreaMarker %4",_group,typeOf _veh,_driver,_patrolAreaMarker];
 if ((isNull _group) || _patrolAreaMarker isEqualTo ""  ) exitWith {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: invalad parameters passed for _group = %1 AND/OR _patrolAreaMarker = %3",_group,_patrolAreaMarker],"error"] call GMSCore_fnc_log};
 if (_patrolAreaMarker isEqualTo []) exitWith {
 	[format["GMSCore_fnc_initializeWaypointsAreaPatrol: Empty array passed for _patrolAreaMarker"]] call GMSCore_fnc_log;
 };
 
-[format["initializeWaypointAreaPatrol: _group = %1 | _patrolAreaMarker = %2 | _timeout = %3 | _garrisonChance = %4 | _type = %5",_group,_patrolAreaMarker,_timeout,_garrisonChance,_type]] call GMSCore_fnc_log;
+//[format["initializeWaypointAreaPatrol: _group = %1 | _patrolAreaMarker = %2 | _timeout = %3 | _garrisonChance = %4 | _type = %5",_group,_patrolAreaMarker,_timeout,_garrisonChance,_type]] call GMSCore_fnc_log;
 try {
 	private _valid = false;
 	if (isNull _group) throw 1;
@@ -49,7 +49,7 @@ try {
 } catch {
 	switch (_exception) do {
 		case 1:{  //  nullGroup 
-			[format["GMSCore_fnc_initializeWaypointsAreaPatrol: invalad parameters passed -   _group = %1",_group],"error"] call GMSCore_fnc_log
+			//[format["GMSCore_fnc_initializeWaypointsAreaPatrol: invalad parameters passed -   _group = %1",_group],"error"] call GMSCore_fnc_log
 		};
 		case 2:{
 			if (_patrolAreaMarker isEqualType "") then {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: No valid marker name passed"],"warning"] call GMSCOre_fnc_log};
@@ -68,14 +68,14 @@ try {
 
 			[_group] call GMSCore_fnc_updateWaypointConfigs;
 
-			[format["GMSCore_fnc_initializeWaypointsAreaPatrol: calling GMSCore_fnc_nextWaypointAreaPatrol for _group %1 | _patrolAreaMarker %2 | _type %3",_group,_patrolAreaMarker,_type]] call GMSCore_fnc_log;
+			//[format["GMSCore_fnc_initializeWaypointsAreaPatrol: calling GMSCore_fnc_nextWaypointAreaPatrol for _group %1 | _patrolAreaMarker %2 | _type %3",_group,_patrolAreaMarker,_type]] call GMSCore_fnc_log;
 			GMSCore_monitoredAreaPatrols pushBack [_group,_patrolAreaMarker,_deleteMarker];
 			if !(_type isEqualTo "Turret") then {
 				private _wp = [_group,0];
 				_wp setWaypointStatements ["true","this call GMSCore_fnc_nextWaypointAreaPatrol;"];
 				(leader _group) call GMSCore_fnc_nextWaypointAreaPatrol;				
 			};		
-			[format["GMSCore_fnc_initializeWaypointsAreaPatrol Completed for group %1",_group]] call GMSCore_fnc_log;		
+			//[format["GMSCore_fnc_initializeWaypointsAreaPatrol Completed for group %1",_group]] call GMSCore_fnc_log;		
 		};
 	};
 };

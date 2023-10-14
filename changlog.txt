@@ -1,7 +1,13 @@
 
+1.058
+Changed: Moved code to detach / attach smoke shell and chemlight to an object to a container function 
+    And moved these markers up to 1 meter above the object to reduce colisions with the object since 'its arma'
+
 1.057 
 Fixed issues with adding tabs or crypto to units and objects.
 Added more support for GMS_RC 
+Added rounding to GMSCore_fnc_setMoney 
+Added GMSCore_fnc_objectHeight which returns the height above the terrain of an object 
 
 1.052 Build 345
 Fixed an issue with kill messages. 

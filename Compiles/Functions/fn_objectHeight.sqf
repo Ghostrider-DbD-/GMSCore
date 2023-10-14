@@ -13,6 +13,6 @@
 #include "\GMSCore\Init\GMSCore_defines.hpp"
 
 params[["_obj",objNull]];
-if (isNull _obj || !(_obj isEqualType )) exitWith {-1};
+if !(_obj isEqualType []) exitWith {-1};
 private _alt = (getPosATL _obj) select 2;
 _alt 

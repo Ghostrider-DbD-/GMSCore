@@ -19,10 +19,10 @@ private  _timer60 = diag_tickTime;
 while {true} do 
 {
    
-   if (diag_tickTime > _timer15) then {
+   //if (diag_tickTime > _timer15) then {
 
-      _timer15 = diag_tickTime + timerIncrement15;
-   };
+     // _timer15 = diag_tickTime + timerIncrement15;
+   //};
    /*
    if (diag_tickTime > _timer30) then {
       _timer30 = diag_tickTime + timerIncrement30;
@@ -30,11 +30,11 @@ while {true} do
    */
    if (diag_tickTime > _timer60) then 
    {
-       [] call GMSCore_fnc_monitorAreaPatrols;
-       [] call GMSCore_fnc_monitorMapMarkers;
-       [] call GMSCore_fnc_monitorVisibleMarkers;
-       [] call GMSCore_fnc_monitorObjectDeletionCue;
-       [] call GMSCore_fnc_cleanUpJunk;
+       [] call GMSCore_fnc_monitorAreaPatrols;  // This checks for groups that failed to make it to a waypoint within the timeout settings and redirects the group if the group is not engaging a player in combat.
+       //[] call GMSCore_fnc_monitorMapMarkers;
+       [] call GMSCore_fnc_monitorVisibleMarkers;  // These are smokeShells and chemLights attached to objects
+       [] call GMSCore_fnc_monitorObjectDeletionCue;  //  These are AI, vehicles, structures, crates and markers scheduled for deletion
+       [] call GMSCore_fnc_cleanUpJunk;  // This does a search for things in the left upper corner of the map where objects and AI sometimes spawn and deletes them all.
        //[] call GMSCore_fnc_cleanupSafeZones;       
        _timer60 = diag_tickTime + timerIncrement60;
    };

@@ -38,7 +38,6 @@ if !(_isASL) then
 };
 _obj setPosATL _pos;
 
-if ((_orientation) isEqualType 0) then {_obj setDir _orientation};
-if ((_orientation) isEqualType []) then {_obj setVectorDirAndUp _pos};
+[_orientation, _obj] call GMSCore_fnc_setDirUp;
 
 _obj

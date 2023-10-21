@@ -14,11 +14,28 @@
 #include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_group"];
 private _timeStamp =_group getVariable["GMS_timeStamp",diag_tickTime];
-private _interval = _group getVariable[GMS_waypointTimeoutInterval,300];
-private _timeoutAt = _timeStamp + _interval;
-private _timedOut = if (diag_tickTime > _timeoutAt) then {true} else {false};
+private _startPos = _group getVariable[GMS_waypointStartPos, getPosATL (leader _group)];
+private _distanceMoved = _startPos distance (getPosATL (leader _group));
+private _timeout = _group getVariable[GMS_waypointTimeoutInterval,60];
+private _timeoutAt = _group getVariable[GMS_waypointTimeoutAt, diag_tickTime + _timeOut];
+private _wp = [_group, 0];
+private _currWPpos = waypointPosition _wp;
 private _target = [_group] call GMSCore_fnc_getHunt;
-private _stuck = if ((isNull _target) && {_timedOut}) then {true} else {false};
+
+/*
+	Logic here is:
+	if the group is not chasing a target 
+	and
+	the distance to the position of the current waypoint > 10 meters 
+	and the time elapsed since the last update is > _timeout 
+	then _stuck = true;
+*/
+private _stuck = false;
+if (isNull _target) then 
+{
+	if ((diag_tickTime - _timeStamp > _timeoutAt) && ((((getPosATL (leader _group)) distance _currWPpos) > 2)) || _distanceMoved < 3) then {_stuck = true};
+};
+
 _group setVariable[GMS_stuckValue,_stuck];
-//[format["GMSCore_fnc_isStuck: _stuck %6 | _timeStamp %1 | _interval %2 | _timoutAt %3 | _timedOut %4 | _target %5",_timeStamp,_interval,_timeoutAt,_timedOut,_target,_stuck]] call GMSCore_fnc_log;
+//[format["GMSCore_fnc_isStuck: _stuck %6 | _timeStamp %1 | _timeout %2 | _timoutAt %3 | _timedOut %4 | _target %5",_timeStamp,_timeout,_timeoutAt,diag_tickTime > _timeoutAt, _target,_stuck]] call GMSCore_fnc_log;
 _stuck

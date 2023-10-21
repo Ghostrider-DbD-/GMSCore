@@ -78,6 +78,7 @@ class CfgFunctions {
 			class removeBlacklistedItems {};
 			//class setGroupHuntVehicles {};
 			class removeNullEntries {};
+			class setDirUp {};
 			class setMoney {};
 			class setOnRunoverHipointsDamage {};
 			class setOnRunoverNumberHitpointsDamaged {};

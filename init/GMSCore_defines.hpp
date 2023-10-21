@@ -90,3 +90,5 @@
 #define GMS_maxDistanceTarget "maxDistTarget"
 #define GMS_waypointTimeoutInterval "wpTimeout"
 #define GMS_waypointTeminationTime "killWP"
+#define GMS_waypointStartPos "startPosWP"
+#define GMS_waypointTimeoutAt "timeoutWP"

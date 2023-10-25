@@ -3,9 +3,9 @@
 */
 
 class GMSCoreBuild {
-	version = 1.057;
-	build = 39;
-	buildDate = "10-12-23";
+	version = 1.058;
+	build = 40;
+	buildDate = "10-14-23";
 };
 class CfgPatches {
 	class GMSCore {
@@ -45,9 +45,9 @@ class CfgFunctions {
 			file = "GMSCore\Compiles\Crates";
 			class addItem {};
 			class addItemsFromArray {};  // weighted array either a single array, or array of arrays.
+			class attachCrateMarkers {};
 			class monitorVisibleMarkers {};
 			class spawnCrate {}; // which can be any object, but is a crate by default.			
-			//class spawnPayload {};
 			class visibleMarker {};
 		};
 		class GMS_Functions {
@@ -73,10 +73,12 @@ class CfgFunctions {
 			class monitorObjectDeletionCue {};			
 			class nearestGMSAI {};
 			class nearestPlayers {};
-			class nearestTarget {};			
+			class nearestTarget {};	
+			class objectHeight {};		
 			class removeBlacklistedItems {};
 			//class setGroupHuntVehicles {};
 			class removeNullEntries {};
+			class setDirUp {};
 			class setMoney {};
 			class setOnRunoverHipointsDamage {};
 			class setOnRunoverNumberHitpointsDamaged {};
@@ -110,6 +112,7 @@ class CfgFunctions {
 			class setupGroupSkills {};
 			class setupGroupGear {};
 			class setupGroupBehavior {};
+			class updateHunt {};
 			class spawnInfantryGroup {};	
 			class updateGroupHitKilledTimer {};				
 		};		

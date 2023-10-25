@@ -36,15 +36,11 @@ if (_height > 0 && {_vehType isKindOf "Air"}) then
 if (_protect && {GMSCore_modType isEqualTo "Epoch"}) then {_veh call EPOCH_server_setVToken};
 
 _veh allowDamage false;
-if (_dir isEqualType 0) then 
-{
-	_veh setDir _dir;
-};
-if (_dir isEqualType []) then 
-{
-	_veh setVectorUp surfaceNormal position _veh;
-};
+
+[_veh, _dir] call GMSCore_fnc_setDirUp; 
+
 uiSleep 1;
+
 _veh allowDamage true;
 _veh enableRopeAttach true;
 

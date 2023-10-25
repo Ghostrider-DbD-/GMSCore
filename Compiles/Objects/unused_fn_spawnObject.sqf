@@ -1,6 +1,6 @@
 /*
 
-	GMSCore_fnc_emptyObjectInventory
+	GMSCore_fnc_spawnObject
 	
 	Purpose: remove all items from a unitAddons
 
@@ -14,11 +14,6 @@
 params["_className","_location",["_direction",0],["_useVector",false],["_special","NONE"]];
 private _obj = createVehicle[_className,_location,[],0,_special];
 [_obj] call GMSCore_fnc_clearObjectInventory;
-if (_useVector) then 
-{
-	_obj setVectorDir _direction;
-} else {
-	_obj setDir _direction;
-};
+[_obj,_dir] call GMSCore_fnc_setDirUp;
 
 _obj

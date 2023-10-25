@@ -25,14 +25,14 @@ private _wp = [_group,0];
 private _patrolType = _group getVariable["GMS_areaPatrolType",GMS_infrantryPatrol];
 [_group] call GMSCore_fnc_setWaypointLastCheckedTime;
 private _patrolAreaMarker = _group getVariable["GMS_patroArealMarker",""];
-[format["GMSCore_fnc_nextWaypointAreaPatrol: _group %1 | _GMSgroup = %5 | typeOf _veh %2 | _patrolType %3 | _patrolAreaMarker %4 ",_group, typeOf _veh, _patrolType, _patrolAreaMarker, _GMSgroup]] call GMSCore_fnc_log;
+//[format["GMSCore_fnc_nextWaypointAreaPatrol: _group %1 | _GMSgroup = %5 | typeOf _veh %2 | _patrolType %3 | _patrolAreaMarker %4 ",_group, typeOf _veh, _patrolType, _patrolAreaMarker, _GMSgroup]] call GMSCore_fnc_log;
 if (_patrolAreaMarker isEqualTo "") exitWith 
 {
 	[format["No Marker Defined for Patrol Area for group %1",_group],"error"] call GMSCore_fnc_log;
 };
 
 private _typeOf = _veh call BIS_fnc_objectType;
-private _maxDistanceTarget = _group getVariable[GMS_maxDistanceTarget,50];
+private _maxDistanceTarget = _group getVariable[GMS_maxDistanceTarget,200];
 //diag_log format["_nextWaypointAreaPatrol: _maxDistanceTarget = %1",_maxDistanceTarget];
 private _blacklisted = _group getVariable "GMS_blackListedAreas";
 private _huntTimer = [_group] call GMSCore_fnc_getHuntDurationTimer;
@@ -54,11 +54,7 @@ private _target = [_group] call GMSCore_fnc_getHunt;  // This can be set by the 
 if !(isNull _target) then 
 {
 	// If the target is now in a blacklisted location discontinue the hunt
-	if ([_target, [_group] call GMSCore_fnc_getGroupBlacklist] call GMSCore_fnc_isBlacklisted) exitWith {_target = objNull};
-	if ((leader _group knowsAbout _target) < 1) then {_target == objNull};
-	if ( (leader _group distance _target) > _maxDistanceTarget) then {_target = objNull};
-	if (diag_tickTime > _huntTimer) then {_target == objNull};
-	if !(alive _target) then {_target = objNull};
+	[_group,_target] call GMSCore_fnc_updateHunt;
 };
 
 if (isNull _target || {!(alive _target)}) then
@@ -77,7 +73,7 @@ if (isNull _target || {!(alive _target)}) then
 if (_stuck && {(isNull _target)}) exitWith 
 {
 	private _newPos = _leader getPos[50,(getDir _leader) - 180];
-	diag_log format["_nextWaypointAreaPatrol: _leader %1 | _currPos %2 | _newPos %3 | _distance = %4",_leader, getPosATL _leader,_newPos, (getPosATL _leader) distance _newPos];
+	//diag_log format["_nextWaypointAreaPatrol: _leader %1 | _currPos %2 | _newPos %3 | _distance = %4",_leader, getPosATL _leader,_newPos, (getPosATL _leader) distance _newPos];
 	private _wp = [_group,0];
 	_wp setWaypointType "MOVE";
 	_wp setWaypointCompletionRadius 0;
@@ -91,7 +87,7 @@ if !(isNull _target && {!_stuck}) exitWith
 {
 	// Enemies nearby, set group to combat mode and engage them
 	
-	[format["GMSCore_fnc_nextWaypointAreaPatrol (65) : enemies nearby condition : _group = %1",_group]] call GMSCore_fnc_log;
+	//[format["GMSCore_fnc_nextWaypointAreaPatrol (65) : enemies nearby condition : _group = %1",_group]] call GMSCore_fnc_log;
 	private _nextPos = (position _target) getPos [
 			(selectMax [(_leader distance _target)/2,1]),// keep the AI at least 1 m from the target
 			(_leader getRelDir (position _target))
@@ -111,7 +107,7 @@ if !(isNull _target && {!_stuck}) exitWith
 	_group setSpeedMode "NORMAL";
 	_group setCurrentWaypoint _wp;	
 	{_x forceSpeed -1} forEach (units _group);	
-	diag_log format["_nextWaypointAreaPatrol (83): waypoint for group %1 updated to SAD waypoint at %2",_group,_nextPos];
+	//diag_log format["_nextWaypointAreaPatrol (83): waypoint for group %1 updated to SAD waypoint at %2",_group,_nextPos];
 // Patrol waypoints	
 };
 
@@ -134,11 +130,11 @@ if (isNull _target) then
 				private _center = markerPos _gmsMarker;
 				private _radius = ((markerSize _gmsMarker) select 0)/3;
 				_nextPos = [[[_center,_radius]],["water"]] call BIS_fnc_randomPos;
-				[format["GMSCore_fnc_nextWaypointAreaPatrol: No Patrol Locations specified, new waypoint found by BIS_fnc_randompos of %1",_nextPos]] call GMSCore_fnc_log;
+				//[format["GMSCore_fnc_nextWaypointAreaPatrol: No Patrol Locations specified, new waypoint found by BIS_fnc_randompos of %1",_nextPos]] call GMSCore_fnc_log;
 		} else {
 			private _l = selectRandom GMS_patrolLocations;
 			_nextPos = (locationPosition _l) getPos[300,random(360)];
-			[format["GMSCore_fnc_nextWaypointAreaPatrol: Location based waypoint selected using location = %1 at postion = %2",_l,_nextPos]] call GMSCore_fnc_log;
+			//[format["GMSCore_fnc_nextWaypointAreaPatrol: Location based waypoint selected using location = %1 at postion = %2",_l,_nextPos]] call GMSCore_fnc_log;
 		};
 	} else {
 		_nextPos = [0,0];
@@ -195,7 +191,7 @@ if (isNull _target) then
 			_group setCurrentWaypoint _wp;
 			[_group,""] call GMSCore_fnc_setGroupBehaviors;
 			{_x forceSpeed -1} forEach (units _group);
-			diag_log format["_nextWaypointAreaPatrol (125): waypoint for group updated to MOVE waypoint at %2",_group,_nextPos];
+			//diag_log format["_nextWaypointAreaPatrol (125): waypoint for group updated to MOVE waypoint at %2",_group,_nextPos];
 		};
 	};
 };

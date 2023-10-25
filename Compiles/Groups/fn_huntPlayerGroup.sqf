@@ -17,4 +17,11 @@ private _timer = [_group] call GMSCore_fnc_getHuntDurationTimer;
 if !(diag_tickTime > _timer) exitWith {[format["GMSCore_fnc_huntPlayerGroup: Hunt Timer still running for Group %1 | _timer = %2 | curr time = %3",_group,_timer,diag_tickTime] call GMSCore_fnc_log]};
 [_group,_target] call GMSCore_fnc_setHunt; 
 [_group] call GMSCore_fnc_setHuntDurationTimer;
-(leader _group) call GMSCore_fnc_nextWaypointAreaPatrol;
+
+_marker = _group getVariable["GMS_patroArealMarker",""];
+
+if (_marker isEqualTo GMS_patrolRoads) then {
+	(leader _group) call GMSCore_fnc_nextWapointRoadPatrols;
+} else {
+	(leader _group) call GMSCore_fnc_nextWaypointAreaPatrol;
+};

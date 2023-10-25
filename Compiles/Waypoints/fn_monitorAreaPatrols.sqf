@@ -21,7 +21,7 @@ for "_i" from 1 to (_count) do
 	if (_i > _count) exitWith {};
 	private _patrol = GMSCore_monitoredAreaPatrols deleteAt 0;
 	//diag_log format["_monitorAreaPatrols: _patrol = %1",_patrol];
-	_patrol params["_group","_patrolArea","_deleteOnNullGroup"];
+	_patrol params[["_group",grpNull],["_patrolArea",[]],["_deleteOnNullGroup",true]];
 	if !(isNull _group) then 
 	{
 		private _patrolAreaMarker = _group getVariable "GMS_patroArealMarker";

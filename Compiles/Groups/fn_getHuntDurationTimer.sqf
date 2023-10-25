@@ -13,4 +13,4 @@
 
 #include "\GMSCore\Init\GMSCore_defines.hpp"
 params["_group"];
-_group getVariable[GMS_huntOverAt,-1];
+_group getVariable[GMS_huntOverAt,180];

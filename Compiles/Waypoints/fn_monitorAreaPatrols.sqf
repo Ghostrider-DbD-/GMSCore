@@ -13,15 +13,15 @@
 */
 
 // TODO: Test functionality of this
-#include "\GMSCore\Init\GMSCore_defines.hpp"
-//[format["GMSCore_fnc_monitorAreaPatrols called at %1 with %2 groups to monitor",diag_tickTime,count GMSCore_monitoredAreaPatrols]] call GMSCore_fnc_log;
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
+//[format["\x\addons\GMSCore_fnc_monitorAreaPatrols called at %1 with %2 groups to monitor",diag_tickTime,count GMSCore_monitoredAreaPatrols]] call GMSCore_fnc_log;
 private _count = count GMSCore_monitoredAreaPatrols;
 for "_i" from 1 to (_count) do 
 {
 	if (_i > _count) exitWith {};
 	private _patrol = GMSCore_monitoredAreaPatrols deleteAt 0;
 	//diag_log format["_monitorAreaPatrols: _patrol = %1",_patrol];
-	_patrol params["_group","_patrolArea","_deleteOnNullGroup"];
+	_patrol params[["_group",grpNull],["_patrolArea",[]],["_deleteOnNullGroup",true]];
 	if !(isNull _group) then 
 	{
 		private _patrolAreaMarker = _group getVariable "GMS_patroArealMarker";
@@ -53,7 +53,7 @@ for "_i" from 1 to (_count) do
 			// handle stuck 
 			[format["_monitorAreaPatrols: waypoint expired for _group %1 | _patrolAreaMarker %2",_group,_patrolAreaMarker]] call GMSCore_fnc_log;
 			private _stuck = [_group] call GMSCore_fnc_isStuck;
-			[format["GMSCore_fnc_monitorAreaPatrols (56) group %1 | stuck %2",_group,_stuck]] call GMSCore_fnc_log;
+			[format["\x\addons\GMSCore_fnc_monitorAreaPatrols (56) group %1 | stuck %2",_group,_stuck]] call GMSCore_fnc_log;
 			(leader _group) call GMSCore_fnc_nextWaypointAreaPatrol;
 		};
 		if !(_patrolareaSize isEqualTo []) then {GMSCore_monitoredAreaPatrols pushBack _patrol};

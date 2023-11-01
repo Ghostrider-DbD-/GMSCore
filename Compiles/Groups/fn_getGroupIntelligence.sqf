@@ -10,7 +10,7 @@
 	Copyright 2020 Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_group"];
 private _intel = _group getVariable[GMS_patrolIntelligence,0];
 _intel

@@ -13,6 +13,6 @@
 
 	Notes: this can be used for AI patroling an area of any sort, whether they by static or dynamic mission AI, roaming AI spawned by location or near players, etc.
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_group",["_patrolAreaMarker",""]];
 _group setVariable["GMS_patroArealMarker","_patrolAreaMarker"];

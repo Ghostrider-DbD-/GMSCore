@@ -15,7 +15,7 @@
 
 	Notes: TODO: 
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[
 	["_className",""],	
 	["_group",grpNull],
@@ -31,17 +31,17 @@ params[
 ];
 if !(isClass(configFile >> "CfgVehicles" >> _className)) exitWith
 {
-	[format["GMSCore_fnc_spawnPatrolUAV called with invalid classname %1",_className]] call GMSCore_fnc_log;
+	[format["\x\addons\GMSCore_fnc_spawnPatrolUAV called with invalid classname %1",_className]] call GMSCore_fnc_log;
 	objNull
 };
 if !([_className] call GMSCore_fnc_isDrone) exitWith 
 {
-	[format["GMSCore_fnc_spawnPatrolUAV: class name %1 is not a drone",_className]] call GMSCore_fnc_log;
+	[format["\x\addons\GMSCore_fnc_spawnPatrolUAV: class name %1 is not a drone",_className]] call GMSCore_fnc_log;
 	objNull
 };
 if !(_className isKindOf "Air") exitWith 
 {
-	[format["GMSCore_fnc_spawnPatrolUAV: class name %1 is not kindOf 'Air'",_className]] call GMSCore_fnc_log;
+	[format["\x\addons\GMSCore_fnc_spawnPatrolUAV: class name %1 is not kindOf 'Air'",_className]] call GMSCore_fnc_log;
 	objNull
 };
 private _spawnPos = [_pos select 0, _pos select 1, 600];

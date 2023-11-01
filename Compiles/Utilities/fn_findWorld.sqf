@@ -1,6 +1,6 @@
 
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 switch (toLowerANSI worldName) do 
 {// These may need some adjustment - including a test for shore or water should help as well to avoid missions spawning on water.
 		case "altis":{GMS_mapCenter = [12000,10000,0]; GMS_mapRange = 25000;};

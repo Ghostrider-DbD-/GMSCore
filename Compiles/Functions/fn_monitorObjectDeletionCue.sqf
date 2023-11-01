@@ -10,9 +10,9 @@
     Copyright 2020 by Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 private _count = count GRGCore_monitoredObjects;
-//[format["GMSCore_fnc_monitorObjectDeletionCue: _count %1  |  GRGCore_monitoredObjects %2",_count, GRGCore_monitoredObjects]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_monitorObjectDeletionCue: _count %1  |  GRGCore_monitoredObjects %2",_count, GRGCore_monitoredObjects]] call GMSCore_fnc_log;
 for "_i" from 1 to count GRGCore_monitoredObjects do
 {
    if (_i > count GRGCore_monitoredObjects) exitWith {};
@@ -20,7 +20,7 @@ for "_i" from 1 to count GRGCore_monitoredObjects do
     _o params["_objectParameters","_delAt"];
     if (diag_tickTime > _delAt) then 
     {
-        //[format["GMSCore_fnc_monitorObjectDeletionCue: deleting object %1",_o]] call GMSCore_fnc_log;        
+        //[format["\x\addons\GMSCore_fnc_monitorObjectDeletionCue: deleting object %1",_o]] call GMSCore_fnc_log;        
         [_objectParameters] call GMSCore_fnc_deleteObjectsMethod;
     } else {
         GRGCore_monitoredObjects pushBack _o;

@@ -11,7 +11,7 @@
 	Copyright 2020 by Ghostrider-GRG- 
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_group"];
 private _timeStamp =_group getVariable["GMS_timeStamp",diag_tickTime];
 private _startPos = _group getVariable[GMS_waypointStartPos, getPosATL (leader _group)];
@@ -37,5 +37,5 @@ if (isNull _target) then
 };
 
 _group setVariable[GMS_stuckValue,_stuck];
-//[format["GMSCore_fnc_isStuck: _stuck %6 | _timeStamp %1 | _timeout %2 | _timoutAt %3 | _timedOut %4 | _target %5",_timeStamp,_timeout,_timeoutAt,diag_tickTime > _timeoutAt, _target,_stuck]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_isStuck: _stuck %6 | _timeStamp %1 | _timeout %2 | _timoutAt %3 | _timedOut %4 | _target %5",_timeStamp,_timeout,_timeoutAt,diag_tickTime > _timeoutAt, _target,_stuck]] call GMSCore_fnc_log;
 _stuck

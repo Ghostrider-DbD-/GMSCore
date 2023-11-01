@@ -9,7 +9,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 private["_marker","_smoke"];
 params["_aircraft"];
 private _payload = _aircraft getVariable "payload";

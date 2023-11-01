@@ -23,10 +23,10 @@
 	Returns - none 
 	Copyright 2020 by Ghostrider-GRG-
 */
-private _defaultLoiterTime =getNumber(configFile >> "CfgGMSCore" >> "GMSCore_maxSafezoneLoiter");
+private _defaultLoiterTime =getNumber(configFile >> "CfgGMSCore" >> "\x\addons\GMSCore_maxSafezoneLoiter");
 params [["_safeZone",[]],["_loiterTime",_defaultLoiterTime]];  //["_center","_width","_height","_rotation","_maxTime"];
 if !(_safeZone isEqualTo []) then {
 	GMSCore_safeZoneList pushBack [_safeZone,_loiterTime];
-    diag_log format["GMSCore\Compiles\fn_addSafeZone: added %1",[_safeZone,_loiterTime]];
+    diag_log format["\x\addons\GMSCore\Compiles\fn_addSafeZone: added %1",[_safeZone,_loiterTime]];
 };
 

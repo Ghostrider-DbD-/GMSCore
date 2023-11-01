@@ -14,7 +14,7 @@
 
 	Notes: 	Used by SpawnPatrolVehicle 
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[
 	["_vehType",""],
 	["_pos",[0,0,0]],
@@ -22,7 +22,7 @@ params[
 	["_height",0],
 	["_protect",true]
 ];
-//[format["GMSCore_fnc_createVehicle: _vehType %1 | _pos %2 | _dir %3 | _height %4",_vehType,_pos,_dir,_height]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_createVehicle: _vehType %1 | _pos %2 | _dir %3 | _height %4",_vehType,_pos,_dir,_height]] call GMSCore_fnc_log;
 private "_veh";
 if (_height > 0 && {_vehType isKindOf "Air"}) then 
 {

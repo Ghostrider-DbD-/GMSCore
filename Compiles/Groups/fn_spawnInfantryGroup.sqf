@@ -23,7 +23,7 @@
 
 	Copyright 2020 Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[
 		["_pos",[0,0,0]],  // center of the area in which to spawn units
 		["_units",0],  // Number of units to spawn
@@ -44,7 +44,7 @@ params[
 		["_isDroneCrew",false]
 ];
 if (_pos isEqualTo [0,0,0]) then {["Spwan Infantry Group: No Position Specified or position = [0,0,0]","warning"] call GMSCore_fnc_log; };
-//diag_log format["GMSCore_fnc_spawnInfantryGroup: _pos = %2 | _side = %1", _side,_pos];
+//diag_log format["\x\addons\GMSCore_fnc_spawnInfantryGroup: _pos = %2 | _side = %1", _side,_pos];
 if (_units == 0) exitWith {["Spawn Infantry: Number of units not defined or set to 0, no group spawned","error"], call GMSCore_fnc_log};
 
 private _group = [_side] call GMSCore_fnc_createGroup;
@@ -80,12 +80,12 @@ for "_i" from 1 to _units do
 	};
 	private _unitType = if (_isDroneCrew) then {"B_UAV_AI"} else {GMSCore_unitType};
 	GMSCore_unitType createUnit [_pos, _group, "_unit = this", _baseSkill, _currRank select 0];
-	//diag_log format["GMSCore_fnc_spawnInfantryGroup: side _unit = %1", side _unit];
+	//diag_log format["\x\addons\GMSCore_fnc_spawnInfantryGroup: side _unit = %1", side _unit];
 	_unit setVariable ["loadoutType", _currRank select 1];
 	if (GMSCore_modType isEqualTo "Epoch") then {_unit setVariable ["LAST_CHECK",28800,true]};
 	_unit enableAI "ALL";
 };
 _group call GMSCore_fnc_addUnitEventHandlers;
-//[format["GMSCore_fnc_spawnInfantryGroup: _group = %1",_group]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_spawnInfantryGroup: _group = %1",_group]] call GMSCore_fnc_log;
 _group
 

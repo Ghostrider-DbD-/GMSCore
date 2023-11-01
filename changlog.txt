@@ -1,4 +1,9 @@
 
+
+1.060
+Added some checks to find source of illegal values passed to getNumberFromRange.
+ADDED $PREFIX$ and $PBOPREFIX$ and updated paths.
+
 1.058
 Changed: Moved code to detach / attach smoke shell and chemlight to an object to a container function 
     And moved these markers up to 1 meter above the object to reduce colisions with the object since 'its arma'

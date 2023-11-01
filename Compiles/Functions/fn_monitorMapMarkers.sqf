@@ -10,7 +10,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 for "_i" from 1 to (count GRGCore_monitoredMarkers) do 
 {
 	if (_i > (count GRGCore_monitoredMarkers)) exitWith {};

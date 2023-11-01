@@ -45,7 +45,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[["_maximumPrice",1000],["_blackListedItems",[]],["_blacklistedCategories",[]],["_blacklistedClassnameRoots",[]]];
 if (GMSAI_debug > 1) then {[format["fn_dynamicConfigs: _blacklistedClassnameRoots = %1",_blacklistedClassnameRoots]] call GMSCore_fnc_log};
 _GMSCore_headgearList = [];
@@ -151,7 +151,7 @@ if (GMSCore_modType isEqualTo "Epoch") then
 		if (_itemCfg isEqualTo "CfgLootTable") then
 		{
 			_itemsList = [configFile >> "CfgLootTable" >> _itemClassName, "items",[]] call BIS_fnc_returnConfigEntry;
-			//diag_log format["GMSCore] fn_dynamicConfigs: for _itemClassName %1 | _itemsList was %2",_itemClassName,_itemsList];
+			//diag_log format["\x\addons\GMSCore] fn_dynamicConfigs: for _itemClassName %1 | _itemsList was %2",_itemClassName,_itemsList];
 			{
 				if ([_itemClassName, _blacklistedClassnameRoots] call GMSCore_fnc_substringsPresentInString == 0) then
 				{
@@ -191,7 +191,7 @@ private ["_price"];  // here for scope only
 		if (_price < _maximumPrice) then
 		{
 				([_itemClassName] call BIS_fnc_itemType) params["_itemCategory","_itemType"];
-				//diag_log format["GMSCore] fn_dynamicConfigs: _x = %1 | _itemCategory = %2 | _itemType = %3 | _price = %4",_x,_itemCategory,_itemType,_price];
+				//diag_log format["\x\addons\GMSCore] fn_dynamicConfigs: _x = %1 | _itemCategory = %2 | _itemType = %3 | _price = %4",_x,_itemCategory,_itemType,_price];
 				if (!(_itemClassName in _classNamesAdded)  && !(_itemClassName in _blackListedItems) && !(_itemCategory in _blacklistedCategories)) then
 				{
 						if (_itemCategory isEqualTo "Weapon") then

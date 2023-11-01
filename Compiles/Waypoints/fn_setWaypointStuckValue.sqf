@@ -15,7 +15,7 @@
 	If the group monitor determines tha ta group is 'stuck' meaning has not rotated waypoints within some proscribed period, the group will be disengaged and returned to the center of the patrol area.
 	TODO: see why the default is false.
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 #define stuckGroup (_this select 0)
 params["_group",["_stuckVal",false]];
 _group setVariable["GMS_antiStuck",_stuckVal];

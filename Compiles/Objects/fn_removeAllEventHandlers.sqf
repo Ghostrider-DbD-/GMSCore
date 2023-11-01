@@ -13,7 +13,7 @@
 	Notes: May not be used 
 	TODO: check if this is needed
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[
 	"_object",
 	["_eh",["Reloaded","Fired","FiredNear","GetIn","GetOUt","HandleDamage"]]

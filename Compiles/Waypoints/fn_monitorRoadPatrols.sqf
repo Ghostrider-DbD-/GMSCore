@@ -13,8 +13,8 @@
 */
 
 // TODO: Test functionality of this
-#include "\GMSCore\Init\GMSCore_defines.hpp"
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 if (GMSCore_monitoredRoadPatrols isEqualTo []) exitWith {};
 for "_i" from 1 to (count GMSCore_monitoredRoadPatrols) do 
 {
@@ -25,17 +25,10 @@ for "_i" from 1 to (count GMSCore_monitoredRoadPatrols) do
 		private _wp = [_group, 0];
 		private _currWPpos = waypointPosition _wp;
 		private _stuck = [_group] call GMSCore_fnc_isStuck;
-
-		if (_stuck) exitWith 
+		if (_stuck) then 
 		{
-			
-			private _newPos = _leader getPos[50,(getDir _leader) - 180];
-			private _wp = [_group,0];
-			_wp setWaypointType "MOVE";
-			_wp setWaypointCompletionRadius 0;
-			[_group,"disengage"] call GMSCore_fnc_setGroupBehaviors; 
-			_group setCurrentWaypoint [_group,0]; 
-			[_group,false] call GMSCore_fnc_setStuck;
+			[_group,_stuck] call GMSCore_fnc_setStuck;
+			(leader _group) call GMSCore_fnc_nextWaypointRoadPatrols;
 		};	
 		GMSCore_monitoredRoadPatrols pushBack _patrol;
 	} else {
@@ -44,4 +37,4 @@ for "_i" from 1 to (count GMSCore_monitoredRoadPatrols) do
 			GMSCore_monitoredRoadPatrols pushBack _patrol;
 		};
 	}; 
-} forEach GMSCore_monitoredRoadPatrols;
+};

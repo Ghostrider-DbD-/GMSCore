@@ -12,7 +12,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_unit","_target",["_alertValue",0.2]];
 {
 	_x reveal[_target,_alertValue];

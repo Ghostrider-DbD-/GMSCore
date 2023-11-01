@@ -11,7 +11,7 @@
 	
 	CREDITS: Adapted from scripts by the ExileMod Development team 
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_player","_newKills"];
 switch (GMSCore_modType) do 
 {

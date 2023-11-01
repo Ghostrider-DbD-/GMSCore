@@ -13,7 +13,7 @@
 
 	Notes: Be sure to select drones from the same faction as GMSCore_Side
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[
 	["_className",""],
 	//["_group",grpNull],	
@@ -43,20 +43,20 @@ params[
 private "_group";
 if !(isClass(configFile >> "CfgVehicles" >> _className)) exitWith
 {
-	[format["GMSCore_fnc_spawnPatrolUAV called with invalid classname %1",_className],"error"] call GMSCore_fnc_log;
+	[format["\x\addons\GMSCore_fnc_spawnPatrolUAV called with invalid classname %1",_className],"error"] call GMSCore_fnc_log;
 	objNull
 };
 if !([_className] call GMSCore_fnc_isDrone) exitWith 
 {
-	[format["GMSCore_fnc_spawnPatrolUAV: class name %1 is not a drone",_className],"error"] call GMSCore_fnc_log;
+	[format["\x\addons\GMSCore_fnc_spawnPatrolUAV: class name %1 is not a drone",_className],"error"] call GMSCore_fnc_log;
 	objNull
 };
 if !(_className isKindOf "Car") exitWith 
 {
-	[format["GMSCore_fnc_spawnPatrolUAV: class name %1 is not kindOf 'Car'",_className],"error"] call GMSCore_fnc_log;
+	[format["\x\addons\GMSCore_fnc_spawnPatrolUAV: class name %1 is not kindOf 'Car'",_className],"error"] call GMSCore_fnc_log;
 	objNull
 };
-//[format["GMSCore_fnc_spawnUnmannedVehicle: spawning UGV %1 at pos %2",_className,_pos]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_spawnUnmannedVehicle: spawning UGV %1 at pos %2",_className,_pos]] call GMSCore_fnc_log;
 private _unmanned = [
 	_className,	
 	_pos,
@@ -69,12 +69,12 @@ private _unmanned = [
 	_vehHitCode,
 	_vehKilledCode
 ] call GMSCore_fnc_spawnPatrolVehicle;
-//[format["GMSCore_fnc_spawnUnmannedVehicle: GMSCore_fnc_spawnPatrolVehicle returned _unmanned = %1",_unmanned]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_spawnUnmannedVehicle: GMSCore_fnc_spawnPatrolVehicle returned _unmanned = %1",_unmanned]] call GMSCore_fnc_log;
 private "_group"; 
 if !(isNull _unmanned) then 
 {
 	_group = createVehicleCrew _unmanned;
-	//[format["GMSCore_fnc_spawnUnmannedVehicle: _group %1 created for unmanned vehicle",_group]] call GMSCore_fnc_log;
+	//[format["\x\addons\GMSCore_fnc_spawnUnmannedVehicle: _group %1 created for unmanned vehicle",_group]] call GMSCore_fnc_log;
 	[
 		_group,
 		_baseSkill,

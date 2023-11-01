@@ -13,7 +13,7 @@
 	Notes: can be assigned remotely but only fires on the client owning teh object.	
 	TODO: address locality for this function.
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 #define veh _this select 0
 // TODO: redirect to the correct function
 if ((isServer) || {local (veh)}) then {[veh] call blck_fnc_checkForEmptyVehicle};

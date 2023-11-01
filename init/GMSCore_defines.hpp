@@ -92,3 +92,4 @@
 #define GMS_waypointTeminationTime "killWP"
 #define GMS_waypointStartPos "startPosWP"
 #define GMS_waypointTimeoutAt "timeoutWP"
+#define GMS_patrolRoads 1

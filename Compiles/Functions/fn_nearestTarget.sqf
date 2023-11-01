@@ -12,7 +12,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 
 params[["_group",grpNull],["_searchRange",300],["_minKnowsAbout",1]];
 private _leader = leader _group;
@@ -27,7 +27,7 @@ if (isNull _enemy || {(_leader knowsAbout _enemy) < _minKnowsAbout}) then
 		if ([_group,_x] call GMSCore_fnc_groupCanSee || {(_leader knowsAbout _x) > _minKnowsAbout}) exitWith {_enemy = _x};
 	} forEach _enemies; 
 };
-//[format["GMSCore_fnc_nearestTarget: returning _enemy = %1",_enemy]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_nearestTarget: returning _enemy = %1",_enemy]] call GMSCore_fnc_log;
 _enemy 
 
 

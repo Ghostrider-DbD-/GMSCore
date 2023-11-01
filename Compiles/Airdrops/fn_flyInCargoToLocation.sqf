@@ -16,7 +16,7 @@
 
     Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 
 params["_airdropPos","_aircraftClassName","_payload",["_allowDamage",false],["_visibleMarker",true],["_mapMarker",true],["_mapMarkerDeleteTime",3000],["_spawnDistance",2000]];
 

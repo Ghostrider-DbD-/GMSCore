@@ -7,13 +7,13 @@
 	Returns: None 
 	Copyright 2020 by Ghostrider-GRG- 	
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 private _leader = _this;
 if (_leader isEqualType []) then {_leader = _leader select 0};
-//[format["GMSCore_fnc_nextWaypointAreaPatrol: _leader = %1",_leader]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_nextWaypointAreaPatrol: _leader = %1",_leader]] call GMSCore_fnc_log;
 if !(typeOf _leader isEqualTo GMSCore_unitType) exitWith 
 {
-	//[format["GMSCore_fnc_nextWaypointAreaPatrol: _leader %1 passed with typeOf = %2",_leader,typeOf _leader]] call GMSCore_fnc_log;
+	//[format["\x\addons\GMSCore_fnc_nextWaypointAreaPatrol: _leader %1 passed with typeOf = %2",_leader,typeOf _leader]] call GMSCore_fnc_log;
 };
 private _group = group _leader;
 if (_group isEqualTo GMSCore_graveyardGroup) exitWith {};
@@ -25,14 +25,14 @@ private _wp = [_group,0];
 private _patrolType = _group getVariable["GMS_areaPatrolType",GMS_infrantryPatrol];
 [_group] call GMSCore_fnc_setWaypointLastCheckedTime;
 private _patrolAreaMarker = _group getVariable["GMS_patroArealMarker",""];
-//[format["GMSCore_fnc_nextWaypointAreaPatrol: _group %1 | _GMSgroup = %5 | typeOf _veh %2 | _patrolType %3 | _patrolAreaMarker %4 ",_group, typeOf _veh, _patrolType, _patrolAreaMarker, _GMSgroup]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_nextWaypointAreaPatrol: _group %1 | _GMSgroup = %5 | typeOf _veh %2 | _patrolType %3 | _patrolAreaMarker %4 ",_group, typeOf _veh, _patrolType, _patrolAreaMarker, _GMSgroup]] call GMSCore_fnc_log;
 if (_patrolAreaMarker isEqualTo "") exitWith 
 {
 	[format["No Marker Defined for Patrol Area for group %1",_group],"error"] call GMSCore_fnc_log;
 };
 
 private _typeOf = _veh call BIS_fnc_objectType;
-private _maxDistanceTarget = _group getVariable[GMS_maxDistanceTarget,50];
+private _maxDistanceTarget = _group getVariable[GMS_maxDistanceTarget,200];
 //diag_log format["_nextWaypointAreaPatrol: _maxDistanceTarget = %1",_maxDistanceTarget];
 private _blacklisted = _group getVariable "GMS_blackListedAreas";
 private _huntTimer = [_group] call GMSCore_fnc_getHuntDurationTimer;
@@ -54,11 +54,7 @@ private _target = [_group] call GMSCore_fnc_getHunt;  // This can be set by the 
 if !(isNull _target) then 
 {
 	// If the target is now in a blacklisted location discontinue the hunt
-	if ([_target, [_group] call GMSCore_fnc_getGroupBlacklist] call GMSCore_fnc_isBlacklisted) exitWith {_target = objNull};
-	if ((leader _group knowsAbout _target) < 1) then {_target == objNull};
-	if ( (leader _group distance _target) > _maxDistanceTarget) then {_target = objNull};
-	if (diag_tickTime > _huntTimer) then {_target == objNull};
-	if !(alive _target) then {_target = objNull};
+	[_group,_target] call GMSCore_fnc_updateHunt;
 };
 
 if (isNull _target || {!(alive _target)}) then
@@ -71,7 +67,7 @@ if (isNull _target || {!(alive _target)}) then
 	[_group] call GMSCore_fnc_setHuntDurationTimer;
 };
 
-//diag_log format["GMSCore_fnc_nextWaypointAreaPatrol:(58} _group %3 | _target = %1 | _vehicle %2 | nearestEnemy = %3",_target,typeOf vehicle _leader, _leader findNearestEnemy (position _leader),_group];
+//diag_log format["\x\addons\GMSCore_fnc_nextWaypointAreaPatrol:(58} _group %3 | _target = %1 | _vehicle %2 | nearestEnemy = %3",_target,typeOf vehicle _leader, _leader findNearestEnemy (position _leader),_group];
  private _stuck = [_group] call GMSCore_fnc_isStuck;
 
 if (_stuck && {(isNull _target)}) exitWith 
@@ -91,7 +87,7 @@ if !(isNull _target && {!_stuck}) exitWith
 {
 	// Enemies nearby, set group to combat mode and engage them
 	
-	//[format["GMSCore_fnc_nextWaypointAreaPatrol (65) : enemies nearby condition : _group = %1",_group]] call GMSCore_fnc_log;
+	//[format["\x\addons\GMSCore_fnc_nextWaypointAreaPatrol (65) : enemies nearby condition : _group = %1",_group]] call GMSCore_fnc_log;
 	private _nextPos = (position _target) getPos [
 			(selectMax [(_leader distance _target)/2,1]),// keep the AI at least 1 m from the target
 			(_leader getRelDir (position _target))
@@ -134,11 +130,11 @@ if (isNull _target) then
 				private _center = markerPos _gmsMarker;
 				private _radius = ((markerSize _gmsMarker) select 0)/3;
 				_nextPos = [[[_center,_radius]],["water"]] call BIS_fnc_randomPos;
-				//[format["GMSCore_fnc_nextWaypointAreaPatrol: No Patrol Locations specified, new waypoint found by BIS_fnc_randompos of %1",_nextPos]] call GMSCore_fnc_log;
+				//[format["\x\addons\GMSCore_fnc_nextWaypointAreaPatrol: No Patrol Locations specified, new waypoint found by BIS_fnc_randompos of %1",_nextPos]] call GMSCore_fnc_log;
 		} else {
 			private _l = selectRandom GMS_patrolLocations;
 			_nextPos = (locationPosition _l) getPos[300,random(360)];
-			//[format["GMSCore_fnc_nextWaypointAreaPatrol: Location based waypoint selected using location = %1 at postion = %2",_l,_nextPos]] call GMSCore_fnc_log;
+			//[format["\x\addons\GMSCore_fnc_nextWaypointAreaPatrol: Location based waypoint selected using location = %1 at postion = %2",_l,_nextPos]] call GMSCore_fnc_log;
 		};
 	} else {
 		_nextPos = [0,0];

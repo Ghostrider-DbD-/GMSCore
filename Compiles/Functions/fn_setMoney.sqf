@@ -1,7 +1,7 @@
 /*
 	GMSCore_fnc_setMoney
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 
 params[
 	"_obj",				// The object you wish to attach money to 

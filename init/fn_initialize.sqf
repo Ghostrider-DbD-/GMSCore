@@ -10,7 +10,7 @@
 GMSCore_modType = "default";
 if (!isNull (configFile >> "CfgPatches" >> "exile_server")) then {GMSCore_modType = "Exile"};
 if (!isnull (configFile >> "CfgPatches" >> "a3_epoch_server")) then {GMSCore_modType = "Epoch"}; 
-[format["GMSCore_modType = %1",GMSCore_modType]] call GMSCore_fnc_log;
+[format["\x\addons\GMSCore_modType = %1",GMSCore_modType]] call GMSCore_fnc_log;
 // This block waits for the mod to start but is disabled for now
 if ((toLowerANSI GMSCore_modType) isEqualto "epoch") then {
 	//["Waiting until EpochMod is ready..."] call GMSCore_fnc_log;
@@ -23,11 +23,11 @@ if ((toLowerANSI GMSCore_modType) isEqualTo "exile") then
 	waitUntil {!isNil "PublicServerIsLoaded"};
 	["Exilemod is ready...loading GMSCore"] call GMSCore_fnc_log;	
 };
-publicVariable "GMSCore_modType";
-GMSCore_debug = getNumber(configFile >> "CfgGMSCore" >> "GMSCore_debug");
-GMSCore_maxHuntDuration = getNumber(configFile >> "CfgGMSCore" >> "GMSCore_maxHuntDuration");;
-GMSCore_huntNearestPlayer = if (getNumber(configFile >> "CfgGMSCore" >> "GMSCore_huntNearestPlayer") == 1) then {true} else {false};;
-GMSCore_hitKillEventUpdateInterval = getNumber(configFile >> "CfgGMSCore" >> "GMSCore_hitKillEventUpdateInterval");
+publicVariable "\x\addons\GMSCore_modType";
+GMSCore_debug = getNumber(configFile >> "CfgGMSCore" >> "\x\addons\GMSCore_debug");
+GMSCore_maxHuntDuration = getNumber(configFile >> "CfgGMSCore" >> "\x\addons\GMSCore_maxHuntDuration");;
+GMSCore_huntNearestPlayer = if (getNumber(configFile >> "CfgGMSCore" >> "\x\addons\GMSCore_huntNearestPlayer") == 1) then {true} else {false};;
+GMSCore_hitKillEventUpdateInterval = getNumber(configFile >> "CfgGMSCore" >> "\x\addons\GMSCore_hitKillEventUpdateInterval");
 
 switch (toLowerANSI GMSCore_modType) do 
 {
@@ -50,9 +50,9 @@ switch (toLowerANSI GMSCore_modType) do
 		GMSCore_playerSide = WEST;		
 	};
 };
-[format["GMSCore_Side = %1",GMSCore_Side]] call GMSCore_fnc_log;
+[format["\x\addons\GMSCore_Side = %1",GMSCore_Side]] call GMSCore_fnc_log;
 GMSCore_center = createCenter GMSCore_Side;
-if (isNil "GMSCore_graveyardGroup") then 
+if (isNil "\x\addons\GMSCore_graveyardGroup") then 
 {
 	GMSCore_graveyardGroup = createGroup[GMSCore_Side,false];  // used to store dead units until they are Deleted 
 	GMSCore_graveyardGroup setGroupId ["GMS_graveyard"];
@@ -65,7 +65,7 @@ GMSCore_monitoredGroups = [];
 GMSCore_monitoredAreaPatrols = [];
 GMSCore_monitoredRoadPatrols = [];
 GMSCore_monitoredEmptyVehicles = []; 
-GMSCore_monitoredVisibleMarkers = [];  //  List of objects to which visible markers are attached: variables used are "GMSCoreVMStart" [float], "GMSCoreVMEnd" [float], "GMSCoreMarkers [smoke,chemlight], "GMSCoreMarkerTypes [_smokeShell,_chemLight]
+GMSCore_monitoredVisibleMarkers = [];  //  List of objects to which visible markers are attached: variables used are "\x\addons\GMSCoreVMStart" [float], "\x\addons\GMSCoreVMEnd" [float], "\x\addons\GMSCoreMarkers [smoke,chemlight], "\x\addons\GMSCoreMarkerTypes [_smokeShell,_chemLight]
 GMSCore_safeZoneList = [];
 GMSCore_onRunoverHitpointDamage = [0.3-0.6];
 GMSCore_onRunoverNoHitPointsDamaged = [1,4];
@@ -90,7 +90,7 @@ GMSCore_killedMsgTypes = [
 	"systemChat"
 ];
 [GMSCore_killedMsgTypes] call GMSCore_fnc_configureOnKilledMessages;
-[format["GMSCore_killedMsgTypes = %1",GMSCore_killedMsgTypes]] call GMSCore_fnc_log;
+[format["\x\addons\GMSCore_killedMsgTypes = %1",GMSCore_killedMsgTypes]] call GMSCore_fnc_log;
 */
 
 GMSCore_huntedMsgTypes = [
@@ -102,7 +102,7 @@ GMSCore_huntedMsgTypes = [
 	"systemChat"
 ];
 [GMSCore_huntedMsgTypes] call GMSCore_fnc_configureOnHuntMessages;
-[format["GMSCore_huntedMsgTypes = %1",GMSCore_huntedMsgTypes]] call GMSCore_fnc_log;
+[format["\x\addons\GMSCore_huntedMsgTypes = %1",GMSCore_huntedMsgTypes]] call GMSCore_fnc_log;
 
 GMSCore_alertMsgTypes = [
 	//"toast",
@@ -118,21 +118,22 @@ GMSCore_alertMsgTypes = [
 //GMSCore_vehicleGroup = GMSCore_infantryGroup;
 //GMSCore_aircraftGroup = GMSCore_infantryGroup; 
 
-private _ver =  getNumber(configFile >> "GMSCoreBuild" >> "version");
-private _build = getNumber(configFile >> "GMSCoreBuild" >> "build");
-private _buildDate = getText(configFile >> "GMSCoreBuild" >> "buildDate");
+private _ver =  getNumber(configFile >> "\x\addons\GMSCoreBuild" >> "version");
+private _build = getNumber(configFile >> "\x\addons\GMSCoreBuild" >> "build");
+private _buildDate = getText(configFile >> "\x\addons\GMSCoreBuild" >> "buildDate");
 
-publicVariable "GMSCore_fnc_textAlert";
-publicVariable "GMSCore_fnc_titleTextAlert";
-publicVariable "GMSCore_fnc_huntedMessages";
-publicVariable "GMSCore_fnc_killedMessages";
-publicVariable "GMSCore_modType";
-publicVariable "GMSCore_killedMsgTypes";
-publicVariable "GMSCore_alertMsgTypes";
-publicVariable "GMSCore_huntedMsgTypes";
+publicVariable "\x\addons\GMSCore_fnc_textAlert";
+publicVariable "\x\addons\GMSCore_fnc_titleTextAlert";
+publicVariable "\x\addons\GMSCore_fnc_huntedMessages";
+publicVariable "\x\addons\GMSCore_fnc_killedMessages";
+publicVariable "\x\addons\GMSCore_modType";
+publicVariable "\x\addons\GMSCore_killedMsgTypes";
+publicVariable "\x\addons\GMSCore_alertMsgTypes";
+publicVariable "\x\addons\GMSCore_huntedMsgTypes";
 
 [] call GMSCore_fnc_findWorld;
 [] spawn GMSCore_fnc_mainThread;  //  Start the scheduler that does all the work.
 
 [format["Build %1 Build Date %2 Initialized at %3 with GMSCore_modType = %4",_build,_buildDate,diag_tickTime,GMSCore_modType]] call GMSCore_fnc_log;
 GMSCore_Initialized = true;
+

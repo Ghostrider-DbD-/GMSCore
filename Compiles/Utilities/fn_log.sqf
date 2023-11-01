@@ -13,7 +13,7 @@
 	Copyright 2020 by Ghostrider-GRG-	
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_msg",["_type",""]];
 if !(_type isEqualType "") then 
 {

@@ -14,7 +14,7 @@
 
 	Notes: 
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 
 params["_veh","_weaps","_mags"];
 {
@@ -22,7 +22,7 @@ params["_veh","_weaps","_mags"];
 	{
 		_veh removeWeaponGlobal _x;
 	} else {
-		[format["GMSCore_fnc_removeWeapAndMags: invalid weapon name provided: %1",_x],"warning"] call GMSCore_fnc_log;
+		[format["\x\addons\GMSCore_fnc_removeWeapAndMags: invalid weapon name provided: %1",_x],"warning"] call GMSCore_fnc_log;
 	};
 } foreach _weaps;
 
@@ -33,7 +33,7 @@ params["_veh","_weaps","_mags"];
 		{
 			_veh removeMagazinesTurret [_x,_tur];
 		} else {
-			[format["GMSCore_fnc_removeWeapAndMags: invalid magazine name provided: %1",_x],"warning"] call GMSCore_fnc_log;
+			[format["\x\addons\GMSCore_fnc_removeWeapAndMags: invalid magazine name provided: %1",_x],"warning"] call GMSCore_fnc_log;
 		};
 	} foreach _mags;
 } forEach (allTurrets [_veh, false]);

@@ -11,7 +11,7 @@
 	Copyright 2020 by Ghostrider-GRG- 
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_group"];
 private _time = _group getVariable["GMS_lastChecked",0];
 if (_time isEqualTo 0) then 

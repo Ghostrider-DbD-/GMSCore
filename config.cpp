@@ -3,9 +3,9 @@
 */
 
 class GMSCoreBuild {
-	version = 1.058;
-	build = 40;
-	buildDate = "10-14-23";
+	version = 1.060;
+	build = 41;
+	buildDate = "10-26-23";
 };
 class CfgPatches {
 	class GMSCore {
@@ -20,7 +20,7 @@ class CfgPatches {
 class CfgFunctions {
 	class GMSCore {
 		class Airdrops {
-			file = "GMSCore\Compiles\Airdrops";
+			file = "\x\addons\GMSCore\Compiles\Airdrops";
 			class arrivedOnStation {};
 			class cleanUpHeli {};
 			class dropParatroops {};
@@ -31,7 +31,7 @@ class CfgFunctions {
 			class setAircraftPayload {};							
 		};		
 		class Client {
-			file = "GMSCore\Compiles\Client";
+			file = "\x\addons\GMSCore\Compiles\Client";
 			class configureAlertMessages {};
 			class configureOnHuntMessages {};
 			class configureOnKilledMessages {};
@@ -42,7 +42,7 @@ class CfgFunctions {
 			class killedMessages {};
 		};
 		class Crates {
-			file = "GMSCore\Compiles\Crates";
+			file = "\x\addons\GMSCore\Compiles\Crates";
 			class addItem {};
 			class addItemsFromArray {};  // weighted array either a single array, or array of arrays.
 			class attachCrateMarkers {};
@@ -51,7 +51,7 @@ class CfgFunctions {
 			class visibleMarker {};
 		};
 		class GMS_Functions {
-			file = "GMSCore\Compiles\Functions";
+			file = "\x\addons\GMSCore\Compiles\Functions";
 			class addToDeletionCue {};
 			class checkClassnamesArray {};
 			class checkClassNamePrices {};
@@ -72,7 +72,7 @@ class CfgFunctions {
 			class monitorMapMarkers {};
 			class monitorObjectDeletionCue {};			
 			class nearestGMSAI {};
-			class nearestPlayers {};
+			//  class nearestPlayers {};  // Replaced by a GMSCore function GMSCore_fnc_nearestPlayers
 			class nearestTarget {};	
 			class objectHeight {};		
 			class removeBlacklistedItems {};
@@ -85,11 +85,12 @@ class CfgFunctions {
 			class substringsPresentInString {};
 		};		
 		class GMS_Groups {
-			file = "GMSCore\Compiles\Groups";
+			file = "\x\addons\GMSCore\Compiles\Groups";
 			class addToGraveyardGroup {};
 			class addUnitEventHandlers {};
 			class alertNearbyGroups {};
 			class boostGroupAttributes {};
+			class cleanupEmptyGroups {};
 			class createGroup {};	
 			class despawnInfantryGroup {};
 			class getAreaMarker {};
@@ -112,15 +113,16 @@ class CfgFunctions {
 			class setupGroupSkills {};
 			class setupGroupGear {};
 			class setupGroupBehavior {};
+			class updateHunt {};
 			class spawnInfantryGroup {};	
 			class updateGroupHitKilledTimer {};				
 		};		
 		class GMS_Initialization {
-			file = "GMSCore\init";
+			file = "\x\addons\GMSCore\init";
 			class Initialize {postInit = 1;};
 		};
 		class GMS_Objects {
-			file = "GMSCore\Compiles\Objects";
+			file = "\x\addons\GMSCore\Compiles\Objects";
 			class createObject {};							
 			class emptyObjectInventory {};			
 			class removeAllEventHandlers {};
@@ -128,7 +130,7 @@ class CfgFunctions {
 			class setMoney {};
 		};				
 		class GMS_Players {
-			file = "GMSCore\Compiles\Players";			
+			file = "\x\addons\GMSCore\Compiles\Players";			
 			class giveTakeCrypto {};  // Please see credits in the sqf.
 			class getKarma {};	  // Please see the credits in the sqf.	
 			class giveTakeRespect {};
@@ -138,19 +140,19 @@ class CfgFunctions {
 			class unitRunover {};
 		};
 		class GMS_safezoneManagement {
-			file = "GMSCore\Compiles\safezoneManagement";
+			file = "\x\addons\GMSCore\Compiles\safezoneManagement";
 			//class addSafeZone {};
 			//class cleanupSafeZones {};
 		};
 		class GMS_Utilities {
-			file = "GMSCore\Compiles\Utilities";
+			file = "\x\addons\GMSCore\Compiles\Utilities";
 			class findWorld {};
 			class getLocationsForWaypoints {};
 			class getMapMarker {};
 			class log {};
 		};
 		class GMS_Units {
-			file = "GMSCore\Compiles\Units";
+			file = "\x\addons\GMSCore\Compiles\Units";
 			class addChainedMPKilled {};
 			class healSelf {};			
 			class removeNVG {};
@@ -163,7 +165,7 @@ class CfgFunctions {
 			class unitRemoveAllGear {};			
 		};
 		class GMS_Vehicles {
-			file = "GMSCore\Compiles\Vehicles";
+			file = "\x\addons\GMSCore\Compiles\Vehicles";
 			//class allowPlayerVehicleAccess {};
 			class createVehicle {};
 			class destroyVehicleAndCrew {};
@@ -184,7 +186,7 @@ class CfgFunctions {
 		};		
 		class GMS_Waypoints {
 			// general functions for handling waypoints within a patrol area
-			file = "GMSCore\Compiles\Waypoints";
+			file = "\x\addons\GMSCore\Compiles\Waypoints";
 			class addMonitoredAreaPatrol {};			
 			class isStuck {};
 			class getWaypointLastCheckedTime {};

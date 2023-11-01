@@ -11,7 +11,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_unit","_obj"];
 private _veh = vehicle _unit;
 if (lineIntersects[eyePos _unit, aimpos _obj, _unit, _obj]) then {false} else {true};

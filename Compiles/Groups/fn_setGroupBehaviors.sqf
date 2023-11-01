@@ -15,7 +15,7 @@
 	Copyright 2020 Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_group",["_mode",""]];
 switch(_mode) do 
 {
@@ -26,13 +26,13 @@ switch(_mode) do
 			[_group,objNull] call GMSCore_fnc_setHunt;
 	};
 	case "combat": {
-		_group setCombatMode "RED";
+		_group setCombatMode "YELLOW";
 		_group setBehaviour "COMBAT";
 		{_x forceSpeed -1} forEach (units _group);		
 	};
 	case "garison": {
 		_group setCombatMode "RED";
-		_group setBehaviour "COMBAT";
+		_group setBehaviour "AWARE";
 		{_x forceSpeed -1} forEach (units _group);		
 	};
 	default {

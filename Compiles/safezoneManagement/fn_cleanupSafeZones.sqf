@@ -6,7 +6,7 @@
 	Returns - none 
 	Copyright 2020 by Ghostrider-GRG-
 */
-private _maxLoiterTime = getNumber(configFile >> "CfgGMSCore" >> "GMSCore_maxSafezoneLoiger");
+private _maxLoiterTime = getNumber(configFile >> "CfgGMSCore" >> "\x\addons\GMSCore_maxSafezoneLoiger");
 diag_log format["GMS_Core_fnc_cleanupSafezones: _maxLoiterTime = %1",_maxLoiterTime];
 {
 	//  Parse the information for this specific safezone.

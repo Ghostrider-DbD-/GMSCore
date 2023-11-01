@@ -13,9 +13,9 @@
 	Copyright 2020 Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_group","_skillLevel","_money"];
-//diag_log format["GMSCore_fnc_setGroupMoney(18): _group %1 | _skillLevel %2 | _money %3",_group,_skillLevel,_money];
+//diag_log format["\x\addons\GMSCore_fnc_setGroupMoney(18): _group %1 | _skillLevel %2 | _money %3",_group,_skillLevel,_money];
 {
 	[_x, _skillLevel, _money] call GMSCore_fnc_setMoney; 
 } forEach (units _group);

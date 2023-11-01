@@ -9,7 +9,7 @@
 
 	Notes: 	None	
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_group"];
 
 {

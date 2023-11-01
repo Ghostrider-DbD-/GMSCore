@@ -13,7 +13,7 @@
 			
 		Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[["_items",[]],["_blacklist",[]]];
 if (_blacklist isEqualTo []) exitWith {};
 private _count = count _items;
@@ -27,7 +27,7 @@ for "_i" from 1 to count _items do
 		if (_i1 in _blacklist) then {_blacklisted = true};
 		if (_blacklisted) then 
 		{
-			[format["GMSCore_fnc_removeBlacklistedItems: removing blacklisted item %1 from list",_i1]] call GMSCore_fnc_log;
+			[format["\x\addons\GMSCore_fnc_removeBlacklistedItems: removing blacklisted item %1 from list",_i1]] call GMSCore_fnc_log;
 			if ((_items select 0) isEqualType 0) then 
 			{
 				// assume this is a normal weighted array 
@@ -51,7 +51,7 @@ for "_i" from 1 to count _items do
 			if ((_i1 select 1) in _blacklist) then {_blacklisted = true};
 			if (_blacklisted) then 
 			{
-				[format["GMSCore_fnc_removeBlacklistedItems: removing blacklisted item %1 from list",_i1]] call GMSCore_fnc_log;
+				[format["\x\addons\GMSCore_fnc_removeBlacklistedItems: removing blacklisted item %1 from list",_i1]] call GMSCore_fnc_log;
 			} else {
 				_items pushBack _i1;
 			};

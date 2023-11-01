@@ -1,7 +1,7 @@
 /*
 	GMSCore_fnc_selectRandomObject
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_choices",["_blacklists",[]];
 private "_choice";
 

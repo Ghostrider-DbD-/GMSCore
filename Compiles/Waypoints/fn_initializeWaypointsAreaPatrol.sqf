@@ -19,7 +19,7 @@
 		If the group monitor determines tha ta group is 'stuck' meaning has not rotated waypoints within some proscribed period, the group will be disengaged and returned to the center of the patrol area.		
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[
 	["_group",grpNull],  // group for which to configure / initialize waypoints
 	["_blackListed",[]],  // areas to avoid within the patrol region
@@ -32,9 +32,9 @@ params[
 private _veh = vehicle (leader _group);
 private _driver = driver _veh;
 //diag_log format["_initializeWaypointsAreaPatrol(34): _group %1 | typeOf _veh %2 | _driver %3 | _patrolAreaMarker %4",_group,typeOf _veh,_driver,_patrolAreaMarker];
-if ((isNull _group) || _patrolAreaMarker isEqualTo ""  ) exitWith {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: invalad parameters passed for _group = %1 AND/OR _patrolAreaMarker = %3",_group,_patrolAreaMarker],"error"] call GMSCore_fnc_log};
+if ((isNull _group) || _patrolAreaMarker isEqualTo ""  ) exitWith {[format["\x\addons\GMSCore_fnc_initializeWaypointsAreaPatrol: invalad parameters passed for _group = %1 AND/OR _patrolAreaMarker = %3",_group,_patrolAreaMarker],"error"] call GMSCore_fnc_log};
 if (_patrolAreaMarker isEqualTo []) exitWith {
-	[format["GMSCore_fnc_initializeWaypointsAreaPatrol: Empty array passed for _patrolAreaMarker"]] call GMSCore_fnc_log;
+	[format["\x\addons\GMSCore_fnc_initializeWaypointsAreaPatrol: Empty array passed for _patrolAreaMarker"]] call GMSCore_fnc_log;
 };
 
 //[format["initializeWaypointAreaPatrol: _group = %1 | _patrolAreaMarker = %2 | _timeout = %3 | _garrisonChance = %4 | _type = %5",_group,_patrolAreaMarker,_timeout,_garrisonChance,_type]] call GMSCore_fnc_log;
@@ -49,11 +49,11 @@ try {
 } catch {
 	switch (_exception) do {
 		case 1:{  //  nullGroup 
-			//[format["GMSCore_fnc_initializeWaypointsAreaPatrol: invalad parameters passed -   _group = %1",_group],"error"] call GMSCore_fnc_log
+			//[format["\x\addons\GMSCore_fnc_initializeWaypointsAreaPatrol: invalad parameters passed -   _group = %1",_group],"error"] call GMSCore_fnc_log
 		};
 		case 2:{
-			if (_patrolAreaMarker isEqualType "") then {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: No valid marker name passed"],"warning"] call GMSCOre_fnc_log};
-			if (_patrolAreaMarker isEqualType []) then {[format["GMSCore_fnc_initializeWaypointsAreaPatrol: invalid position array passed: %!",_patrolAreaMarker],"warning"] call GMSCore_fnc_log};
+			if (_patrolAreaMarker isEqualType "") then {[format["\x\addons\GMSCore_fnc_initializeWaypointsAreaPatrol: No valid marker name passed"],"warning"] call GMSCOre_fnc_log};
+			if (_patrolAreaMarker isEqualType []) then {[format["\x\addons\GMSCore_fnc_initializeWaypointsAreaPatrol: invalid position array passed: %!",_patrolAreaMarker],"warning"] call GMSCore_fnc_log};
 		};
 		case 3: {
 			GMSCore_monitoredGroups pushBackUnique _group;
@@ -68,14 +68,14 @@ try {
 
 			[_group] call GMSCore_fnc_updateWaypointConfigs;
 
-			//[format["GMSCore_fnc_initializeWaypointsAreaPatrol: calling GMSCore_fnc_nextWaypointAreaPatrol for _group %1 | _patrolAreaMarker %2 | _type %3",_group,_patrolAreaMarker,_type]] call GMSCore_fnc_log;
+			//[format["\x\addons\GMSCore_fnc_initializeWaypointsAreaPatrol: calling GMSCore_fnc_nextWaypointAreaPatrol for _group %1 | _patrolAreaMarker %2 | _type %3",_group,_patrolAreaMarker,_type]] call GMSCore_fnc_log;
 			GMSCore_monitoredAreaPatrols pushBack [_group,_patrolAreaMarker,_deleteMarker];
 			if !(_type isEqualTo "Turret") then {
 				private _wp = [_group,0];
 				_wp setWaypointStatements ["true","this call GMSCore_fnc_nextWaypointAreaPatrol;"];
 				(leader _group) call GMSCore_fnc_nextWaypointAreaPatrol;				
 			};		
-			//[format["GMSCore_fnc_initializeWaypointsAreaPatrol Completed for group %1",_group]] call GMSCore_fnc_log;		
+			//[format["\x\addons\GMSCore_fnc_initializeWaypointsAreaPatrol Completed for group %1",_group]] call GMSCore_fnc_log;		
 		};
 	};
 };

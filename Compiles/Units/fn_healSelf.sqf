@@ -12,7 +12,7 @@
 	
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_unit","_source"];
 if !(vehicle _unit isEqualTo _unit) exitWith {};
 private _group = group _unit;

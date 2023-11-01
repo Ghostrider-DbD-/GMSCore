@@ -11,7 +11,7 @@
 	Copyright 2020 by Ghostrider-GRG-    
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 private _unit = _this;
 private _nvg = _unit getVariable["GMS_nvg",""];
 if !(_nvg isEqualTo "") then

@@ -11,7 +11,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 private _group = _this;
 {
 	_x addMPEventHandler["MPKilled",{if (isServer) then {_this call GMSCore_fnc_unitKilled;};}];  // Bare minimum killed EH

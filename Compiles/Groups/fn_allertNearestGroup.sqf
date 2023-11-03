@@ -12,7 +12,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-	
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params ["_unit","_killer","_alertDistance","_alertDefaultValue"]; 			
 private _ng = group(nearestObject[getPosATL _unit,GMSCore_unitType]);
 if ((side _ng) isEqualTo GMSAI_side) then 

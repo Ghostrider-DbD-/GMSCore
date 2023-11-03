@@ -10,11 +10,11 @@
 
 	Copyright 2020 by Ghostrider-GRG-	
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[["_group",grpNull]];
 if (isNull _group) exitWith 
 {
-	["GMSCore_fnc_getGroupBlacklist called with null group"] call GMSCore_fnc_log;
+	["\x\addons\GMSCore_fnc_getGroupBlacklist called with null group"] call GMSCore_fnc_log;
 	[]
 };
 _group setVariable["GMS_blacklist",[]];

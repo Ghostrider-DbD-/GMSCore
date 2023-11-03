@@ -15,7 +15,7 @@
 	Copyright 2020 Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_group",["_mode",""]];
 switch(_mode) do 
 {

@@ -15,7 +15,7 @@
 
 	Notes: TODO: 
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[
 	["_className",""],
 	["_group",grpNull],		
@@ -32,12 +32,12 @@ params[
 
 if !(isClass(configFile >> "CfgVehicles" >> _className)) exitWith
 {
-	[format["GMSCore_fnc_spawnPatrolAircraft called with invalid classname %1",_className],"error"] call GMSCore_fnc_log;
+	[format["\x\addons\GMSCore_fnc_spawnPatrolAircraft called with invalid classname %1",_className],"error"] call GMSCore_fnc_log;
 	objNull
 };
 if !(_className isKindOf "Air") exitWith 
 {
-	[format["GMSCore_fnc_spawnPatrolAircraft: class name %1 is not kindOf 'Air'",_className],"error"] call GMSCore_fnc_log;
+	[format["\x\addons\GMSCore_fnc_spawnPatrolAircraft: class name %1 is not kindOf 'Air'",_className],"error"] call GMSCore_fnc_log;
 	objNull
 };
 
@@ -61,7 +61,7 @@ if !(isNull _aircraft) then
 	{
 		_x moveInAny _aircraft;
 	} forEach (units _group);
-	//[format["GMSCore_fnc_spawnPatrolAircraft: _vehHitCode = %1",_vehHitCode]] call GMSCore_fnc_log;
+	//[format["\x\addons\GMSCore_fnc_spawnPatrolAircraft: _vehHitCode = %1",_vehHitCode]] call GMSCore_fnc_log;
 	_aircraft setVariable[GMS_vehHitCode,_vehHitCode];
 	_aircraft setVariable[GMS_vehKilledCode,_vehKilledCode];
 	_aircraft setVariable["GMS_group",_group];

@@ -13,10 +13,10 @@
 	TODO: check the parameters here.
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 if !(local (_this select 0)) exitWith {};
 params["_veh","_killer","_instigator"];
-//[format["GMSCore_fnc_vehicleKilled: _veh %1 | typeOf _veh %2 | name _instigator %3",_veh,typeOf _veh, name _instigator]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_vehicleKilled: _veh %1 | typeOf _veh %2 | name _instigator %3",_veh,typeOf _veh, name _instigator]] call GMSCore_fnc_log;
 if ([_veh] call GMSCore_fnc_updateGroupHitKilledTimer) then // This only allows updates every 10 sec to reduce server load.
 {
 	private _group = _veh getVariable["GMS_group",grpNull];

@@ -12,7 +12,7 @@
 	Copyright 2020 by Ghostrider-GRG- 
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_group",["_time",diag_tickTime]];
 _group setVariable["GMS_lastChecked",_time];
 true

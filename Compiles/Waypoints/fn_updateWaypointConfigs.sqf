@@ -13,13 +13,13 @@
 	If the group monitor determines tha ta group is 'stuck' meaning has not rotated waypoints within some proscribed period, the group will be disengaged and returned to the center of the patrol area.
 	TODO: see why the default is false.
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_group"];
 private _veh = vehicle (leader _group);
 private _objType = _veh call BIS_fnc_objectType;
 private _cat = _objType select 0;
 private _sub = _objType select 1;
-//diag_log format["GMSCore_fnc_updateWaypointConfigs: _veh = %1 | _objType %2 | _cat %3 | _sub %4",typeOf _veh, _objType, _cat, _sub];
+//diag_log format["\x\addons\GMSCore_fnc_updateWaypointConfigs: _veh = %1 | _objType %2 | _cat %3 | _sub %4",typeOf _veh, _objType, _cat, _sub];
 private _wp = [_group,0];
 
 //diag_log format["_objType = %1",_objType];

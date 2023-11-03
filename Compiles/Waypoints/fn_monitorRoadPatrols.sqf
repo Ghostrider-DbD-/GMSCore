@@ -13,8 +13,8 @@
 */
 
 // TODO: Test functionality of this
-#include "\GMSCore\Init\GMSCore_defines.hpp"
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 if (GMSCore_monitoredRoadPatrols isEqualTo []) exitWith {};
 for "_i" from 1 to (count GMSCore_monitoredRoadPatrols) do 
 {

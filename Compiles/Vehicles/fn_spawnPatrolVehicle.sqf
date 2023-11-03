@@ -22,7 +22,7 @@
 		having a specific check that the owner is not an HC or is a player would also help here.
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[
 		["_className",""], // Clasname of vehicle to be spawned
 		["_spawnPos",[0,0,0]],  //  selfevident
@@ -35,7 +35,7 @@ params[
 		["_vehHitCode",[]],
 		["_vehKilledCode",[]]
 	];
-//[format["GMSCore_fnc_spawnPatrolVehicle: _className %1 | _spawnPos %2 | _dir %3 | _height %4 | _disable %5 | _removeFuel %6 _releaseToPlayers %7 | _deleteTimer %8",_className,_spawnPos,_dir,_height,_disable,_removeFuel,_releaseToPlayers,_deleteTimer]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_spawnPatrolVehicle: _className %1 | _spawnPos %2 | _dir %3 | _height %4 | _disable %5 | _removeFuel %6 _releaseToPlayers %7 | _deleteTimer %8",_className,_spawnPos,_dir,_height,_disable,_removeFuel,_releaseToPlayers,_deleteTimer]] call GMSCore_fnc_log;
 private _veh = [_className,_spawnPos,_dir,_height] call GMSCore_fnc_createVehicle;
 if !(isNull _veh) then 
 {

@@ -15,11 +15,11 @@ GMS_Core Install Instructions//
 	
 //Step 3;
 
-	Rename the "GMSCore-master" file to "GMSCore" and PBO it.
+	Rename the "\x\addons\GMSCore-master" file to "\x\addons\GMSCore" and PBO it.
 	
 //Step 4;
 
-	Add the "GMSCore.pbo" file to your server addons (@Exileserver\addons or @Epochhive\addons)
+	Add the "\x\addons\GMSCore.pbo" file to your server addons (@Exileserver\addons or @Epochhive\addons)
 
 	Restart your server and proceed to install anyother GRG scripts which depend on GMSCore 
 	

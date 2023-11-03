@@ -118,9 +118,9 @@ GMSCore_alertMsgTypes = [
 //GMSCore_vehicleGroup = GMSCore_infantryGroup;
 //GMSCore_aircraftGroup = GMSCore_infantryGroup; 
 
-private _ver =  getNumber(configFile >> "\x\addons\GMSCoreBuild" >> "version");
-private _build = getNumber(configFile >> "\x\addons\GMSCoreBuild" >> "build");
-private _buildDate = getText(configFile >> "\x\addons\GMSCoreBuild" >> "buildDate");
+private _ver =  getNumber(configFile >> "GMSCoreBuild" >> "version");
+private _build = getNumber(configFile >> "GMSCoreBuild" >> "build");
+private _buildDate = getText(configFile >> "GMSCoreBuild" >> "buildDate");
 
 publicVariable "\x\addons\GMSCore_fnc_textAlert";
 publicVariable "\x\addons\GMSCore_fnc_titleTextAlert";

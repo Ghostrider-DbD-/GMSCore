@@ -72,7 +72,7 @@ class CfgFunctions {
 			class monitorMapMarkers {};
 			class monitorObjectDeletionCue {};			
 			class nearestGMSAI {};
-			//  class nearestPlayers {};  // Replaced by a GMSCore function GMSCore_fnc_nearestPlayers
+			class nearestPlayers {};  // Replaced by a GMSCore function GMSCore_fnc_nearestPlayers
 			class nearestTarget {};	
 			class objectHeight {};		
 			class removeBlacklistedItems {};

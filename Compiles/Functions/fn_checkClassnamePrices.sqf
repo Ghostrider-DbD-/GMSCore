@@ -12,11 +12,11 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[["_classnames",[]],["_remove",true]];
 private "_cfg";
-//[format["GMSCore_fnc_checkClassNamePrices: _remove = %1 | typeName _classnames = %2",_remove,typeName _classnames]] call GMSCore_fnc_log;
-//[format["GMSCore_fnc_checkClassNamePrices:_classnames = %1",_classnames]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_checkClassNamePrices: _remove = %1 | typeName _classnames = %2",_remove,typeName _classnames]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_checkClassNamePrices:_classnames = %1",_classnames]] call GMSCore_fnc_log;
 private _count = count _classnames;
 switch (GMSCore_modType) do 
 {
@@ -73,5 +73,5 @@ if !(_cfg isEqualTo "") then
 		};
 	};
 };
-//[format["GMSCore_fnc_checkClassNamePrices:_classnames after cleanup = %1",_classnames]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_checkClassNamePrices:_classnames after cleanup = %1",_classnames]] call GMSCore_fnc_log;
 _classnames

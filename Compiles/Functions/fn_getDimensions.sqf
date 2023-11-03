@@ -12,7 +12,7 @@
 	CREDITS: https://community.bistudio.com/wiki/boundingBoxReal
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_object"];
 _bbr = boundingBoxReal vehicle player;
 _p1 = _bbr select 0;

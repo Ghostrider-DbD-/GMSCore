@@ -10,7 +10,7 @@
    Copyright 2020 by Ghostrider-GRG- 
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 
 private _timer15 = diag_tickTime;
 private  _timer60 = diag_tickTime;
@@ -26,6 +26,7 @@ while {true} do
        [] call GMSCore_fnc_monitorVisibleMarkers;  // These are smokeShells and chemLights attached to objects
        [] call GMSCore_fnc_monitorObjectDeletionCue;  //  These are AI, vehicles, structures, crates and markers scheduled for deletion
        [] call GMSCore_fnc_cleanUpJunk;  // This does a search for things in the left upper corner of the map where objects and AI sometimes spawn and deletes them all.
+       [] call GMSCore_fnc_cleanupEmptyGroups;
        //[] call GMSCore_fnc_cleanupSafeZones;       
        _timer60 = diag_tickTime + timerIncrement60;
    };

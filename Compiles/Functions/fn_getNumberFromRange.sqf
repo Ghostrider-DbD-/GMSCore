@@ -14,8 +14,17 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
-params[["_data",[]]];
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
+private _validData = params[["_data",[]]];
+if !(_validData) exitWith {
+	[format["_getNumberFromRange:No value passed,  with _parentScript = %2",_this,_fnc_scriptNameParent]]  call GMSCore_fnc_log;
+	// return a negative value so the script calling this function knows something probably went wrong. 
+	-1;
+};
+if !(_this isEqualTypeParams [0] || _this isEqualTypeParams [[0]] || _this isEqualTypeParams [[0,0]]) exitWith {
+	[format["_getNumberFromRange: invald values %1 passed with _parentScript = %2",_this,_fnc_scriptNameParent]] call GMSCore_fnc_log;
+	-1;
+};
 
 private _value = 0;  // so the function returns something valid a calling function can check to establish that it ran correctly
 if (_data isEqualTo []) exitWith {[]};

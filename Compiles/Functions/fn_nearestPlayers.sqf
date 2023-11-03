@@ -14,7 +14,7 @@
     Copyright 2020 by Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[["_pos",[0,0,0]],["_range",300]];
 private _nearestPlayers = allplayers select {_x distance _pos < _range};
 _nearestPlayers

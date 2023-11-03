@@ -12,7 +12,7 @@
     Notes: may not be used 
     TODO: Check if this is needed
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_object"];
 
 {

@@ -10,7 +10,7 @@
 
 	Copyright 2020 Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 
 private["_group","_wp","_index","_pattern","_mode","_arc","_dis","_wpPos"];
 

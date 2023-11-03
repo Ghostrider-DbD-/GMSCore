@@ -12,7 +12,7 @@
 	Notes: 
 
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_unit","_killer","_instigator",["_methods",[1]]];
 
 {
@@ -43,26 +43,26 @@ params["_unit","_killer","_instigator",["_methods",[1]]];
 					_hp = round(random(count _hpValues));
 					_veh setHitPointDamage [(_hpNames select _hp), (_hpValues select _hp) + [_hpDamage] call GMSCore_fnc_getIntegerFromRange];
 				};
-				[] remoteExec ["GMSCore_fnc_messagingRoadKillSniperPenalty",_killer];					
+				[] remoteExec ["\x\addons\GMSCore_fnc_messagingRoadKillSniperPenalty",_killer];					
 		};
 		case 4: { // attach grenade
 				//params["_obj",["_explosive","MiniGrenade"]];
 				private _bomb = createVehicle[selectRandom["MiniGrenade","HandGrenade"],[0,0,0]];
 				private _hpNames = (getAllHitPointsDamage _obj) select 1;
 				_veh attachTo[_bomb,[0,1,0],_hpNames select (round(random(count _hpNames)))];
-				[] remoteExec ["GMSCore_fnc_messagingRoadKillIEDPenalty",_killer];
+				[] remoteExec ["\x\addons\GMSCore_fnc_messagingRoadKillIEDPenalty",_killer];
 		};
 		case 5: {  // Local Earthquake
 				[1] remoteExec[ "BIS_fnc_Earthquake",_player];
-				[] remoteExec ["GMSCore_fnc_messagingRoadKillIEDPenalty",_killer];
+				[] remoteExec ["\x\addons\GMSCore_fnc_messagingRoadKillIEDPenalty",_killer];
 		};
 		case 6: { // Loose Respect 
 			[_killer,_respectRemoved] call GMSCore_fnc_giveTakeRespect;
-			[_respectRemoved] remoteExec ["GMSCore_fnc_messagingRoadKillRespectPenalty",_killer];
+			[_respectRemoved] remoteExec ["\x\addons\GMSCore_fnc_messagingRoadKillRespectPenalty",_killer];
 		};
 		case 7: { // loose tabs
 			[_killer,_tabsRemoved] call GMSCore_fnc_giveTakeTabs;
-			[_tabsRemoved] remoteExec ["GMSCore_fnc_messagingRoadKillTabsPenalty",_killer]
+			[_tabsRemoved] remoteExec ["\x\addons\GMSCore_fnc_messagingRoadKillTabsPenalty",_killer]
 		};
 	};
 } forEach _methods;	

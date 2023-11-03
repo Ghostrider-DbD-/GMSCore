@@ -14,9 +14,9 @@
 	Copyright 2020 Ghostrider-GRG-
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[["_group",grpNull],["_gear",[]],["_launchersPerGroup",1],["_useNVG",false]];
-//[format["GMSCore_fnc_setupGroupGear: count _gear = %1",count _gear]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_setupGroupGear: count _gear = %1",count _gear]] call GMSCore_fnc_log;
 if (isNull _group || {_gear isEqualTo [] || {!(count _gear == 13)}}) exitWith {};
 #define GMS_primary 0
 #define GMS_secondary 1

@@ -10,11 +10,11 @@
 
     Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 
 params["_crate"];
-(_crate getVariable["GMSCoreMarkerTypes",["",""]]) params ["_smokeShell","_lightSource"];
-(_crate getVariable ["GMSCoreMarkers",[objNull,objNull]]) params["_smoke","_light"];
+(_crate getVariable["\x\addons\GMSCoreMarkerTypes",["",""]]) params ["_smokeShell","_lightSource"];
+(_crate getVariable ["\x\addons\GMSCoreMarkers",[objNull,objNull]]) params["_smoke","_light"];
 detach _smoke;
 deleteVehicle _smoke;
 detach _light;
@@ -25,4 +25,4 @@ _smoke attachTo [_crate,[0,0,(1.1)]]; // put the smoke a fixed distance above th
 private _light = _lightSource createVehicle getPosATL _crate;
 _light setPosATL (getPosATL _crate);
 _light attachTo [_crate,[0,0,(0.99)]];
-_crate setVariable["GMSCoreMarkers",[_smoke,_light]];
+_crate setVariable["\x\addons\GMSCoreMarkers",[_smoke,_light]];

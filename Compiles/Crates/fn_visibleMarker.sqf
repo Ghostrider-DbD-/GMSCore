@@ -11,7 +11,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 private _defaultSmokeShells = ["SmokeShellOrange","SmokeShellBlue","SmokeShellPurple","SmokeShellRed","SmokeShellGreen","SmokeShellYellow"];
 
 params[
@@ -20,14 +20,14 @@ params[
 	["_smokeShells", _defaultSmokeShells]  // An array of valid smokeshell types. See _defaultSmokeShells for an example 
 ]; 
 
-if (isNull _crate) exitWith {["GMSCore_fnc_visibleMarker called without referencing a crate object","warning"] call GMSCore_fnc_log};
+if (isNull _crate) exitWith {["\x\addons\GMSCore_fnc_visibleMarker called without referencing a crate object","warning"] call GMSCore_fnc_log};
 
 private _start = diag_tickTime;
 private _smokeShell = selectRandom _smokeShells;
 private _lightSource = selectRandom ["Chemlight_green","Chemlight_red","Chemlight_yellow","Chemlight_blue"];
-_crate setVariable["GMSCoreVMStart",_start];
-_crate setVariable["GMSCoreVMEnd",_start + _time];
-_crate setVariable["GMSCoreMarkerTypes",[_smokeShell,_lightSource]];
+_crate setVariable["\x\addons\GMSCoreVMStart",_start];
+_crate setVariable["\x\addons\GMSCoreVMEnd",_start + _time];
+_crate setVariable["\x\addons\GMSCoreMarkerTypes",[_smokeShell,_lightSource]];
 [_crate] call GMSCore_fnc_attachCrateMarkers;
-// GMSCore_monitoredVisibleMarkers = [];  //  List of objects to which visible markers are attached: variables used are "GMSCoreVMStart" [float], "GMSCoreVMEnd" [float], "GMSCoreMarkers [smoke,chemlight], "GMSCoreMarkerTypes [_smokeShell,_chemLight]
+// GMSCore_monitoredVisibleMarkers = [];  //  List of objects to which visible markers are attached: variables used are "\x\addons\GMSCoreVMStart" [float], "\x\addons\GMSCoreVMEnd" [float], "\x\addons\GMSCoreMarkers [smoke,chemlight], "\x\addons\GMSCoreMarkerTypes [_smokeShell,_chemLight]
 GMSCore_monitoredVisibleMarkers pushBack _crate;

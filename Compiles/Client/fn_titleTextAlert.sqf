@@ -16,7 +16,7 @@
 
 	Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[["_label",""],["_msg",""],["_sound",""]];
 private "_labelColor";
 playSound _sound;

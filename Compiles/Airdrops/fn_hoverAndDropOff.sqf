@@ -1,7 +1,7 @@
 /*
 	fn_hoverAndDropoff = {
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 private _group = group _this;
 private  _aircraft = vehicle (_this);
 [_aircraft] spawn GMSCore_fnc_dropPayload;	 

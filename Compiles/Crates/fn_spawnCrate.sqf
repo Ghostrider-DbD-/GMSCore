@@ -11,7 +11,7 @@
 
     Copyright 2020 by Ghostrider-GRG-
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 
 params["_className",["_location",[0,0,0]],["_dir",0]];
 private _crate = createVehicle[_className,_location,[],3,"NONE"];

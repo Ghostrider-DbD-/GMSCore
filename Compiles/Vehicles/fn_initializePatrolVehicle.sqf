@@ -12,7 +12,7 @@
 	Notes:
 	TODO: not sure what I was thinking when I added _disable. Is this turrets or a way to add damage at spawn.	
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[
 	["_veh",objNull],
 	["_disable",0],  // damage value set to this value if less than this value when all crew are dead
@@ -20,8 +20,8 @@ params[
 	["_releaseToPlayers",true],
 	["_deleteTimer",300]
 ];
-if (isNull _veh) then {[format["GMSCore_fnc_initializePatrolVehicle: objNull passed | _releaseToPlayers = %3 | _deleteTimer = %4",_veh,typeOf _veh,_releaseToPlayers,_deleteTimer]] call GMSCore_fnc_log;};
-//[format["GMSCore_fnc_initializePatrolVehicle: _veh = %1 | _disable = %2 | _removeFuel = %3 | _releaseToPlayers = %4 | _deleteTimer = %5",_veh,_disable,_removeFuel,_releaseToPlayers,_deleteTimer]] call GMSCore_fnc_log;
+if (isNull _veh) then {[format["\x\addons\GMSCore_fnc_initializePatrolVehicle: objNull passed | _releaseToPlayers = %3 | _deleteTimer = %4",_veh,typeOf _veh,_releaseToPlayers,_deleteTimer]] call GMSCore_fnc_log;};
+//[format["\x\addons\GMSCore_fnc_initializePatrolVehicle: _veh = %1 | _disable = %2 | _removeFuel = %3 | _releaseToPlayers = %4 | _deleteTimer = %5",_veh,_disable,_removeFuel,_releaseToPlayers,_deleteTimer]] call GMSCore_fnc_log;
 _veh setFuel 1;
 _veh addEventHandler["HandleDamage",{_this call GMSCore_fnc_vechicleHandleDamage;}];
 _veh addMPEventHandler["MPHit",{_this call GMSCore_fnc_vehicleHit;}];

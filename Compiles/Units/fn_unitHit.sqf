@@ -13,10 +13,10 @@
 	
 */
 
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 if !(local (_this select 0)) exitWith {};
 params ["_unit", "_source", "_damage", "_instigator"];
-//[format["GMSCore_fnc_unitHit: _this = %1",_this]] call GMSCore_fnc_log;
+//[format["\x\addons\GMSCore_fnc_unitHit: _this = %1",_this]] call GMSCore_fnc_log;
 if !(isPlayer _instigator) exitWith 
 {
 	private _newDamage = damage _unit;

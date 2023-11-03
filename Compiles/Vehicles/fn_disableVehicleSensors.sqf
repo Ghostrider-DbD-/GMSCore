@@ -11,7 +11,7 @@
 
 	Notes: 	None	
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 
 params["_veh","_sensors"];
 private _vehSensors = listVehicleSensors _veh;

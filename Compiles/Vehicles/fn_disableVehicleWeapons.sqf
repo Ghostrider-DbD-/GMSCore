@@ -16,7 +16,7 @@
 	TODO: Needs some more rigorous testing
 	TODO: Does not deal with pylons
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[["_vehicle",objNull],
 	["_blockedTurrets",[]], // List of weapons that will be removed
 	["_blockedMagazines",[]]  // List of magazines that will be removed 

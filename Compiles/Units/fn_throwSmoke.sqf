@@ -10,7 +10,7 @@
 	Returns: 
 		Nothing
 */
-#include "\GMSCore\Init\GMSCore_defines.hpp"
+#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_unit","_enemy"];
 private _group = group _unit;
 private _smokeShell = _group getVariable[GMS_smokeShell,""];

@@ -122,6 +122,7 @@ private _ver =  getNumber(configFile >> "GMSCoreBuild" >> "version");
 private _build = getNumber(configFile >> "GMSCoreBuild" >> "build");
 private _buildDate = getText(configFile >> "GMSCoreBuild" >> "buildDate");
 
+/*
 publicVariable "\x\addons\GMSCore_fnc_textAlert";
 publicVariable "\x\addons\GMSCore_fnc_titleTextAlert";
 publicVariable "\x\addons\GMSCore_fnc_huntedMessages";
@@ -130,6 +131,7 @@ publicVariable "\x\addons\GMSCore_modType";
 publicVariable "\x\addons\GMSCore_killedMsgTypes";
 publicVariable "\x\addons\GMSCore_alertMsgTypes";
 publicVariable "\x\addons\GMSCore_huntedMsgTypes";
+*/
 
 [] call GMSCore_fnc_findWorld;
 [] spawn GMSCore_fnc_mainThread;  //  Start the scheduler that does all the work.
@@ -137,3 +139,16 @@ publicVariable "\x\addons\GMSCore_huntedMsgTypes";
 [format["Build %1 Build Date %2 Initialized at %3 with GMSCore_modType = %4",_build,_buildDate,diag_tickTime,GMSCore_modType]] call GMSCore_fnc_log;
 GMSCore_Initialized = true;
 
+/*
+
+/* set up the onPlayerConnected EH here */
+onPlayerConnected {}; // seems this is needed or addMissionEventHandler "PlayerConnected" does not work. as of A3 1.60
+addMissionEventHandler ["PlayerConnected", 
+{
+    params["_id","_uid","_name","_jip","_owner"];
+	_owner publicVariableClient "GMSCore_fnc_textAlert";
+	_owner publicVariableClient "GMSCore_fnc_titleTextAlert";	
+	_owner publicVariableClient "GMSCore_fnc_huntedMessages";		
+	_owner publicVariableClient "GMSCore_fnc_killedMessages";			
+	_owner publicVariableClient "GMSCore_modType";		
+}];

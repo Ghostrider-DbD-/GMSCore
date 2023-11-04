@@ -71,7 +71,7 @@ if !(_soldierType isEqualTo "emplaced") then
 	_wp setWaypointType "MOVE";
 	_wp setWPPos (getPosATL leader _group);
 	_wp setWaypointCompletionRadius 100;
-	_wp setWaypointBehaviour "COMBAT";
+	_wp setWaypointBehaviour "AWARE";
 	_wp setWaypointCombatMode "RED";
 	_wp setWaypointTimeout [1,1.1,1.2];
 	//_wp setWaypointTimeout [0.1,0.1100,0.1200];	

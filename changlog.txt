@@ -1,4 +1,6 @@
 
+1.061
+FIXED a small issue with broadcasting code.
 
 1.060
 Added some checks to find source of illegal values passed to getNumberFromRange.

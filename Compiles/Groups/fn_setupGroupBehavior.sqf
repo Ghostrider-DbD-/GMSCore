@@ -16,14 +16,14 @@
 params["_group",["_garrison",false],["_scuba",false],["_swimdepth",0]];
 //diag_log format["_setupGroupBehavior: _group = %1 | _garison %2 | _scuba %3",_group,_garrison,_scuba];
 _group setcombatmode "RED";
-_group setBehaviour "COMBAT";
+_group setBehaviour "AWARE";
 _group allowfleeing 0;
 _group setspeedmode "FULL";
 _group setFormation GMS_formation; 
 _group setVariable ["GMS_group",true];
 {
 	_x setcombatmode "RED";
-	_x setBehaviour "COMBAT";
+	_x setBehaviour "AWARE";
 	_x allowfleeing 0;
 	_x setspeedmode "FULL";
 	_x enableAI "ALL";

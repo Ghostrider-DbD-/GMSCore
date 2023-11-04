@@ -3,9 +3,9 @@
 */
 
 class GMSCoreBuild {
-	version = 1.060;
-	build = 41;
-	buildDate = "10-26-23";
+	version = 1.061;
+	build = 42;
+	buildDate = "11-03-23";
 };
 class CfgPatches {
 	class GMSCore {
@@ -76,7 +76,6 @@ class CfgFunctions {
 			class nearestTarget {};	
 			class objectHeight {};		
 			class removeBlacklistedItems {};
-			//class setGroupHuntVehicles {};
 			class removeNullEntries {};
 			class setDirUp {};
 			class setMoney {};
@@ -100,7 +99,6 @@ class CfgFunctions {
 			class getGroupVehicle {};
 			class getHunt {};
 			class getHuntDurationTimer {};		
-			//class groupOutOfArea {};	
 			class groupRemoveAllGear {};
 			class initializegroup {};
 			class setGroupBehaviors {};

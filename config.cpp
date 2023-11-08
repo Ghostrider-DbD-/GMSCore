@@ -3,9 +3,9 @@
 */
 
 class GMSCoreBuild {
-	version = 1.061;
-	build = 42;
-	buildDate = "11-03-23";
+	version = 1.07;
+	build = 43;
+	buildDate = "11-07-23";
 };
 class CfgPatches {
 	class GMSCore {

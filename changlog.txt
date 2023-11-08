@@ -1,4 +1,8 @@
 
+1.07 
+Added initialization for dynamic simulation and tested it. Activation of groups is almost instantaneous.
+Fixed a few errors caused by find/replace when updating code to accomodated relative paths. 
+
 1.061
 FIXED a small issue with broadcasting code.
 

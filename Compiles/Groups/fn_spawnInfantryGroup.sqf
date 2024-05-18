@@ -48,7 +48,29 @@ if (_pos isEqualTo [0,0,0]) then {["Spwan Infantry Group: No Position Specified 
 if (_units == 0) exitWith {["Spawn Infantry: Number of units not defined or set to 0, no group spawned","error"], call GMSCore_fnc_log};
 
 private _group = [_side] call GMSCore_fnc_createGroup;
-[_group,(leader _group)] call GMSCore_fnc_setGroupVehicle;
+private _unitType = if (_isDroneCrew) then {"B_UAV_AI"} else {GMSCore_unitType};
+private _ranks = +GMSCore_infantryGroup;
+private _currRank = "";
+for "_i" from 1 to _units do
+{
+	if !(_ranks isEqualTo []) then 
+	{
+		_currRank = _ranks deleteAt 0;
+	} else {
+		_currRank = "PRIVATE";
+	};
+
+	//GMSCore_unitType createUnit [_pos, _group, "_unit = this", _baseSkill, _currRank select 0];
+	private _unit = _group createUnit[GMSCore_unitType, _pos, [], 5, "NONE"];
+	_unit setSkill _baseSkill; 
+	//diag_log format["\x\addons\GMSCore_fnc_spawnInfantryGroup: side _unit = %1", side _unit];
+
+	// 05/07/24  "loadoutType" was never implemented. THe idea was to allow something like blckeagls implementation of 1 sniper or 1 LMG per group. 
+	//_unit setVariable ["loadoutType", _currRank select 1];
+	if (GMSCore_modType isEqualTo "Epoch") then {_unit setVariable ["LAST_CHECK",28800,true]};
+	_unit enableAI "ALL";
+};
+
 [
 	_group,
 	_baseSkill,
@@ -67,24 +89,7 @@ private _group = [_side] call GMSCore_fnc_createGroup;
 _players = allPlayers select {_x distance _pos < _alertDistance};
 {_group reveal[_x,_intelligence]} forEach _players;
 
-private _ranks = +GMSCore_infantryGroup;
-private _currRank = [];
-for "_i" from 1 to _units do
-{
-	private["_unit"];
-	if !(_ranks isEqualTo []) then 
-	{
-		_currRank = _ranks deleteAt 0;
-	} else {
-		_rank = "PRIVATE";
-	};
-	private _unitType = if (_isDroneCrew) then {"B_UAV_AI"} else {GMSCore_unitType};
-	GMSCore_unitType createUnit [_pos, _group, "_unit = this", _baseSkill, _currRank select 0];
-	//diag_log format["\x\addons\GMSCore_fnc_spawnInfantryGroup: side _unit = %1", side _unit];
-	_unit setVariable ["loadoutType", _currRank select 1];
-	if (GMSCore_modType isEqualTo "Epoch") then {_unit setVariable ["LAST_CHECK",28800,true]};
-	_unit enableAI "ALL";
-};
+[_group,(leader _group)] call GMSCore_fnc_setGroupVehicle;
 _group call GMSCore_fnc_addUnitEventHandlers;
 //[format["\x\addons\GMSCore_fnc_spawnInfantryGroup: _group = %1",_group]] call GMSCore_fnc_log;
 _group

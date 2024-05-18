@@ -26,7 +26,7 @@
 
 params[["_killer",objNull],["_money",0],["_respect",0],["_unitName",""],["_distance",0],["_weapon",""],["_killStreak",0],["_messageTypesPlayers",[]],["_messageTypesKiller",[]],["_maxMessagingRadius",10000]];
 
-diag_log format["GMSCore_fnc_killedMessages: player == _killer %1 | player %2 | _killer %3",if (player isEqualTo _killer) then {true} else {false},player,_killer];
+//diag_log format["GMSCore_fnc_killedMessages: player == _killer %1 | player %2 | _killer %3",if (player isEqualTo _killer) then {true} else {false},player,_killer];
 private "_messageTypes";
 if (player isEqualTo _killer) then 
 {
@@ -35,7 +35,7 @@ if (player isEqualTo _killer) then
 	_messageTypes = _messageTypesPlayers;
 }; 
 
-diag_log format["GMSCore_fnc_killedMessages: player %1 | _killer %2 | _messageTypes %3",player,_killer,_messageTypes];
+//diag_log format["GMSCore_fnc_killedMessages: player %1 | _killer %2 | _messageTypes %3",player,_killer,_messageTypes];
 {
 	if ((player distance _killer) <= _maxMessagingRadius) then {
 		switch (_x) do 

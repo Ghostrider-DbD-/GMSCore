@@ -72,14 +72,6 @@ if (isNull _nearestEnemy) then
 	//diag_log format["_fnc_setNextWaypoint[no enemies]: _group = %1 | _newPos = %2 | waypointStatements = %3",_group,_newWPPos,waypointStatements _wp];
 } else {
 	// move toward nearest enemy using hunting logic
-	// set mode to SAD / COMBAT
-	/*
-		_vector set to relative direction from leader to enemy +/- random adjustment of up to 33 degrees
-		_distance can be up to one patrol radius outside of the normal perimeter closer to enemy 
-		_timout set to longer period 
-		when coupled with SAD behavior should cause interesting behaviors
-	*/
-	//  [point1, point2] call BIS_fnc_relativeDirTo
 	private _vector = ([_leader,_nearestEnemy] call BIS_fnc_relativeDirTo) + (random(33)*selectRandom[-1,1]);
 	_group setVariable["wpDir",_vector];
 	private ["_huntDistance"];

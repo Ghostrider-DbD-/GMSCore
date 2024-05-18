@@ -18,9 +18,8 @@ params[["_group",grpNull],["_searchRange",300],["_minKnowsAbout",1]];
 private _leader = leader _group;
 private _vehicle = vehicle _leader;
 private _huntVehicles = _group getVariable[GMS_huntVehicles,false];
-private _enemy = _leader findNearestEnemy (getPosATL _leader);
-private _knows = if !(isNull _enemy) then {_leader knowsAbout _enemy} else {-1};
-if (isNull _enemy || {(_leader knowsAbout _enemy) < _minKnowsAbout}) then 
+private _enemy = _leader findNearestEnemy (getPosATL _leader);  // Returns objNull if no enemy found.
+if (isNull _enemy) then 
 {
 	_enemies = allPlayers select{(_x distance _leader) < _searchRange};
 	{
@@ -28,6 +27,7 @@ if (isNull _enemy || {(_leader knowsAbout _enemy) < _minKnowsAbout}) then
 	} forEach _enemies; 
 };
 //[format["\x\addons\GMSCore_fnc_nearestTarget: returning _enemy = %1",_enemy]] call GMSCore_fnc_log;
+_group reveal [_enemy, _minKnowsAbout];
 _enemy 
 
 

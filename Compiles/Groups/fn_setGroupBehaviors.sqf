@@ -27,7 +27,7 @@ switch(_mode) do
 	};
 	case "combat": {
 		_group setCombatMode "YELLOW";
-		_group setBehaviour "COMBAT";
+		_group setBehaviour "AWARE";
 		{_x forceSpeed -1} forEach (units _group);		
 	};
 	case "garison": {

@@ -18,7 +18,7 @@ if !(diag_tickTime > _timer) exitWith {[format["\x\addons\GMSCore_fnc_huntPlayer
 [_group,_target] call GMSCore_fnc_setHunt; 
 [_group] call GMSCore_fnc_setHuntDurationTimer;
 
-_marker = _group getVariable["GMS_patroArealMarker",""];
+_marker = _group getVariable[GMSCore_patrolAreaMarker ,""];
 
 if (_marker isEqualTo GMS_patrolRoads) then {
 	(leader _group) call GMSCore_fnc_nextWapointRoadPatrols;

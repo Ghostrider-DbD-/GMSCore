@@ -97,6 +97,5 @@ if !(isNull _unmanned) then
 	[_group,_unmanned] call GMSCore_fnc_setGroupVehicle;
 	_group addVehicle _unmanned;
 	[_unmanned,_disable,_removeFuel,_releaseToPlayers,_deleteTimer] call GMSCore_fnc_initializePatrolVehicle;
-	_unmanned setVariable["GMS_group",_group];
 };
 [_group,_unmanned]

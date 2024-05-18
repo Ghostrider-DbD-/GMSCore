@@ -26,7 +26,8 @@ private _vehicle = vehicle _leader;
 _group setVariable[GMS_waypointTimeoutInterval,_timeout];  // time in seconds before the waypoint is considered failed and the group will be redirected
 _group setVariable[GMS_waypointStartPos, getPosATL _vehicle];
 _group setVariable[GMS_waypointTimeoutAt, diag_tickTime + timeOut];
-_group setVariable["GMS_blackListedAreas",_blacklisted];
+_group setVariable[GMSCore_blacListedAreas,_blacklisted];
+
 private _wp = [_group,0];
 _wp setWPpos (getPosATL _leader);
 _wp setWaypointStatements ["true","this call GMSCore_fnc_nextWaypointRoadPatrols;"]; 

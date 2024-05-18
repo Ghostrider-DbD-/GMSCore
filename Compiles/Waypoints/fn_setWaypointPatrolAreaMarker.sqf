@@ -15,4 +15,4 @@
 */
 #include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_group",["_patrolAreaMarker",""]];
-_group setVariable["GMS_patroArealMarker","_patrolAreaMarker"];
+_group setVariable[GMSCore_patrolAreaMarker ,"_patrolAreaMarker"];

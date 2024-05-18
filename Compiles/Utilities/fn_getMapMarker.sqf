@@ -1,4 +1,5 @@
-
+/*
+	GMSCore_fnc_getMapMarker
+*/
 #include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
-private _return = GMS_mapMarker; 
-_return
+GMSCore_mapMarker; 

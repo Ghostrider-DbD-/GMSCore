@@ -11,5 +11,5 @@
 */
 #include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_group"];
-private _m = _group getVariable["GMS_patroArealMarker",""];
+private _m = _group getVariable[GMSCore_patrolAreaMarker ,""];
 _m

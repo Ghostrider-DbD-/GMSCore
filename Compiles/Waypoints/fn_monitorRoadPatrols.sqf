@@ -20,20 +20,24 @@ for "_i" from 1 to (count GMSCore_monitoredRoadPatrols) do
 {
 	if (_i > (count GMSCore_monitoredRoadPatrols)) exitWith {};
 	private _patrol = GMSCore_monitoredRoadPatrols deleteAt 0;
+
+	// _patrol is an arrray [_group, _vehicle, _deleteOnNullGroup]
 	private _group = _patrol select 0;
+
 	if !(isNull _group) then {
 		private _wp = [_group, 0];
 		private _currWPpos = waypointPosition _wp;
-		private _stuck = [_group] call GMSCore_fnc_isStuck;
+		//private _stuck = [_group] call GMSCore_fnc_isStuck;
 		if (_stuck) then 
 		{
-			[_group,_stuck] call GMSCore_fnc_setStuck;
+			//[_group,_stuck] call GMSCore_fnc_setStuck;
 			(leader _group) call GMSCore_fnc_nextWaypointRoadPatrols;
 		};	
 		GMSCore_monitoredRoadPatrols pushBack _patrol;
 	} else {
+		// 
 		private _deleteOnNulllGroup = _patrol select 2;
-		if !(_deleteOnNullGroup) then {
+		if !(_deleteOnNulllGroup) then {
 			GMSCore_monitoredRoadPatrols pushBack _patrol;
 		};
 	}; 

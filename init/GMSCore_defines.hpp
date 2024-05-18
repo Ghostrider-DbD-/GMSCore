@@ -93,3 +93,14 @@
 #define GMS_waypointStartPos "startPosWP"
 #define GMS_waypointTimeoutAt "timeoutWP"
 #define GMS_patrolRoads 1
+
+/*
+	Defines for Groups 
+*/
+
+#define GMSCore_maxDistanceTarget "GMSCore_maxDistTarg"
+#define GMSCore_deleteMarker "GMSCor_delMarkr"
+#define GMSCore_patroArealMarker  "GMSCore_patroArealMarker"
+#define GMSCore_blackListedAreas "GMSCore_blackListedAreas"
+#define GMSCore_garrisonChance "GMSCore_garisonChance"
+#define GMSCore_timeStamp "GMSCore_timeStamp"

@@ -64,7 +64,7 @@ catch {
 			_group setVariable [GMS_waypointStartPos,_newPos];
 			_group setVariable [GMS_waypointTimeoutAt, diag_tickTime + _timeout];
 			//_wp setWaypointType "MOVE";
-			_wp setWaypointType "SENTRY";
+			//_wp setWaypointType "SENTRY";
 			_wp setWaypointCompletionRadius 50;
 			_wp setWaypointTimeout[0.1,0.2,0.3];
 			[_group,"disengage"] call GMSCore_fnc_setGroupBehaviors; 

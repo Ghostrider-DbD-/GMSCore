@@ -40,8 +40,6 @@ private _veh = [_className,_spawnPos,_dir,_height] call GMSCore_fnc_createVehicl
 if !(isNull _veh) then 
 {
 	[_veh,_disable,_removeFuel,_releaseToPlayers,_deleteTimer] call GMSCore_fnc_initializePatrolVehicle;
-	_veh enableDynamicSimulation false;
-	_veh enableSimulationGlobal true;
 	_veh setVariable[GMS_vehHitCode,_vehHitCode];
 	_veh setVariable[GMS_vehKilledCode,_vehKilledCode];
 };

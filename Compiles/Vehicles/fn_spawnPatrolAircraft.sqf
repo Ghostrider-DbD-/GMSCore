@@ -65,8 +65,6 @@ if !(isNull _aircraft) then
 	_aircraft setVariable[GMS_vehHitCode,_vehHitCode];
 	_aircraft setVariable[GMS_vehKilledCode,_vehKilledCode];
 	_aircraft setVariable["GMS_group",_group];
-	_aircraft enableDynamicSimulation false;
-	_aircraft enableSimulationGlobal true;
 	(currentPilot _aircraft)  doMove (_pos getPos[1000,random(359)]); 
 	_aircraft enableCoPilot true;
 };

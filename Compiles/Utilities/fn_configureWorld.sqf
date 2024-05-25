@@ -55,5 +55,6 @@ if (getNumber(configFile >> "CfgGMSCore" >> "debug") >= 1) then {
 	GMSCore_mapMarker setMarkerSizeLocal _markerSize;
 	GMSCore_mapMarker setMarkerDirLocal _markerRotation;
 };
-GMS_locationsForWaypoints =  ["NameVillage","NameCity","NameCityCapital","NameLocal","HistoricalSite","StrongpointArea","Strategic"];
-GMS_patrolLocations = nearestLocations[_markerPosn,GMS_locationsForWaypoints, (_markerSize select 0) max (_markerSize select 1)];
+GMSCore_locationsForWaypoints =  ["NameVillage","NameCity","NameCityCapital","NameLocal","HistoricalSite","StrongpointArea","Strategic"];
+GMSCore_patrolLocations = nearestLocations[_markerPosn,GMSCore_locationsForWaypoints, (_markerSize select 0) max (_markerSize select 1)];
+

@@ -46,6 +46,7 @@ if !(_className isKindOf "Air") exitWith
 };
 private _spawnPos = [_pos select 0, _pos select 1, 600];
 private _aircraft = createVehicle[_className,_spawnPos,[],0,"FLY"];
+//[format["\x\addons\GMSCore_fnc_spawnPatrolUAV: class name %1 to spawn _aircraft %2",_className, _aircraft]] call GMSCore_fnc_log;
 if !(isNull _aircraft) then 
 {
 	[_group,_aircraft] call GMSCore_fnc_setGroupVehicle;
@@ -66,5 +67,7 @@ if !(isNull _aircraft) then
 	_aircraft setVariable[GMS_vehKilledCode,_vehKilledCode];
 	_aircraft setVariable["GMS_group",_group];
 	(currentPilot _aircraft)  doMove (_pos getPos[1000,random(359)]); 
+	//[format["\x\addons\GMSCore_fnc_spawnPatrolUAV: class name %1 to spawn _aircraft %2 with %3 crew loaded from group %4",_className, _aircraft, count crew _aircraft, _group]] call GMSCore_fnc_log;
 };
+//[format["\x\addons\GMSCore_fnc_spawnPatrolUAV: returning _aircraft %1", _aircraft]] call GMSCore_fnc_log;
 _aircraft

@@ -37,7 +37,7 @@ addMissionEventHandler ["OnUserSelectedPlayer", {
 	GMSCore_modType = "default";
 	if (!isNull (configFile >> "CfgPatches" >> "exile_server")) then {GMSCore_modType = "Exile"};
 	if (!isnull (configFile >> "CfgPatches" >> "a3_epoch_server")) then {GMSCore_modType = "Epoch"}; 
-	[format["GMSCore_modType = %1",GMSCore_modType]] call GMSCore_fnc_log;
+	//[format["GMSCore_modType = %1",GMSCore_modType]] call GMSCore_fnc_log;
 	// This block waits for the mod to start but is disabled for now
 	if ((toLowerANSI GMSCore_modType) isEqualto "epoch") then {
 		["Waiting until EpochMod is ready..."] call GMSCore_fnc_log;
@@ -78,7 +78,9 @@ addMissionEventHandler ["OnUserSelectedPlayer", {
 			GMSCore_playerSide = WEST;		
 		};
 	};
-	[format["GMSCore_Side = %1",GMSCore_Side]] call GMSCore_fnc_log;
+	
+	if (GMSCore_debug > 0) then {[format["GMSCore_Side = %1",GMSCore_Side]] call GMSCore_fnc_log};
+
 	GMSCore_center = createCenter GMSCore_Side;
 	if (isNil "GMSCore_graveyardGroup") then 
 	{
@@ -117,8 +119,8 @@ addMissionEventHandler ["OnUserSelectedPlayer", {
 		"dynamic",
 		"systemChat"
 	];
-	//[GMSCore_killedMsgTypes] call GMSCore_fnc_configureOnKilledMessages;
-	[format["GMSCore_killedMsgTypes = %1",GMSCore_killedMsgTypes]] call GMSCore_fnc_log;
+
+	if ( GMSCore_debug > 0) then {[format["GMSCore_killedMsgTypes = %1",GMSCore_killedMsgTypes]] call GMSCore_fnc_log};
 
 
 	GMSCore_huntedMsgTypes = [
@@ -130,7 +132,7 @@ addMissionEventHandler ["OnUserSelectedPlayer", {
 		"systemChat"
 	];
 	[GMSCore_huntedMsgTypes] call GMSCore_fnc_configureOnHuntMessages;
-	[format["GMSCore_huntedMsgTypes = %1",GMSCore_huntedMsgTypes]] call GMSCore_fnc_log;
+	if ( GMSCore_debug > 0) then {[format["GMSCore_huntedMsgTypes = %1",GMSCore_huntedMsgTypes]] call GMSCore_fnc_log};
 
 	GMSCore_alertMsgTypes = [
 		//"toast",
@@ -141,7 +143,7 @@ addMissionEventHandler ["OnUserSelectedPlayer", {
 		"systemChat"
 	];
 	[GMSCore_alertMsgTypes] call GMSCore_fnc_configureAlertMessages; 
-	[format["GMS_alertMsgTypes = %1",GMSCore_alertMsgTypes]] call GMSCore_fnc_log;
+	if ( GMSCore_debug > 0) then {[format["GMS_alertMsgTypes = %1",GMSCore_alertMsgTypes]] call GMSCore_fnc_log};
 
 	private _ver =  getNumber(configFile >> "GMSCoreBuild" >> "version");
 	private _build = getNumber(configFile >> "GMSCoreBuild" >> "build");
@@ -158,8 +160,7 @@ addMissionEventHandler ["OnUserSelectedPlayer", {
 	"EmptyVehicle" setDynamicSimulationDistance 500; 
 	"Prop" setDynamicSimulationDistance 50;
 
-	[format["Dynamic simulation configured at %1",diag_tickTime]]  call GMSCore_fnc_log;
-
-	[format["Build %1 Build Date %2 Initialized at %3 with GMSCore_modType = %4",_build,_buildDate,diag_tickTime,GMSCore_modType]] call GMSCore_fnc_log;
+	if ( GMSCore_debug > 0) then {[format["Dynamic simulation configured at %1",diag_tickTime]]  call GMSCore_fnc_log};
+	[format["Build %1 Build Date %2 Initialized at %3 with GMSCore_modType = %4",_build,_buildDate,diag_tickTime,GMSCore_modType]] call GMSCore_fnc_log;	
 	GMSCore_Initialized = true;
 };

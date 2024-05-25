@@ -4,8 +4,8 @@
 
 class GMSCoreBuild {
 	version = 1.10;
-	build = 52;
-	buildDate = "05-16-24";
+	build = 54;
+	buildDate = "05-24-24";
 };
 class CfgPatches {
 	class GMSCore {
@@ -71,9 +71,10 @@ class CfgFunctions {
 			class isDrone {};
 			class mainThread {};
 			class monitorMapMarkers {};
-			class monitorObjectDeletionCue {};			
+			class monitorObjectDeletionCue {};		
+			class nearestBases {};	
 			class nearestGMSAI {};
-			class nearestPlayers {};  // Replaced by a GMSCore function GMSCore_fnc_nearestPlayers
+			class nearestPlayers {};   
 			class nearestTarget {};	
 			class objectHeight {};		
 			class removeBlacklistedItems {};

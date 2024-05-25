@@ -1,4 +1,28 @@
 
+1.08 
+Tweaked simulation management which was never fully implemented 
+    air and land patrols that roam the whole map use enableSimulationGlobal 
+    everything else is managed with dynamicSimulation 
+    Simulation is now configured in the function that initializes waypoints for area or road patrols.
+
+Tweaked code to manage stuck units to consider additional confounds 
+    wake any stuck groups managed with enableSimulationGlobal by allerting them to the nearest player if one exists - if there is no player connected do nothing. 
+    test if players are within the activation range for units and if so handle as a stuck unit 
+    a unit is stuck if it has not moved over a 10 sec period, has a speed == 0, is not hunting and has not completed _wp = [_group, 0];
+
+Set up the area waypoint system to support navigation of land vehicles between Locations across the entire map. 
+
+1.07 
+Added initialization for dynamic simulation and tested it. Activation of groups is almost instantaneous.
+Fixed a few errors caused by find/replace when updating code to accomodated relative paths. 
+
+1.061
+FIXED a small issue with broadcasting code.
+
+1.060
+Added some checks to find source of illegal values passed to getNumberFromRange.
+ADDED $PREFIX$ and $PBOPREFIX$ and updated paths.
+
 1.058
 Changed: Moved code to detach / attach smoke shell and chemlight to an object to a container function 
     And moved these markers up to 1 meter above the object to reduce colisions with the object since 'its arma'

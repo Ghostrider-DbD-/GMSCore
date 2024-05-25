@@ -32,17 +32,18 @@ params[
 
 if !(isClass(configFile >> "CfgVehicles" >> _className)) exitWith
 {
-	[format["\x\addons\GMSCore_fnc_spawnPatrolAircraft called with invalid classname %1",_className],"error"] call GMSCore_fnc_log;
+	[format["_spawnPatrolAircraft called with invalid classname %1",_className],"error"] call GMSCore_fnc_log;
 	objNull
 };
 if !(_className isKindOf "Air") exitWith 
 {
-	[format["\x\addons\GMSCore_fnc_spawnPatrolAircraft: class name %1 is not kindOf 'Air'",_className],"error"] call GMSCore_fnc_log;
+	[format["_spawnPatrolAircraft: class name %1 is not kindOf 'Air'",_className],"error"] call GMSCore_fnc_log;
 	objNull
 };
 
 private _spawnPos = [_pos select 0, _pos select 1, 600];
 private _aircraft = createVehicle[_className,_spawnPos,[],0,"FLY"];
+//[format["\x\addons\GMSCore_fnc_spawnPatrolAircraft: _group %3 | class name %1 | _aircraft %2",_className, _aircraft, _group],""] call GMSCore_fnc_log;
 if !(isNull _aircraft) then 
 {
 	[_aircraft,_disable,_removeFuel,_releaseToPlayers,_deleteTimer] call GMSCore_fnc_initializePatrolVehicle;
@@ -68,4 +69,5 @@ if !(isNull _aircraft) then
 	(currentPilot _aircraft)  doMove (_pos getPos[1000,random(359)]); 
 	_aircraft enableCoPilot true;
 };
+
 _aircraft

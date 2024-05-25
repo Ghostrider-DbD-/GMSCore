@@ -30,10 +30,10 @@ params[
 	["_deletemarker",false]  //  When true the marker for the patrol will be deleted once all units and groups are gone - useful for dynamicly spawned AI and paratroops.
 ];  
 
-#ifdef GMSCore_patroArealMarker diag_log format["_initializeWaypointsAreaPatrol: GMSCore_patroArealMarker is defined here"];
-#endif
+//#ifdef GMSCore_patroArealMarker diag_log format["_initializeWaypointsAreaPatrol: GMSCore_patroArealMarker is defined here"];
+//#endif
 try {
-	if (GMS_patrolLocations isEqualTo [] && (_patrolAreaMarker isEqualTo GMSCore_patroArealMarker)) throw -5; // no locations available for patrols of the entire map
+	if (GMSCore_patrolLocations isEqualTo [] && (_patrolAreaMarker isEqualTo GMSCore_patroArealMarker)) throw -5; // no locations available for patrols of the entire map
 	// Check for any invalid conditions or parameters 
 	if ({alive _x} count (units _group) == 0) throw 0; 
 	if (isNull _group) throw -3;
@@ -64,8 +64,8 @@ try {
 	private _objType = _veh call BIS_fnc_objectType;
 	private _cat = _objType select 0;
 	private _sub = _objType select 1;
-	diag_log format["\x\addons\GMSCore_fnc_updateWaypointConfigs: _veh = %1 | _objType %2 | _cat %3 | _sub %4",typeOf _veh, _objType, _cat, _sub];
-	[format["_initializeWaypointAreaPatrol(62): _group = %1 | _patrolAreaMarker = %2 | _timeout = %3 | _garrisonChance = %4 | _type = %5",_group,_patrolAreaMarker,_timeout,_garrisonChance,_type]] call GMSCore_fnc_log;	
+	//diag_log format["\x\addons\GMSCore_fnc_updateWaypointConfigs: _veh = %1 | _objType %2 | _cat %3 | _sub %4",typeOf _veh, _objType, _cat, _sub];
+	//[format["_initializeWaypointAreaPatrol(62): _group = %1 | _patrolAreaMarker = %2 | _timeout = %3 | _garrisonChance = %4 | _type = %5",_group,_patrolAreaMarker,_timeout,_garrisonChance,_type]] call GMSCore_fnc_log;	
 
 	if (_patrolAreaMarker isEqualTo GMSCore_mapMarker) then { 
 		// These groups patrol the entire map regardless of whether players are nearby and need to be always simulated
@@ -111,7 +111,7 @@ try {
 			_wp setWaypointStatements ["true","this call GMSCore_fnc_completedWaypointAreaPatrol;"];
 			[leader _group,"Initialize"] call GMSCore_fnc_nextWaypointAreaPatrol;				
 						
-			[format["\x\addons\GMSCore_fnc_initializeWaypointsAreaPatrol Completed for group %1 | _patrolAreaMarker %2",_group,_patrolAreaMarker]] call GMSCore_fnc_log;
+			//[format["\x\addons\GMSCore_fnc_initializeWaypointsAreaPatrol Completed for group %1 | _patrolAreaMarker %2",_group,_patrolAreaMarker]] call GMSCore_fnc_log;
 		};
 	};
 };

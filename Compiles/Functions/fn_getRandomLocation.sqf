@@ -10,5 +10,6 @@ private _destination = "";
 while {_distance < _minRange || _distance > _maxRange} do {
 	_destination = selectRandom GMSCore_patrolLocations;
 	_distance = _anchor distance (position _destination);
+	//[format["_minRange %1 | _maxRange %2 | _destination %3 | _distance %4 | _anchor %5",_minRange,_maxRange,_destination,_distance,_anchor]] call GMSCore_fnc_log;	
 };
 _destination;

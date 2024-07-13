@@ -356,6 +356,7 @@ catch {
 								_group setBehaviourStrong "CARELESS";								
 								_wp setWPpos (getPosATL _veh);
 								_wp setWaypointType "LOAD";
+								//  [_vehicle,_group] call GMSCore_fnc_loadVehicleCrew;
 								_wp setWaypointTimeout [0.1,0.2,0.3];
 								_group setVariable["LastChecked", diag_tickTime];
 								continue;								

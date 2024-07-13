@@ -39,6 +39,7 @@
 */
 
 #define GMS_stuckValue "GMS_stuck"
+#define GMSCore_groupDestination "GMS_grpDestination"
 
 /*
 	Defines for Vehicles

@@ -4,8 +4,8 @@
 
 class GMSCoreBuild {
 	version = 1.10;
-	build = 54;
-	buildDate = "05-24-24";
+	build = 59;
+	buildDate = "07-12-24";
 };
 class CfgPatches {
 	class GMSCore {
@@ -96,7 +96,8 @@ class CfgFunctions {
 			class despawnInfantryGroup {};
 			class getAreaMarker {};
 			class groupCanSee {};
-			class getGroupBlacklist {};				
+			class getGroupBlacklist {};
+			class getGroupDestination {};			
 			class getGroupIntelligence {};
 			class getGroupVehicle {};
 			class getHunt {};
@@ -105,6 +106,7 @@ class CfgFunctions {
 			class groupRemoveAllGear {};
 			class initializegroup {};
 			class setGroupBehaviors {};
+			class setGroupDestination {};
 			class setupGroupMoney {};	
 			class setGroupVehicle {};
 			class setHunt {};

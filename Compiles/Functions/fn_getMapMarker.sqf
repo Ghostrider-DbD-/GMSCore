@@ -1,3 +1,0 @@
-
-
-GMSCore_mapMarker 

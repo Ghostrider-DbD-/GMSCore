@@ -18,6 +18,6 @@
 #include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_vehicle","_group"];
 
-{_x moveInAny _vehicle} forEach (units _group);
+{_x moveInAny _vehicle} forEach (units _group select {alive _x});
 _group addVehicle _vehicle;
 [_group,_vehicle] call GMSCore_fnc_setGroupVehicle;

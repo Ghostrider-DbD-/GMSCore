@@ -1,3 +1,13 @@
+TODO:
+    Verify that air units spit players and engage them and call in reinforcements if appropriate 
+    
+    Add anti-Stuck code for landVehicles patroling the entire map. 
+
+
+1.10
+    Checked that exile, epoch and defalt servers start properly.
+    Sorted waypoint management for air units 
+    Sorted basic waypoint management for land vehicles 
 
 1.08 
 Tweaked simulation management which was never fully implemented 

@@ -359,12 +359,9 @@ catch {
 											//private _doMove = _group getVariable["doMove", false];
 											if ( (diag_tickTime - _60SecStartTime >= 60) && (_speed < _minSpeed) && _veh distance _60SetStartPos < 10) then {
 												// vehicle has not moved in 60 sec so lets nudge it 
-												private _nearbyPos = (getPosATL _veh) getPos [200, random(359)];
-												_veh doMove (_nearbyPos);
-												_group setVariable["doMove",true];
+												_veh doMove (getWPpos _wp);
+												_group setVariable["d0Move",true];
 												_group setVariable["lastChecked", diag_tickTime];
-												_group setVariable["60SecTimer", diag_tickTime];
-												_group setVariable["60SecStartPos", getPosATL _veh];
 												diag_log format["_nextWaypointAreaPatrol(365): vehicle typeOf %1 stuck at %2 executing doMove to %3", typeOf _veh, getPosATL _veh, getWPpos _wp];
 												//continue;
 											} else {

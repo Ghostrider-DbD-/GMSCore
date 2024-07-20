@@ -2,10 +2,12 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 
+
+// TOD: add handleDamage or hitpoint handler that removes any damage caused by player runovers
 class GMSCoreBuild {
 	version = 1.10;
-	build = 62;
-	buildDate = "07-15-24";
+	build = 64;
+	buildDate = "07-20-24";
 };
 class CfgPatches {
 	class GMSCore {
@@ -17,6 +19,7 @@ class CfgPatches {
 };
 
 #include "CfgGMSCore.hpp"
+
 class CfgFunctions {
 	class GMSCore {
 		class Airdrops {
@@ -84,7 +87,7 @@ class CfgFunctions {
 			class setOnRunoverHipointsDamage {};
 			class setOnRunoverNumberHitpointsDamaged {};
 			class substringsPresentInString {};
-		};		
+		};
 		class GMS_Groups {
 			file = "\x\addons\GMSCore\Compiles\Groups";
 			class addToGraveyardGroup {};
@@ -147,7 +150,7 @@ class CfgFunctions {
 			file = "\x\addons\GMSCore\Compiles\safezoneManagement";
 			//class addSafeZone {};
 			//class cleanupSafeZones {};
-		};
+		};		
 		class GMS_Utilities {
 			file = "\x\addons\GMSCore\Compiles\Utilities";
 			class configureWorld {};
@@ -170,7 +173,6 @@ class CfgFunctions {
 		};
 		class GMS_Vehicles {
 			file = "\x\addons\GMSCore\Compiles\Vehicles";
-			//class allowPlayerVehicleAccess {};
 			class createVehicle {};
 			class destroyVehicleAndCrew {};
 			class disableVehicleSensors {};
@@ -204,7 +206,6 @@ class CfgFunctions {
 			class setStuck {};
 			class setWaypointLastCheckedTime {};
 			class setWaypointStuckValue {};
-			//class updateWaypointConfigs {};  // 05/05/2024  only called once - merged with initializeAreaWaypoints
 		};
 	};
 };

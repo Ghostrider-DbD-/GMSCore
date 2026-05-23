@@ -18,6 +18,7 @@
 params[
 	["_vehType",""],
 	["_pos",[0,0,0]],
+	//["_mode", ""],
 	["_dir",random(360)],
 	["_height",0],
 	["_protect",true]
@@ -26,7 +27,7 @@ params[
 private "_veh";
 if (_height > 0 && {_vehType isKindOf "Air"}) then 
 {
-	_pos set[2,600];
+	_pos set[2,200];
 	_veh = createVehicle[_vehType, _pos, [], 0, "FLY"];
 	_veh engineOn true;
 } else {
@@ -42,9 +43,6 @@ _veh allowDamage false;
 uiSleep 1;
 
 _veh allowDamage true;
-_veh enableRopeAttach true;
-
-// This variable is not referenced elsewhere so was no longer set as of 11/28/21
-///_veh setVariable[GMS_vehicle,true];
+if !(_veh isKindOf "StaticWeapon")  then {_veh enableRopeAttach true} else {_veh enableRopeAttach false};
 
 _veh

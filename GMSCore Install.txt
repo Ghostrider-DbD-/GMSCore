@@ -3,7 +3,7 @@ All credit for this script goes to Ghostrider [GRG] - I (Nicho) have only added 
 Install instructions created by Nicho1494.
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-GMS_Core Install Instructions//
+GMS_core_core_core_Core Install Instructions//
 
 //Step 1;
 
@@ -28,7 +28,7 @@ GMS_Core Install Instructions//
 	
 //Optional additional script links from GhostriderGaming [GRG];
 
-	GMS_AI: https://github.com/Ghostrider-DbD-/GMSAI
+	GMSAI: https://github.com/Ghostrider-DbD-/GMSAI
 
 	GMS_RC: https://github.com/Ghostrider-DbD-/GMS_RC
 

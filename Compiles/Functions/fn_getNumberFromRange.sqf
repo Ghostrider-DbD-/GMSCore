@@ -44,7 +44,7 @@ if (_data isEqualType []) then
 				_value = _min;
 			};
 		} else {
-			diag_log format["[GMSAI] Error: Array %1 must have 1 or 2 scalar elements",_data];
+			diag_log format["[GMSCore] Error: Array %1 must have 1 or 2 scalar elements",_data];
 			_value = [];
 		};
 	};

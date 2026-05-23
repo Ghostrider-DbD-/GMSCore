@@ -5,7 +5,7 @@
 		Updates the list of types of messages to be shown to players when alerts are sent out.
 
 	Parameters: 
-		_config: array of strings allowed in GMS_validAlertMsgTypes
+		_config: array of strings allowed in GMS_core_core_validAlertMsgTypes
 
 	Returns: 
 		Nothing 

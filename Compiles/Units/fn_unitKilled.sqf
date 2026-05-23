@@ -27,10 +27,10 @@ if (_group getVariable[GMS_removeLauncher,true]) then
 {
 	_unit call GMSCore_fnc_removeLauncher;
 };
-//private _removeNVG = _group getVariable[GMS_removeNVG,true];
-if (_group getVariable[GMS_removeNVG,true]) then 
+private _removeNVG = _group getVariable[GMS_removeNVG,true];
+if (_removeNVG) then 
 {
-	_unit call GMSCore_fnc_removeNVG;
+	[_unit] call GMSCore_fnc_removeNVG;
 };
 private _veh = [_group] call GMSCore_fnc_getGroupVehicle;
 //[format["\x\addons\GMSCore_fnc_unitKilled: (vehicle _unit = %1 | _veh classname %2 | {alive _x} count (crew (vehicle _unit)) = %3",_veh,typeOf _veh,{alive _x} count (crew _veh)]] call GMSCore_fnc_log;

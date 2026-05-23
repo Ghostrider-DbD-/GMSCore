@@ -60,7 +60,7 @@ if (typeName _payload isEqualTo "GROUP") then
 		_marker setMarkerColor "COLORBLACK";
 		_marker setMarkerText "Supplies";
 		_m = format["fn_dropPayload:  _marker = %1",_marker];
-		GRGCore_monitoredMarkers pushBack [_marker,_aircraft getvariable["markerDeleteTime",300]];
+		//  Assume this marker is deleted when the payload AI are all dead
 	};
 };
 

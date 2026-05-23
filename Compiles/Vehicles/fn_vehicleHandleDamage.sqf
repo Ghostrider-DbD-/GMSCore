@@ -15,6 +15,7 @@
 #include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 
 params ["_vehicle", "_selection", "_newDmg", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
+diag_log format["GMSCore _vehicleHandleDamage: _vehicle %1 typeOf %2 _newDmg %3 _instigator %4", _vehicle, typeOf _vehicle, _newDmg, _instigator];
 if (isPlayer _instigator) exitWith {};
 if (_selection isEqualTo "" || {_selection isEqualTo "?"}) then 
 {

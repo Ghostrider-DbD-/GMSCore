@@ -1,9 +1,13 @@
 TODO:
-    Verify that air units spit players and engage them and call in reinforcements if appropriate 
+
+1.11
+    Added functions to set no-spawn locations for GMS Missions
+    Added support for location-based blacklisted and noAgro Areas for GMSAI
+    Reworked waypoint system for area patrols 
+    Reworked waypoints for land and air vehicle patrols that roam the entire map 
+    Cleaned up many small bugs
+    Removed unused functions 
     
-    Add anti-Stuck code for landVehicles patroling the entire map. 
-
-
 1.10
     Checked that exile, epoch and defalt servers start properly.
     Sorted waypoint management for air units 

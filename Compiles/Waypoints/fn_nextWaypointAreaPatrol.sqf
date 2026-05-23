@@ -40,8 +40,8 @@ private _wp = [_group,0];
 private _patrolType = _group getVariable["GMS_areaPatrolType",GMS_infrantryPatrol];
 private _typeOf = _veh call BIS_fnc_objectType;
 private _speed = velocity _veh;
-private _blacklisted = _group getVariable [GMSCore_blackListedAreas, []];
-private _target = [_group] call GMSCore_fnc_getHunt;
+//private _blacklisted = _group getVariable [GMSCore_blackListedAreas, []];
+//ivate _target = [_group] call GMSCore_fnc_getHunt;
 private _patrolAreaMarker = _group getVariable[GMSCore_patroArealMarker, ""];
 private _lastDestination = _group getVariable["lastDest",""];
 private _currDestination = _group getVariable["currDest",""];
@@ -66,7 +66,7 @@ try {
 	if ( _leader inArea _patrolAreaMarker) then {
 		if !(isNull _target) then {
 
-			if ([_target, _blacklisted] call GMSCore_fnc_isBlacklisted) then {
+			if ([_target, _blacklisted, "_nextWaypointAreaPatrol(69)"] call GMSCore_fnc_isBlacklisted) then {
 				[_group, objNull] call GMSCore_fnc_setHunt; 
 				throw 3;
 			}; // Don't hunt a target in a blacklisted area 
@@ -160,7 +160,7 @@ catch {
 
 			******************************************************************************************/
 			if (_patrolAreaMarker isEqualTo GMSCore_mapMarker) then {
-				diag_log format["_nextWaypointAreaPatrol (220): finding new waypoint for vehicle %2 leader %3 _patrolAreaMarker %4", "--", typeOf _veh , _leader, _patrolAreaMarker];
+				diag_log format["_nextWaypointAreaPatrol (163): finding new waypoint for vehicle %2 leader %3 _patrolAreaMarker %4", "--", typeOf _veh , _leader, _patrolAreaMarker];
 					
 					/*
 						Air Patrols should not get stuck 
@@ -168,8 +168,10 @@ catch {
 					*/
 				switch (true) do {
 					case (_veh isKindOf "AIR"):  {
-						diag_log format["_nextWaypointAreaPatrol (164): finding new destination for vehicle %1 | leader %2 | _patrolAreaMarker %3", typeOf _veh, _leader, _patrolAreaMarker];
-						diag_log format["_nextWaypointAreaPatrol (165): waypoints = %1 | currentWaypoint = %2", waypoints _group, currentWaypoint _group];
+						if (GMSCore_debug == 1) then { 
+							diag_log format["_nextWaypointAreaPatrol (172): finding new destination for vehicle %1 | leader %2 | _patrolAreaMarker %3", typeOf _veh, _leader, _patrolAreaMarker];
+							diag_log format["_nextWaypointAreaPatrol (173): waypoints = %1 | currentWaypoint = %2", waypoints _group, currentWaypoint _group];
+						};
 						//private _airWPmode = _group getVariable["airWPMode","scan"];
 						//private _destination = _group getVariable["WPdestination", ""];
 						private _newLocation = "";
@@ -179,7 +181,7 @@ catch {
 							_isBlacklisted = true;
 							private _minRange = 1000;
 							private _maxRange = 7500;
-							if ([_veh] call GMSCore_fnc_isDrone && _veh isKindOf "Helicopter") then {
+							if ([typeOf _veh] call GMSCore_fnc_isDrone && _veh isKindOf "Helicopter") then {
 								// shorten search radius for drones that are of type helicopter as these travel slowly.
 								_minRange = 500;
 								_maxRange = 2500;  
@@ -200,27 +202,30 @@ catch {
 							_wp setWaypointTimeout [1, 2, 3];
 							_wp setWaypointCompletionRadius 150;	
 							_group setCurrentWaypoint _wp;
-							_group setSpeedMode "LIMITED";		
+							_group setSpeedMode "NORMAL";		
 
-							deleteMarker (_group getVariable["wpMarker",""]);
-							private _mrkr = createMarker[format["wpMarker%1", random(100000)], _newPos];
-							_group setVariable["wpMarker",_mrkr];
-							_mrkr setMarkerType "hd_dot";
-							_mrkr setMarkerColor "COLORORANGE";
-							_mrkr setMarkerText format["group%1|type %2",_group, if ([typeOf _veh] call GMSCore_fnc_isDrone) then {"Drone"} else {"Air"}];
-							//[_mrkr, 300] call GMSCore_fnc_addToDeletionCue;
-							diag_log format["_nextWaypointAreaPatrol (209): _newLocation %2 | _veh distance _newPos %3 | _newPos %4 | _mrkr %5 | markerPos %6", "",  _newLocation, _veh distance _newPos, _newPos, _mrkr, getMarkerPos _mrkr];
+							if (GMSCore_debug == 1) then {
+								deleteMarker (_group getVariable["wpMarker",""]);
+								private _mrkr = createMarker[format["wpMarker%1", random(100000)], _newPos];
+								_group setVariable["wpMarker",_mrkr];
+								_mrkr setMarkerType "hd_dot";
+								_mrkr setMarkerColor "COLORORANGE";
+								_mrkr setMarkerText format["group%1|type %2",_group, if ([typeOf _veh] call GMSCore_fnc_isDrone) then {"Drone"} else {"Air"}];
+								//[_mrkr, 300] call GMSCore_fnc_addToDeletionCue;
+								diag_log format["_nextWaypointAreaPatrol (215): _newLocation %2 | _veh distance _newPos %3 | _newPos %4 | _mrkr %5 | markerPos %6", "",  _newLocation, _veh distance _newPos, _newPos, _mrkr, getMarkerPos _mrkr];
+							};
 						} else {
 							if (_state isEqualTo "Completed") then {
 								private _currDestination = _group getVariable["currDestination",""];
-								diag_log format["_nextWaypointAreaPatrol (213): finding new destination for vehicle %1 | leader %2 | _patrolAreaMarker %3", typeOf _veh, _leader, _patrolAreaMarker];
-								diag_log format["_nextWaypointAreaPatrol (214): old _currDestingation %3 | _veh distance getWPpos %4 | waypoints = %1 | currentWaypoint = %2", waypoints _group, currentWaypoint _group, _currDestingation, _veh distance getWPpos _wp];								
-								
+								if (GMSCore_debug == 1) then {
+									diag_log format["_nextWaypointAreaPatrol (221): finding new destination for vehicle %1 | leader %2 | _patrolAreaMarker %3", typeOf _veh, _leader, _patrolAreaMarker];
+									diag_log format["_nextWaypointAreaPatrol (222): old _currDestination %3 | _veh distance getWPpos %4 | waypoints = %1 | currentWaypoint = %2", waypoints _group, currentWaypoint _group, _currDestination, _veh distance getWPpos _wp];								
+								};
 								_isBlacklisted = true;
 								private _newLocation = "";
 								private _minRange = 1000;
 								private _maxRange = 7500;
-								if ([_veh] call GMSCore_fnc_isDrone && _veh isKindOf "Helicopter") then {
+								if ([typeOf _veh] call GMSCore_fnc_isDrone && _veh isKindOf "Helicopter") then {
 									// shorten search radius for drones that are of type helicopter as these travel slowly.
 									_minRange = 500;
 									_maxRange = 2500;  
@@ -232,7 +237,7 @@ catch {
 								};
 								//_group setVariable["WPdestination",_newPos];
 								_group setVariable["currDestination",_newLocation];
-								_group setVariable["lastDestination", _currDestingation];
+								_group setVariable["lastDestination", _currDestination];
 								_group setVariable["LastChecked",diag_tickTime];
 								_group setBehaviourStrong "CARELESS";
 								_wp setWPPos _newPos;
@@ -242,53 +247,77 @@ catch {
 								_wp setWaypointTimeout [1, 2, 3];
 								_wp setWaypointCompletionRadius 150;	
 								_group setCurrentWaypoint _wp;
-								_group setSpeedMode "LIMITED";	
-
-								deleteMarker (_group getVariable["wpMarker",""]);
-								private _mrkr = createMarker[format["wpMarker%1", random(100000)], _newPos];
-								_group setVariable["wpMarker",_mrkr];
-								_mrkr setMarkerType "hd_dot";
-								_mrkr setMarkerColor "COLORORANGE";
-								_mrkr setMarkerText format["group%1|type %2",_group, if ([typeOf _veh] call GMSCore_fnc_isDrone) then {"Drone"} else {"Air"}];
-								//[_mrkr, 300] call GMSCore_fnc_addToDeletionCue;		
-								diag_log format["_nextWaypointAreaPatrol (251): _currDestination %1 | _newLocation %2 | _veh distance _newPos %3 | _newPos %4 | _mrkr %5 | markerPos %6", _currDestination, _newLocation, _veh distance _newPos, _newPos, _mrkr, getMarkerPos _mrkr];																					
-							} else {  // the situation is the group is being monitored 
-								// Some monitoring could be done by GMSAI - but keep something here just in case.
-								private _destLoc = _group getVariable["currDestination",""];
-								private _lstPos = _group getVariable["LastPosition",getPosATL _veh];
-								private _lastChecked = _group getVariable["LastChecked",diag_tickTime];	
-
-								if ( (_veh distance _lstPos) < 100 && (diag_tickTime - _lastChecked)  > 60) then {
-									private _isBlacklisted = true;
-									private _radius = 250;
-									while {_isBlacklisted || surfaceIsWater _newPos} do {
-										_newPos = _veh getPos[_radius,random(359)];
-										_isBlacklisted = [_newPos, _blacklisted] call GMSCore_fnc_isBlacklisted;
-										_radius = _radius + 50;
-									};
-
-									private _wp = [_group,0];
-									[_group,"disengage"] call GMSCore_fnc_setGroupBehaviors; 			
-									_wp setWPPos _newPos; 
-									_wp setWaypointType "MOVE";
-									_wp setWaypointBehaviour "SAFE";
-									_wp setWaypointCombatMode "GREEN"; 
-									_wp setWaypointCompletionRadius 0;
-									_wp setWaypointTimeout [0.1, 0.15, 0.2];
-									_group setCurrentWaypoint _wp;
-									_group setSpeedMode "NORMAL";
-				
+								_group setSpeedMode "NORMAL";	
+								if (GMSCoore_debug == 1) then {
 									deleteMarker (_group getVariable["wpMarker",""]);
 									private _mrkr = createMarker[format["wpMarker%1", random(100000)], _newPos];
 									_group setVariable["wpMarker",_mrkr];
 									_mrkr setMarkerType "hd_dot";
-									_mrkr setMarkerColor "COLORBLUE";
+									_mrkr setMarkerColor "COLORORANGE";
 									_mrkr setMarkerText format["group%1|type %2",_group, if ([typeOf _veh] call GMSCore_fnc_isDrone) then {"Drone"} else {"Air"}];
-									[_mrkr, 300] call GMSCore_fnc_addToDeletionCue;	
-								};
+									//[_mrkr, 300] call GMSCore_fnc_addToDeletionCue;		
+									diag_log format["_nextWaypointAreaPatrol (259): _currDestination %1 | _newLocation %2 | _veh distance _newPos %3 | _newPos %4 | _mrkr %5 | markerPos %6", _currDestination, _newLocation, _veh distance _newPos, _newPos, _mrkr, getMarkerPos _mrkr];																					
+									};
+							} else {  // the situation is the group is being monitored 
+								// NO monitoring done by GMSAI - but this is called because vehicles are moniitored frequently to detect stuck vehicles so need to detect and correct these.
+								private _currDestination = position (_group getVariable["currDestination",""]);
+								private _lastChecked = _group getVariable["LastChecked",diag_tickTime];
+								
+								if (GMSCore_debug >= 0) then {
+									diag_log format["_nextWaypointAreaPatrol distance to _currDestination %1 | speed _veh % 2 |time since _lastChecked %3", _veh distance _currDestination, speed _veh, diag_tickTime - _lastChecked ];
+								}; 
+								
+								if (_veh distance _currDestination < 100 || (speed _veh) < 1 || diag_tickTime - _lastChecked > 60 * 15 /* 15 minutes */) then {
+								
+									if (GMSCore_debug == 1) then {
+										diag_log format["_nextWaypointAreaPatrol (265): finding new destination for vehicle %1 | leader %2 | _patrolAreaMarker %3", typeOf _veh, _leader, _patrolAreaMarker];
+										diag_log format["_nextWaypointAreaPatrol (266): old _currDestination %3 | _veh distance getWPpos %4 | waypoints = %1 | currentWaypoint = %2", waypoints _group, currentWaypoint _group, _currDestination, _veh distance getWPpos _wp];								
+									};
+									_isBlacklisted = true;
+									private _newLocation = "";
+									private _minRange = 1000;
+									private _maxRange = 7500;
+									if ([typeOf _veh] call GMSCore_fnc_isDrone && _veh isKindOf "Helicopter") then {
+										// shorten search radius for drones that are of type helicopter as these travel slowly.
+										_minRange = 500;
+										_maxRange = 2500;  
+									};
+									while {_isBlacklisted} do {
+										_newLocation =[getPosATL _veh, _minRange, _maxRange] call GMSCore_fnc_getRandomLocation;
+										_newPos = (position _newLocation) getPos [100 + random(100), random(359)];
+										_isBlacklisted = [_newPos, _blacklisted] call GMSCOre_fnc_isBlacklisted;
+									};
+									//_group setVariable["WPdestination",_newPos];
+									_group setVariable["currDestination",_newLocation];
+									_group setVariable["lastDestination", _currDestination];
+									_group setVariable["LastChecked",diag_tickTime];
+									_group setBehaviourStrong "CARELESS";
+									_wp setWPPos _newPos;
+									_wp setWaypointType "MOVE";
+									_wp setWaypointBehaviour "SAFE";
+									//_wp setWaypointCombatMode "GREEN"; 
+									_wp setWaypointTimeout [1, 2, 3];
+									_wp setWaypointCompletionRadius 150;	
+									_group setCurrentWaypoint _wp;
+									_group setSpeedMode "NORMAL";	
+									if (GMSCore_debug == 1) then {
+										deleteMarker (_group getVariable["wpMarker",""]);
+										private _mrkr = createMarker[format["wpMarker%1", random(100000)], _newPos];
+										_group setVariable["wpMarker",_mrkr];
+										_mrkr setMarkerType "hd_dot";
+										_mrkr setMarkerColor "COLORORANGE";
+										_mrkr setMarkerText format["group%1|type %2",_group, if ([typeOf _veh] call GMSCore_fnc_isDrone) then {"Drone"} else {"Air"}];
+										//[_mrkr, 300] call GMSCore_fnc_addToDeletionCue;		
+									};
 
-								// Reset lastPosition here since it is used to determine if a vehicle has stalled out for some reason. 
-								_group setVariable["LastPosition",getPosATL _veh];
+									// Reset lastPosition here since it is used to determine if a vehicle has stalled out for some reason. 
+									_group setVariable["LastPosition",getPosATL _veh];
+									
+								} else {
+									if (GMSCore_debug >= 0) then {
+										diag_log format["nextWaypointAreaPatrol: Letting group %1 in typeOf _veh %2 continue toward destination %3 now %4 meters away",_group, typeOf _veh, _currDestination, _veh distance _currDestination];
+									};
+								};
 							};
 						};
 					};
@@ -437,7 +466,7 @@ catch {
 								_wp setWaypointTimeout [0.1, 0.11, 0.12];
 								_wp setWaypointCompletionRadius 150;	
 								_group setCurrentWaypoint _wp;
-								_group setSpeedMode "LIMITED";	
+								_group setSpeedMode "NORMAL";	
 								_group setVariable["lastRoadSegment", _currRoad];	
 								_group setVariable["lastChecked", diag_tickTime];
 								_group setVariable["wpInitialized", diag_tickTime];	
@@ -495,7 +524,7 @@ catch {
 													_wp setWaypointTimeout [0.1, 0.11, 0.12];
 								_wp setWaypointCompletionRadius 150;	
 								_group setCurrentWaypoint _wp;
-								_group setSpeedMode "LIMITED";	
+								_group setSpeedMode "NORMAL";	
 								_group setVariable["lastRoadSegment", _nextRoads select 0];										
 								
 																deleteMarker (_group getVariable["wpMarker",""]);
@@ -563,7 +592,8 @@ catch {
 						_wp setWaypointCombatMode "GREEN"; 
 						_wp setWaypointCompletionRadius 0;
 						_wp setWaypointTimeout [0.1, 0.15, 0.2];
-						_group setCurrentWaypoint _wp;								
+						_group setCurrentWaypoint _wp;
+						_group setSpeedMode "NORMAL";
 					};
 				};
 
@@ -592,7 +622,7 @@ catch {
 					_wp setWaypointTimeout [30.1, 60.5, 91.0];  //  delay waypoint completion so they hang out in the building a while 
 					_wp setWaypointCompletionRadius 0;	
 					_group setCurrentWaypoint _wp;
-					_group setSpeedMode "LIMITED";							
+					_group setSpeedMode "NORMAL";							
 				} else {
 					// move to a new location witnin the patrol araea 
 					// clear any prior garrison locations 
@@ -659,6 +689,7 @@ catch {
 			diag_log format["_nextWaypointAreaPatrol (336): simulationEnabled _veh = %1 | simulationEnabled _leader = %2 | dynamicSimulation enabled _veh = %3 | dynamicSimulationEnabled _group = %4", simulationEnabled _veh, simulationEnabled _leader, dynamicSimulationEnabled _veh, dynamicSimulationEnabled _group];
 			private _isBlacklisted = true;
 			private _radius = 250;
+			private _newPos = [0,0,0];
 			while {_isBlacklisted || surfaceIsWater _newPos} do {
 				_newPos = _veh getPos[_radius,random(359)];
 				_isBlacklisted = [_newPos, _blacklisted] call GMSCore_fnc_isBlacklisted;

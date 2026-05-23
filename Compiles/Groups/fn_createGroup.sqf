@@ -10,9 +10,8 @@
     Copyright 2020 by Ghostrider-GRG-
 */
 #include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
-params[["_side",GMSCore_Side],["_monitor",false]];
+params[["_side",GMSCore_Side],["_deleteWhenEmpty",false]];
 
-private _group = createGroup [_side,true];
-_group enableDynamicSimulation false;
-
+private _group = createGroup [_side, _deleteWhenEmpty];
+_group setVariable["GMSCore_group", true];
 _group

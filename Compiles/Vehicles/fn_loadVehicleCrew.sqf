@@ -18,6 +18,8 @@
 #include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_vehicle","_group"];
 
+[format["GMSCore_fnc_loadVehicleCrew superseeded by GMSCore_fnc_addVehicleCrew"]] call GMSCore_fnc_log;
+
 {_x moveInAny _vehicle} forEach (units _group select {alive _x});
 _group addVehicle _vehicle;
 [_group,_vehicle] call GMSCore_fnc_setGroupVehicle;

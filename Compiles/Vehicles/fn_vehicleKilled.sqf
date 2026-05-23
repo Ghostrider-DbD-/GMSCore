@@ -19,7 +19,7 @@ params["_veh","_killer","_instigator"];
 //[format["\x\addons\GMSCore_fnc_vehicleKilled: _veh %1 | typeOf _veh %2 | name _instigator %3",_veh,typeOf _veh, name _instigator]] call GMSCore_fnc_log;
 if ([_veh] call GMSCore_fnc_updateGroupHitKilledTimer) then // This only allows updates every 10 sec to reduce server load.
 {
-	private _group = _veh getVariable["GMS_group",grpNull];
+	private _group = _veh getVariable["GMSCore_group",grpNull];
 	#define searchDistance (_group) getVariable [GMS_patrolAlertDistance,500] // Tied to the alertDistance for the group
 	#define bumpKnowsAbout (_group) getVariable [GMS_patrolIntelligence,0.25] // Tied to intelligence fot the group
 	[position _veh,group _killer,searchDistance,bumpKnowsAbout] call GMSCore_fnc_allertNearbyGroups;

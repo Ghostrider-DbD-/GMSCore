@@ -16,4 +16,5 @@
 
 #include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params["_data"];
+//[format["_getIntegerFromRange: _data %1", _data]] call GMSCore_fnc_log;
 round([_data] call GMSCore_fnc_getNumberFromRange);

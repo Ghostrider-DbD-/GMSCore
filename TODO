@@ -1,3 +1,20 @@
+Goal: Finalize code for Air Patrols including 
+    better antiStuck Ver 1.11 
+    better integrated Player Detection and Hunting 
+
+Goal: 1.12 Goal: Define each blacklisted area as a location or marker . Wit locations you can use nearestLocation["NameBlacklisted" ... ]  to find any nearby blacklisted areas.
+    Location-based system for blacklisted areas Ver 1.12
+    Add Locations that are 'no agro zones' Ver 1.12
+    Add Locations that are true safezones Ver 1.12 
+    Fix issues with configureWorld
+    Moved some functions around to put them in categories that make more sense  
+    Added a function to test if a position is inArea any of the lists of blacklisted, noAgro or safezone locations. 
+    Updated code for aircraft and UAV to take advantage of this new function. 
+    Updated code for initializing locations to generate initial lists of blacklisted and noAgro locations. 
+    Moved some code from _initialize to smaller modules to aid debugging 
+    renamed _initialize to _initializeServer 
+
+Future Goal: Use a single naming convention by changing all instances of GMS_ to GMSCore_ 
 
 
 

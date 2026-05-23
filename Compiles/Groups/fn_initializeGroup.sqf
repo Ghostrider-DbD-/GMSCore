@@ -2,7 +2,7 @@
 
 #include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 params[
-	"_group",
+	["_group",grpNull],
 	["_baseSkill",0.7],
 	["_alertDistance",500], 	 // How far GMS will search from the group leader for enemies to alert to the kiillers location
 	["_intelligence",0.5],  	// how much to bump knowsAbout after something happens
@@ -17,6 +17,7 @@ params[
 	["_aiKilledCode",[]],
 	["_chanceGarison",0]
 ];
+_group setVariable[GMS_baseSkill, _baseSkill];
 _group setVariable[GMS_patrolAlertDistance,_alertDistance];
 _group setVariable[GMS_patrolIntelligence,_intelligence];
 _group setVariable[GMS_bodyCleanupTime,_bodycleanuptimer];

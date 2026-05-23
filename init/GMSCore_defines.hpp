@@ -17,14 +17,21 @@
 /*
 	Defines for all assets (units, groups, vehicles) 
 */
-
 #define GMS_Asset "GMS_asset"
+#define GMS_unit "GMS_Unit"
+#define GMSCore_group "GMSCore_group"
+
+/*
+	Distances 
+*/
+
 
 /*
 	Defines for Drones and Helicopters
 */
-#define GMS_flyinHeight "height"
+#define GMS_flyinHeight "flyInHeight"
 #define GMS_flyinVariation "flyinVar"
+
 /*
 	Defins for Main Thread 
 */
@@ -39,6 +46,9 @@
 */
 
 #define GMS_stuckValue "GMS_stuck"
+#define GMS_stuckTimer "GMS_stuckTimer"
+#define GMS_stuckTimerAir 300 
+
 #define GMSCore_groupDestination "GMS_grpDestination"
 
 /*
@@ -50,7 +60,7 @@
 
 #define GMS_vehHitCode "vehHitCode"
 #define GMS_vehKilledCode "vehKilledCode"
-#define GMS_groupVehicle "grpVeh"
+#define GMSCore_groupVehicle "grpVeh"
 #define GMS_disableVehicle "GMS_disable"
 #define GMS_removeFuel "GMS_removeFuel"
 #define GMS_allowAccess "GMS_allowAccess"
@@ -81,6 +91,11 @@
 #define GMS_minDamageForHeal "minDamageToHeal"
 
 /*
+	Defines for vehicles 
+*/
+
+
+/*
 	Defines for Waypoints
 */
 #define GMS_garisonChance "garisonChance"
@@ -94,14 +109,68 @@
 #define GMS_waypointStartPos "startPosWP"
 #define GMS_waypointTimeoutAt "timeoutWP"
 #define GMS_patrolRoads 1
+#define GMS_lastChecked "lastChecked"
+#define GMS_lastDest "lastDest"
+#define GMS_currDest "currDest"
 
 /*
 	Defines for Groups 
 */
 
-#define GMSCore_maxDistanceTarget "GMSCore_maxDistTarg"
-#define GMSCore_deleteMarker "GMSCor_delMarkr"
-#define GMSCore_patroArealMarker  "GMSCore_patroArealMarker"
-#define GMSCore_blackListedAreas "GMSCore_blackListedAreas"
-#define GMSCore_garrisonChance "GMSCore_garisonChance"
+#define GMSCore_maxDistanceTarget "maxDistTarg"
+#define GMSCore_deleteMarker "deleteMarkr"
+#define GMSCore_patroArealMarker  "patroAreaMarker"
+#define GMSCore_blackListedAreas blackListedAreas"
+#define GMSCore_garrisonChance "_garisonChance"
 #define GMSCore_timeStamp "GMSCore_timeStamp"
+#define GMS_baseSkill "baseSkill"
+
+
+// Classnames 
+//  #define Player_Class_Names "Epoch_Male_F","Epoch_Female_F" // Replaced with GMS_playerUnitTypes which is defined in fn_initialize.sqf
+#define WAYPOINT_DISALLOWED_AREAS "GMSCore_BlacklistedArea","GMSCore_NoAgroArea","GMSCore_SafeZoneArea" 
+#define WAYPOINT_DISALLOWED_DISTANCE_AIR 300 
+
+// Distances 
+#define minDistWP_Air 1000 
+#define maxDistWP_Air 3000 
+#define minDistWP_Heli 1200 
+#define maxDistWP_Heli 2500 
+#define minDistWP_Drone 1000 
+#define maxDistWP_Drone 2000 
+
+#define DISTANCE_NEAREST_ENEMY_AIR 350 
+#define antiStuckMinTravelDistance_Air 750
+#define NO_AGRO_RANGE_LAND 300
+#define PLAYER_DETECT_RANGE_AIR 350 
+#define PLAYER_NOAGRO_RANGE_SEA 250
+#define MIN_WP_DIST_SEA 40 
+#define MAX_WP_DIST_SEA 60 
+#define DISTANCE_NEAREST_ENEMY_SEA 150 
+#define NO_AGRO_RANGE_AIR 900
+#define NOAGRO_RANGE_SEA 200 
+#define ANTISTUCK_MIN_DIST_SEA 250 
+#define MIN_WP_DIST_LAND 50 
+#define MAX_WP_DIST_LAND 1500
+#define DISTANCE_NEAREST_ENEMY_LAND 400
+#define NO_AGRO_RANGE_LAND 500 
+#define antiStuckMinTravelDistance_LAND 250
+#define DISTANCE_NEAREST_ENEMY_INFANTRY 150
+#define NO_AGRO_RANGE_INFANTRY 200 
+#define antiStuckMinTravelDistance_INFANTRY 30 
+#define DISTANCE_NEAREST_ENEMY_UGV 150
+#define NO_AGRO_RANGE_UGV 150 
+#define antiStuckMinTravelDistance_UGV 30
+
+// Heights 
+#define FLYIN_HEIGHT_AIR_BASE 75
+#define FLYIN_HEIGHT_AIR_VARIANCE 25 
+
+// Locations 
+#define LOCATION_TYPES_AIR  "NameVillage","NameCity","NameCityCapital","NameMarine","NameLocal","HistoricalSite","StrongpointArea","Strategic"
+#define LOCATION_TYPES_LAND  "NameVillage","NameCity","NameCityCapital","NameMarine","NameLocal","HistoricalSite","StrongpointArea","Strategic"
+
+//Times 
+#define refuelTimeAir 300 
+#define WAYPOINT_TIMEOUT_LAND 300 
+#define HELI_PARADROP_COOLDOWN 300 

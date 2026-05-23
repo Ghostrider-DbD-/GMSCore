@@ -66,4 +66,5 @@ for "_i" from 1 to count _classnames do
 		};		
 	};
 };
+//[format["\x\addons\GMSCore_fnc_checkClassNamePrices:_classnames after cleanup = %1",_classnames]] call GMSCore_fnc_log;
 _classNames

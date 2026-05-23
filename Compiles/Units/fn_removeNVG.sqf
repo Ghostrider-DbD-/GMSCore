@@ -7,15 +7,13 @@
         __unit: the unit to be processed
 
     Return: none
-
-	Copyright 2020 by Ghostrider-GRG-    
 */
 
-#include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
-private _unit = _this;
-private _nvg = _unit getVariable["GMS_nvg",""];
-if !(_nvg isEqualTo "") then
+params[["_unit", objNull]];
+private _items = items _unit;
 {
-    _unit unassignitem _nvg; 
-    _unit removeweapon _nvg;
-};
+    if (_x isKindOf "NVgoggles") then {
+        _unit unassignItem _x;
+        _unit removeItem _x;
+    };
+} forEach _items;

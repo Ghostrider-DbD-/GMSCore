@@ -40,3 +40,4 @@ _veh lock 2;
 _veh enableRopeAttach false;
 _veh enableCoPilot false;
 _veh setVariable [GMS_Asset,true];
+

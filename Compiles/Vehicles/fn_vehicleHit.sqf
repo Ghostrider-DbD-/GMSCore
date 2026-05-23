@@ -15,8 +15,8 @@
 #include "\x\addons\GMSCore\Init\GMSCore_defines.hpp"
 if !(local (_this select 0)) exitWith {};
 params ["_veh", "_source", "_damage", "_instigator"];
-private _group = _veh getVariable["GMS_group",grpNull];
-//[format["\x\addons\GMSCore_fnc_vehicleHit: _this = %1",_this]] call GMSCore_fnc_log;
+private _group = _veh getVariable["GMSCore_group",grpNull];
+//[format["GMSCore _vehicleHit: _veh %1 _source %2 _damage %3 _instigator %4",_veh, _source, _damage, _instigator]] call GMSCore_fnc_log;
 if ([_veh] call GMSCore_fnc_updateGroupHitKilledTimer) then // This only allows updates every 10 sec to reduce server load.
 {
 	#define searchDistance _group getVariable [GMS_patrolAlertDistance,500] // Tied to the alertDistance for the group
